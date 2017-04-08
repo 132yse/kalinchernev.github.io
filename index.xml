@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>/index.xml</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/index.xml</link>
+    <description>Recent content on Kalin Chernev</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <lastBuildDate>Sat, 08 Apr 2017 15:34:50 +0200</lastBuildDate>
+    <atom:link href="https://kalinchernev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hello world!</title>
+      <link>https://kalinchernev.github.io/hello-world/</link>
+      <pubDate>Sat, 08 Apr 2017 15:34:50 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/hello-world/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s see first deployed demo&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const resolve = require(&#39;path&#39;).resolve;
+const copy = require(&#39;fs-extra&#39;).copy;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>contact</title>
+      <link>https://kalinchernev.github.io/contact/</link>
+      <pubDate>Sat, 08 Apr 2017 15:33:13 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/contact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>https://kalinchernev.github.io/about/</link>
+      <pubDate>Sat, 08 Apr 2017 15:33:06 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/about/</guid>
+      <description>&lt;p&gt;sdkfjldskjflkdsjfdlksjflkj&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
