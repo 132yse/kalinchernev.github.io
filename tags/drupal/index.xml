@@ -97,24 +97,24 @@
 
 &lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;commands:  
-# Install Drupal  
-- command: site:install  
-options:  
-langcode: &#39;en&#39;  
-db-type: &#39;%{{db_type|mysql}}&#39;  
-db-host: &#39;%{{db_host|127.0.0.1}}&#39;  
-db-name: &#39;%{{db_name|c9}}&#39;  
-db-user: &#39;%{{db_user|root}}&#39;  
-db-pass: &#39;%{{db_pass|}}&#39;  
-db-port: &#39;%{{db_port|3306}}&#39;  
-site-name: &#39;Drupal 8 site&#39;  
-site-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-name: &#39;admin&#39; # default account  
-account-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-pass: &#39;admin&#39; # default pass  
-arguments:  
-profile: &#39;standard&#39;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;commands:
+# Install Drupal
+  - command: site:install
+    options:
+      langcode: &#39;en&#39;
+      db-type: &#39;%{{db_type|mysql}}&#39;
+      db-host: &#39;%{{db_host|127.0.0.1}}&#39;
+      db-name: &#39;%{{db_name|c9}}&#39;
+      db-user: &#39;%{{db_user|root}}&#39;
+      db-pass: &#39;%{{db_pass|}}&#39;
+      db-port: &#39;%{{db_port|3306}}&#39;
+      site-name: &#39;Drupal 8 site&#39;
+      site-mail: &#39;admin@example.org&#39; # default email
+      account-name: &#39;admin&#39; # default account
+      account-mail: &#39;admin@example.org&#39; # default email
+      account-pass: &#39;admin&#39; # default pass
+    arguments:
+      profile: &#39;standard&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
@@ -151,25 +151,25 @@ profile: &#39;standard&#39;
 
 &lt;p&gt;Runners are editable.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner  
-// For more information see &amp;lt;http: docs.c9.io:8080=&amp;quot;&amp;quot; #!=&amp;quot;&amp;quot; api=&amp;quot;&amp;quot; run-method-run=&amp;quot;&amp;quot;&amp;gt;  
-{  
-&amp;quot;cmd&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;${debug?debug}&amp;quot;  
-],  
-&amp;quot;cmdStop&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;stop&amp;quot;  
-],  
-&amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,  
-&amp;quot;debugport&amp;quot;: 9000,  
-&amp;quot;$debugDefaultState&amp;quot;: false,  
-&amp;quot;selector&amp;quot;: &amp;quot;^.*\.(php|phtml|html|shtml)$&amp;quot;,  
-&amp;quot;env&amp;quot;: {  
-&amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;  
-},  
-&amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving [01;34m$hostname_path[00m.&amp;quot;  
+&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner
+// For more information see http://docs.c9.io:8080/#!/api/run-method-run
+{
+  &amp;quot;cmd&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;${debug?debug}&amp;quot;
+  ],
+  &amp;quot;cmdStop&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;stop&amp;quot;
+  ],
+  &amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,
+  &amp;quot;debugport&amp;quot;: 9000,
+  &amp;quot;$debugDefaultState&amp;quot;: false,
+  &amp;quot;selector&amp;quot;: &amp;quot;^.*\\.(php|phtml|html|shtml)$&amp;quot;,
+  &amp;quot;env&amp;quot;: {
+    &amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;
+  },
+  &amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving \\033[01;34m$hostname_path\\033[00m.&amp;quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -262,6 +262,100 @@ profile: &#39;standard&#39;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*12EXDc2rgRcy11wQk4SVjA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Drupalaton 2016</title>
+      <link>https://kalinchernev.github.io/drupalaton-2016/</link>
+      <pubDate>Mon, 22 Aug 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/drupalaton-2016/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Recently, I joined an event on &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt; in Hungary — the &lt;a href=&#34;http://drupalaton.hu&#34;&gt;Drupalaton&lt;/a&gt;. It is one of the most exciting yearly Drupal events in Europe, organized by the local community. It gathers hundreds of contributors who collaborate on Drupal issues, share knowledge and have fun together&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;I really enjoyed this year&amp;rsquo;s event since it covered a lot of my favorite topics. (discussed shortly after) Good sessions, pleasant talks with the community, and also — a lot of new things to learn. The event took place at the shore of the biggest warm-water lake in Europe, at Lake Balaton.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ME6rgg3pXT8oid14R5RNVg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sessions&#34;&gt;Sessions&lt;/h3&gt;
+
+&lt;p&gt;Sure enough, sessions were covering important &lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; features. There were several tracks, as well as sprints, where participants were able to collaborate.&lt;/p&gt;
+
+&lt;p&gt;I visited mainly the workshops related to the &lt;a href=&#34;http://buytaert.net/a-roadmap-for-making-drupal-more-api-first&#34;&gt;API-first initiative&lt;/a&gt;. This is a futuristic initiative, involving many JavaScript tools and modern concepts and practices for building service-oriented apps, not only websites.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s a vital initiative for Drupal as a platform for the future. Presently, Drupal is one of the best systems for content modelling, querying, and building websites in general. This means that normal people can make websites with complex information structures with very little or no programming.&lt;/p&gt;
+
+&lt;p&gt;The API-first initiative could potentially take Drupal into a place where &lt;strong&gt;the content modelling and querying becomes data modelling and querying, enabling non-developers to build complex APIs for the next generation apps.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Apart from these, there were also sessions about Drupal-specific modules being upgraded between Drupal 7 and 8. In overall, I think we&amp;rsquo;ll see more &amp;ldquo;good stuff&amp;rdquo; of &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony&lt;/a&gt;, PHP OOP, design patterns, etc topics during next Drupal events.&lt;/p&gt;
+
+&lt;h3 id=&#34;workshops&#34;&gt;Workshops&lt;/h3&gt;
+
+&lt;p&gt;This is my humble list of highlighted sessions I focused on.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-166&#34;&gt;&lt;strong&gt;REST APIs&lt;/strong&gt;&lt;/a&gt; by Pieter Frenssen (&lt;a href=&#34;https://www.drupal.org/u/pfrenssen&#34;&gt;pfrenssen&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*4o8SJ8Q9EhrUt4fkz8DKpQ.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well-formed, step-by-step guide, covering all important concepts of having Drupal as both server and/or a client in &lt;a href=&#34;http://www.restapitutorial.com/&#34;&gt;REST API architectures&lt;/a&gt;. If you want to skip the details in this section, check &lt;a href=&#34;https://www.drupal.org/developing/api/8/rest#practical&#34;&gt;Drupal REST API docs&lt;/a&gt; which covers great amount of information around the topic.&lt;/p&gt;
+
+&lt;p&gt;The beginning was a general information about what REST actually is. This included status codes, methods, design patterns, etc.&lt;/p&gt;
+
+&lt;p&gt;After presenting the basics, the next step was to use Drupal as a client, fetching data from &lt;a href=&#34;https://www.drupal.org/drupalorg/docs/api&#34;&gt;drupal.org REST API&lt;/a&gt; and displaying it in a block.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/generate-plugin-block.html&#34;&gt;Creating a block with Drupal Console&lt;/a&gt; was super-easy. That was a really neat way to demonstrate injecting the &lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal.php/function/Drupal%3A%3AhttpClient/8.2.x&#34;&gt;http_client service&lt;/a&gt; via the cli from the &lt;a href=&#34;https://api.drupal.org/api/drupal/core!core.api.php/group/container/8.2.x&#34;&gt;container&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There was also a demo of using the &lt;a href=&#34;https://www.drupal.org/documentation/modules/rest&#34;&gt;core REST API module&lt;/a&gt;, which transforms Drupal into an API server. &lt;a href=&#34;https://www.drupal.org/project/restui&#34;&gt;REST UI module&lt;/a&gt; was demonstrated as a site builders&amp;rsquo; tool to manage the configurations which are otherwise &lt;a href=&#34;https://www.chapterthree.com/blog/custom-restful-api-drupal-8&#34;&gt;managed through&amp;nbsp;.yml files&lt;/a&gt;. Here, it&amp;rsquo;s important to note, that the endpoints of the REST API are controllers. Developers have the freedom to choose which format of data to return and via which components. For example, one can use the &lt;a href=&#34;https://github.com/symfony/http-foundation&#34;&gt;Symfony&amp;rsquo;s HttpFoundation&lt;/a&gt; and its JsonResponse instance.&lt;/p&gt;
+
+&lt;p&gt;In short, there was a lot of good advice, both about REST APIs in general, and Drupal-specific implementations, in combination with third-party tools and components.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-171&#34;&gt;&lt;strong&gt;Headless Drupal&lt;/strong&gt;&lt;/a&gt; by Ruben Teijeiro (&lt;a href=&#34;https://www.drupal.org/u/rteijeiro&#34;&gt;rteijeiro&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Even though I did not attend the workshop, it was still part of the Drupal API-first series of topics. &lt;a href=&#34;https://github.com/rteijeiro/headless-drupal8&#34;&gt;Code of the session&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-106&#34;&gt;&lt;strong&gt;Progressive web apps&lt;/strong&gt;&lt;/a&gt; by Théodore Biadala (&lt;a href=&#34;https://www.drupal.org/u/nod_&#34;&gt;nod_&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;That was an intermediate-level session. &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;Promises&lt;/a&gt; were in the core of all code snippets and demonstrations. Highlight APIs: &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API/Fetch_API&#34;&gt;Fetch API&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers&#34;&gt;Service Workers&lt;/a&gt;, and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API&#34;&gt;Web APIs&lt;/a&gt; in general. The main idea was to demonstrate how modern web APIs can be used to build web apps, having functionalities very similar to native apps.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/theodoreb/pwa-workshop&#34;&gt;The repository&lt;/a&gt; of the workshop is public, so go and check it for further details in case you&amp;rsquo;re interested into the interface implementations.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s interesting to note the example of &lt;a href=&#34;https://github.com/theodoreb/pwa-workshop/blob/master/js/1-promise.js#L12&#34;&gt;promise-based&lt;/a&gt; &lt;a href=&#34;https://www.drupal.org/node/756722#behaviors&#34;&gt;behaviors system&lt;/a&gt;. A modernized implementation of classic concept on managing JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-111&#34;&gt;&lt;strong&gt;GraphQL&lt;/strong&gt;&lt;/a&gt; by Sebastian Siemssen (&lt;a href=&#34;https://www.drupal.org/u/fubhy&#34;&gt;fubhy&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;The &lt;a href=&#34;https://twitter.com/hashtag/GraphQL?src=hash&#34;&gt;#GraphQL&lt;/a&gt; workshop w/ &lt;a href=&#34;https://twitter.com/thefubhy&#34;&gt;@thefubhy&lt;/a&gt;  at &lt;a href=&#34;https://twitter.com/hashtag/Drupalaton?src=hash&#34;&gt;#Drupalaton&lt;/a&gt; &lt;a href=&#34;https://t.co/AgfQGzCq81&#34;&gt;pic.twitter.com/AgfQGzCq81&lt;/a&gt;&lt;/p&gt;&amp;mdash; Kalin Chernev (@kalinchernev) &lt;a href=&#34;https://twitter.com/kalinchernev/status/764072778773344256&#34;&gt;August 12, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Needless to say, that was the &amp;ldquo;cherry&amp;rdquo; session. It was about the &lt;a href=&#34;http://graphql.org/docs/getting-started/&#34;&gt;Facebook&amp;rsquo;s GraphQL&lt;/a&gt;, which developers were ready to understand, after touching upon REST APIs, JavaScript Frameworks, knowing what is a server and a client in general in the previous sessions.&lt;/p&gt;
+
+&lt;p&gt;I personally enjoyed the workshop. In fact, I was even able follow along with the live coding on the main screen. It was also nice that it made a clear association between specification and language implementation. This means that same concepts of data architecture were demonstrated and practices with &lt;a href=&#34;https://github.com/graphql/express-graphql&#34;&gt;JavaScript&lt;/a&gt; and &lt;a href=&#34;https://github.com/Youshido/GraphQL&#34;&gt;PHP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the first part, the &lt;a href=&#34;https://github.com/graphql/swapi-graphql&#34;&gt;Star Wars API&lt;/a&gt; was used with the &lt;a href=&#34;http://graphql-swapi.parseapp.com/&#34;&gt;GraphiQL&lt;/a&gt; — a hands-on tutorial to &lt;a href=&#34;http://slides.com/sebastiansiemssen/graphql-meets-drupal-dd#/3/7&#34;&gt;understand the basic concepts&lt;/a&gt; like queries, fragments, variables, sub selections, etc.&lt;/p&gt;
+
+&lt;p&gt;Second was the usage of node.js app with express, express-graphql, graphiql, graphql and other popular modules to transpile ES6 code. In this playground, the building part started. Various types were used: GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, etc. That was my first time to actually write something working out of the &lt;a href=&#34;https://learngraphql.com/&#34;&gt;learngraphql.com&lt;/a&gt; online tutorials.&lt;/p&gt;
+
+&lt;p&gt;There was a demo of Relay in-between, as a bonus, to grab a general understanding of the additional features provided on top of the fundamental specification.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*tpPTqCyZnfPqhb1er6ECpw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After the GraphQL implementation in JavaScript was getting convenient, then we continued using the same concepts, but to build a server in PHP and the &lt;a href=&#34;https://www.drupal.org/project/graphql&#34;&gt;Drupal GraphQL module&lt;/a&gt;. Sure enough, the approach was similar, but this time extending SchemaProviderBase and implementing framework-specific EntityTypeManager (&lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21EntityTypeManagerInterface.php/interface/EntityTypeManagerInterface/8.2.x&#34;&gt;Interface&lt;/a&gt;) to manage &lt;a href=&#34;https://www.drupal.org/node/2192175&#34;&gt;Content Entity&lt;/a&gt; items.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;The event was awesome, the people were great, and the sessions were truly useful. I feel somehow privileged with the opportunity to attend such a good series of sessions related to API-s in the Drupal community!&lt;/p&gt;
+
+&lt;p&gt;There are a lot of new technologies and tools to learn and play with. I hope the summary above is a good starter for anyone enthusiastic about the future of the tools mentioned.&lt;/p&gt;
+
+&lt;h3 id=&#34;community&#34;&gt;Community&lt;/h3&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;End of the first day at &lt;a href=&#34;https://twitter.com/drupalaton&#34;&gt;@drupalaton&lt;/a&gt; we have a great dinner. &lt;a href=&#34;https://t.co/CN795wXixz&#34;&gt;pic.twitter.com/CN795wXixz&lt;/a&gt;&lt;/p&gt;&amp;mdash; 5NET Interactive (@5NEThu) &lt;a href=&#34;https://twitter.com/5NEThu/status/763818240954998789&#34;&gt;August 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Many thanks to the local Drupal community in Hungary!&amp;nbsp;:)&lt;/p&gt;
 </description>
     </item>
     

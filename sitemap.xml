@@ -37,8 +37,39 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/drupalaton-2016/</loc>
+    <lastmod>2016-08-22T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/coding-battle-molengeek/</loc>
+    <lastmod>2016-07-09T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</loc>
+    <lastmod>2016-06-23T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/coding-battle-take-eat-easy/</loc>
+    <lastmod>2016-06-09T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/first-coding-battle-belgium/</loc>
+    <lastmod>2016-04-14T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/focus-community-good-services/</loc>
     <lastmod>2016-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/bots/</loc>
+    <lastmod>2016-06-23T00:00:00+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -50,6 +81,18 @@
   <url>
     <loc>https://kalinchernev.github.io/tags/cloud9/</loc>
     <lastmod>2016-08-29T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/coding/</loc>
+    <lastmod>2016-04-14T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/coding-competitions/</loc>
+    <lastmod>2016-06-09T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -68,6 +111,18 @@
   <url>
     <loc>https://kalinchernev.github.io/tags/drupal/</loc>
     <lastmod>2016-09-15T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/graphql/</loc>
+    <lastmod>2016-08-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/hack-events/</loc>
+    <lastmod>2016-07-09T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -121,7 +176,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/programming/</loc>
-    <lastmod>2016-01-11T00:00:00+00:00</lastmod>
+    <lastmod>2016-06-09T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

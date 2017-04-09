@@ -17,6 +17,27 @@
       <guid>https://kalinchernev.github.io/stream-adventure-triage/</guid>
       <description>
 
+&lt;p&gt;&lt;a href=&#34;https://github.com/workshopper/stream-adventure&#34;&gt;stream-adventure&lt;/a&gt; is one of the first &lt;a href=&#34;https://nodeschool.io/about.html&#34;&gt;workshopper&lt;/a&gt; node modules which teaches &lt;a href=&#34;https://nodejs.org/api/stream.html&#34;&gt;Streams&lt;/a&gt; in node.js. Working on the challenges myself, I got frustrated when simple things did not work for me, so I ended up on the &lt;a href=&#34;https://github.com/workshopper/stream-adventure&#34;&gt;github repository&lt;/a&gt; doing a bit of triage during my free time.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-project-why-how&#34;&gt;The project: why &amp;amp; how&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The Why&lt;/strong&gt;: stream-adventure is a popular project among developers who want to learn &lt;a href=&#34;https://nodejs.org/&#34;&gt;node.js&lt;/a&gt; and its Streams API which is fundamental. The “workshopper” provides simple and doable steps for learning the subject matter in a practical way . Also, the project is pointed as a historic milestone of &lt;a href=&#34;https://nodeschool.io/about.html&#34;&gt;nodeschool&lt;/a&gt;. Accodring to me, it’s good value: &lt;em&gt;learning node.js while contributing back to a big-impact project&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How&lt;/strong&gt;: installing the project is the same as any other &lt;a href=&#34;https://www.npmjs.com/package/stream-adventure#install&#34;&gt;node module&lt;/a&gt;. You can do that either locally (when having node+npm) or by using a cloud service like &lt;a href=&#34;https://kalinchernev.github.io/cloud9-editor&#34;&gt;Cloud 9 IDE&lt;/a&gt;. I use C9 as it’s convenient to work on the challenges any time and anywhere, in the browser, and the environment has nvm, which makes it easy for me to switch between node versions in case I need to test something special.
+That’s how it looks — not so bad ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1400/1*ha_bEZaLR_t9Kc13Tac-Qw.png&#34; alt=&#34;workshopper on cloud9 editor&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the way, I recently got feedback similar to &lt;a href=&#34;http://forum.freecodecamp.com/t/cloud9-requiring-credit-card/23482&#34;&gt;this one&lt;/a&gt; about a requirement of a credit card during registration in C9. Remember that the choice of tools is always up to a personal preferences, i.e. feel free to choose whatever works best for you.&lt;/p&gt;
+
+&lt;p&gt;To possible program commands, run &lt;code&gt;stream-adventure help&lt;/code&gt;. Most of the time, you’ll need only &lt;code&gt;stream-adventure&lt;/code&gt;, stream-adventure print and &lt;code&gt;stream-adventure verify program.js&lt;/code&gt; where the program.js is the file containing your solution of the given challenge.&lt;/p&gt;
+
+&lt;h3 id=&#34;reporting-issues&#34;&gt;Reporting issues&lt;/h3&gt;
+
+&lt;p&gt;Reporting issues is really good! Only one suggestion: search the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/issues&#34;&gt;issue queue&lt;/a&gt; and or the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/pulls&#34;&gt;list of pull requests&lt;/a&gt; to check if the issue you’re experiencing is not already reported or worked upon.&lt;/p&gt;
+
+&lt;p&gt;Naturally, if the issue is already reported or worked upon, try to support the people working on it in order to speed up the process of solving the issue.&lt;/p&gt;
+
 &lt;h3 id=&#34;working-on-the-issue-nbsp-queue&#34;&gt;Working on the issue&amp;nbsp;queue&lt;/h3&gt;
 
 &lt;p&gt;As I wanted to work on the queue for my own benefit of figuring out what is what, etc. initially, I started working in one way and changed my approach on the way. The goal was simple: organize issues and pull request in an effective way for a maintainer to quickly and easily take yes/no decision on solving a given problem.&lt;/p&gt;

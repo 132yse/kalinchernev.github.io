@@ -10,6 +10,115 @@
     <atom:link href="https://kalinchernev.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Coding battle at Take Eat Easy</title>
+      <link>https://kalinchernev.github.io/coding-battle-take-eat-easy/</link>
+      <pubDate>Thu, 09 Jun 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/coding-battle-take-eat-easy/</guid>
+      <description>
+
+&lt;p&gt;Short retrospective on my second coding competition with JavaScript. Lessons learned and thoughts on how to improve for the future.&lt;/p&gt;
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.takeeateasy.be/en/&#34;&gt;Take Eat Easy&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt; organized this coding competition.&lt;/p&gt;
+
+&lt;p&gt;Similarly to &lt;a href=&#34;https://medium.com/@kalin.chernev/the-first-coding-battle-in-belgium-d4f4285ffb32#.ses1gau0l&#34;&gt;the first coding battle&lt;/a&gt;, good news from &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; came right from the beginning: the event was part of a hack league. For developers, this means that we can hope for continuity of the coding battles: more play, plus more opportunities to interact and share with others from the &lt;a href=&#34;https://twitter.com/jsl4b&#34;&gt;JavaScript community in Belgium&lt;/a&gt;. Few other cities have benefited from similar coding competitions: &lt;a href=&#34;https://twitter.com/maxczet/status/725623059344986112&#34;&gt;Paris&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/maxczet/status/728555974672449536&#34;&gt;London&lt;/a&gt; recently, I am looking forward to see how the wave will grow even further&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;After this intro, &lt;a href=&#34;http://www.takeeateasy.be/en/about&#34;&gt;Jean-Christophe Libbrecht&lt;/a&gt; presented what Take Eat Easy is in simple words: delivery on time. &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league&#34;&gt;The technical challenge&lt;/a&gt; was presented with focus on the same company values: optimal delivery management. I gotta say that I had a flashback to my university discipline of &lt;a href=&#34;https://en.wikipedia.org/wiki/Operations_research&#34;&gt;operations research&lt;/a&gt; for a minute, when thinking about routes and shortest distance. Luckily, the challenge was easier to understand than the academic subject!&lt;/p&gt;
+
+&lt;p&gt;The overall atmosphere was agréable et la majorité parlèrent en français. Positive support and guidance was coming all the time.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-challenge&#34;&gt;The challenge&lt;/h4&gt;
+
+&lt;p&gt;Quoting an abstract from the problem definition:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You play one of TEE&amp;rsquo;s bike courier&lt;/p&gt;
+
+&lt;p&gt;Your goal is to make as much € as you can&lt;/p&gt;
+
+&lt;p&gt;You compete with other couriers in the city&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*zt3n7YspKUDLmP8Q4lN5qw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, participants had to program a courier bot, which plays with other courier bots in an imaginary city. Taking and delivering orders in an optimal way.&lt;/p&gt;
+
+&lt;p&gt;An example &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league/tree/master/node-client&#34;&gt;node client bot&lt;/a&gt; was given. I find it to be a good boilerplate for a start. Most importantly it&amp;rsquo;s clear where to include the custom logic and what are the tools to use to take actions.&lt;/p&gt;
+
+&lt;p&gt;Another positive prerequisite was &lt;strong&gt;the sample state object&lt;/strong&gt;, which contained enough structure to understand the data that will be received by the client on every turn of the game. Note some important concepts are pretty obvious, I think: &lt;strong&gt;orders, possible actions and score&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/d2d3e5e9ade9bca4f8ae94bc58dd5e88.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;All possible actions&lt;/strong&gt; that the bots were able to play with: moving up/down/left/right, pick order, drop order. There were 2 advanced actions: upgrade fighter (be able to kick other players) and upgrade electric (move doubled).&lt;/p&gt;
+
+&lt;p&gt;I will repeat this again, I was content with the organizers. Help was kindly provided, with hints and advice all the way during the game. That made it fun to play. (No matter the fact that my team didn&amp;rsquo;t manage to get points&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*641YUOoQZYNKW5N2d4G-kw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h4&gt;
+
+&lt;p&gt;I got a good &lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;pair&lt;/a&gt; for the event. (&lt;a href=&#34;https://github.com/Gregoirevda&#34;&gt;Gregoirevda&lt;/a&gt;) I think we got along easily and we had good time working together. Here are some highlights of the informal retrospective we did after the game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Visualize the end result (expectation) before going in the code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We never ran the server &amp;ldquo;city&amp;rdquo; to see how our bot moves. That was not a clear problem until the end of the competition until when we were still working on the details on how to move our courier. &lt;a href=&#34;https://en.wikipedia.org/wiki/Grep&#34;&gt;Grep&lt;/a&gt;-ing the continuously changing state object helped us get some ideas about the dynamics, but honestly it was not easy to imagine how the courier bot is actually moving on the map without the real picture.&lt;/p&gt;
+
+&lt;p&gt;Now I believe it&amp;rsquo;s important to run the server (mock) locally during development just to understand and visualize the dynamics as they will be in the real game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Learn and understand the start examples and code samples&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In my first competition I made the mistake to try to understand the logic of the core engine (server) running the game, but this time was better focusing on the sample code. Yet, I think we missed useful points and functions that we could have utilized in our favor without thinking too much.&lt;/p&gt;
+
+&lt;p&gt;More specifically, the head of the function that was invoked in every turn of the game contained the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Fetch my courier and possible order from the state  
+var state = data.state;  
+var possibleActions = data.possibleActions;  
+var myCourier;  
+var myOrder;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And guess what? That was prepared for us before-hand so that we could use these variables &amp;ldquo;as-is&amp;rdquo;. I have to say, I was mixing the &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;state&lt;/code&gt; variables pretty much, but that&amp;rsquo;s another topic.&lt;/p&gt;
+
+&lt;p&gt;Another part of the code contained this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Sample response.
+respond(getDirection(data.possibleActions,myCourier.position,{x:1,y:2}));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;getDirection()&lt;/code&gt; returns the best move depending on the current position and possible actions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;respond()&lt;/code&gt; is the function to invoke in order to take actions.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;respond()&lt;/code&gt; took us away, because we decided to focus on the actions, and somehow it was pretty late in the game when we figured the getDirection() function for possible re-use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Strategy and task separation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Probably the most complex part of all.&lt;/p&gt;
+
+&lt;p&gt;Even though we didn&amp;rsquo;t have clear strategy while developing the bot, it surely would have helped. For example, we started implementing functions for the bonus skills like having an electric bike and kicking other players before deciding how to move and take orders&amp;nbsp;:D&lt;/p&gt;
+
+&lt;p&gt;But seriously, possible strategy for this challenge could probably be to separate the approach in 2: functions for working with distance, and such for working with actions. Though we didn&amp;rsquo;t manage to have a complete combination of actions based on distance and value, we spoke about the fact that we were not clear about the order of combined actions we need to take. We took a delivery and then we were just standing at a place, since the next step was not foreseen. However, we prepared to be able to kick other players just standing there with our delivery in our hands! (we never got the points for the advanced action of kicking)&lt;/p&gt;
+
+&lt;p&gt;I feel that breaking down a challenge into small tasks plays an important role in problem solving, especially in short-time hack event. Also, event handling actions with state management seem to be recurring patterns, so it&amp;rsquo;s worth getting some more practice there too.&lt;/p&gt;
+
+&lt;h4 id=&#34;coming-up&#34;&gt;Coming up&lt;/h4&gt;
+
+&lt;p&gt;Many developers don&amp;rsquo;t go to competitions because they believe they are not good enough with JavaScript or they will not perform well in hack events under stress. Even though there is positive stress, with this retrospective and code samples I hope that I&amp;rsquo;ve managed to demonstrate that the challenge itself was doable and fun to do.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://www.eventbrite.com/e/coding-battle-microsoft-innovation-center-brussels-carasap-tickets-25839985091&#34;&gt;next coding battle will be at Microsoft&lt;/a&gt; and the event is open for registrations. I&amp;rsquo;d recommend you to grab the opportunity to broaden your experience.&lt;/p&gt;
+
+&lt;p&gt;Lastly, consider inviting your colleagues to join you too. As you can imagine, the short hacking time will naturally give you ideas on how to communicate effectively with your colleagues when you work together in different environment. Also, you will see new ways to break down tasks and problem solve by observing and sharing with other developers you meet at the event.&lt;/p&gt;
+
+&lt;h4 id=&#34;what-do-you-nbsp-think&#34;&gt;What do you&amp;nbsp;think?&lt;/h4&gt;
+
+&lt;p&gt;I&amp;rsquo;m really interested to hear feedback on my thoughts and ideas about the code and the highlights. Maybe you have a different point of view? Share it in the comments!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Focus on community and good services</title>
       <link>https://kalinchernev.github.io/focus-community-good-services/</link>
       <pubDate>Mon, 11 Jan 2016 00:00:00 +0000</pubDate>
@@ -31,7 +140,7 @@
 
 &lt;p&gt;Focusing on the details of the big picture, I managed to see opportunities and good practices that I can conclude to be reusable for anyone. Reusable in such a way that even I will benefit of a given paradigm if I read it after few years.&lt;/p&gt;
 
-&lt;h4 id=&#34;technology-and-nbsp-code&#34;&gt;Technology and&amp;nbsp;code&lt;/h4&gt;
+&lt;h4 id=&#34;technology-and-code&#34;&gt;Technology and code&lt;/h4&gt;
 
 &lt;p&gt;It&amp;rsquo;s always been and will be a lot about technology for me. Until 2015, I was very heavy enthusiast about &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt;. There have been many big projects I&amp;rsquo;m proud of in the past. Working on big projects has always been a good way to battle-test good software as Drupal.&lt;/p&gt;
 

@@ -23,26 +23,20 @@
 
 &lt;p&gt;When you have &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node.js&lt;/a&gt;, the module can be installed by npm:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;npm install odp
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ npm install odp
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;library-api&#34;&gt;Library API&lt;/h3&gt;
 
 &lt;p&gt;The API of the module is pretty simple:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;_// Get a range of the whole list of datasets:_
-
-
-odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;amp;gt; {
-
-
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Get a range of the whole list of datasets:
+odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
   console.log(data);
-
-
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets&lt;/code&gt;, &lt;code&gt;getTags&lt;/code&gt;, &lt;code&gt;getDataset&lt;/code&gt; and &lt;code&gt;datasetSearch&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
+&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets()&lt;/code&gt;, &lt;code&gt;getTags()&lt;/code&gt;, &lt;code&gt;getDataset()&lt;/code&gt; and &lt;code&gt;datasetSearch()&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
 
 &lt;p&gt;An &lt;a href=&#34;https://github.com/kalinchernev/odp/blob/master/README.md#examples&#34;&gt;Examples section&lt;/a&gt; is included in the README file for further details.&lt;/p&gt;
 

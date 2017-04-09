@@ -97,24 +97,24 @@
 
 &lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;commands:  
-# Install Drupal  
-- command: site:install  
-options:  
-langcode: &#39;en&#39;  
-db-type: &#39;%{{db_type|mysql}}&#39;  
-db-host: &#39;%{{db_host|127.0.0.1}}&#39;  
-db-name: &#39;%{{db_name|c9}}&#39;  
-db-user: &#39;%{{db_user|root}}&#39;  
-db-pass: &#39;%{{db_pass|}}&#39;  
-db-port: &#39;%{{db_port|3306}}&#39;  
-site-name: &#39;Drupal 8 site&#39;  
-site-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-name: &#39;admin&#39; # default account  
-account-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-pass: &#39;admin&#39; # default pass  
-arguments:  
-profile: &#39;standard&#39;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;commands:
+# Install Drupal
+  - command: site:install
+    options:
+      langcode: &#39;en&#39;
+      db-type: &#39;%{{db_type|mysql}}&#39;
+      db-host: &#39;%{{db_host|127.0.0.1}}&#39;
+      db-name: &#39;%{{db_name|c9}}&#39;
+      db-user: &#39;%{{db_user|root}}&#39;
+      db-pass: &#39;%{{db_pass|}}&#39;
+      db-port: &#39;%{{db_port|3306}}&#39;
+      site-name: &#39;Drupal 8 site&#39;
+      site-mail: &#39;admin@example.org&#39; # default email
+      account-name: &#39;admin&#39; # default account
+      account-mail: &#39;admin@example.org&#39; # default email
+      account-pass: &#39;admin&#39; # default pass
+    arguments:
+      profile: &#39;standard&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
@@ -151,25 +151,25 @@ profile: &#39;standard&#39;
 
 &lt;p&gt;Runners are editable.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner  
-// For more information see &amp;lt;http: docs.c9.io:8080=&amp;quot;&amp;quot; #!=&amp;quot;&amp;quot; api=&amp;quot;&amp;quot; run-method-run=&amp;quot;&amp;quot;&amp;gt;  
-{  
-&amp;quot;cmd&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;${debug?debug}&amp;quot;  
-],  
-&amp;quot;cmdStop&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;stop&amp;quot;  
-],  
-&amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,  
-&amp;quot;debugport&amp;quot;: 9000,  
-&amp;quot;$debugDefaultState&amp;quot;: false,  
-&amp;quot;selector&amp;quot;: &amp;quot;^.*\.(php|phtml|html|shtml)$&amp;quot;,  
-&amp;quot;env&amp;quot;: {  
-&amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;  
-},  
-&amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving [01;34m$hostname_path[00m.&amp;quot;  
+&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner
+// For more information see http://docs.c9.io:8080/#!/api/run-method-run
+{
+  &amp;quot;cmd&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;${debug?debug}&amp;quot;
+  ],
+  &amp;quot;cmdStop&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;stop&amp;quot;
+  ],
+  &amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,
+  &amp;quot;debugport&amp;quot;: 9000,
+  &amp;quot;$debugDefaultState&amp;quot;: false,
+  &amp;quot;selector&amp;quot;: &amp;quot;^.*\\.(php|phtml|html|shtml)$&amp;quot;,
+  &amp;quot;env&amp;quot;: {
+    &amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;
+  },
+  &amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving \\033[01;34m$hostname_path\\033[00m.&amp;quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

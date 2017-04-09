@@ -111,7 +111,7 @@
     },
     "headline": Building a node.js client for the EU Open Data Portal,
     "name": Building a node.js client for the EU Open Data Portal,
-    "wordCount": 189,
+    "wordCount": 190,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
@@ -245,26 +245,20 @@
 
 <p>When you have <a href="https://nodejs.org/en/">node.js</a>, the module can be installed by npm:</p>
 
-<pre><code>npm install odp
+<pre><code class="language-bash">$ npm install odp
 </code></pre>
 
 <h3 id="library-api">Library API</h3>
 
 <p>The API of the module is pretty simple:</p>
 
-<pre><code>_// Get a range of the whole list of datasets:_
-
-
-odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;gt; {
-
-
+<pre><code class="language-js">// Get a range of the whole list of datasets:
+odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&gt; {
   console.log(data);
-
-
 });
 </code></pre>
 
-<p>Currently, there are 4 methods which match the brief information from the <a href="https://data.europa.eu/euodp/en/developerscorner">developers&rsquo; corner</a>. Methods are: <code>getDatasets</code>, <code>getTags</code>, <code>getDataset</code> and <code>datasetSearch</code>. It could be that there are more options than that in the API, but these are all I know so far as user of the website.</p>
+<p>Currently, there are 4 methods which match the brief information from the <a href="https://data.europa.eu/euodp/en/developerscorner">developers&rsquo; corner</a>. Methods are: <code>getDatasets()</code>, <code>getTags()</code>, <code>getDataset()</code> and <code>datasetSearch()</code>. It could be that there are more options than that in the API, but these are all I know so far as user of the website.</p>
 
 <p>An <a href="https://github.com/kalinchernev/odp/blob/master/README.md#examples">Examples section</a> is included in the README file for further details.</p>
 

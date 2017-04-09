@@ -18,7 +18,73 @@
       <guid>https://kalinchernev.github.io/think-about-apps-not-websites/</guid>
       <description>
 
-&lt;h3 id=&#34;create-a-manifest-nbsp-file&#34;&gt;&lt;strong&gt;Create a manifest&amp;nbsp;file&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Admiring the progress of &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API&#34;&gt;Web APIs&lt;/a&gt;, I decided to shortly summarize some feelings. They are mostly about a borderline (common-sense) why it is worth knowing what is a web app and why we have to shift our paradigm thinking from building websites to building web apps. For this reason, I include few steps as a tutorial to encourage hands-on experimentation.&lt;/p&gt;
+
+&lt;h3 id=&#34;state-of-internet&#34;&gt;State of internet&lt;/h3&gt;
+
+&lt;p&gt;Unsurprisingly, &lt;a href=&#34;http://www.internetlivestats.com/internet-users/#chart_trend&#34;&gt;more than 40% of the world has access to the Internet&lt;/a&gt;, and this number is yet to grow having in mind the vast popularity of campaigns which ensure that each one in the world is connected. It seems that we are in rush to make the &lt;a href=&#34;https://en.wikipedia.org/wiki/Global_village_%28term%29&#34;&gt;Global village reality&lt;/a&gt;. Yes, I still remember when making a dynamic website with mobile-friendly design was innovation, however, it’s simply &lt;a href=&#34;https://techcrunch.com/2014/08/21/majority-of-digital-media-consumption-now-takes-place-in-mobile-apps/&#34;&gt;not anything special any more&lt;/a&gt;. In fact, the digital world is much more accessible than before with smart-watches, smart-TVs, VRs, etc.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past. —&lt;a href=&#34;https://en.wikipedia.org/wiki/Tim_Berners-Lee&#34;&gt;Tim Berners-Lee&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;reality-check&#34;&gt;Reality check&lt;/h3&gt;
+
+&lt;p&gt;All the new software or hardware technologies do not make any sense if not used properly and effectively. For example, managing our user data and documents synchronization in &lt;a href=&#34;https://en.wikipedia.org/wiki/Cloud_computing&#34;&gt;the cloud&lt;/a&gt; is a vital skill you have to master. This way, you can take advantage of the technological opportunities of keeping your information safe and available anywhere you have a browser and an internet connection.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Docs,_Sheets_and_Slides&#34;&gt;Google docs&lt;/a&gt; got available to us a decade ago, and Microsoft followed with their &lt;a href=&#34;https://en.wikipedia.org/wiki/OneDrive&#34;&gt;OneDrive&lt;/a&gt; few years later. So, regardless of the device (tablet, laptop, PC, etc.) we can work with our documents through our browser, AND have a safe backup of our work. Not taking advantage of cloud technologies to have synchronized backup of our important documents is a missed opportunity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Making a website that shows only information is a missed opportunity.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Why is that? Well, simple — the problems we are solving today are different than the problems we were solving 10 years ago. Even if the criticism of the accelerated change were true, why would we encounter so many examples of transformation we did not anticipate with this speed?&lt;/p&gt;
+
+&lt;p&gt;Another example higher user expectation: being able to work with mobile applications offline. A decade ago, a website was a good solution to having an online presence, i.e. having a business card, etc. Probably printing pages was ok. However, today, &lt;a href=&#34;http://www.pcworld.com/article/3145946/streaming-services/you-can-finally-watch-netflix-offline-now.html&#34;&gt;Netflix offline capabilities&lt;/a&gt; or editing documents in Google Drive offline mode are making customers happy, because users are mobile.&lt;/p&gt;
+
+&lt;p&gt;In similar conditions, building a website to just share information is not something special any more, because users expect a whole different, more engaging digital experience — think about SMS notifications. They were standard some years ago, but not anymore. Today, push notifications are everywhere. And there is no way that trend goes down, as the future connected world will involve even higher amount of notifications.&lt;/p&gt;
+
+&lt;h3 id=&#34;web-apps&#34;&gt;Web apps&lt;/h3&gt;
+
+&lt;p&gt;“Web apps” is probably something you already know. Web apps are consisted of HTML, CSS and JavaScript. Difference between them and regular websites, is that the same technologies are used with “spices”: new methods to achieve better results. Meet the Progressive Web Apps, aka &lt;a href=&#34;https://developers.google.com/web/&#34;&gt;PWA&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The term has been around for awhile, so starter tutorials are accessible:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/&#34;&gt;Your first PWA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.smashingmagazine.com/2016/12/progressive-web-amps/&#34;&gt;Progressive Web AMPs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/&#34;&gt;A beginners guide to PWA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.smashingmagazine.com/2016/09/the-building-blocks-of-progressive-web-apps/&#34;&gt;The Building Blocks Of Progressive Web Apps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In summary, there are many benefits of adding an some extra efforts into your existing (or new) web pages to make them available in bad network conditions (when offline), and provide functionalities that are normally expected by users in mobile, but in the browser. And browsers are something you have almost everywhere.&lt;/p&gt;
+
+&lt;p&gt;If you’re a decision maker or a company owner with a business around &lt;a href=&#34;https://blog.chromium.org/2016/08/from-chrome-apps-to-web.html&#34;&gt;Chrome Apps or extensions&lt;/a&gt;, you have an even bigger motivation to follow this trend, in order to maintain your business in near future.&lt;/p&gt;
+
+&lt;p&gt;Thus, get into the habit to use your browser effectively as a tool in your skill-set of the future :) Even if you are not a developer, you have to imagine that at some point of time, &lt;a href=&#34;https://medium.com/swlh/browsers-not-apps-are-the-future-of-mobile-c552752ff75#.ackczpqrj&#34;&gt;the browser will be the app you are running everywhere&lt;/a&gt; regardless of your operating system.&lt;/p&gt;
+
+&lt;p&gt;And a bonus for seasoned developers reaching this point of the article: this &lt;a href=&#34;https://auth0.com/blog/chromedevsummit-summary/&#34;&gt;summary of chrome dev summit&lt;/a&gt; would be worth a look.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-a-web-app&#34;&gt;Making a web app&lt;/h3&gt;
+
+&lt;p&gt;I’ve marked some initial milestones that worked for me, the order shouldn’t be important, but that’s more or less how I see the process — hopefully easy to understand and follow with a bit of hands-on practice.&lt;/p&gt;
+
+&lt;p&gt;I’ll be going through the most popular and basic features of PWA which could complement existing websites and make them more app-like. I believe that gradual improvements in existing websites is a good strategy for making the best of the modern web, while avoiding regressions in working solutions. This way, everybody win — business owners invest smartly into new enhancements, developers upgrade their solutions taking small doable steps, also, the end-user (the king) receives improved experience.&lt;/p&gt;
+
+&lt;p&gt;So, what we want to achieve is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;User can save our application to his phone for quick access&lt;/li&gt;
+&lt;li&gt;User can open the application without access to the Internet, and still see meaningful contents that help him continue working with the application&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;devtools&#34;&gt;DevTools&lt;/h3&gt;
+
+&lt;p&gt;Before kicking off the tutorial part, please, use Google Chrome while working out the rest of the items — ensuring you have really great experience and least amount of hurdles on browser support during your journey. Firefox, Edge and Opera could be alternatives, however, Chrome has the best support for modern JavaScript at the moment.&lt;/p&gt;
+
+&lt;p&gt;This video is an entertaining summary of the documentation about &lt;a href=&#34;https://developers.google.com/web/tools/chrome-devtools/progressive-web-apps&#34;&gt;debugging progressive web apps with Chrome DevTools&lt;/a&gt;. Most certainly, general familiarity with the &lt;a href=&#34;https://developers.google.com/web/tools/chrome-devtools/&#34;&gt;DevTools&lt;/a&gt; would help you understand it, although the panel for debugging PWA is much simpler than the rest.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/IWgNn1kqrsA?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&#34;create-a-manifest-file&#34;&gt;&lt;strong&gt;Create a manifest file&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;The manifest file should comply to a &lt;a href=&#34;https://w3c.github.io/manifest/&#34;&gt;specification&lt;/a&gt; which serves a similar purpose as of the &lt;a href=&#34;https://developer.chrome.com/extensions/manifest&#34;&gt;Chrome Platform API manifest file&lt;/a&gt; — it&amp;rsquo;s a set of definitions. &lt;a href=&#34;https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android&#34;&gt;The installation of a web app&lt;/a&gt; is more engaging than the one of a native app, i.e. one doesn&amp;rsquo;t need to go to a &amp;ldquo;store&amp;rdquo;, but take it right away. Note that a service worker file should be loaded (and activated, etc.) to achieve this interaction.&lt;/p&gt;
 
@@ -81,9 +147,11 @@
 
 &lt;p&gt;In order to implement this strategy for saving resources, one must know how to use the &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache API&lt;/a&gt; through a service worker. The API can also be accessed through the global &lt;code&gt;window&lt;/code&gt; object as well, but working through a SW, we can &amp;ldquo;hook&amp;rdquo; into the events in the worker&amp;rsquo;s life-cycle, i.e. we can validate cache when network connection toggles.&lt;/p&gt;
 
-&lt;h3 id=&#34;creating-a-service-nbsp-worker&#34;&gt;Creating a service&amp;nbsp;worker&lt;/h3&gt;
+&lt;h3 id=&#34;creating-a-servic-worker&#34;&gt;Creating a servic worker&lt;/h3&gt;
 
-&lt;p&gt;&amp;gt; Rich offline experiences, periodic background syncs, push notifications — functionality that would normally require a native application — are coming to the web. Service workers provide the technical foundation that all these features rely on. — taken from &amp;ldquo;&lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/primers/service-workers&#34;&gt;Service Workers: an Introduction&lt;/a&gt;&amp;ldquo;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Rich offline experiences, periodic background syncs, push notifications — functionality that would normally require a native application — are coming to the web. Service workers provide the technical foundation that all these features rely on. — taken from &amp;ldquo;&lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/primers/service-workers&#34;&gt;Service Workers: an Introduction&lt;/a&gt;&amp;ldquo;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;In basic terms, the service worker is a proxy layer between your stack (HTML+CSS+JS) and the network. The API of service workers boost the functionality of your otherwise normal web pages.&lt;/p&gt;
 
@@ -167,6 +235,27 @@ with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect
       <guid>https://kalinchernev.github.io/stream-adventure-triage/</guid>
       <description>
 
+&lt;p&gt;&lt;a href=&#34;https://github.com/workshopper/stream-adventure&#34;&gt;stream-adventure&lt;/a&gt; is one of the first &lt;a href=&#34;https://nodeschool.io/about.html&#34;&gt;workshopper&lt;/a&gt; node modules which teaches &lt;a href=&#34;https://nodejs.org/api/stream.html&#34;&gt;Streams&lt;/a&gt; in node.js. Working on the challenges myself, I got frustrated when simple things did not work for me, so I ended up on the &lt;a href=&#34;https://github.com/workshopper/stream-adventure&#34;&gt;github repository&lt;/a&gt; doing a bit of triage during my free time.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-project-why-how&#34;&gt;The project: why &amp;amp; how&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The Why&lt;/strong&gt;: stream-adventure is a popular project among developers who want to learn &lt;a href=&#34;https://nodejs.org/&#34;&gt;node.js&lt;/a&gt; and its Streams API which is fundamental. The “workshopper” provides simple and doable steps for learning the subject matter in a practical way . Also, the project is pointed as a historic milestone of &lt;a href=&#34;https://nodeschool.io/about.html&#34;&gt;nodeschool&lt;/a&gt;. Accodring to me, it’s good value: &lt;em&gt;learning node.js while contributing back to a big-impact project&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How&lt;/strong&gt;: installing the project is the same as any other &lt;a href=&#34;https://www.npmjs.com/package/stream-adventure#install&#34;&gt;node module&lt;/a&gt;. You can do that either locally (when having node+npm) or by using a cloud service like &lt;a href=&#34;https://kalinchernev.github.io/cloud9-editor&#34;&gt;Cloud 9 IDE&lt;/a&gt;. I use C9 as it’s convenient to work on the challenges any time and anywhere, in the browser, and the environment has nvm, which makes it easy for me to switch between node versions in case I need to test something special.
+That’s how it looks — not so bad ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1400/1*ha_bEZaLR_t9Kc13Tac-Qw.png&#34; alt=&#34;workshopper on cloud9 editor&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the way, I recently got feedback similar to &lt;a href=&#34;http://forum.freecodecamp.com/t/cloud9-requiring-credit-card/23482&#34;&gt;this one&lt;/a&gt; about a requirement of a credit card during registration in C9. Remember that the choice of tools is always up to a personal preferences, i.e. feel free to choose whatever works best for you.&lt;/p&gt;
+
+&lt;p&gt;To possible program commands, run &lt;code&gt;stream-adventure help&lt;/code&gt;. Most of the time, you’ll need only &lt;code&gt;stream-adventure&lt;/code&gt;, stream-adventure print and &lt;code&gt;stream-adventure verify program.js&lt;/code&gt; where the program.js is the file containing your solution of the given challenge.&lt;/p&gt;
+
+&lt;h3 id=&#34;reporting-issues&#34;&gt;Reporting issues&lt;/h3&gt;
+
+&lt;p&gt;Reporting issues is really good! Only one suggestion: search the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/issues&#34;&gt;issue queue&lt;/a&gt; and or the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/pulls&#34;&gt;list of pull requests&lt;/a&gt; to check if the issue you’re experiencing is not already reported or worked upon.&lt;/p&gt;
+
+&lt;p&gt;Naturally, if the issue is already reported or worked upon, try to support the people working on it in order to speed up the process of solving the issue.&lt;/p&gt;
+
 &lt;h3 id=&#34;working-on-the-issue-nbsp-queue&#34;&gt;Working on the issue&amp;nbsp;queue&lt;/h3&gt;
 
 &lt;p&gt;As I wanted to work on the queue for my own benefit of figuring out what is what, etc. initially, I started working in one way and changed my approach on the way. The goal was simple: organize issues and pull request in an effective way for a maintainer to quickly and easily take yes/no decision on solving a given problem.&lt;/p&gt;
@@ -221,26 +310,20 @@ with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect
 
 &lt;p&gt;When you have &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node.js&lt;/a&gt;, the module can be installed by npm:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;npm install odp
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ npm install odp
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;library-api&#34;&gt;Library API&lt;/h3&gt;
 
 &lt;p&gt;The API of the module is pretty simple:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;_// Get a range of the whole list of datasets:_
-
-
-odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;amp;gt; {
-
-
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Get a range of the whole list of datasets:
+odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
   console.log(data);
-
-
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets&lt;/code&gt;, &lt;code&gt;getTags&lt;/code&gt;, &lt;code&gt;getDataset&lt;/code&gt; and &lt;code&gt;datasetSearch&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
+&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets()&lt;/code&gt;, &lt;code&gt;getTags()&lt;/code&gt;, &lt;code&gt;getDataset()&lt;/code&gt; and &lt;code&gt;datasetSearch()&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
 
 &lt;p&gt;An &lt;a href=&#34;https://github.com/kalinchernev/odp/blob/master/README.md#examples&#34;&gt;Examples section&lt;/a&gt; is included in the README file for further details.&lt;/p&gt;
 
@@ -340,24 +423,24 @@ odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;
 
 &lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;commands:  
-# Install Drupal  
-- command: site:install  
-options:  
-langcode: &#39;en&#39;  
-db-type: &#39;%{{db_type|mysql}}&#39;  
-db-host: &#39;%{{db_host|127.0.0.1}}&#39;  
-db-name: &#39;%{{db_name|c9}}&#39;  
-db-user: &#39;%{{db_user|root}}&#39;  
-db-pass: &#39;%{{db_pass|}}&#39;  
-db-port: &#39;%{{db_port|3306}}&#39;  
-site-name: &#39;Drupal 8 site&#39;  
-site-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-name: &#39;admin&#39; # default account  
-account-mail: &#39;[admin@example.org][30]&#39; # default email  
-account-pass: &#39;admin&#39; # default pass  
-arguments:  
-profile: &#39;standard&#39;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;commands:
+# Install Drupal
+  - command: site:install
+    options:
+      langcode: &#39;en&#39;
+      db-type: &#39;%{{db_type|mysql}}&#39;
+      db-host: &#39;%{{db_host|127.0.0.1}}&#39;
+      db-name: &#39;%{{db_name|c9}}&#39;
+      db-user: &#39;%{{db_user|root}}&#39;
+      db-pass: &#39;%{{db_pass|}}&#39;
+      db-port: &#39;%{{db_port|3306}}&#39;
+      site-name: &#39;Drupal 8 site&#39;
+      site-mail: &#39;admin@example.org&#39; # default email
+      account-name: &#39;admin&#39; # default account
+      account-mail: &#39;admin@example.org&#39; # default email
+      account-pass: &#39;admin&#39; # default pass
+    arguments:
+      profile: &#39;standard&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
@@ -394,25 +477,25 @@ profile: &#39;standard&#39;
 
 &lt;p&gt;Runners are editable.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner  
-// For more information see &amp;lt;http: docs.c9.io:8080=&amp;quot;&amp;quot; #!=&amp;quot;&amp;quot; api=&amp;quot;&amp;quot; run-method-run=&amp;quot;&amp;quot;&amp;gt;  
-{  
-&amp;quot;cmd&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;${debug?debug}&amp;quot;  
-],  
-&amp;quot;cmdStop&amp;quot;: [  
-&amp;quot;run-apache2&amp;quot;,  
-&amp;quot;stop&amp;quot;  
-],  
-&amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,  
-&amp;quot;debugport&amp;quot;: 9000,  
-&amp;quot;$debugDefaultState&amp;quot;: false,  
-&amp;quot;selector&amp;quot;: &amp;quot;^.*\.(php|phtml|html|shtml)$&amp;quot;,  
-&amp;quot;env&amp;quot;: {  
-&amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;  
-},  
-&amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving [01;34m$hostname_path[00m.&amp;quot;  
+&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner
+// For more information see http://docs.c9.io:8080/#!/api/run-method-run
+{
+  &amp;quot;cmd&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;${debug?debug}&amp;quot;
+  ],
+  &amp;quot;cmdStop&amp;quot;: [
+    &amp;quot;run-apache2&amp;quot;,
+    &amp;quot;stop&amp;quot;
+  ],
+  &amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,
+  &amp;quot;debugport&amp;quot;: 9000,
+  &amp;quot;$debugDefaultState&amp;quot;: false,
+  &amp;quot;selector&amp;quot;: &amp;quot;^.*\\.(php|phtml|html|shtml)$&amp;quot;,
+  &amp;quot;env&amp;quot;: {
+    &amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;
+  },
+  &amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving \\033[01;34m$hostname_path\\033[00m.&amp;quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -585,6 +668,426 @@ profile: &#39;standard&#39;
     </item>
     
     <item>
+      <title>Drupalaton 2016</title>
+      <link>https://kalinchernev.github.io/drupalaton-2016/</link>
+      <pubDate>Mon, 22 Aug 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/drupalaton-2016/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Recently, I joined an event on &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt; in Hungary — the &lt;a href=&#34;http://drupalaton.hu&#34;&gt;Drupalaton&lt;/a&gt;. It is one of the most exciting yearly Drupal events in Europe, organized by the local community. It gathers hundreds of contributors who collaborate on Drupal issues, share knowledge and have fun together&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;I really enjoyed this year&amp;rsquo;s event since it covered a lot of my favorite topics. (discussed shortly after) Good sessions, pleasant talks with the community, and also — a lot of new things to learn. The event took place at the shore of the biggest warm-water lake in Europe, at Lake Balaton.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ME6rgg3pXT8oid14R5RNVg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sessions&#34;&gt;Sessions&lt;/h3&gt;
+
+&lt;p&gt;Sure enough, sessions were covering important &lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; features. There were several tracks, as well as sprints, where participants were able to collaborate.&lt;/p&gt;
+
+&lt;p&gt;I visited mainly the workshops related to the &lt;a href=&#34;http://buytaert.net/a-roadmap-for-making-drupal-more-api-first&#34;&gt;API-first initiative&lt;/a&gt;. This is a futuristic initiative, involving many JavaScript tools and modern concepts and practices for building service-oriented apps, not only websites.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s a vital initiative for Drupal as a platform for the future. Presently, Drupal is one of the best systems for content modelling, querying, and building websites in general. This means that normal people can make websites with complex information structures with very little or no programming.&lt;/p&gt;
+
+&lt;p&gt;The API-first initiative could potentially take Drupal into a place where &lt;strong&gt;the content modelling and querying becomes data modelling and querying, enabling non-developers to build complex APIs for the next generation apps.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Apart from these, there were also sessions about Drupal-specific modules being upgraded between Drupal 7 and 8. In overall, I think we&amp;rsquo;ll see more &amp;ldquo;good stuff&amp;rdquo; of &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony&lt;/a&gt;, PHP OOP, design patterns, etc topics during next Drupal events.&lt;/p&gt;
+
+&lt;h3 id=&#34;workshops&#34;&gt;Workshops&lt;/h3&gt;
+
+&lt;p&gt;This is my humble list of highlighted sessions I focused on.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-166&#34;&gt;&lt;strong&gt;REST APIs&lt;/strong&gt;&lt;/a&gt; by Pieter Frenssen (&lt;a href=&#34;https://www.drupal.org/u/pfrenssen&#34;&gt;pfrenssen&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*4o8SJ8Q9EhrUt4fkz8DKpQ.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well-formed, step-by-step guide, covering all important concepts of having Drupal as both server and/or a client in &lt;a href=&#34;http://www.restapitutorial.com/&#34;&gt;REST API architectures&lt;/a&gt;. If you want to skip the details in this section, check &lt;a href=&#34;https://www.drupal.org/developing/api/8/rest#practical&#34;&gt;Drupal REST API docs&lt;/a&gt; which covers great amount of information around the topic.&lt;/p&gt;
+
+&lt;p&gt;The beginning was a general information about what REST actually is. This included status codes, methods, design patterns, etc.&lt;/p&gt;
+
+&lt;p&gt;After presenting the basics, the next step was to use Drupal as a client, fetching data from &lt;a href=&#34;https://www.drupal.org/drupalorg/docs/api&#34;&gt;drupal.org REST API&lt;/a&gt; and displaying it in a block.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/generate-plugin-block.html&#34;&gt;Creating a block with Drupal Console&lt;/a&gt; was super-easy. That was a really neat way to demonstrate injecting the &lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal.php/function/Drupal%3A%3AhttpClient/8.2.x&#34;&gt;http_client service&lt;/a&gt; via the cli from the &lt;a href=&#34;https://api.drupal.org/api/drupal/core!core.api.php/group/container/8.2.x&#34;&gt;container&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There was also a demo of using the &lt;a href=&#34;https://www.drupal.org/documentation/modules/rest&#34;&gt;core REST API module&lt;/a&gt;, which transforms Drupal into an API server. &lt;a href=&#34;https://www.drupal.org/project/restui&#34;&gt;REST UI module&lt;/a&gt; was demonstrated as a site builders&amp;rsquo; tool to manage the configurations which are otherwise &lt;a href=&#34;https://www.chapterthree.com/blog/custom-restful-api-drupal-8&#34;&gt;managed through&amp;nbsp;.yml files&lt;/a&gt;. Here, it&amp;rsquo;s important to note, that the endpoints of the REST API are controllers. Developers have the freedom to choose which format of data to return and via which components. For example, one can use the &lt;a href=&#34;https://github.com/symfony/http-foundation&#34;&gt;Symfony&amp;rsquo;s HttpFoundation&lt;/a&gt; and its JsonResponse instance.&lt;/p&gt;
+
+&lt;p&gt;In short, there was a lot of good advice, both about REST APIs in general, and Drupal-specific implementations, in combination with third-party tools and components.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-171&#34;&gt;&lt;strong&gt;Headless Drupal&lt;/strong&gt;&lt;/a&gt; by Ruben Teijeiro (&lt;a href=&#34;https://www.drupal.org/u/rteijeiro&#34;&gt;rteijeiro&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Even though I did not attend the workshop, it was still part of the Drupal API-first series of topics. &lt;a href=&#34;https://github.com/rteijeiro/headless-drupal8&#34;&gt;Code of the session&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-106&#34;&gt;&lt;strong&gt;Progressive web apps&lt;/strong&gt;&lt;/a&gt; by Théodore Biadala (&lt;a href=&#34;https://www.drupal.org/u/nod_&#34;&gt;nod_&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;That was an intermediate-level session. &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;Promises&lt;/a&gt; were in the core of all code snippets and demonstrations. Highlight APIs: &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API/Fetch_API&#34;&gt;Fetch API&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers&#34;&gt;Service Workers&lt;/a&gt;, and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API&#34;&gt;Web APIs&lt;/a&gt; in general. The main idea was to demonstrate how modern web APIs can be used to build web apps, having functionalities very similar to native apps.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/theodoreb/pwa-workshop&#34;&gt;The repository&lt;/a&gt; of the workshop is public, so go and check it for further details in case you&amp;rsquo;re interested into the interface implementations.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s interesting to note the example of &lt;a href=&#34;https://github.com/theodoreb/pwa-workshop/blob/master/js/1-promise.js#L12&#34;&gt;promise-based&lt;/a&gt; &lt;a href=&#34;https://www.drupal.org/node/756722#behaviors&#34;&gt;behaviors system&lt;/a&gt;. A modernized implementation of classic concept on managing JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-111&#34;&gt;&lt;strong&gt;GraphQL&lt;/strong&gt;&lt;/a&gt; by Sebastian Siemssen (&lt;a href=&#34;https://www.drupal.org/u/fubhy&#34;&gt;fubhy&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;The &lt;a href=&#34;https://twitter.com/hashtag/GraphQL?src=hash&#34;&gt;#GraphQL&lt;/a&gt; workshop w/ &lt;a href=&#34;https://twitter.com/thefubhy&#34;&gt;@thefubhy&lt;/a&gt;  at &lt;a href=&#34;https://twitter.com/hashtag/Drupalaton?src=hash&#34;&gt;#Drupalaton&lt;/a&gt; &lt;a href=&#34;https://t.co/AgfQGzCq81&#34;&gt;pic.twitter.com/AgfQGzCq81&lt;/a&gt;&lt;/p&gt;&amp;mdash; Kalin Chernev (@kalinchernev) &lt;a href=&#34;https://twitter.com/kalinchernev/status/764072778773344256&#34;&gt;August 12, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Needless to say, that was the &amp;ldquo;cherry&amp;rdquo; session. It was about the &lt;a href=&#34;http://graphql.org/docs/getting-started/&#34;&gt;Facebook&amp;rsquo;s GraphQL&lt;/a&gt;, which developers were ready to understand, after touching upon REST APIs, JavaScript Frameworks, knowing what is a server and a client in general in the previous sessions.&lt;/p&gt;
+
+&lt;p&gt;I personally enjoyed the workshop. In fact, I was even able follow along with the live coding on the main screen. It was also nice that it made a clear association between specification and language implementation. This means that same concepts of data architecture were demonstrated and practices with &lt;a href=&#34;https://github.com/graphql/express-graphql&#34;&gt;JavaScript&lt;/a&gt; and &lt;a href=&#34;https://github.com/Youshido/GraphQL&#34;&gt;PHP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the first part, the &lt;a href=&#34;https://github.com/graphql/swapi-graphql&#34;&gt;Star Wars API&lt;/a&gt; was used with the &lt;a href=&#34;http://graphql-swapi.parseapp.com/&#34;&gt;GraphiQL&lt;/a&gt; — a hands-on tutorial to &lt;a href=&#34;http://slides.com/sebastiansiemssen/graphql-meets-drupal-dd#/3/7&#34;&gt;understand the basic concepts&lt;/a&gt; like queries, fragments, variables, sub selections, etc.&lt;/p&gt;
+
+&lt;p&gt;Second was the usage of node.js app with express, express-graphql, graphiql, graphql and other popular modules to transpile ES6 code. In this playground, the building part started. Various types were used: GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, etc. That was my first time to actually write something working out of the &lt;a href=&#34;https://learngraphql.com/&#34;&gt;learngraphql.com&lt;/a&gt; online tutorials.&lt;/p&gt;
+
+&lt;p&gt;There was a demo of Relay in-between, as a bonus, to grab a general understanding of the additional features provided on top of the fundamental specification.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*tpPTqCyZnfPqhb1er6ECpw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After the GraphQL implementation in JavaScript was getting convenient, then we continued using the same concepts, but to build a server in PHP and the &lt;a href=&#34;https://www.drupal.org/project/graphql&#34;&gt;Drupal GraphQL module&lt;/a&gt;. Sure enough, the approach was similar, but this time extending SchemaProviderBase and implementing framework-specific EntityTypeManager (&lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21EntityTypeManagerInterface.php/interface/EntityTypeManagerInterface/8.2.x&#34;&gt;Interface&lt;/a&gt;) to manage &lt;a href=&#34;https://www.drupal.org/node/2192175&#34;&gt;Content Entity&lt;/a&gt; items.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;The event was awesome, the people were great, and the sessions were truly useful. I feel somehow privileged with the opportunity to attend such a good series of sessions related to API-s in the Drupal community!&lt;/p&gt;
+
+&lt;p&gt;There are a lot of new technologies and tools to learn and play with. I hope the summary above is a good starter for anyone enthusiastic about the future of the tools mentioned.&lt;/p&gt;
+
+&lt;h3 id=&#34;community&#34;&gt;Community&lt;/h3&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;End of the first day at &lt;a href=&#34;https://twitter.com/drupalaton&#34;&gt;@drupalaton&lt;/a&gt; we have a great dinner. &lt;a href=&#34;https://t.co/CN795wXixz&#34;&gt;pic.twitter.com/CN795wXixz&lt;/a&gt;&lt;/p&gt;&amp;mdash; 5NET Interactive (@5NEThu) &lt;a href=&#34;https://twitter.com/5NEThu/status/763818240954998789&#34;&gt;August 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Many thanks to the local Drupal community in Hungary!&amp;nbsp;:)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Coding battle with Skygate @MolenGeek</title>
+      <link>https://kalinchernev.github.io/coding-battle-molengeek/</link>
+      <pubDate>Sat, 09 Jul 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/coding-battle-molengeek/</guid>
+      <description>
+
+&lt;p&gt;The last event from the series of coding battles organized by &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt;, this time in cooperation with Skygate on a life-saving topic using tools like Google Maps and Firebase.&lt;/p&gt;
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/denisomelcenco&#34;&gt;Denis Omelcenco&lt;/a&gt; from Skygate presented the challenge: make an app to locate the closest defibrillator. The initial code base contained helpful starting materials such as a &lt;a href=&#34;https://github.com/DenisSkygate/CodingBattle/blob/master/Defibrillators.json&#34;&gt;JSON file listing the defibrillators&lt;/a&gt; and their locations, together with some &lt;a href=&#34;https://github.com/DenisSkygate/CodingBattle&#34;&gt;HTML files&lt;/a&gt; to facilitate the app building. Also, &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; provided additional helpful resources on &lt;a href=&#34;https://developers.google.com/maps/&#34;&gt;Google Maps API&lt;/a&gt;, &lt;a href=&#34;https://www.firebase.com/&#34;&gt;Firebase&lt;/a&gt;, etc. As you can imagine, the topic inspired the developers since it&amp;rsquo;s based on meaningful cause.&lt;/p&gt;
+
+&lt;p&gt;In the spirit of &amp;ldquo;Never too early to start&amp;rdquo;, there was a very young participant. I wish this inspires more lads and ladies to join in next events&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZiiIav-nONmY-C8LqOIxdw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;the-tools&#34;&gt;The tools&lt;/h4&gt;
+
+&lt;p&gt;The &lt;strong&gt;Google Maps API&lt;/strong&gt; was the easiest for the developers, probably because it&amp;rsquo;s a popular tool many of us had used before. Needless to say, good start examples were present, together with many answers on the internet on how to handle the various topics like directions, geo-locations, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Firebase&lt;/strong&gt; was a new tool for my team. The tool came super-handy on building an API based on an existing &lt;a href=&#34;https://www.firebase.com/docs/rest/quickstart.html&#34;&gt;JSON really really easy&lt;/a&gt;. The only step necessary was to normalize the key:value pairs to have good naming for the import. Otherwise, we built a RESTful back-end with data about defibrillators in minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/swift/&#34;&gt;&lt;strong&gt;Swift&lt;/strong&gt;&lt;/a&gt; was also useful tool for some who decided to build a native app&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*EEgjG4Ja_L5iScKDLYM2Yg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;winners-and-working-nbsp-apps&#34;&gt;Winners and working&amp;nbsp;apps&lt;/h4&gt;
+
+&lt;p&gt;In the end, there were 2 working apps: the one with Swift, and one with &lt;a href=&#34;https://github.com/DenisSkygate&#34;&gt;the &amp;ldquo;starterkit&amp;rdquo;&lt;/a&gt;. The final presentations of the projects gave some insights on the Google Maps APIs used.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*A5RYiojFrUUUxRklNiRT8Q.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;time-to-enjoy-the-summer-nbsp&#34;&gt;Time to enjoy the summer&amp;nbsp;:)&lt;/h4&gt;
+
+&lt;p&gt;Next event will be somewhere in September, but it&amp;rsquo;s not fixed yet because of the forthcoming summer months. To get notified for the next editions, just sign in the &lt;a href=&#34;http://www.meetup.com/javascriptlab/&#34;&gt;meetup group&lt;/a&gt; or in the facebook group page.&lt;/p&gt;
+
+&lt;p&gt;Thanks to Philos we saw a growing community and interest of hacking making small useful apps in very short time. Wish them luck and more opportunities for organizing even bigger projects in the future!&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*T1IwXqRxsa26rQ2Wu1Sf8A.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)</title>
+      <link>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</link>
+      <pubDate>Thu, 23 Jun 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</guid>
+      <description>
+
+&lt;h1 id=&#34;coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots&#34;&gt;Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots-f0887c15e257&#34;&gt;Originally published on Medium&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Continuing on the exciting journey of coding battles and events, this time I&amp;rsquo;m so trilled on what happened that I can&amp;rsquo;t wait to put my hands back to code. So the story will be short and simple, hopefully inspiring for you to try building some cool chat bots and join me in the next coding event.&lt;/p&gt;
+
+&lt;h4 id=&#34;chat-bots-1&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Chatbot&#34;&gt;Chat Bots&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Recently, there&amp;rsquo;s been quite some noise around the topic and many companies have already jumped into it — using and developing chat bots. The benefits, as I personally feel them: &lt;em&gt;for users, chat bots are a promise for better user experience, while for developers chat bots are a promise for cool task automation and beautifully integrated event-driven apps&lt;/em&gt;. Of course, the biggest value is when a machine understands natural human communication and responds in a smart and useful way.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-organizers&#34;&gt;The Organizers&lt;/h4&gt;
+
+&lt;p&gt;I have to say this was the best coding event I&amp;rsquo;ve ever been so far. The flow was really smooth, the whole atmosphere was really good, and there were winners with a result in the end, which is a real-life app with purpose.&lt;/p&gt;
+
+&lt;p&gt;The organizing team comprised of &lt;a href=&#34;http://www.carasap.be/en/&#34;&gt;CarASAP&lt;/a&gt;, &lt;a href=&#34;http://www.mic-brussels.be/en/home/&#34;&gt;Microsoft Innovation Center&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt;. Probably because of their good collaboration, the challenge was well prepared — clear problem definition, steps to solve, examples, ongoing support during the event, and last but not least — clear end goal in mind. In short, CarASAP presented their need to automate the process of car ordering for their customers, so that they can receive service via chat. Representatives from Microsoft were going around the room answering questions, showing small steps and debugging together with us — it was really friendly environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZVk4GCCCk6zithaBa8I3-Q.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;the-challenge&#34;&gt;The Challenge&lt;/h4&gt;
+
+&lt;p&gt;Participants were provided with a JSON file representing the time schedule of a list of drivers. Thus, the schedule was the base information for our chat bots assisting CarASAP customers to find and order a driver. They were able to input natural sentences which the bot should understand by learning: time, date and address. (Read further to see which is the service used for understanding the natural speech&amp;nbsp;;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I think this event was a very good example how a business need can be solved elegantly in very short time with focused effort by a community&lt;/strong&gt;. I believe that this challenge set a good example for other companies to consider working with Philos too. Facilitating community contributions which solve real-life problems is a big thing. The way I see it, this is a Win-Win where developers learn, contribute and have fun, while business benefit resolutions and results.&lt;/p&gt;
+
+&lt;p&gt;In the end of the event, there was a demonstration of the working solution:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*7OYP5OSbEVuKgF4eIs9Xcw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Credits: &lt;a href=&#34;https://www.facebook.com/philos.io/&#34;&gt;Philos&amp;nbsp;Lab&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;tools-amp-best-practices&#34;&gt;Tools &amp;amp; Best Practices&lt;/h4&gt;
+
+&lt;p&gt;There was a lot of sharing during the event!&lt;/p&gt;
+
+&lt;p&gt;From the developers around me I learned about &lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;, which was a handy tool to just start and run a local node.js server which is easy to integrate with other systems. It&amp;rsquo;s a time-saver when there&amp;rsquo;s no time to deploy an app to a cloud server. Deployment can be a painful part of the development.&lt;/p&gt;
+
+&lt;p&gt;From the winning team, I got inspired to research &lt;a href=&#34;https://c9.io/&#34;&gt;cloud9&lt;/a&gt; as a tool for collaborating during the next hack event, since it&amp;rsquo;s another way to save from setup and deployment procedures which can lead to errors and frustration. Also, it looks awesome to be able to pair-program in real-time with other developers directly in the editor. Research homework for me&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;Managing API keys was another common setback for many. All I can say here is that it&amp;rsquo;s just something that has to be handled with care, because if it isn&amp;rsquo;t, it leads to mystical error codes without clear path to resolve. And a lot of time is wasted poking around debugging systems that should just work.&lt;/p&gt;
+
+&lt;p&gt;But don&amp;rsquo;t worry, you are not alone with these issues! Here&amp;rsquo;s a short motivational video that will make you laugh and encourage you to go forward&amp;nbsp;:)&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/zFO1cRr5-qY?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;For building the bots, we used the &lt;a href=&#34;https://dev.botframework.com/&#34;&gt;Microsoft Bot Framework&lt;/a&gt;. I can&amp;rsquo;t explain you how amazing the APIs are! Just head directly into the &lt;a href=&#34;http://docs.botframework.com/builder/node/overview/#navtitle&#34;&gt;documentation&lt;/a&gt; and skim through some of the example code. I&amp;rsquo;m sure you&amp;rsquo;ll see the easy way to start building functionalities, for which the code looks familiar to other &lt;a href=&#34;http://loopback.io/resources/#compare&#34;&gt;node.js frameworks&lt;/a&gt;. Apart from the core bot framework for managing the communication, we used &lt;a href=&#34;https://www.luis.ai/&#34;&gt;LUIS&lt;/a&gt; to understand the user natural language, and process the important information from it. As a developer, I give my respect to the people who have built the framework and its documentation. It took us just few hours to figure out the APIs and make a working product!&lt;/p&gt;
+
+&lt;h4 id=&#34;apis-are-really-nbsp-cool&#34;&gt;APIs are really&amp;nbsp;cool!&lt;/h4&gt;
+
+&lt;p&gt;I&amp;rsquo;m generally a big fan of &lt;a href=&#34;https://en.wikipedia.org/wiki/Representational_state_transfer&#34;&gt;REST APIs&lt;/a&gt; and everything related to building and consuming them. For me, it&amp;rsquo;s a good architectural approach for decoupling logic and functionality to focus on solving specific problems in a re-usable way. (Yes, the &lt;a href=&#34;http://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; we hear about a lot recently solves some drawbacks of the design, still I think the first wave of common usage will be based on fetching data from existing REST APIs and mainly combining them.)&lt;/p&gt;
+
+&lt;p&gt;What I&amp;rsquo;m saying is that having the opportunity to work with &lt;a href=&#34;http://docs.botframework.com/builder/node/dialogs/LuisDialog/&#34;&gt;LUIS&lt;/a&gt; API is really really cool, especially in a hack event like this coding battle. Using services to solve complex problems feels good, and honestly I think this is the other topic that could be re-used many times, just like building chat bots for various purposes and business cases.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;That&amp;#39;s &lt;a href=&#34;https://twitter.com/hashtag/API?src=hash&#34;&gt;#API&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/management?src=hash&#34;&gt;#management&lt;/a&gt; &lt;a href=&#34;https://t.co/mV5CJD84t7&#34;&gt;pic.twitter.com/mV5CJD84t7&lt;/a&gt;&lt;/p&gt;&amp;mdash; Amancio Bouza (@AmancioBouza) &lt;a href=&#34;https://twitter.com/AmancioBouza/status/738993707140190208&#34;&gt;June 4, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;the-community&#34;&gt;The Community&lt;/h4&gt;
+
+&lt;p&gt;Living in Brussels and following almost every initiative from Philos, I feel that the community around is getting bigger and stronger. Especially because there are opportunities to get together, learn and share! Also, this particular coding battle was an excellent example of good collaboration and focused efforts which brought real-life useful results. I speak about good collaboration between the business side of CarASAP, Microsoft Innovation Center and Philos, but also the good collaboration of developers solving challenges together!&lt;/p&gt;
+
+&lt;h4 id=&#34;what-s-next&#34;&gt;What’s next?&lt;/h4&gt;
+
+&lt;p&gt;First, make sure you sign up for the next coding battle — it’s the last one from the 1st edition of the HackLeague. It sounds to be really flexible on the skills necessary for the challenges, expect a lot of creativity! :)&lt;/p&gt;
+
+&lt;p&gt;HackLeague and Coding Battles were new concepts, but it’s easy to see that they are getting more traction on every step. Just looking at the number of participants increasing and the challenges getting better formulation, I firmly believe in the bright future ahead.&lt;/p&gt;
+
+&lt;p&gt;I also believe that HackLeague will continue to improve, as the community grows and more companies join the game. The more companies, the more interesting problems to tackle, and finally — the more knowledge sharing.&lt;/p&gt;
+
+&lt;p&gt;I can imagine that with enough traction, Philos will be able to possibility develop some sort of divisions based on specific needs and markets: VR, IoT, security, algorithms, you name it. I hope these will come naturally with the upcoming partnerships and collaborations.&lt;/p&gt;
+
+&lt;p&gt;I really liked the way Max presented his vision during the last event:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Let people learn and share with each other, the fun way. In other words: &lt;strong&gt;gamification for people creating the future&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Game on coders!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Coding battle at Take Eat Easy</title>
+      <link>https://kalinchernev.github.io/coding-battle-take-eat-easy/</link>
+      <pubDate>Thu, 09 Jun 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/coding-battle-take-eat-easy/</guid>
+      <description>
+
+&lt;p&gt;Short retrospective on my second coding competition with JavaScript. Lessons learned and thoughts on how to improve for the future.&lt;/p&gt;
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.takeeateasy.be/en/&#34;&gt;Take Eat Easy&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt; organized this coding competition.&lt;/p&gt;
+
+&lt;p&gt;Similarly to &lt;a href=&#34;https://medium.com/@kalin.chernev/the-first-coding-battle-in-belgium-d4f4285ffb32#.ses1gau0l&#34;&gt;the first coding battle&lt;/a&gt;, good news from &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; came right from the beginning: the event was part of a hack league. For developers, this means that we can hope for continuity of the coding battles: more play, plus more opportunities to interact and share with others from the &lt;a href=&#34;https://twitter.com/jsl4b&#34;&gt;JavaScript community in Belgium&lt;/a&gt;. Few other cities have benefited from similar coding competitions: &lt;a href=&#34;https://twitter.com/maxczet/status/725623059344986112&#34;&gt;Paris&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/maxczet/status/728555974672449536&#34;&gt;London&lt;/a&gt; recently, I am looking forward to see how the wave will grow even further&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;After this intro, &lt;a href=&#34;http://www.takeeateasy.be/en/about&#34;&gt;Jean-Christophe Libbrecht&lt;/a&gt; presented what Take Eat Easy is in simple words: delivery on time. &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league&#34;&gt;The technical challenge&lt;/a&gt; was presented with focus on the same company values: optimal delivery management. I gotta say that I had a flashback to my university discipline of &lt;a href=&#34;https://en.wikipedia.org/wiki/Operations_research&#34;&gt;operations research&lt;/a&gt; for a minute, when thinking about routes and shortest distance. Luckily, the challenge was easier to understand than the academic subject!&lt;/p&gt;
+
+&lt;p&gt;The overall atmosphere was agréable et la majorité parlèrent en français. Positive support and guidance was coming all the time.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-challenge&#34;&gt;The challenge&lt;/h4&gt;
+
+&lt;p&gt;Quoting an abstract from the problem definition:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You play one of TEE&amp;rsquo;s bike courier&lt;/p&gt;
+
+&lt;p&gt;Your goal is to make as much € as you can&lt;/p&gt;
+
+&lt;p&gt;You compete with other couriers in the city&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*zt3n7YspKUDLmP8Q4lN5qw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, participants had to program a courier bot, which plays with other courier bots in an imaginary city. Taking and delivering orders in an optimal way.&lt;/p&gt;
+
+&lt;p&gt;An example &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league/tree/master/node-client&#34;&gt;node client bot&lt;/a&gt; was given. I find it to be a good boilerplate for a start. Most importantly it&amp;rsquo;s clear where to include the custom logic and what are the tools to use to take actions.&lt;/p&gt;
+
+&lt;p&gt;Another positive prerequisite was &lt;strong&gt;the sample state object&lt;/strong&gt;, which contained enough structure to understand the data that will be received by the client on every turn of the game. Note some important concepts are pretty obvious, I think: &lt;strong&gt;orders, possible actions and score&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/d2d3e5e9ade9bca4f8ae94bc58dd5e88.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;All possible actions&lt;/strong&gt; that the bots were able to play with: moving up/down/left/right, pick order, drop order. There were 2 advanced actions: upgrade fighter (be able to kick other players) and upgrade electric (move doubled).&lt;/p&gt;
+
+&lt;p&gt;I will repeat this again, I was content with the organizers. Help was kindly provided, with hints and advice all the way during the game. That made it fun to play. (No matter the fact that my team didn&amp;rsquo;t manage to get points&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*641YUOoQZYNKW5N2d4G-kw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h4&gt;
+
+&lt;p&gt;I got a good &lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;pair&lt;/a&gt; for the event. (&lt;a href=&#34;https://github.com/Gregoirevda&#34;&gt;Gregoirevda&lt;/a&gt;) I think we got along easily and we had good time working together. Here are some highlights of the informal retrospective we did after the game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Visualize the end result (expectation) before going in the code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We never ran the server &amp;ldquo;city&amp;rdquo; to see how our bot moves. That was not a clear problem until the end of the competition until when we were still working on the details on how to move our courier. &lt;a href=&#34;https://en.wikipedia.org/wiki/Grep&#34;&gt;Grep&lt;/a&gt;-ing the continuously changing state object helped us get some ideas about the dynamics, but honestly it was not easy to imagine how the courier bot is actually moving on the map without the real picture.&lt;/p&gt;
+
+&lt;p&gt;Now I believe it&amp;rsquo;s important to run the server (mock) locally during development just to understand and visualize the dynamics as they will be in the real game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Learn and understand the start examples and code samples&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In my first competition I made the mistake to try to understand the logic of the core engine (server) running the game, but this time was better focusing on the sample code. Yet, I think we missed useful points and functions that we could have utilized in our favor without thinking too much.&lt;/p&gt;
+
+&lt;p&gt;More specifically, the head of the function that was invoked in every turn of the game contained the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Fetch my courier and possible order from the state  
+var state = data.state;  
+var possibleActions = data.possibleActions;  
+var myCourier;  
+var myOrder;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And guess what? That was prepared for us before-hand so that we could use these variables &amp;ldquo;as-is&amp;rdquo;. I have to say, I was mixing the &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;state&lt;/code&gt; variables pretty much, but that&amp;rsquo;s another topic.&lt;/p&gt;
+
+&lt;p&gt;Another part of the code contained this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Sample response.
+respond(getDirection(data.possibleActions,myCourier.position,{x:1,y:2}));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;getDirection()&lt;/code&gt; returns the best move depending on the current position and possible actions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;respond()&lt;/code&gt; is the function to invoke in order to take actions.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;respond()&lt;/code&gt; took us away, because we decided to focus on the actions, and somehow it was pretty late in the game when we figured the getDirection() function for possible re-use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Strategy and task separation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Probably the most complex part of all.&lt;/p&gt;
+
+&lt;p&gt;Even though we didn&amp;rsquo;t have clear strategy while developing the bot, it surely would have helped. For example, we started implementing functions for the bonus skills like having an electric bike and kicking other players before deciding how to move and take orders&amp;nbsp;:D&lt;/p&gt;
+
+&lt;p&gt;But seriously, possible strategy for this challenge could probably be to separate the approach in 2: functions for working with distance, and such for working with actions. Though we didn&amp;rsquo;t manage to have a complete combination of actions based on distance and value, we spoke about the fact that we were not clear about the order of combined actions we need to take. We took a delivery and then we were just standing at a place, since the next step was not foreseen. However, we prepared to be able to kick other players just standing there with our delivery in our hands! (we never got the points for the advanced action of kicking)&lt;/p&gt;
+
+&lt;p&gt;I feel that breaking down a challenge into small tasks plays an important role in problem solving, especially in short-time hack event. Also, event handling actions with state management seem to be recurring patterns, so it&amp;rsquo;s worth getting some more practice there too.&lt;/p&gt;
+
+&lt;h4 id=&#34;coming-up&#34;&gt;Coming up&lt;/h4&gt;
+
+&lt;p&gt;Many developers don&amp;rsquo;t go to competitions because they believe they are not good enough with JavaScript or they will not perform well in hack events under stress. Even though there is positive stress, with this retrospective and code samples I hope that I&amp;rsquo;ve managed to demonstrate that the challenge itself was doable and fun to do.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://www.eventbrite.com/e/coding-battle-microsoft-innovation-center-brussels-carasap-tickets-25839985091&#34;&gt;next coding battle will be at Microsoft&lt;/a&gt; and the event is open for registrations. I&amp;rsquo;d recommend you to grab the opportunity to broaden your experience.&lt;/p&gt;
+
+&lt;p&gt;Lastly, consider inviting your colleagues to join you too. As you can imagine, the short hacking time will naturally give you ideas on how to communicate effectively with your colleagues when you work together in different environment. Also, you will see new ways to break down tasks and problem solve by observing and sharing with other developers you meet at the event.&lt;/p&gt;
+
+&lt;h4 id=&#34;what-do-you-nbsp-think&#34;&gt;What do you&amp;nbsp;think?&lt;/h4&gt;
+
+&lt;p&gt;I&amp;rsquo;m really interested to hear feedback on my thoughts and ideas about the code and the highlights. Maybe you have a different point of view? Share it in the comments!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The first coding battle in Belgium</title>
+      <link>https://kalinchernev.github.io/first-coding-battle-belgium/</link>
+      <pubDate>Thu, 14 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/first-coding-battle-belgium/</guid>
+      <description>
+
+&lt;h2 id=&#34;coding-battle-what&#34;&gt;Coding? Battle? What?&lt;/h2&gt;
+
+&lt;p&gt;For me, coding is an act of expressing ways of thinking and problem-solving skills. However, in reality, it&amp;rsquo;s a more than that. It&amp;rsquo;s a proof of understanding complex concepts, and creating useful solutions with this understanding. Also, in fact, coding is frequently an act of showing narrow knowledge of a specific framework or knowledge of an API.&lt;/p&gt;
+
+&lt;p&gt;Battles, on the other hand, are not an every-day thing. Rap battles and games are fun though, why not take the same experience into another subject matter as an expression of quick-thinking and winning attitude?&lt;/p&gt;
+
+&lt;p&gt;Combining those, one can already enjoy online platforms like &lt;a href=&#34;https://codefights.com/&#34;&gt;codefights.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;What happens in offline, face-to-face world though?&lt;/p&gt;
+
+&lt;h4 id=&#34;coding-battle&#34;&gt;Coding battle&lt;/h4&gt;
+
+&lt;p&gt;That&amp;rsquo;s an opportunity to get experience actively. Battling is not only about watching a presentation, but solving problems. Quickly. And effectively.&lt;/p&gt;
+
+&lt;p&gt;Going into a battle is a learning experience.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-organizers&#34;&gt;The organizers&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos Lab&lt;/a&gt; is a frequent organizer of &lt;a href=&#34;http://www.meetup.com/javascriptlab/&#34;&gt;JavaScript events&lt;/a&gt; around Belgium, Netherlands, Luxembourg and France.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.woorank.com/&#34;&gt;Woorank&lt;/a&gt; is a product-oriented company who kindly prepared the challenges and hosted the battle.&lt;/p&gt;
+
+&lt;p&gt;Together, they organized the first coding battle in Brussels.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-battle&#34;&gt;The battle&lt;/h4&gt;
+
+&lt;p&gt;It was more enjoyable than you might think.&lt;/p&gt;
+
+&lt;p&gt;Honestly, I was doubtful about my own skills and readiness to go into a competition. That&amp;rsquo;s because JavaScript is changing every day, learning fatigue is something normal.&lt;/p&gt;
+
+&lt;p&gt;In this competition, developers had to program a bot, playing against a dealer bot based on this &lt;a href=&#34;https://github.com/Woorank/blackjack-challenge&#34;&gt;blackjack challenge&lt;/a&gt;. The rules were simple, there were teams (4 rounds by 4), playing against each other on playoffs principle. The better ratio of games won vs games lost ruled winning teams to the top.&lt;/p&gt;
+
+&lt;p&gt;Personally, I enjoyed the challenge. It didn&amp;rsquo;t require any previous knowledge of frameworks like Angular or React, but rather assumed general knowledge: variables, scope, functions and loops. That was really important in terms of facilitating the teams to focus on strategic thinking programming their automated bots, rather frameworks.&lt;/p&gt;
+
+&lt;p&gt;I believe these characteristics of the challenge were truly important. In the end, it was not really about whether or not developers know JavaScript or frameworks deeply, but rather: can developers understand requirements, code and logic quickly (2 hours and 30 minutes :), and provide solutions based on mathematics.&lt;/p&gt;
+
+&lt;h4 id=&#34;what-did-i-nbsp-learn&#34;&gt;What did I&amp;nbsp;learn&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Re-consider understanding the core algorithms&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Out of 2 hours and 30 minutes, I spent maybe around 40 minutes trying to figure out the structure of the code of the &amp;ldquo;dealer&amp;rdquo;. (the server) That might have been useful if I knew specifically that my results/winning will be evaluated based on understanding other people&amp;rsquo;s code. That&amp;rsquo;s not impossible, but takes a lot of time! Take-away: listen carefully for the expectations. Reading and understanding API-s as-is is not helping in a battle.&lt;/p&gt;
+
+&lt;p&gt;Maybe it&amp;rsquo;s useful to know the subject matter of the challenge, i.e. blackjack. Though every challenge will be different, I wouldn&amp;rsquo;t focus on this in my next challenge.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Focus on super-clear communication&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It happens every day, it happens in battles as well — discussing scope, persistence and making use of history of actions for future actions. There is no place for bad communication in a battle. Global scope is so much not an object scope. And dependency injection is not always possible, don&amp;rsquo;t take it for granted.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Focus on mathematics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Even though I don&amp;rsquo;t take myself as an expert in algorithms, making mathematical model of if-else-s is important. Me and my team-mate did not have any idea what a blackjack is, but we googled for strategies we translated into mathematics we implemented: and we ended up in the finals. You really have to experience this to believe it: creating code with clear mathematics that solves problems for you is beautiful.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Team-work is important&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;No need to go too deep into this. I was lucky with this one during the particular event. I worked together with a colleague I work with every day&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;Splitting down the small details was a breeze: which functions should do what, why, how, etc. The action was so hot that at some point using the &amp;ldquo;&lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of&#34;&gt;for of&lt;/a&gt;&amp;rdquo; syntax fit perfectly for the general foreach() equivalent for the major chunk for the decider logic. Believe me, there is no time to re-factor, questions like sugar in JS: Class vs Function, public method of a module vs private method of an instance are too tiny of topics in dynamic circumstances.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-code.jpeg&#34; alt=&#34;Team work during coding event&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;community&#34;&gt;Community&lt;/h4&gt;
+
+&lt;p&gt;In overall, the big winning was absolutely going into the community.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-community.jpeg&#34; alt=&#34;Community&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Good-bye picture at the spacious Woorank&amp;nbsp;office&lt;/p&gt;
+
+&lt;h4 id=&#34;bragging-time&#34;&gt;Bragging time&lt;/h4&gt;
+
+&lt;p&gt;In this competition, my team reached the finals, team-6&amp;nbsp;;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-table.jpeg&#34; alt=&#34;Blackjack table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the &amp;ldquo;table&amp;rdquo; server where bots (teams) play against a dealer&amp;nbsp;(bot)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Focus on community and good services</title>
       <link>https://kalinchernev.github.io/focus-community-good-services/</link>
       <pubDate>Mon, 11 Jan 2016 00:00:00 +0000</pubDate>
@@ -606,7 +1109,7 @@ profile: &#39;standard&#39;
 
 &lt;p&gt;Focusing on the details of the big picture, I managed to see opportunities and good practices that I can conclude to be reusable for anyone. Reusable in such a way that even I will benefit of a given paradigm if I read it after few years.&lt;/p&gt;
 
-&lt;h4 id=&#34;technology-and-nbsp-code&#34;&gt;Technology and&amp;nbsp;code&lt;/h4&gt;
+&lt;h4 id=&#34;technology-and-code&#34;&gt;Technology and code&lt;/h4&gt;
 
 &lt;p&gt;It&amp;rsquo;s always been and will be a lot about technology for me. Until 2015, I was very heavy enthusiast about &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt;. There have been many big projects I&amp;rsquo;m proud of in the past. Working on big projects has always been a good way to battle-test good software as Drupal.&lt;/p&gt;
 
