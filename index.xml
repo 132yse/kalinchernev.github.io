@@ -7,8 +7,133 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Sat, 08 Apr 2017 15:33:06 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 Dec 2017 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Think about apps, not websites</title>
+      <link>https://kalinchernev.github.io/think-about-apps-not-websites/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/think-about-apps-not-websites/</guid>
+      <description>
+
+&lt;h3 id=&#34;create-a-manifest-nbsp-file&#34;&gt;&lt;strong&gt;Create a manifest&amp;nbsp;file&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;The manifest file should comply to a &lt;a href=&#34;https://w3c.github.io/manifest/&#34;&gt;specification&lt;/a&gt; which serves a similar purpose as of the &lt;a href=&#34;https://developer.chrome.com/extensions/manifest&#34;&gt;Chrome Platform API manifest file&lt;/a&gt; — it&amp;rsquo;s a set of definitions. &lt;a href=&#34;https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android&#34;&gt;The installation of a web app&lt;/a&gt; is more engaging than the one of a native app, i.e. one doesn&amp;rsquo;t need to go to a &amp;ldquo;store&amp;rdquo;, but take it right away. Note that a service worker file should be loaded (and activated, etc.) to achieve this interaction.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*DYjPm6A9VuxueEU7mD_lPQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Image taken from&amp;nbsp;&lt;a href=&#34;https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;At the time of writing this article, these are the criteria:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;definition manifest file is present&lt;/li&gt;
+&lt;li&gt;the manifest file contains at least the following properties: &lt;code&gt;short_name&lt;/code&gt; and &lt;code&gt;144x144&lt;/code&gt; PNG icon with its corresponding mime type meta info&lt;/li&gt;
+&lt;li&gt;app is served over HTTPS&lt;/li&gt;
+&lt;li&gt;The user has visited your site at least twice, with at least five minutes between visits&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By the way, this year &lt;a href=&#34;https://developer.android.com/topic/instant-apps/index.html&#34;&gt;instant apps&lt;/a&gt; were announced. They are something similar for Android native apps. It seems like a unified direction into making the content and functionalities more accessible for the user. For the install, If you have a native app, and you want to suggest it to the user, &lt;a href=&#34;https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android#native&#34;&gt;use the manifest for this&lt;/a&gt;, &lt;a href=&#34;https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/good-notification#dont-advertise-native&#34;&gt;do NOT advertise the native app via a push notification&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To try and experiment with this basic step, take either any of the tutorials in &lt;a href=&#34;https://codelabs.developers.google.com/&#34;&gt;codelabs&lt;/a&gt; or by use &lt;a href=&#34;https://googlesamples.github.io/&#34;&gt;sample snippets&lt;/a&gt; (don&amp;rsquo;t really know if it&amp;rsquo;s the same as &lt;a href=&#34;https://www.chromestatus.com/samples&#34;&gt;chrome samples&lt;/a&gt;), or just clone &lt;a href=&#34;https://github.com/kalinchernev/pwa/tree/basics/manifest&#34;&gt;this branch&lt;/a&gt;. I&amp;rsquo;m personally using &lt;a href=&#34;https://medium.com/@kalin.chernev/cloud9-ide-6e26940c6130#.cotqpyn8b&#34;&gt;cloud9 editor&lt;/a&gt; for development, as it serves the applications over HTTPS by default, which is really convenient to just go and try things. There are many alternatives for both the editor and server: just choose what works best for you and don&amp;rsquo;t over-think or over-prepare, focus on the doing.&lt;/p&gt;
+
+&lt;p&gt;By the end of this, you must already have a feeling of achievement! Creating a manifest file that loads some assets and an empty JavaScript file is easy, but rewarding enough to keep your momentum to continue further.&lt;/p&gt;
+
+&lt;p&gt;If you are like me, testing the behavior of &amp;ldquo;Add to homescreen&amp;rdquo; in both the desktop browser and the mobile phone, you will surely notice that &amp;ldquo;homescreen&amp;rdquo; of the browser is the browser&amp;rsquo;s home of apps:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*L63xgn3aL-6YTv7LnpwpVQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;add to homescreen behavior on your desktop&amp;nbsp;browser&lt;/p&gt;
+
+&lt;p&gt;Depending on the &lt;a href=&#34;https://www.w3.org/TR/appmanifest/#dfn-display-mode&#34;&gt;`display mode&lt;/a&gt;` the app can run in a separate standalone window that looks like a desktop app (and in mobile it looks like mobile), by hiding the address bar. This is how &lt;a href=&#34;https://developer.chrome.com/apps/about_apps&#34;&gt;Chrome Apps&lt;/a&gt; should be build in the future too, not only websites.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*mowO5VIVEwFBcOJcXY4OUQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The same app open in a normal browser and in a standalone window&lt;/p&gt;
+
+&lt;p&gt;The same code (HTML+CSS+manifest file and an empty JavaScript file loaded as a service worker) produce good mobile experience:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*qDNI5CsWyWWPty5qcM6KaA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add to home screen is same as installing the app on the&amp;nbsp;device&lt;/p&gt;
+
+&lt;p&gt;Then, the icon is added to the desktop as expected:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*u1QOfgyz4iEdl1dZ2zrDPg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and when the icon is clicked, the user gets a nice welcoming screen, colors defined as &lt;code&gt;theme_color&lt;/code&gt; and &lt;code&gt;background_color&lt;/code&gt; properties in the manifest.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*HLOcyRrmJu2AvKN4aqrlCQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lastly, in standalone display mode, no URL address bar is visible. Use a &lt;a href=&#34;https://www.google.com/search?q=best+mobile-first+CSS+frameworks+today&#34;&gt;good front-end framework&lt;/a&gt; to make the look and feel of your web page as a native app — the user will be delighted!&amp;nbsp;:)&lt;/p&gt;
+
+&lt;h3 id=&#34;the-app-nbsp-shell&#34;&gt;The app&amp;nbsp;shell&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s mostly conceptual yet important task to think about: in order to deliver good user experience, it&amp;rsquo;s useful to have access to fundamental assets offline in order to react well in case of a network going offline. So, when you build and develop your web site, consider it&amp;rsquo;s a real shell that stays the same and only the contents is changing. This article gives good &lt;a href=&#34;https://developers.google.com/web/fundamentals/architecture/app-shell&#34;&gt;concept overview&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s not something super-new for people who are used to thinking about apps already, or developers of &lt;a href=&#34;https://en.wikipedia.org/wiki/Single-page_application&#34;&gt;SPAs&lt;/a&gt;. It&amp;rsquo;s just something to always have in the back of your mind when you look at your own website — what resources are important to deliver to the user even when he&amp;rsquo;s offline? What are the repetitive elements of my web pages? Normally these are the navigation and its surroundings. All these become the &amp;ldquo;shell&amp;rdquo;, being cached on the device for easy access, and the content is dynamically fetched when available.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dEvx7lPNJT-r-tKjqvAXxg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developers.google.com/web/fundamentals/architecture/app-shell&#34;&gt;Image credits&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to implement this strategy for saving resources, one must know how to use the &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache API&lt;/a&gt; through a service worker. The API can also be accessed through the global &lt;code&gt;window&lt;/code&gt; object as well, but working through a SW, we can &amp;ldquo;hook&amp;rdquo; into the events in the worker&amp;rsquo;s life-cycle, i.e. we can validate cache when network connection toggles.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-a-service-nbsp-worker&#34;&gt;Creating a service&amp;nbsp;worker&lt;/h3&gt;
+
+&lt;p&gt;&amp;gt; Rich offline experiences, periodic background syncs, push notifications — functionality that would normally require a native application — are coming to the web. Service workers provide the technical foundation that all these features rely on. — taken from &amp;ldquo;&lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/primers/service-workers&#34;&gt;Service Workers: an Introduction&lt;/a&gt;&amp;ldquo;&lt;/p&gt;
+
+&lt;p&gt;In basic terms, the service worker is a proxy layer between your stack (HTML+CSS+JS) and the network. The API of service workers boost the functionality of your otherwise normal web pages.&lt;/p&gt;
+
+&lt;p&gt;A good starting point could be the sample for &lt;a href=&#34;https://googlechrome.github.io/samples/service-worker/custom-offline-page/index.html&#34;&gt;Service Worker Sample: Custom Offline Page Sample&lt;/a&gt;. If the amount of code seems too much, have a look at the &lt;a href=&#34;https://developers.google.com/web/tools/service-worker-libraries/&#34;&gt;tools section&lt;/a&gt; where some libraries are already published to make these functionalities more accessible. For example, if your project uses a task runner, you can implement &lt;a href=&#34;https://github.com/GoogleChrome/sw-precache#install&#34;&gt;`sw-precache&lt;/a&gt;` (&lt;a href=&#34;https://codelabs.developers.google.com/codelabs/sw-precache/#0&#34;&gt;tutorial&lt;/a&gt; is also available&amp;nbsp;;)&lt;/p&gt;
+
+&lt;p&gt;For me, personally, it was fun to play a bit with the service worker file, not having access to the DOM directly, but yet having a Web API that should communicate with it was an interesting thing. In the end, I used the example code provided in the &lt;a href=&#34;https://github.com/GoogleChrome/sw-precache/tree/master/demo&#34;&gt;demo&lt;/a&gt; of &lt;code&gt;sw-precache&lt;/code&gt; because I&amp;rsquo;m really lazy.&lt;/p&gt;
+
+&lt;p&gt;By the end of the exercise, I have this branch for &lt;a href=&#34;https://github.com/kalinchernev/pwa/tree/basics/caching&#34;&gt;the basics of caching the application shell&lt;/a&gt;. What I really like as a side-effect of stealing the gulp file of the demo above is that now I have a basic build system. That helps me in generating a comparatively sophisticated service-worker handling the offline behavior of my web app. Also, it gives me a nicely working &lt;a href=&#34;https://pages.github.com/&#34;&gt;gh-pages website&lt;/a&gt; that can be accessed by anyone over HTTPS on &lt;https: kalinchernev.github.io=&#34;&#34; pwa=&#34;&#34;&gt; This makes me really happy, because of several reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I already have a self-hosted, manageable (easy to update and deploy), modern web app, that looks like a mobile app. It can be viewed and installed on a mobile device, and later opened in a &amp;ldquo;shell&amp;rdquo;, i.e. not showing broken pages offline mode.&lt;/li&gt;
+&lt;li&gt;Having a task runner like &lt;a href=&#34;http://gulpjs.com/&#34;&gt;gulp&lt;/a&gt; opens a door of opportunities to make my development life even easier than before: I can integrate live reload, include any preprocessing of LESS/SASS, can include babel to turn my ES6 code in ES5 for older browsers, etc.&lt;/li&gt;
+&lt;li&gt;Using the &lt;code&gt;sw-precache&lt;/code&gt; even as simple as it is right now, provides me with benefits of easier asset management, as I don&amp;rsquo;t have to go too much into the details of the Cache API if I don&amp;rsquo;t want to, and the mechanism of implementing the worker is easier to update in the future, as I believe the project will be well maintained. So, my task for future maintenance will be to re-generate the worker which is already included on the page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I hope that you already see more opportunities than before. In particular, next time you want to publish information that is important and useful for your users when, say, they travel, consider these options. Imagine you want to provide accessible guides and documentation — just follow the same steps and provide enhanced experience, I&amp;rsquo;m sure it&amp;rsquo;ll pay off.&lt;/p&gt;
+
+&lt;h3 id=&#34;push-notification&#34;&gt;Push notification&lt;/h3&gt;
+
+&lt;p&gt;Let me briefly indicate some resources that I consider useful for the topic, without going into details, as this feature is going a bit beyond the browser and won&amp;rsquo;t be as beginner-friendly as I&amp;rsquo;d like it to be. This topic deserves another separate article.&lt;/p&gt;
+
+&lt;p&gt;For a start, you can start with &lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/&#34;&gt;Adding Push Notifications to a Web App&lt;/a&gt;. It can be well-complemented with &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API/Push_API/Using_the_Push_API&#34;&gt;Using the Push API&lt;/a&gt; and &lt;a href=&#34;https://medium.com/dev-channel/designing-a-web-push-service-3076c0599f3e#.6xi4d77ds&#34;&gt;Designing a Web Push Service&lt;/a&gt; by &lt;a href=&#34;https://medium.com/@paul_kinlan&#34;&gt;Paul Kinlan&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-future&#34;&gt;The future&lt;/h3&gt;
+
+&lt;p&gt;Apart from being bright, it will be filled with advancements and further variety in the developers&amp;rsquo; toolbox. Having in mind that browsers have always been an inconsistent environment, it will be vital to keep the following resources at hand and get fresh information every now and then.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to underline, that &lt;a href=&#34;https://medium.com/@nekrtemplar/progressive-web-apps-aint-google-s-thing-31ca581e7a1#.faazl83yx&#34;&gt;Progressive Web Apps isn&amp;rsquo;t a Google-only thing&lt;/a&gt; although many of the references in this article are going to resources authored by community contributions to Google documentation. This is mainly because the dedication and organization of knowledge seems to the best at the moment. &lt;a href=&#34;https://blogs.windows.com/msedgedev/2016/07/08/the-progress-of-web-apps/#ZeJAshXJM2BuqDRB.97&#34;&gt;Microsoft are also supporters of PWA&lt;/a&gt;. In fact, &lt;a href=&#34;http://manifoldjs.com&#34;&gt;manifoldjs&lt;/a&gt; is an interesting project you will probably meet should you decide to make PWA that works as a nice app in Windows.&lt;/p&gt;
+
+&lt;p&gt;In general, Web APIs will surely continue to evolve. You can bookmark the good ol&amp;rsquo; &lt;a href=&#34;http://caniuse.com/#search=push&#34;&gt;caniuse.com&lt;/a&gt; to verify whether an API you want to use is supported natively or you&amp;rsquo;ll have to search for a shim/polyfill and similar. Of course, there are many existing libraries and frameworks which are already taking developers attention (causing fatigue&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;Here I speak about experimental features that will change, but I firmly believe that browser vendors are on a good way of collaborating to support native APIs more consistently rapidly in very near future, so these features will be standard before you realize it. Knowing the standards helps you produce more maintainable code and gives you a good idea about the direction of Web, regardless of the popularity and influence of vendor frameworks and libraries.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;There are simple steps that anyone can take in order to convert their existing websites and web pages in progressive web apps, i.e. pages with HTML+CSS+JavaScript which act like native apps for important functionalities. Installation, caching and push notifications are a growing trend for a reason — they increase user engagement and provide great experience.&lt;/p&gt;
+
+&lt;p&gt;So, during the upcoming holidays, have a look at the following Web APIs, and hopefully play with them, provide more value via your web pages:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;create a &lt;code&gt;manifest.json&lt;/code&gt; file describing your app with its assets&lt;/li&gt;
+&lt;li&gt;implement caching for the vital assets necessary when offline&lt;/li&gt;
+&lt;li&gt;make a simple push notification for events of new content on your pages&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hopefully, using native Web APIs will be fun during this experimentation, as &lt;a href=&#34;http://kangax.github.io/compat-table/es6/&#34;&gt;Chrome supports a lot of ES6 features&lt;/a&gt; and there is no need for you to transpile your code to see immediate results of your work.&lt;/p&gt;
+
+&lt;p&gt;Enjoy and good luck!&amp;nbsp;:)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About</title>
@@ -31,6 +156,271 @@ Thus, this blog keeps things simple - it&amp;rsquo;s plain good old HTML, CSS an
 
 &lt;p&gt;I believe in experimentation and open source contribution as a way to learn and keep up
 with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect from this blog.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Triage stream-adventure issue queue</title>
+      <link>https://kalinchernev.github.io/stream-adventure-triage/</link>
+      <pubDate>Sun, 06 Nov 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/stream-adventure-triage/</guid>
+      <description>
+
+&lt;h3 id=&#34;working-on-the-issue-nbsp-queue&#34;&gt;Working on the issue&amp;nbsp;queue&lt;/h3&gt;
+
+&lt;p&gt;As I wanted to work on the queue for my own benefit of figuring out what is what, etc. initially, I started working in one way and changed my approach on the way. The goal was simple: organize issues and pull request in an effective way for a maintainer to quickly and easily take yes/no decision on solving a given problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Strategy 1: Prioritize pull requests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Since I am a &amp;ldquo;newbie&amp;rdquo; in both the subject of matter (the streams) and in the project, my first idea was to go through the list of pull requests and categorize them in a way that indicates the readiness to be merged. This way, I imagine, the pull requests being validated and tested can be quickly skimmed and hopefully merged.&lt;/p&gt;
+
+&lt;p&gt;This strategy didn&amp;rsquo;t work very effective for me, since the process was not linear, i.e. frequently I open 1 pull request which solves 1 issue, and then from this issue, I tend to find related or duplicates, and what if there are other pull requests that solve the same issue in another way?&lt;/p&gt;
+
+&lt;p&gt;I think that strategy could be effective if the project has a roadmap or a well-defined list of important bugs/features to be handled in a given sprint or milestone.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Strategy 2: Work-out &amp;ldquo;low-hanging fruits&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This strategy seemed a natural reflex for quick gratification after the first strategy didn&amp;rsquo;t work quite well&amp;nbsp;:) The idea is simple: go through issues and find such that are either already solved, duplicates, general questions that are already answered successfully, old issues that are not valid any more, etc. These are quick-wins that give a good feeling similar to the one that you experience when you cross an item from the todo list.&lt;/p&gt;
+
+&lt;p&gt;I think that this strategy could be the starting point, rather than a bounce-back reflex as I did. The process of sorting easy or already done issues is a low-barrier entrance into the issue queue. And it naturally leads to the need of reading/searching other related issues which is something that has to be done at any case.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Strategy 3: Categorize issues by topic&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This small and probably super-obvious step was actually more gratifying than the low-handing fruits. At this stage, I decided that the process of triage the issue queue will be a complementary activity to my own learning path of the module. So, I made a list of the issues, categorized by the topic of the workshopper, i.e. &amp;ldquo;concat&amp;rdquo;, &amp;ldquo;http_server&amp;rdquo;, &amp;ldquo;http_client&amp;rdquo;, etc. and then sorted them in the same way as I would go through them in the workshopper. This way, I reached a natural flow of working on the problem myself trying to solve it (experiencing the same problems as I&amp;rsquo;d see in the issue queue) and then going through the list of related issues and pull requests.&lt;/p&gt;
+
+&lt;p&gt;Sure enough, the sole act of first doing the challenge myself and then reading information and reports about the issue gives a very good background and picture on the way I&amp;rsquo;d approach the issues and the pull requests. Sometimes opening a pull request suggesting an update in the problem definition could be solving many issues coming from misunderstanding the problem or misunderstanding the expected code implementation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Strategy 4: Prioritize most recent communication&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s an approach of working out issues in open source projects in software or software modules that one does not necessarily use directly everyday or is not affected/blocked at a current time. I didn&amp;rsquo;t prioritize latest communication at this triage because the project is not so big and there aren&amp;rsquo;t so many issues or pull requests. In case the project involves thousand of developers or sub-functionalities that are not easy to see or figure out, but still feels good to contribute back, that strategy could be useful to get into effective flow of solving problems that are important/actual/active at the current moment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Strategy 5: Follow your own interest&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In a similar way of strategy 3, which involved prioritizing issues by topic, I could say that it&amp;rsquo;s pretty important to work on issues that are genuinely interesting for oneself. This means that, even if the project was bigger and harder to maintain, the passion which someone has about a topic would always win over a non-interested trivial going through the issue queue solving issues that are not really motivation enough to learn from.&lt;/p&gt;
+
+&lt;h3 id=&#34;your-feedback-is-nbsp-valuable&#34;&gt;Your feedback is&amp;nbsp;valuable&lt;/h3&gt;
+
+&lt;p&gt;To summarize this meta-article, your feedback on both the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/issues&#34;&gt;repository of the project&lt;/a&gt; and my thoughts are very welcome&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sharing is caring!&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Building a node.js client for the EU Open Data Portal</title>
+      <link>https://kalinchernev.github.io/eu-data-portal-nodejs-client/</link>
+      <pubDate>Sun, 02 Oct 2016 12:10:11 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/eu-data-portal-nodejs-client/</guid>
+      <description>
+
+&lt;p&gt;Planning to make an open data GraphQL server, it was natural to first build a small abstraction wrapper which can be re-used in other projects. Basically, the &lt;a href=&#34;https://www.npmjs.com/package/odp&#34;&gt;odp library&lt;/a&gt; I&amp;rsquo;m going to talk about is just a simplified client for fetching data from the EU Open Data Portal.&lt;/p&gt;
+
+&lt;h3 id=&#34;getting-the-library&#34;&gt;Getting the library&lt;/h3&gt;
+
+&lt;p&gt;When you have &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node.js&lt;/a&gt;, the module can be installed by npm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install odp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;library-api&#34;&gt;Library API&lt;/h3&gt;
+
+&lt;p&gt;The API of the module is pretty simple:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_// Get a range of the whole list of datasets:_
+
+
+odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;amp;gt; {
+
+
+  console.log(data);
+
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets&lt;/code&gt;, &lt;code&gt;getTags&lt;/code&gt;, &lt;code&gt;getDataset&lt;/code&gt; and &lt;code&gt;datasetSearch&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
+
+&lt;p&gt;An &lt;a href=&#34;https://github.com/kalinchernev/odp/blob/master/README.md#examples&#34;&gt;Examples section&lt;/a&gt; is included in the README file for further details.&lt;/p&gt;
+
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+
+&lt;p&gt;Suggestions and pull requests are welcome at the &lt;a href=&#34;https://github.com/kalinchernev/odp&#34;&gt;github page of the project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For inspirations of use, more information about the data or introduction training of the benefits of using open data, visit the &lt;a href=&#34;https://www.europeandataportal.eu/&#34;&gt;europeandataportal.eu&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Drupal 8 on Cloud9 IDE</title>
+      <link>https://kalinchernev.github.io/drupal8-cloud9-ide/</link>
+      <pubDate>Thu, 15 Sep 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/drupal8-cloud9-ide/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;You see things; and you say, &amp;lsquo;Why?&amp;rsquo; But I dream things that never were; and I say, &amp;lsquo;Why not?&amp;ldquo; — George Bernard Shaw&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; will soon celebrate 1 year since its release. One interesting fact about this version of the popular PHP CMS is that the &lt;a href=&#34;https://www.drupal.org/core/release-cycle-overview&#34;&gt;release cycles&lt;/a&gt; are smaller and feature-focused. This makes everybody happier than previous major versions and I will focus on developers&amp;rsquo; experience. It&amp;rsquo;s been steadily improving since the focused adoption of popular and well-maintained projects from the wide PHP community. &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;, &lt;a href=&#34;https://drupalconsole.com/&#34;&gt;Drupal Console&lt;/a&gt; (an implementation of Symfony Console) and adopting PHP OOP design patterns in overall are some of the highlights in this article.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, &lt;a href=&#34;http://c9.io&#34;&gt;Cloud9 Editor&lt;/a&gt; is an interesting project to my personal experience as a developer. I&amp;rsquo;ve shared some enthusiasm about it before, summarizing &lt;a href=&#34;https://medium.com/@kalin.chernev/cloud9-ide-6e26940c6130#.nxqgf2ree&#34;&gt;some of my favorite features&lt;/a&gt;, and going deeper into &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2#.tknem3kcp&#34;&gt;debugging applications in the cloud&lt;/a&gt;. At this step, I start to dream about scenarios where this cloud editor will be THE editor for massive amount of open source contributors, experimenters and agile practitioners alike. I also visualize scenarios where it could fill in the gap in the hearts of many who use tools like &lt;a href=&#34;https://dreditor.org/&#34;&gt;dreditor&lt;/a&gt;. Dreditor on steroids: git, drush, mysql, php, etc — all the tools a developer needs to start, test, develop and deploy!&lt;/p&gt;
+
+&lt;h3 id=&#34;repository-based-development-environment&#34;&gt;Repository based development environment&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/drupal-composer/drupal-project&#34;&gt;Drupal Composer&amp;rsquo;s drupal-project&lt;/a&gt; seems like a really interesting repository which can enable me to start a Drupal 8 project and make an installation. Also it will provide me with a door of opportunities to manage all my project-global dependencies via composer.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what I can do to start a &lt;a href=&#34;https://docs.c9.io/docs/getting-started&#34;&gt;Cloud9 workspace&lt;/a&gt; linked my own fork repository of the drupal-project.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Forked the original repo to my own &lt;a href=&#34;https://github.com/kalinchernev/drupal-project&#34;&gt;drupal-project repo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Create a new workspace pointing to the my fork repo.&lt;/li&gt;
+&lt;li&gt;Selecting template &amp;ldquo;The popular stack in shiny cloud wrappings: Apache, PHP5 and MySQL pre-configured&amp;rdquo; seems ok for the moment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This should look similar to:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*nbj-D9ufx-wlGZ-MdBj6Jw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Creating my new development environment&lt;/p&gt;
+
+&lt;p&gt;At the end of this process, I have an &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;-based &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; container. In it, there is a local repository linked to my upstream repository on the origin. I&amp;rsquo;m ready to use the tools I know in Linux because composer, npm, node, etc. are already installed, and I also have a command line interface to run or install anything I need on top of this initial setup. As a side note, &lt;a href=&#34;https://c9.io/community/templates&#34;&gt;custom templates&lt;/a&gt; will soon make this initial setup even more flexible and personalized.&lt;/p&gt;
+
+&lt;p&gt;As the terminal is already open for you, run &lt;code&gt;git remote -v&lt;/code&gt; to ensure this origin linking if you like.&lt;/p&gt;
+
+&lt;h3 id=&#34;selecting-drupal-nbsp-8&#34;&gt;Selecting Drupal&amp;nbsp;8&lt;/h3&gt;
+
+&lt;p&gt;Now that the workspace is ready, you have to select a branch for the Drupal version you are going to work with. I&amp;rsquo;m going to do &lt;code&gt;git checkout 8.x&lt;/code&gt; in the ternimal to use the 8.x version of the the repository files in the container machine. When you do that, you&amp;rsquo;ll see the files in the tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Eoo2-TstzN_2AtY1m4kagw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal 8 branch of the repository&lt;/p&gt;
+
+&lt;p&gt;These are the source files I can use to build the project with the dependencies and the tools of my personal preference.&lt;/p&gt;
+
+&lt;h3 id=&#34;building-project-dependencies&#34;&gt;Building project dependencies&lt;/h3&gt;
+
+&lt;p&gt;The dependencies can be &lt;a href=&#34;https://getcomposer.org/doc/00-intro.md#dependency-management&#34;&gt;managed globally for the project&lt;/a&gt; via the composer.json file. What interests me the most are the Drupal, Drupal Console and Drush which are already &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#the-require-key&#34;&gt;required&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*3AcZBLBGsVdelfdFPJcmMw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal-specific initial dependencies.&lt;/p&gt;
+
+&lt;p&gt;As the readme file of the repo points out, additional dependencies can be added later by &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies&#34;&gt;installing dependencies through the composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code&gt;composer install&lt;/code&gt; in the terminal to download all the dependencies and run all the composer special things defined in the composer.json file.&lt;/p&gt;
+
+&lt;p&gt;When all downloads are finished — you can just run the Run button and start the apache server in the machine to open the project in the project browser or your own browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Wk4VtthU1g6TbvI70Q7u3Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the project in the browser after the dependencies installation.&lt;/p&gt;
+
+&lt;p&gt;If you resist your perfectionist nature and expectations on domain names, now you can open the project at &lt;a href=&#34;https://%7Bprojectname%7D-%7Busername%7D.c9users.io/web/core/install.php&#34;&gt;https://{projectname}-{username}.c9users.io/web/core/install.php&lt;/a&gt; replacing the variables of course. And there you go, you have Drupal 8 ready for your install!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZOtYTj11S-Mi9h_894NoMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yep, the wizard is&amp;nbsp;ready!&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-the-nbsp-project&#34;&gt;Installing the&amp;nbsp;project&lt;/h3&gt;
+
+&lt;p&gt;I deliberately left this out from the previous one. You can, of course, continue with the installation in the most user-friendly way with the wizard above. Classical and easy and you don&amp;rsquo;t worry even for file permissions. If you are a databases guy, probably you&amp;rsquo;ll be interested to check the tutorial for &lt;a href=&#34;https://community.c9.io/t/setting-up-mysql/1718&#34;&gt;setting up mysql&lt;/a&gt; and/or &lt;a href=&#34;https://docs.c9.io/docs/setup-a-database&#34;&gt;setting up a database&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another option for making the installation is using the command line interface and Drupal Console. If you&amp;rsquo;re a non-idealist developer, you can directly run the binary from the vendor folder like &lt;code&gt;/vendor/bin/drupal&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dx0IRYUqpwRv512zYSBGJg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal Console initialization&lt;/p&gt;
+
+&lt;p&gt;This will hint you to run an initial setup for the tool, just do it and then you can have &lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/site-install.html&#34;&gt;&lt;code&gt;vendor/bin/drupal site:install&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more ideas around this installation step, check &lt;a href=&#34;https://drupalconsole.com/articles/how-to-download-and-install-drupal-8-using-drupal-console&#34;&gt;this tutorial&lt;/a&gt; which also includes steps to download the project if it was not done by Composer.&lt;/p&gt;
+
+&lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;commands:  
+# Install Drupal  
+- command: site:install  
+options:  
+langcode: &#39;en&#39;  
+db-type: &#39;%{{db_type|mysql}}&#39;  
+db-host: &#39;%{{db_host|127.0.0.1}}&#39;  
+db-name: &#39;%{{db_name|c9}}&#39;  
+db-user: &#39;%{{db_user|root}}&#39;  
+db-pass: &#39;%{{db_pass|}}&#39;  
+db-port: &#39;%{{db_port|3306}}&#39;  
+site-name: &#39;Drupal 8 site&#39;  
+site-mail: &#39;[admin@example.org][30]&#39; # default email  
+account-name: &#39;admin&#39; # default account  
+account-mail: &#39;[admin@example.org][30]&#39; # default email  
+account-pass: &#39;admin&#39; # default pass  
+arguments:  
+profile: &#39;standard&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
+
+&lt;p&gt;A small helper subject after the setup — since xdebug is available in the docker in &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner, there is a way to debug apps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner with debugger on:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ksgXbNGH5Lp_HtVdLoQWMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The green debugger button is the important detail to&amp;nbsp;notice.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set a break-point and open the application to trigger a request:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*26fDzn9eaCW1fwMcB9BSEQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The app can be run either in preview in the IDE or in another&amp;nbsp;tab.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inspect the state of the system and profit from deeper understanding&amp;nbsp;:)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*lfPKCwwocB8NkegBzv7fOA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use the inspector for observing both global and local&amp;nbsp;scopes.&lt;/p&gt;
+
+&lt;p&gt;Note that the runner properties can be edited:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*m1WawXoob6Jg7DiUIlN9hg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Runners are editable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner  
+// For more information see &amp;lt;http: docs.c9.io:8080=&amp;quot;&amp;quot; #!=&amp;quot;&amp;quot; api=&amp;quot;&amp;quot; run-method-run=&amp;quot;&amp;quot;&amp;gt;  
+{  
+&amp;quot;cmd&amp;quot;: [  
+&amp;quot;run-apache2&amp;quot;,  
+&amp;quot;${debug?debug}&amp;quot;  
+],  
+&amp;quot;cmdStop&amp;quot;: [  
+&amp;quot;run-apache2&amp;quot;,  
+&amp;quot;stop&amp;quot;  
+],  
+&amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,  
+&amp;quot;debugport&amp;quot;: 9000,  
+&amp;quot;$debugDefaultState&amp;quot;: false,  
+&amp;quot;selector&amp;quot;: &amp;quot;^.*\.(php|phtml|html|shtml)$&amp;quot;,  
+&amp;quot;env&amp;quot;: {  
+&amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;  
+},  
+&amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving [01;34m$hostname_path[00m.&amp;quot;  
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s an ambitious initiative/dream to work with Drupal 8 projects in the cloud but you see that it&amp;rsquo;s possible and easy. In the end of this tutorial you have a working instance built out of a composer-based dependency management system, your custom repository, and the vital tools to help you develop well: Drupal Console, Drush and any other script you can think of that run on an Ubuntu machine.&lt;/p&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s up to you to use these tools to your best interest: teaching Drupal 8 interactively, pair-programming, &lt;a href=&#34;https://www.drupal.org/contributor-tasks/triage-novice-issues&#34;&gt;triage&lt;/a&gt; issues by making/testing patches or just experimenting with features you&amp;rsquo;re interested in anywhere, anytime.&lt;/p&gt;
 </description>
     </item>
     
@@ -111,7 +501,7 @@ with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect
     </item>
     
     <item>
-      <title>Cloud9 IDE – Digital Beer – Medium</title>
+      <title>Cloud9 IDE</title>
       <link>https://kalinchernev.github.io/cloud9-editor/</link>
       <pubDate>Mon, 29 Aug 2016 00:00:00 +0200</pubDate>
       
@@ -191,6 +581,66 @@ with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*12EXDc2rgRcy11wQk4SVjA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Focus on community and good services</title>
+      <link>https://kalinchernev.github.io/focus-community-good-services/</link>
+      <pubDate>Mon, 11 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/focus-community-good-services/</guid>
+      <description>
+
+&lt;h2 id=&#34;recap&#34;&gt;Recap&lt;/h2&gt;
+
+&lt;p&gt;For me, 2015 was the toughest year in my life so far, and I liked it. It was amazing - full of mental and emotional challenges. I will remember 2015 as the year I started to see important details from the big picture, which I didn&amp;rsquo;t see before. I want to share about these details.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-big-picture&#34;&gt;The big picture&lt;/h4&gt;
+
+&lt;p&gt;It&amp;rsquo;s very dynamic, because I relocated to Belgium, and that was the first time I had to deliberately synchronize &amp;ldquo;my world&amp;rdquo; with a new &amp;ldquo;other world&amp;rdquo;. Before, I&amp;rsquo;ve worked abroad for couple of months now and then, but I always had a return ticket, which was not the case this time.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;My world&amp;rdquo; was pretty ok generally. In Bulgaria, I had a nice job as a web developer, I regularly did community work for Drupal Bulgaria foundation, giving out training and presentations now and then — I was pretty happy of myself to be honest, I felt on a track. Or a good level (it&amp;rsquo;s &amp;ldquo;the level&amp;rdquo; for developers, see).&lt;/p&gt;
+
+&lt;p&gt;An year later, many details started to light up in the big picture, and I was not prepared, I didn&amp;rsquo;t feel ok. I had to focus more. I had high expectations about my level, so I started digging more into the specifics of how to be as good as I expect myself to be, compared to my previous life in Bulgaria.&lt;/p&gt;
+
+&lt;p&gt;Focusing on the details of the big picture, I managed to see opportunities and good practices that I can conclude to be reusable for anyone. Reusable in such a way that even I will benefit of a given paradigm if I read it after few years.&lt;/p&gt;
+
+&lt;h4 id=&#34;technology-and-nbsp-code&#34;&gt;Technology and&amp;nbsp;code&lt;/h4&gt;
+
+&lt;p&gt;It&amp;rsquo;s always been and will be a lot about technology for me. Until 2015, I was very heavy enthusiast about &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt;. There have been many big projects I&amp;rsquo;m proud of in the past. Working on big projects has always been a good way to battle-test good software as Drupal.&lt;/p&gt;
+
+&lt;p&gt;Starting my new job in Belgium, I quickly realized how much I don&amp;rsquo;t know. Even bigger project, infrastructure complexity, i.e. higher demands for my developer skills. Something was going on in my brain, I started being less enthusiastic about the specific software package or tool, but I got more enthusiastic about the factors that make a project successful.&lt;/p&gt;
+
+&lt;p&gt;My team was bigger and I had to learn new workflows, new tools and ways to communicate my personal beliefs about why a given solution is better than the other. &lt;strong&gt;I learned the hard way that good communication around issues improves results&lt;/strong&gt;. Sometimes even just looking at an issue from a perspective with good questions and communication, lead to solution without coding. Nothing new for communicators, but for hard-core devs: &lt;strong&gt;learn how to debate on your code solutions&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;It was also the first time to do peer reviews and anything else related to sitting down with another developer and showing my code. When I knew my code will be reviewed, I changed the way I express myself in code and started focusing also on beauty and technique, not only quick-fix. &lt;strong&gt;Writing code with aesthetics is good — the overall quality increases and it makes a given piece of work easier to validate.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I also started reading other developers&amp;rsquo; code more frequently. I guess it&amp;rsquo;s a natural reflex of comparing myself. &lt;strong&gt;Reading code from other developers turned so helpful — it&amp;rsquo;s like reading books, but more involving&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;people-and-community&#34;&gt;People and community&lt;/h4&gt;
+
+&lt;p&gt;At some point these small details started to shine. It was time to realize that no matter if I write JavaScript, PHP or any other programming language, a &lt;strong&gt;good project is not only about the code, but also about the human interaction around the code&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I started joining code sprint, hack jams, issue queues in drupal.org, etc. I had the aha! moment that the human factor around code and software make the coding itself more fun. &lt;strong&gt;By collaborating with other developers in work, community and open source, I learned more times more than my previous level I had of 4 years of solo-learning.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I still have so much to learn about the good ways of interaction with other smart developers, but I&amp;rsquo;ve already hooked on my strong belief that healthy &lt;strong&gt;collaboration is the best way advance in any technology and project&lt;/strong&gt;. It&amp;rsquo;s not just about the software.&lt;/p&gt;
+
+&lt;p&gt;Even more motivation was the end of the year, my team at the European Commission was awarded to be the best project team&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/best-team.jpeg&#34; alt=&#34;Best team&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s pretty rewarding to be the best&amp;nbsp;:D&lt;/p&gt;
+
+&lt;h4 id=&#34;what-about-2016&#34;&gt;What about 2016&lt;/h4&gt;
+
+&lt;p&gt;For me, 2016 will most probably be the year of community and good service.&lt;/p&gt;
+
+&lt;p&gt;Community, because it&amp;rsquo;s the hidden jam of happy coding and rapid self-development. Learning is faster, contribution is better, collaboration is fun.&lt;/p&gt;
+
+&lt;p&gt;Good service, because it&amp;rsquo;s why we developers write code. It&amp;rsquo;s easy to lose focus from that because we have too many paradigms, frameworks and libraries to understand to be productive. Yet, we write code to make good products and provide good service.&lt;/p&gt;
+
+&lt;p&gt;First come the good product and service, then the good results give the means of winning the time to try and use the latest cutting edge technologies.&lt;/p&gt;
 </description>
     </item>
     

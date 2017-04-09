@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Building a node.js client for the EU Open Data Portal"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="Building a node.js client for the EU Open Data Portal &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/eu-data-portal-nodejs-client/" />
+
+    
+        
+            <meta property="og:image" content="https://kalinchernev.github.io/images/lego-life.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io/" />
+    <meta property="article:published_time" content="2016-10-02T12:10:11&#43;02:00" />
+
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    <meta property="article:tag" content="nodejs" />
+    
+    <meta property="article:tag" content="open data" />
+    
+    
+
+    <title>Building a node.js client for the EU Open Data Portal &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://kalinchernev.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/eu-data-portal-nodejs-client/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": T-shaped web developer
+        
+    },
+    "headline": Building a node.js client for the EU Open Data Portal,
+    "name": Building a node.js client for the EU Open Data Portal,
+    "wordCount": 189,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/eu-data-portal-nodejs-client/,
+    "datePublished": 2016-10-02T12:10Z,
+    "dateModified": 2016-10-02T12:10Z,
+    
+    "keywords": JavaScript, nodejs, open data,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/eu-data-portal-nodejs-client/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Building a node.js client for the EU Open Data Portal</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-10-02T12:10:11&#43;02:00">
+            Oct 2, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/open-data/">#open data</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Planning to make an open data GraphQL server, it was natural to first build a small abstraction wrapper which can be re-used in other projects. Basically, the <a href="https://www.npmjs.com/package/odp">odp library</a> I&rsquo;m going to talk about is just a simplified client for fetching data from the EU Open Data Portal.</p>
+
+<h3 id="getting-the-library">Getting the library</h3>
+
+<p>When you have <a href="https://nodejs.org/en/">node.js</a>, the module can be installed by npm:</p>
+
+<pre><code>npm install odp
+</code></pre>
+
+<h3 id="library-api">Library API</h3>
+
+<p>The API of the module is pretty simple:</p>
+
+<pre><code>_// Get a range of the whole list of datasets:_
+
+
+odp.getDatasets({query**:** {limit**:** 100, offset**:** 1}}).then((data) =&amp;gt; {
+
+
+  console.log(data);
+
+
+});
+</code></pre>
+
+<p>Currently, there are 4 methods which match the brief information from the <a href="https://data.europa.eu/euodp/en/developerscorner">developers&rsquo; corner</a>. Methods are: <code>getDatasets</code>, <code>getTags</code>, <code>getDataset</code> and <code>datasetSearch</code>. It could be that there are more options than that in the API, but these are all I know so far as user of the website.</p>
+
+<p>An <a href="https://github.com/kalinchernev/odp/blob/master/README.md#examples">Examples section</a> is included in the README file for further details.</p>
+
+<h3 id="resources">Resources</h3>
+
+<p>Suggestions and pull requests are welcome at the <a href="https://github.com/kalinchernev/odp">github page of the project</a>.</p>
+
+<p>For inspirations of use, more information about the data or introduction training of the benefits of using open data, visit the <a href="https://www.europeandataportal.eu/">europeandataportal.eu</a>.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>T-shaped web developer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Building%20a%20node.js%20client%20for%20the%20EU%20Open%20Data%20Portal&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2feu-data-portal-nodejs-client%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2feu-data-portal-nodejs-client%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2feu-data-portal-nodejs-client%2f&amp;description=Building%20a%20node.js%20client%20for%20the%20EU%20Open%20Data%20Portal"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2feu-data-portal-nodejs-client%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/eu-data-portal-nodejs-client\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/stream-adventure-triage/">
+          <section class="post">
+              <h2>Triage stream-adventure issue queue</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/drupal8-cloud9-ide/">
+          <section class="post">
+              <h2>Drupal 8 on Cloud9 IDE</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

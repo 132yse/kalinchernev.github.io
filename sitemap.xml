@@ -2,8 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kalinchernev.github.io/think-about-apps-not-websites/</loc>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/about/</loc>
     <lastmod>2017-04-08T15:33:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/stream-adventure-triage/</loc>
+    <lastmod>2016-11-06T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/eu-data-portal-nodejs-client/</loc>
+    <lastmod>2016-10-02T12:10:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/drupal8-cloud9-ide/</loc>
+    <lastmod>2016-09-15T00:00:00+02:00</lastmod>
   </url>
   
   <url>
@@ -14,6 +34,11 @@
   <url>
     <loc>https://kalinchernev.github.io/cloud9-editor/</loc>
     <lastmod>2016-08-29T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/focus-community-good-services/</loc>
+    <lastmod>2016-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,6 +54,12 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/community/</loc>
+    <lastmod>2016-01-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/debugging/</loc>
     <lastmod>2016-09-04T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -36,31 +67,67 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/drupal/</loc>
-    <lastmod>2016-08-29T00:00:00+02:00</lastmod>
+    <lastmod>2016-09-15T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/tags/javascript/</loc>
-    <lastmod>2016-09-04T00:00:00+02:00</lastmod>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/</loc>
-    <lastmod>2017-04-08T15:33:06+02:00</lastmod>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/mobile/</loc>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/tags/nodejs/</loc>
-    <lastmod>2016-09-04T00:00:00+02:00</lastmod>
+    <lastmod>2016-10-02T12:10:11+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/open-data/</loc>
+    <lastmod>2016-10-02T12:10:11+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/open-source/</loc>
+    <lastmod>2016-11-06T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/php/</loc>
+    <lastmod>2016-09-15T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/post/</loc>
-    <lastmod>2016-09-04T00:00:00+02:00</lastmod>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/programming/</loc>
+    <lastmod>2016-01-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/progressive-web-apps/</loc>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -72,6 +139,12 @@
   <url>
     <loc>https://kalinchernev.github.io/tags/tools/</loc>
     <lastmod>2016-08-29T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/web-development/</loc>
+    <lastmod>2017-12-13T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

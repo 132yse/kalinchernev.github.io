@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/tags/php/index.xml</link>
+    <description>Recent content in Php on Kalin Chernev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://kalinchernev.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Drupal 8 on Cloud9 IDE</title>
+      <link>https://kalinchernev.github.io/drupal8-cloud9-ide/</link>
+      <pubDate>Thu, 15 Sep 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/drupal8-cloud9-ide/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;You see things; and you say, &amp;lsquo;Why?&amp;rsquo; But I dream things that never were; and I say, &amp;lsquo;Why not?&amp;ldquo; — George Bernard Shaw&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; will soon celebrate 1 year since its release. One interesting fact about this version of the popular PHP CMS is that the &lt;a href=&#34;https://www.drupal.org/core/release-cycle-overview&#34;&gt;release cycles&lt;/a&gt; are smaller and feature-focused. This makes everybody happier than previous major versions and I will focus on developers&amp;rsquo; experience. It&amp;rsquo;s been steadily improving since the focused adoption of popular and well-maintained projects from the wide PHP community. &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;, &lt;a href=&#34;https://drupalconsole.com/&#34;&gt;Drupal Console&lt;/a&gt; (an implementation of Symfony Console) and adopting PHP OOP design patterns in overall are some of the highlights in this article.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, &lt;a href=&#34;http://c9.io&#34;&gt;Cloud9 Editor&lt;/a&gt; is an interesting project to my personal experience as a developer. I&amp;rsquo;ve shared some enthusiasm about it before, summarizing &lt;a href=&#34;https://medium.com/@kalin.chernev/cloud9-ide-6e26940c6130#.nxqgf2ree&#34;&gt;some of my favorite features&lt;/a&gt;, and going deeper into &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2#.tknem3kcp&#34;&gt;debugging applications in the cloud&lt;/a&gt;. At this step, I start to dream about scenarios where this cloud editor will be THE editor for massive amount of open source contributors, experimenters and agile practitioners alike. I also visualize scenarios where it could fill in the gap in the hearts of many who use tools like &lt;a href=&#34;https://dreditor.org/&#34;&gt;dreditor&lt;/a&gt;. Dreditor on steroids: git, drush, mysql, php, etc — all the tools a developer needs to start, test, develop and deploy!&lt;/p&gt;
+
+&lt;h3 id=&#34;repository-based-development-environment&#34;&gt;Repository based development environment&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/drupal-composer/drupal-project&#34;&gt;Drupal Composer&amp;rsquo;s drupal-project&lt;/a&gt; seems like a really interesting repository which can enable me to start a Drupal 8 project and make an installation. Also it will provide me with a door of opportunities to manage all my project-global dependencies via composer.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what I can do to start a &lt;a href=&#34;https://docs.c9.io/docs/getting-started&#34;&gt;Cloud9 workspace&lt;/a&gt; linked my own fork repository of the drupal-project.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Forked the original repo to my own &lt;a href=&#34;https://github.com/kalinchernev/drupal-project&#34;&gt;drupal-project repo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Create a new workspace pointing to the my fork repo.&lt;/li&gt;
+&lt;li&gt;Selecting template &amp;ldquo;The popular stack in shiny cloud wrappings: Apache, PHP5 and MySQL pre-configured&amp;rdquo; seems ok for the moment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This should look similar to:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*nbj-D9ufx-wlGZ-MdBj6Jw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Creating my new development environment&lt;/p&gt;
+
+&lt;p&gt;At the end of this process, I have an &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;-based &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; container. In it, there is a local repository linked to my upstream repository on the origin. I&amp;rsquo;m ready to use the tools I know in Linux because composer, npm, node, etc. are already installed, and I also have a command line interface to run or install anything I need on top of this initial setup. As a side note, &lt;a href=&#34;https://c9.io/community/templates&#34;&gt;custom templates&lt;/a&gt; will soon make this initial setup even more flexible and personalized.&lt;/p&gt;
+
+&lt;p&gt;As the terminal is already open for you, run &lt;code&gt;git remote -v&lt;/code&gt; to ensure this origin linking if you like.&lt;/p&gt;
+
+&lt;h3 id=&#34;selecting-drupal-nbsp-8&#34;&gt;Selecting Drupal&amp;nbsp;8&lt;/h3&gt;
+
+&lt;p&gt;Now that the workspace is ready, you have to select a branch for the Drupal version you are going to work with. I&amp;rsquo;m going to do &lt;code&gt;git checkout 8.x&lt;/code&gt; in the ternimal to use the 8.x version of the the repository files in the container machine. When you do that, you&amp;rsquo;ll see the files in the tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Eoo2-TstzN_2AtY1m4kagw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal 8 branch of the repository&lt;/p&gt;
+
+&lt;p&gt;These are the source files I can use to build the project with the dependencies and the tools of my personal preference.&lt;/p&gt;
+
+&lt;h3 id=&#34;building-project-dependencies&#34;&gt;Building project dependencies&lt;/h3&gt;
+
+&lt;p&gt;The dependencies can be &lt;a href=&#34;https://getcomposer.org/doc/00-intro.md#dependency-management&#34;&gt;managed globally for the project&lt;/a&gt; via the composer.json file. What interests me the most are the Drupal, Drupal Console and Drush which are already &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#the-require-key&#34;&gt;required&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*3AcZBLBGsVdelfdFPJcmMw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal-specific initial dependencies.&lt;/p&gt;
+
+&lt;p&gt;As the readme file of the repo points out, additional dependencies can be added later by &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies&#34;&gt;installing dependencies through the composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code&gt;composer install&lt;/code&gt; in the terminal to download all the dependencies and run all the composer special things defined in the composer.json file.&lt;/p&gt;
+
+&lt;p&gt;When all downloads are finished — you can just run the Run button and start the apache server in the machine to open the project in the project browser or your own browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Wk4VtthU1g6TbvI70Q7u3Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the project in the browser after the dependencies installation.&lt;/p&gt;
+
+&lt;p&gt;If you resist your perfectionist nature and expectations on domain names, now you can open the project at &lt;a href=&#34;https://%7Bprojectname%7D-%7Busername%7D.c9users.io/web/core/install.php&#34;&gt;https://{projectname}-{username}.c9users.io/web/core/install.php&lt;/a&gt; replacing the variables of course. And there you go, you have Drupal 8 ready for your install!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZOtYTj11S-Mi9h_894NoMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yep, the wizard is&amp;nbsp;ready!&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-the-nbsp-project&#34;&gt;Installing the&amp;nbsp;project&lt;/h3&gt;
+
+&lt;p&gt;I deliberately left this out from the previous one. You can, of course, continue with the installation in the most user-friendly way with the wizard above. Classical and easy and you don&amp;rsquo;t worry even for file permissions. If you are a databases guy, probably you&amp;rsquo;ll be interested to check the tutorial for &lt;a href=&#34;https://community.c9.io/t/setting-up-mysql/1718&#34;&gt;setting up mysql&lt;/a&gt; and/or &lt;a href=&#34;https://docs.c9.io/docs/setup-a-database&#34;&gt;setting up a database&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another option for making the installation is using the command line interface and Drupal Console. If you&amp;rsquo;re a non-idealist developer, you can directly run the binary from the vendor folder like &lt;code&gt;/vendor/bin/drupal&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dx0IRYUqpwRv512zYSBGJg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal Console initialization&lt;/p&gt;
+
+&lt;p&gt;This will hint you to run an initial setup for the tool, just do it and then you can have &lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/site-install.html&#34;&gt;&lt;code&gt;vendor/bin/drupal site:install&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more ideas around this installation step, check &lt;a href=&#34;https://drupalconsole.com/articles/how-to-download-and-install-drupal-8-using-drupal-console&#34;&gt;this tutorial&lt;/a&gt; which also includes steps to download the project if it was not done by Composer.&lt;/p&gt;
+
+&lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;commands:  
+# Install Drupal  
+- command: site:install  
+options:  
+langcode: &#39;en&#39;  
+db-type: &#39;%{{db_type|mysql}}&#39;  
+db-host: &#39;%{{db_host|127.0.0.1}}&#39;  
+db-name: &#39;%{{db_name|c9}}&#39;  
+db-user: &#39;%{{db_user|root}}&#39;  
+db-pass: &#39;%{{db_pass|}}&#39;  
+db-port: &#39;%{{db_port|3306}}&#39;  
+site-name: &#39;Drupal 8 site&#39;  
+site-mail: &#39;[admin@example.org][30]&#39; # default email  
+account-name: &#39;admin&#39; # default account  
+account-mail: &#39;[admin@example.org][30]&#39; # default email  
+account-pass: &#39;admin&#39; # default pass  
+arguments:  
+profile: &#39;standard&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
+
+&lt;p&gt;A small helper subject after the setup — since xdebug is available in the docker in &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner, there is a way to debug apps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner with debugger on:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ksgXbNGH5Lp_HtVdLoQWMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The green debugger button is the important detail to&amp;nbsp;notice.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set a break-point and open the application to trigger a request:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*26fDzn9eaCW1fwMcB9BSEQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The app can be run either in preview in the IDE or in another&amp;nbsp;tab.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inspect the state of the system and profit from deeper understanding&amp;nbsp;:)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*lfPKCwwocB8NkegBzv7fOA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use the inspector for observing both global and local&amp;nbsp;scopes.&lt;/p&gt;
+
+&lt;p&gt;Note that the runner properties can be edited:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*m1WawXoob6Jg7DiUIlN9hg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Runners are editable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner  
+// For more information see &amp;lt;http: docs.c9.io:8080=&amp;quot;&amp;quot; #!=&amp;quot;&amp;quot; api=&amp;quot;&amp;quot; run-method-run=&amp;quot;&amp;quot;&amp;gt;  
+{  
+&amp;quot;cmd&amp;quot;: [  
+&amp;quot;run-apache2&amp;quot;,  
+&amp;quot;${debug?debug}&amp;quot;  
+],  
+&amp;quot;cmdStop&amp;quot;: [  
+&amp;quot;run-apache2&amp;quot;,  
+&amp;quot;stop&amp;quot;  
+],  
+&amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,  
+&amp;quot;debugport&amp;quot;: 9000,  
+&amp;quot;$debugDefaultState&amp;quot;: false,  
+&amp;quot;selector&amp;quot;: &amp;quot;^.*\.(php|phtml|html|shtml)$&amp;quot;,  
+&amp;quot;env&amp;quot;: {  
+&amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;  
+},  
+&amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving [01;34m$hostname_path[00m.&amp;quot;  
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s an ambitious initiative/dream to work with Drupal 8 projects in the cloud but you see that it&amp;rsquo;s possible and easy. In the end of this tutorial you have a working instance built out of a composer-based dependency management system, your custom repository, and the vital tools to help you develop well: Drupal Console, Drush and any other script you can think of that run on an Ubuntu machine.&lt;/p&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s up to you to use these tools to your best interest: teaching Drupal 8 interactively, pair-programming, &lt;a href=&#34;https://www.drupal.org/contributor-tasks/triage-novice-issues&#34;&gt;triage&lt;/a&gt; issues by making/testing patches or just experimenting with features you&amp;rsquo;re interested in anywhere, anytime.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
