@@ -10,9 +10,87 @@
     <atom:link href="https://kalinchernev.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Holidays digest 2016</title>
+      <link>https://kalinchernev.github.io/holiday-digest-2016/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/holiday-digest-2016/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/digital-beer/holidays-digest-68ecc2b115a8&#34; title=&#34;Permalink to Holidays digest – Digital Beer – Medium&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I decided to try a new format of writing a story — a &amp;ldquo;digest&amp;rdquo; one. In this format, I&amp;rsquo;ll be able to mix subjects and share about things I find interesting. Although I don&amp;rsquo;t plan to follow a strict structure, topics will be divided into sections to make it easy to jump between without having to read it all.&lt;/p&gt;
+
+&lt;h3 id=&#34;medium&#34;&gt;Medium&lt;/h3&gt;
+
+&lt;p&gt;Certainly, the trending topic in the context of this blog is the story about &lt;a href=&#34;https://blog.medium.com/renewing-mediums-focus-98f374a960be#.yuaggxs6c&#34;&gt;Renewing Medium&amp;rsquo;s focus&lt;/a&gt;. I think there are few really good points about the &amp;ldquo;why&amp;rdquo; and I hope that Medium will find the new way to provide the value they want for publishers.&lt;/p&gt;
+
+&lt;h3 id=&#34;kadira&#34;&gt;Kadira&lt;/h3&gt;
+
+&lt;p&gt;On a similar note, &lt;a href=&#34;https://voice.kadira.io/kadira-shutting-down-7d35994db85d#.mmph3hury&#34;&gt;Kadira: Shutting Down&lt;/a&gt; was an expected story from &lt;a href=&#34;https://medium.com/@arunoda&#34;&gt;Arunoda Susiripala&lt;/a&gt;. The decision is understandable from a business point of view. In a more global view, I feel that this story is a historic event for the JavaScript community in overall. It&amp;rsquo;s a reminder of how fierce the competition in the JavaScript ecosystem is and how important it is for vendors like MDG to manage their relations with driving contributors.&lt;/p&gt;
+
+&lt;h3 id=&#34;progressive-web-nbsp-apps&#34;&gt;Progressive Web&amp;nbsp;Apps&lt;/h3&gt;
+
+&lt;p&gt;My last post was about &lt;a href=&#34;https://medium.com/@kalin.chernev/think-about-apps-not-websites-13757f9736de#.5v5yhw1p3&#34;&gt;thinking about apps, not websites&lt;/a&gt;. My goal was to start a collection of good examples of making modern apps. I had plans to continue on this story-line by making a case study of an app with information about first aid that works offline, demonstrating both the technical and informational side.&lt;/p&gt;
+
+&lt;p&gt;To find a re-usable information about first aid was a tougher cookie that I thought. First, information on the web is not well structured. I was looking for a topical steps on how to help in a given urgent situation, but couldn&amp;rsquo;t find anything organized. Secondly — the information was copyright and it would have taken a massive amount of waiting time to get information for a demo case study. I managed to find some open information in &lt;a href=&#34;https://en.wikibooks.org/wiki/First_Aid&#34;&gt;wiki books&lt;/a&gt;, which got me started on the content. Finding free photos I could use was a bit easier as &lt;a href=&#34;https://medium.com/@disastacre&#34;&gt;Vladimir Vassilev&lt;/a&gt; suggested me a source collection of &lt;a href=&#34;http://re-wp.com/stock-photos/&#34;&gt;free stock photos&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By the time I got my content prepared, the team of &lt;a href=&#34;https://medium.com/@auth0&#34;&gt;Auth0&lt;/a&gt; had already published 2 great articles on the same subject!&amp;nbsp;:D&lt;/p&gt;
+
+&lt;p&gt;The first one (actually the second one), which continued on the same story line as I aimed to, was about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-instant-loading-part-2/&#34;&gt;instant loading and storage&lt;/a&gt;. At the same time, I was testing &lt;a href=&#34;https://github.com/GoogleChrome/sw-precache&#34;&gt;sw-precache&lt;/a&gt; more thoroughly and I had issues with the offline storage that erased the cache in an unpredictable ways on my mobile phone. Seeing that article during my work on the first aid case study, just discarded much of the things I wanted to share, as the article of &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is much more thorough and deeper explained.&lt;/p&gt;
+
+&lt;p&gt;Then, just before NY, came the second nice article from the same team, this time about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-push-notifications-part-3/&#34;&gt;push notifications&lt;/a&gt;. With this, I decided that it&amp;rsquo;s better to recommend these, rather than writing or trying to complete the first aid app. Mainly because I don&amp;rsquo;t believe it will be of any value added.&lt;/p&gt;
+
+&lt;p&gt;Anyway, if you read this and still consider it&amp;rsquo;s a good idea to make a progressive web app for first aid, then I&amp;rsquo;d recommend you check the &lt;a href=&#34;https://www.mediawiki.org/wiki/API:Main_page&#34;&gt;wikibooks REST API&lt;/a&gt; to get the information about the book I linked earlier, following the &lt;a href=&#34;https://wikimediafoundation.org/wiki/Developer_app_guidelines&#34;&gt;guidelines&lt;/a&gt;. From the little experience making the app, I&amp;rsquo;d recommend &lt;a href=&#34;https://visionmedia.github.io/page.js/&#34;&gt;page.js&lt;/a&gt; and reading &lt;a href=&#34;https://medium.com/@krasimirtsonev&#34;&gt;Krasimir Tsonev&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;http://krasimirtsonev.com/blog/article/deep-dive-into-client-side-routing-navigo-pushstate-hash&#34;&gt;Deep dive into client-side routing&lt;/a&gt;, that&amp;rsquo;s of course if you want to keep it simple, rather than using React (w/ react router) or Angular, etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;pishi-kur-18&#34;&gt;&lt;a href=&#34;https://pishikur.com/&#34;&gt;Pishi Kur&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;That&amp;rsquo;s a tiny project that I released around Christmas. It&amp;rsquo;s just taking an example app from &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt; and has some changed strings here and there. The idea of the project is to entertain Bulgarians travelling or living abroad by collecting pictures of a word. The idea came along in &lt;a href=&#34;https://en.wikipedia.org/wiki/Plovdiv&#34;&gt;Plovdiv&lt;/a&gt; when few Bulgarians shared that they see that word in France, Germany, in the mountains, etc. The project will not be translated in Bulgarian and will not encourage vandalism, or anything like this. It&amp;rsquo;s rather a surrealistic platform of sharing funny moments while being in special places around the world.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s also my first time to use Firebase. My impressions so far are positive: it was easy to setup the social authentication and deploy the app. The developer experience is close to what Meteor was about an year ago — easy development, ready plugin-like functionalities, etc. Only that, Meteor killed a lot of its interest by making Galaxy nothing more than a place to host your app, not providing a lot of services around it. With Firebase, Google services are easy to integrate at the finger tips of the developer.&lt;/p&gt;
+
+&lt;p&gt;So far, there are more than 30 registered users, average of 30 visits per day. If this grows organically, it will be an interesting case study to work with Firebase tools to scale and tweak the platform. Otherwise, I don&amp;rsquo;t plan to push advertising or any type of campaigns to make it bigger than that&amp;nbsp;:)&lt;/p&gt;
+
+&lt;h3 id=&#34;apis&#34;&gt;APIs&lt;/h3&gt;
+
+&lt;p&gt;Feeling that I strayed a bit from this topic in the last few months, I renewed reading and researching ways to get my hands back on things about APIs.&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;&lt;a href=&#34;https://hackernoon.com/how-i-made-a-saas-webservice-earning-1000-monthly-profit-6d2b782b95c8#.jrv7pfxuz&#34;&gt;How I made a SaaS webservice earning $1000 monthly profit&lt;/a&gt;&amp;rdquo; is a motivating piece about taking small steps towards monetization of a service.&lt;/p&gt;
+
+&lt;p&gt;Another interesting piece of information is the &lt;a href=&#34;https://www.programmableweb.com/news/programmablewebs-most-interesting-apis-2016-application-development-and-developer-tools/brief/2016/12/23&#34;&gt;ProgrammableWeb&amp;rsquo;s Most Interesting APIs in 2016: Application Development and Developer Tools&lt;/a&gt;. I really love the idea of website to API tools like the &lt;a href=&#34;https://www.jamapi.xyz/&#34;&gt;Jam API&lt;/a&gt; mentioned. It reminds me of &lt;a href=&#34;https://medium.com/@kimonolabs&#34;&gt;Kimono Labs&lt;/a&gt; who got acquired almost an year ago.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://www.npmjs.com/package/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; module that I sometimes work on in my free time continue on its path of wider adoption:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*yJ4w5B4sAANmTqrJlHpcFw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Based on data from &lt;https: npm-stat.com=&#34;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;It might be that the CLI tool played an important role in August. And because the module targets the developers&amp;rsquo; audience, I plan to work on a feature to &amp;ldquo;watch&amp;rdquo; for changes in the input files.&lt;/p&gt;
+
+&lt;p&gt;I believe it&amp;rsquo;s worth investing in learning and doing more of swagger apis this year, mainly for 2 reasons:&lt;/p&gt;
+
+&lt;p&gt;Trends look good:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*bVdbmTcQZsE4tYunE7Jh5Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Taken from &lt;a href=&#34;https://www.google.com/trends/explore?q=swagger%20api&#34;&gt;Google&amp;nbsp;Trends&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Adoption of &lt;a href=&#34;https://www.openapis.org/&#34;&gt;Open API specification&lt;/a&gt; also looks positive, and also the big players also support it. It&amp;rsquo;s hard to say what exactly will happen in 2017 after some of the &lt;a href=&#34;https://medium.com/the-era-of-apis/over-500m-invested-in-api-companies-in-2016-with-16-acquisitions-cc4f3d2beef8#.99codaicj&#34;&gt;acquisitions of 2016&lt;/a&gt;. Nevertheless, my gut feeling is that having a solid specification (with such adoption) is a key to having the true interoperability to other specifications and solutions such as GraphQL, in potential interest &lt;a href=&#34;https://medium.com/@raxwunter/moving-existing-api-from-rest-to-graphql-205bab22c184#.h6rctdrxm&#34;&gt;moving existing API from REST to GraphQL&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-chat-bot-story-32-became-my-best-story-of-2016-because-of-chatbots-life-33-publication&#34;&gt;&lt;a href=&#34;https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627#.rgfcezwnz&#34;&gt;My chat bot story&lt;/a&gt; became my best story of 2016 because of &lt;a href=&#34;https://medium.com/@ChatBotsLife&#34;&gt;Chatbots Life&lt;/a&gt; publication&lt;/h3&gt;
+
+&lt;p&gt;Being published on 1st December, and being one my last articles for 2016, the &amp;ldquo;Building a chat bot who understands emotions though your selfies&amp;rdquo; story grew to be my best story of the year, thanks to &lt;a href=&#34;https://medium.com/@kojouharov&#34;&gt;Stefan Kojouharov&lt;/a&gt; including it in a publication.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*HgTPQnk-aW0wxKdFitxtzg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only story that could have been a competition in fame to this one was the &amp;ldquo;&lt;a href=&#34;https://medium.com/@kalin.chernev/drupal-8-on-cloud9-ide-1a294328e1aa#.g3a7u6t68&#34;&gt;Drupal 8 on Cloud9 IDE&lt;/a&gt;&amp;rdquo; which got more views because of being included in the &lt;a href=&#34;http://www.theweeklydrop.com/archive/issue-258&#34;&gt;Weekly Drop issue 258&lt;/a&gt;, but didn&amp;rsquo;t reach as many number of reads and recommends.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Think about apps, not websites</title>
       <link>https://kalinchernev.github.io/think-about-apps-not-websites/</link>
-      <pubDate>Wed, 13 Dec 2017 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 13 Dec 2016 00:00:00 +0200</pubDate>
       
       <guid>https://kalinchernev.github.io/think-about-apps-not-websites/</guid>
       <description>
@@ -177,6 +255,14 @@
 &lt;h3 id=&#34;the-future&#34;&gt;The future&lt;/h3&gt;
 
 &lt;p&gt;Apart from being bright, it will be filled with advancements and further variety in the developers&amp;rsquo; toolbox. Having in mind that browsers have always been an inconsistent environment, it will be vital to keep the following resources at hand and get fresh information every now and then.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/Apps/Progressive&#34;&gt;MDN App Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/web/updates/&#34;&gt;Google Web Updates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.chrome.com/home&#34;&gt;Chrome&lt;/a&gt;, &lt;a href=&#34;https://blogs.windows.com/msedgedev/#aJK7cy6m0YfVUByl.97&#34;&gt;Microsoft Edge&lt;/a&gt;, etc. of interest&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.html5rocks.com/en/&#34;&gt;HTML5Rocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3.org/TR/&#34;&gt;The standards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;It&amp;rsquo;s important to underline, that &lt;a href=&#34;https://medium.com/@nekrtemplar/progressive-web-apps-aint-google-s-thing-31ca581e7a1#.faazl83yx&#34;&gt;Progressive Web Apps isn&amp;rsquo;t a Google-only thing&lt;/a&gt; although many of the references in this article are going to resources authored by community contributions to Google documentation. This is mainly because the dedication and organization of knowledge seems to the best at the moment. &lt;a href=&#34;https://blogs.windows.com/msedgedev/2016/07/08/the-progress-of-web-apps/#ZeJAshXJM2BuqDRB.97&#34;&gt;Microsoft are also supporters of PWA&lt;/a&gt;. In fact, &lt;a href=&#34;http://manifoldjs.com&#34;&gt;manifoldjs&lt;/a&gt; is an interesting project you will probably meet should you decide to make PWA that works as a nice app in Windows.&lt;/p&gt;
 

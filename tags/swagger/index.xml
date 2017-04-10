@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nodejs on Kalin Chernev</title>
-    <link>https://kalinchernev.github.io/tags/nodejs/index.xml</link>
-    <description>Recent content in Nodejs on Kalin Chernev</description>
+    <title>Swagger on Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/tags/swagger/index.xml</link>
+    <description>Recent content in Swagger on Kalin Chernev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="https://kalinchernev.github.io/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kalinchernev.github.io/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Agile documentation for your API-driven project</title>
@@ -204,121 +204,6 @@ app.post(&#39;/login&#39;, (req, res) =&amp;gt; {
 &lt;p&gt;The tools shown in &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs&#34;&gt;the repository&lt;/a&gt; are free and vendor-neutral and the documentation build can be deployed to any place which serves you best. So, I encourage you to further experiment with the code and adapt it to work best for your specific needs.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;If you think this article was helpful, then consider making a comment, a share or a ❤&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Building a node.js client for the EU Open Data Portal</title>
-      <link>https://kalinchernev.github.io/eu-data-portal-nodejs-client/</link>
-      <pubDate>Sun, 02 Oct 2016 12:10:11 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/eu-data-portal-nodejs-client/</guid>
-      <description>
-
-&lt;p&gt;Planning to make an open data GraphQL server, it was natural to first build a small abstraction wrapper which can be re-used in other projects. Basically, the &lt;a href=&#34;https://www.npmjs.com/package/odp&#34;&gt;odp library&lt;/a&gt; I&amp;rsquo;m going to talk about is just a simplified client for fetching data from the EU Open Data Portal.&lt;/p&gt;
-
-&lt;h3 id=&#34;getting-the-library&#34;&gt;Getting the library&lt;/h3&gt;
-
-&lt;p&gt;When you have &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node.js&lt;/a&gt;, the module can be installed by npm:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ npm install odp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;library-api&#34;&gt;Library API&lt;/h3&gt;
-
-&lt;p&gt;The API of the module is pretty simple:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Get a range of the whole list of datasets:
-odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
-  console.log(data);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Currently, there are 4 methods which match the brief information from the &lt;a href=&#34;https://data.europa.eu/euodp/en/developerscorner&#34;&gt;developers&amp;rsquo; corner&lt;/a&gt;. Methods are: &lt;code&gt;getDatasets()&lt;/code&gt;, &lt;code&gt;getTags()&lt;/code&gt;, &lt;code&gt;getDataset()&lt;/code&gt; and &lt;code&gt;datasetSearch()&lt;/code&gt;. It could be that there are more options than that in the API, but these are all I know so far as user of the website.&lt;/p&gt;
-
-&lt;p&gt;An &lt;a href=&#34;https://github.com/kalinchernev/odp/blob/master/README.md#examples&#34;&gt;Examples section&lt;/a&gt; is included in the README file for further details.&lt;/p&gt;
-
-&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
-
-&lt;p&gt;Suggestions and pull requests are welcome at the &lt;a href=&#34;https://github.com/kalinchernev/odp&#34;&gt;github page of the project&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For inspirations of use, more information about the data or introduction training of the benefits of using open data, visit the &lt;a href=&#34;https://www.europeandataportal.eu/&#34;&gt;europeandataportal.eu&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Debugging node.js in Cloud9 IDE</title>
-      <link>https://kalinchernev.github.io/debugging-nodejs-in-cloud9-ide/</link>
-      <pubDate>Sun, 04 Sep 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/debugging-nodejs-in-cloud9-ide/</guid>
-      <description>
-
-&lt;p&gt;In this article I&amp;rsquo;ll be sharing some of my level-up experience learning how to debug node.js apps. It was not easy at first, but once I got it, I felt empowered that now I can work with any code base.&lt;/p&gt;
-
-&lt;p&gt;Debugging is useful for solving vague problems in other people&amp;rsquo;s code and it&amp;rsquo;s also useful for learning how something actually works. The article might be particularly useful for those used to having debugger experience in WebStorm or similar IDEs.&lt;/p&gt;
-
-&lt;h3 id=&#34;quick-reference&#34;&gt;Quick reference&lt;/h3&gt;
-
-&lt;p&gt;That article is meant to be more like a cheat sheet rather than too detailed step by step guide, here&amp;rsquo;s a go-to list of techniques:&lt;/p&gt;
-
-&lt;h3 id=&#34;node-debugger&#34;&gt;Node debugger&lt;/h3&gt;
-
-&lt;p&gt;Let&amp;rsquo;s start by the basics — using the &lt;a href=&#34;https://nodejs.org/api/debugger.html&#34;&gt;node&amp;rsquo;s native debugger&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For example, &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc/blob/master/example/app.js&#34;&gt;this app&lt;/a&gt; contains a simple server returning a JSON object which is a &lt;a href=&#34;https://www.google.be/url?sa=t&amp;amp;amp;rct=j&amp;amp;amp;q=&amp;amp;amp;esrc=s&amp;amp;amp;source=web&amp;amp;amp;cd=1&amp;amp;amp;cad=rja&amp;amp;amp;uact=8&amp;amp;amp;ved=0ahUKEwiG4Pi0qfbOAhUEOhQKHaQICOAQFggcMAA&amp;amp;amp;url=http%3A%2F%2Fswagger.io%2Fspecification%2F&amp;amp;amp;usg=AFQjCNH_jZB7rkJVVCg-JHFmeLAHwMnUfw&amp;amp;amp;sig2=R2rG7_9EH1ctFeFwtJ7cPw&amp;amp;amp;bvm=bv.131783435,d.d24&#34;&gt;swagger specification&lt;/a&gt; and I need to debug and see its value. So, in this example, I&amp;rsquo;ll follow this steps to see the contents of the variable:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Set a break point with &lt;code&gt;debugger&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Run the script with &lt;code&gt;node debug example/app.js&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Work with the controls of the debugger to reach a good value: &lt;code&gt;c&lt;/code&gt; to continue and &lt;code&gt;n&lt;/code&gt; for next&lt;/li&gt;
-&lt;li&gt;Use &lt;code&gt;repl&lt;/code&gt; to execute some code which access current state of the system&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*CHRmYU912yZDRmqz7Z490w.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;simple-script&#34;&gt;Simple script&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add a break point&lt;/li&gt;
-&lt;li&gt;Press the Run button to execute the default node runner (ensure the debugger is enabled — &lt;a href=&#34;https://docs.c9.io/docs/debugging-your-code&#34;&gt;more info&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*I-mVNLptBFDG-EaJpLR6rQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;mocha-tests&#34;&gt;Mocha tests&lt;/h3&gt;
-
-&lt;p&gt;This is an &lt;a href=&#34;https://docs.c9.io/docs/experimental-features&#34;&gt;experimental feature&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*-8oDjYBTEU4-G8H5_vw5lg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Enable &amp;lsquo;Tests&amp;rdquo; from the editor settings&lt;/li&gt;
-&lt;li&gt;Refresh the page and see the panel&lt;/li&gt;
-&lt;li&gt;Put a break point in the test&lt;/li&gt;
-&lt;li&gt;Enable debugging in the &amp;ldquo;Test&amp;rdquo; panel&lt;/li&gt;
-&lt;li&gt;Run the test suite or scenario&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This feature actually worked for me, I felt just the same way when I made my first &lt;a href=&#34;http://mortalkombat.wikia.com/wiki/Animality&#34;&gt;animality in MK3&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*OHINaf_jcvN75EN1M0ozlQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;command-line-apps&#34;&gt;Command-line apps&lt;/h3&gt;
-
-&lt;p&gt;In fact it&amp;rsquo;s almost identical to debugging a simple script, the only detail you have to notice is an input box where you put the actual command as if ran in the command line.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Open the command-line app and place a break point&lt;/li&gt;
-&lt;li&gt;Use the Run menu to start the process in debug more&lt;/li&gt;
-&lt;li&gt;Change the input process name and restart the runner&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*V9xHSnqzwCasqzHiHyBD5Q.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;feedback-is-nbsp-welcome&#34;&gt;Feedback is&amp;nbsp;welcome&lt;/h3&gt;
-
-&lt;p&gt;Use the comments below to share your techniques and opinions.&lt;/p&gt;
 </description>
     </item>
     

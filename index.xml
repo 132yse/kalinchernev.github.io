@@ -7,13 +7,363 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Wed, 13 Dec 2017 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 08 Apr 2017 15:33:06 +0200</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About</title>
+      <link>https://kalinchernev.github.io/about/</link>
+      <pubDate>Sat, 08 Apr 2017 15:33:06 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/about/</guid>
+      <description>&lt;p&gt;Hi, my name is Kalin Chernev, and this website is probably my 5th place to blog, I stopped counting.
+My track of experience is filled with projects on Drupal and sometimes a bit of WordPress,
+but this time there&amp;rsquo;s no CMS behind this website. This website/blog is hosted on github pages for 2 main reasons: &lt;strong&gt;be close to code&lt;/strong&gt; from github, and &lt;strong&gt;keep things simple&lt;/strong&gt; hosting only HTML, CSS and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Today, I&amp;rsquo;m working mostly with JavaScript in various forms. That&amp;rsquo;s why you will encounter the notes I&amp;rsquo;m taking
+in this blog on my way of understanding concepts, trying frameworks, experimenting with libraries
+and all sorts of tools solving problems with JavaScript. It&amp;rsquo;s just amazing how this language got so
+versatile to solve so many types of problems.&lt;/p&gt;
+
+&lt;p&gt;Web has evolved so much in recent years, and the speed of evolution is accelerating greatly.
+We solve more complex problems, which lead to even more sophisticated problems to solve.
+Thus, this blog keeps things simple - it&amp;rsquo;s plain good old HTML, CSS and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;I believe in experimentation and open source contribution as a way to learn and keep up
+with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect from this blog.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Agile documentation for your API-driven project</title>
+      <link>https://kalinchernev.github.io/agile-documentation-api-driven-project/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/agile-documentation-api-driven-project/</guid>
+      <description>
+
+&lt;p&gt;&lt;em&gt;Based on &lt;a href=&#34;https://www.openapis.org/&#34;&gt;Open API standards&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Documentation is like sex; when it’s good, it’s very, very good, and when it’s bad, it’s better than nothing.” — Dick Brandon&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The goal of this article is to inspire improved workflows for building and maintaining documentation for API-driven projects. In the end of the story, you will hopefully try out new approaches of documenting your code. As such, it automatically increases the value of your work through making it more maintainable and re-usable in less time and efforts.&lt;/p&gt;
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://swagger.io/&#34;&gt;Swagger&lt;/a&gt; is one of the most popular and widely adopted specifications for RESTful APIs. In fact, the specification got off so well that &lt;a href=&#34;http://swagger.io/open-source-integrations/&#34;&gt;numerous community tools&lt;/a&gt; are available. Also, the &lt;a href=&#34;https://www.openapis.org/&#34;&gt;Open API initiative&lt;/a&gt; was born as a result of successful projects that use these tools basing on this specification in one way or another.&lt;/p&gt;
+
+&lt;p&gt;With the &lt;a href=&#34;https://www.google.com/trends/explore?q=swagger%20api&#34;&gt;raise of popularity&lt;/a&gt; in 2016, leading experts started sharing advice on as &lt;a href=&#34;https://scotch.io/tutorials/speed-up-your-restful-api-development-in-node-js-with-swagger&#34;&gt;speeding the development phase with Swagger&lt;/a&gt; and later making a &lt;a href=&#34;https://scotch.io/tutorials/document-your-already-existing-apis-with-swagger&#34;&gt;good documentation of an existing API&lt;/a&gt;, again same spec being involved. These are few examples of well-written tutorials demonstrating benefits of having an API and a good toolchain, and documentation around it. There are &lt;a href=&#34;https://egghead.io/courses/build-node-js-apis-with-openapi-spec-swagger&#34;&gt;more&lt;/a&gt;, of course, and I think this trend will stay solid for the next couple of years. That’s because the Open API specification makes sense just enough to empower developers and business people to have a common language of how an interface should work. It is as a contract of communication and data format between humans and machines.&lt;/p&gt;
+
+&lt;p&gt;In summary, the Swagger specification brings several clear advantages:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We can &lt;a href=&#34;http://editor.swagger.io/#/&#34;&gt;write project specification&lt;/a&gt; in &lt;code&gt;yaml&lt;/code&gt; or 
+&lt;code&gt;json&lt;/code&gt; formats. The &lt;code&gt;yaml&lt;/code&gt; one is probably closer to humans, which is really nice.
+(Yes, there are UI programs for that as well ;)&lt;/li&gt;
+&lt;li&gt;We can &lt;a href=&#34;http://swagger.io/swagger-codegen/&#34;&gt;generate server and client code automatically&lt;/a&gt;, because when the specification is solid, the tools are solid too.&lt;/li&gt;
+&lt;li&gt;We can also &lt;a href=&#34;http://swagger.io/swagger-ui/&#34;&gt;generate live documentation&lt;/a&gt; based on the same project specification. This is particularly useful and that’s why I’ll expand more on about this subject in this article.&lt;/li&gt;
+&lt;li&gt;We can program in many languages and the result of our work will stay alive longer, because it conforms to a server &amp;lt;-&amp;gt; client “contract”. Meaning, as long as you can make a swagger specification out of you work, you can move from one technology stack to another.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Node.js is a popular choice for building the server part of applications, but it’s not the only one. The knowledge you can get from this article is transferable to almost any programming language.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;what-makes-a-good-api-documentation&#34;&gt;What makes a good API documentation&lt;/h3&gt;
+
+&lt;p&gt;Let’s now expand on the subject of having an effective documentation. There are many ways to document your software (and API), still, there are few major points which you have to cover to make it right. There is a common denominator of what makes one documentation better than another.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*RV0AOyBUcpJ7vS1TuSx2ag.png&#34; alt=&#34;picture telling you to stop the documentation uglyness&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;auto-generation&#34;&gt;Auto-generation&lt;/h4&gt;
+
+&lt;p&gt;I think that is the most important one. Writing documentation should take the least amount of time and efforts, and should minimize the maintenance.&lt;/p&gt;
+
+&lt;p&gt;You have to find a good way to write the least amount of textual explanations for your API, which yields the highest value of practical guidelines for the user of the documentation.&lt;/p&gt;
+
+&lt;h4 id=&#34;include-examples&#34;&gt;Include examples&lt;/h4&gt;
+
+&lt;p&gt;I speak from my personal experience here — it’s really pleasing when the documentation does not make me think too much. My advice: include some sample request objects, or some code samples, etc.&lt;/p&gt;
+
+&lt;p&gt;As a consumer or a developer of the API, I want to have a quick-gratification access to something that I use and it just works directly. Rarely I want to open my &lt;a href=&#34;https://advancedrestclient.com/&#34;&gt;advanced REST client&lt;/a&gt; or &lt;a href=&#34;https://curl.haxx.se/docs/&#34;&gt;curl&lt;/a&gt; while reading API documentation because it takes off my attention and is basically forcing me to get out of the page I’m reading in order to have “the real feeling” about how something works.&lt;/p&gt;
+
+&lt;h4 id=&#34;portable&#34;&gt;Portable&lt;/h4&gt;
+
+&lt;p&gt;That is a feature I consider equally important for an effective piece of documentation. This is when the auto-generated code can be either displayed as a page or an embedded window of information. It also means that the result of your documentation is re-usable.&lt;/p&gt;
+
+&lt;p&gt;If you are a JavaScript developer reading this, you will know that how fascinating the number of possible view frameworks solutions are. One day we have to make a simple page with Bootstrap, then with React.js, Angular.js, Vue.js, etc. No matter the framework or the tool, integrating documentation in an app has to be as easy as an instantiation. (In order to keep the spirit of high productivity and low maintenance costs mentioned in one of the previous points)&lt;/p&gt;
+
+&lt;h4 id=&#34;swagger-ui-comes-to-the-rescue&#34;&gt;Swagger UI comes to the rescue&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dt246jpThKkFh7TPUva-9A.png&#34; alt=&#34;image of the swagger ui taken as an example&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Swagger UI is a widely-adopted solution to the problems above. The only drawback being that the markup generated by the tool is not &lt;a href=&#34;http://getbem.com/introduction/&#34;&gt;BEM&lt;/a&gt;-ish or anything like this, thus preventing front-end developers to make really nice themes on top of the solution. (although it’s &lt;a href=&#34;http://meostrander.com/swagger-ui-themes/&#34;&gt;partially going on&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;When you look at the &lt;a href=&#34;http://petstore.swagger.io/#/&#34;&gt;demo&lt;/a&gt; (or the editor), you will notice that there are similarities in the information presented.&lt;/p&gt;
+
+&lt;p&gt;Each endpoint of the API that is documented contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short description (the textual explanation we usually over-do)&lt;/li&gt;
+&lt;li&gt;Example samples of request bodies, options to change request types, etc.&lt;/li&gt;
+&lt;li&gt;Opportunity to try out the request &amp;lt;-&amp;gt; response operation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On top of that, swagger-ui documentation is auto-generated based on a simple &lt;code&gt;yaml&lt;/code&gt; or
+&lt;code&gt;json&lt;/code&gt; swagger specification file. That is super-nice, because the specification that a business person writes or configures through an UI can serve as both a contract AND live documentation!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;we-can-do-better-than-that&#34;&gt;We can do better than that&lt;/h3&gt;
+
+&lt;p&gt;Yes! Even after following popular tools and tutorials, I felt there is room for improvement. Mainly — writing the documentation itself.&lt;/p&gt;
+
+&lt;p&gt;See, the problem of writing a single specification file and then using tools to generate the documentation is easy until the maintenance comes into play. Imagine that the &lt;/p&gt;
+
+&lt;p&gt;yaml spec is maintained by the same developer or development team that is responsible for the API endpoints of the app server. Surely, there will be back and forth between the specification file and the code files that contain the actual implementation. It takes extra time and efforts to stay focused while jumping between editors and making sure that both resources are well-matched.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, the process of “specification &amp;gt; development &amp;gt; documentation &amp;gt; implementation” can improve. Namely, it is possible to do all them at once.&lt;/p&gt;
+
+&lt;p&gt;How? By writing swagger specification in the documentation blocks of our code and plugging watch tasks in-between! Yes, the specification might still be in ownership of another one, not the developer. But even then — what if can just see live documentation based on the comments we’re placing in our code? Wouldn’t it be a motivating factor to write better in-code documentation? What is more, wouldn’t it be easier for developers to maintain both the code and the documentation of endpoints where the two are just next to each other?&lt;/p&gt;
+
+&lt;p&gt;Look at the following piece of code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;/**
+ * @swagger
+ * /login:
+ *   post:
+ *     description: Login to the application
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: username
+ *         description: Username to use for login.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: User&#39;s password.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: login
+ */
+app.post(&#39;/login&#39;, (req, res) =&amp;gt; {
+  ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you might have already guessed, this is a sample from &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt;which takes the contents of the text after 
+&lt;code&gt;@swagger&lt;/code&gt; and parses the contents of the &lt;a href=&#34;http://usejsdoc.org/&#34;&gt;jsdoc&lt;/a&gt; documentation into a &lt;a href=&#34;http://swagger.io/specification/&#34;&gt;swagger specification&lt;/a&gt;. This specification can be then visualized, for example, like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*K0swMwFEVHWqtcXnkxf0zg.png&#34; alt=&#34;nice swagger picture&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s true that I made the screenshot from the built of the example, not from this tiny sample, but you get the point ;) (Continue reading and you will see much nicer interface of the same info)&lt;/p&gt;
+
+&lt;p&gt;Since I’m looking to improve this workflow even further (and make it more fun for developers to use the tool), I recently suggested a watch task in &lt;code&gt;swagger-jsdoc&lt;/code&gt; command line tool that works just like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ swagger-jsdoc -d swaggerDefinition.js routes.js routes2.js -w
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case, after having a generated &lt;code&gt;swagger.json&lt;/code&gt; the command line will continue listening for changes in &lt;code&gt;routes.js&lt;/code&gt; and &lt;code&gt;routes2.js&lt;/code&gt; and then re-generate the specification &lt;code&gt;swagger.json&lt;/code&gt; on updates.&lt;/p&gt;
+
+&lt;p&gt;Also recently, the command line tool got a new feature to output &lt;code&gt;yaml&lt;/code&gt; if the &lt;code&gt;-o&lt;/code&gt; flag is used like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ swagger-jsdoc -d swaggerDefinition.js apis.js -o swagger.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case, &lt;code&gt;apis.js&lt;/code&gt; will be searched for &lt;code&gt;@swagger&lt;/code&gt; tags, but the parsed specification will be written to &lt;code&gt;swagger.yaml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Having the &lt;code&gt;swagger.json&lt;/code&gt; or &lt;code&gt;swagger.yaml&lt;/code&gt; specification at this moment is a nice start. This file is the key re-usable resource that can be integrated with other tools such as &lt;code&gt;swagger-ui&lt;/code&gt; which visualize the “soul” of the API in nice UI interfaces.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;improved-api-documentation-workflow&#34;&gt;Improved API documentation workflow&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/swagger-jsdoc-improves-documentation-workflow.png&#34; alt=&#34;Improved documentation workflow with swagger-jsdoc&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some time ago, an article about &lt;a href=&#34;https://javascriptkicks.com/stories/94009/watching-file-changes-with-npm-scripts&#34;&gt;watching files changes with npm scripts got popular&lt;/a&gt;. I believe there is a reason why comments are not possible under the original article, but never mind, it got me on the path of researching the &lt;a href=&#34;https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener&#34;&gt;fs.watch()&lt;/a&gt; and its behavior. After experimentation I reached to prefer &lt;code&gt;[chokidar](https://www.npmjs.com/package/chokidar)&lt;/code&gt; which is a module improving the &lt;code&gt;fs.watch()&lt;/code&gt; interface. In fact, I liked &lt;code&gt;chokidar&lt;/code&gt; so much that I took the opportunity to suggest a &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0&#34;&gt;new feature in the CLI tool of&lt;/a&gt; &lt;code&gt;[swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0)&lt;/code&gt; which is, duh, a watch task working with the API files. (Briefly mentioned in the previous chapter)&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;chokidar&lt;/code&gt; module is also an integral part of the &lt;code&gt;[browser-sync](https://www.npmjs.com/package/browser-sync)&lt;/code&gt; module which, in turn, an already mature and battle-tested piece of software. It is widely adopted in various products and projects to increase development experience and productivity.&lt;/p&gt;
+
+&lt;p&gt;Having this understanding, I saw another opportunity — making a simple integration between instruments which integrate the &lt;code&gt;chokidar&lt;/code&gt; module. I only needed a better understanding of &lt;a href=&#34;http://swagger.io/swagger-ui/&#34;&gt;Swagger UI&lt;/a&gt; which is the “glue”, or the “contract”, between the back-end server side (the API) and the front-end (client) side. I feel it’s comfortable (and smart) that the documentation pages are the first-hand client and consumer of the API. Also, I believe that this consumer should be easy to make and maintain, but still really nice-looking, so that there is something pleasant for our paying clients to see. With &lt;code&gt;browser-sync&lt;/code&gt; Swagger UI got a bit more fun to work with.&lt;/p&gt;
+
+&lt;p&gt;In order to demonstrate the idea better in visual and kinesthetic way, I created a &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs&#34;&gt;supplementary repository&lt;/a&gt;. It contains examples of the first approach that came to my mind keeping &lt;a href=&#34;https://en.wikipedia.org/wiki/KISS_principle&#34;&gt;the KISS principle&lt;/a&gt;. Basically, there are few npm scripts that make the system work together.&lt;/p&gt;
+
+&lt;p&gt;First, you can have a look at &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json&#34;&gt;the&lt;/a&gt; &lt;code&gt;[package.json](https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json)&lt;/code&gt; &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json&#34;&gt;manifest&lt;/a&gt;. Tasks are separated in two main categories: tasks for the server side (the API) and tasks related to the documentation. For the API development part, &lt;code&gt;npm run api&lt;/code&gt; fires a server with &lt;code&gt;nodemon&lt;/code&gt; and &lt;code&gt;swagger-jsdoc&lt;/code&gt; As a result, any changes in the &lt;code&gt;api/&lt;/code&gt; folder trigger server restart and re-generation of &lt;code&gt;swagger.json&lt;/code&gt; specification which goes to &lt;code&gt;api-docs/&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Secondly, the &lt;code&gt;npm run docs:develop&lt;/code&gt; task fires a &lt;code&gt;browser-sync&lt;/code&gt; server for the client side serving the &lt;code&gt;api-docs/&lt;/code&gt; folder which receives automatically updated &lt;code&gt;swagger.json&lt;/code&gt; specification from the previous task. You can run those two tasks in separate terminal sessions or just create another parallel task following the examples of the &lt;code&gt;package.json&lt;/code&gt; file with &lt;code&gt;npm-run-all&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;At this stage, you can freely update both the server and client sides of your project having near real-time feedback and results visible in the browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*6bMTxVkYaUEEjyqpeiXBRA.png&#34; alt=&#34;Nice interface of the generated documentation&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You might be wondering — why isn’t this the interface of Swagger UI I am used to seeing around! What happened? Well, I used a &lt;a href=&#34;https://github.com/jensoleg/swagger-ui&#34;&gt;fork which looks nicer&lt;/a&gt;. Here’s an &lt;a href=&#34;http://swaggerui.herokuapp.com/?url=http://petstore.swagger.io/v2/swagger.json#!/pet/addPet&#34;&gt;online demo&lt;/a&gt; which you can play with to get the feeling of what your documentation may look like after you enjoyably use &lt;code&gt;swagger-jsdoc&lt;/code&gt; and &lt;code&gt;browser-sync&lt;/code&gt; as shown in &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json&#34;&gt;this repository.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The same workflow is possible with other file extensions such as &lt;code&gt;.php&lt;/code&gt; just changing the input parameters and removing the binding to the &lt;code&gt;nodemon&lt;/code&gt; server restart task, so that another standalone server is used instead. Here’s an example taken from a recent pull request which was included in &lt;code&gt;swagger-jsdoc&lt;/code&gt; to parse swagger documentation to &lt;code&gt;yaml&lt;/code&gt; output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*W72Xll_3kHjiCtNkb7U3qg.png&#34; alt=&#34;swagger-jsdoc with php projects&#34; /&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;deployment&#34;&gt;Deployment&lt;/h3&gt;
+
+&lt;p&gt;I have intentionally left out the deployment part out of this story, because I believe there are many good options on the market and it really depends on the personal preferences how to manage this part of the process. For example, you can follow the scotch.io tutorial mentioned earlier to place the docs on heroku, or you can also include an npm script which works with &lt;code&gt;[gh-pages](https://github.com/tschaub/gh-pages)&lt;/code&gt; to deploy the assets directly to your repository, etc. The main thing is that the &lt;code&gt;api-docs&lt;/code&gt; folder is already built and ready to be deployed as-is.&lt;/p&gt;
+
+&lt;p&gt;Myself, I plan to experiment with &lt;a href=&#34;https://cloudplatform.googleblog.com/2016/09/manage-your-APIs-with-Google-Cloud-Endpoints.html&#34;&gt;Google Endpoints&lt;/a&gt; in near future although it’s a new service. That’s because it supports the &lt;a href=&#34;https://cloud.google.com/endpoints/docs/open-api-spec&#34;&gt;Open API specification&lt;/a&gt; and provides flexible options on deployment for both the API and the documentation on reasonable terms. An interesting point to notice is that the service guidelines show deployment only of the swagger/openapi specification file which can be generated by the &lt;code&gt;swagger-jsdoc&lt;/code&gt; This is a good example of re-using single specification for multiple purposes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*QHvYcf7gyUyIwNlBo-jHTQ.png&#34; alt=&#34;swagger to open api specification transition&#34; /&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;Writing this article and sharing some code around it, I’m integrating tools that solve problems which have already been under the radar of the &lt;a href=&#34;https://medium.com/@apievangelist&#34;&gt;API Evangelist&lt;/a&gt; such as &lt;a href=&#34;https://apievangelist.com/2015/02/02/we-need-better-api-documentation-and-ui-deployment-options/&#34;&gt;the need of better API documentation and UI deployment&lt;/a&gt; which was later followed up by findings about &lt;a href=&#34;https://apievangelist.com/2015/06/27/the-responsive-swagger-driven-version-of-slate-api-documentation-i-was-looking-for/&#34;&gt;improved Swagger UI design solution&lt;/a&gt;. Few months ago, there was also a &lt;a href=&#34;https://apievangelist.com/2016/09/16/learning-from-the-success-of-swagger-ui/&#34;&gt;reflection article about the success of Swagger UI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I hope that this article has inspired you to consider some new ways to improve your documentation workflows for your API project. I know that the idea of automated documentation generation with swagger tools is not new. Rather, I aim to introduce some new ideas on solving the problems which have been around on topic for a while with the tools available today to improve productivity.&lt;/p&gt;
+
+&lt;p&gt;The tools shown in &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs&#34;&gt;the repository&lt;/a&gt; are free and vendor-neutral and the documentation build can be deployed to any place which serves you best. So, I encourage you to further experiment with the code and adapt it to work best for your specific needs.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you think this article was helpful, then consider making a comment, a share or a ❤&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Problem-first problem-solving</title>
+      <link>https://kalinchernev.github.io/problem-first-problem-solving/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/problem-first-problem-solving/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/digital-beer/problem-first-problem-solving-87369b84551f?source=user_profile---------13-----------&#34; title=&#34;Permalink to Problem-first problem-solving – Digital Beer – Medium&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is not going to be the next-generation framework for solving technical problems because it contains the word &amp;ldquo;problem&amp;rdquo; twice. Apart from its negative charge, the core idea is as simple as focusing on the most important questions to answer before working on problems.&lt;/p&gt;
+
+&lt;h3 id=&#34;problems&#34;&gt;Problems&lt;/h3&gt;
+
+&lt;p&gt;Problems are addictive. As modern creatures, we need to have problems in order to have a reason to live. Solving problems brings positive feelings, like serotonin, which &lt;a href=&#34;https://www.psychologytoday.com/blog/the-athletes-way/201211/the-neurochemicals-happiness&#34;&gt;&amp;ldquo;ultimately the link between higher serotonin and a lack of rejection sensitivity allows people to put themselves in situations that will bolster self-esteem, increase feelings of worthiness and create a sense of belonging.&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When I was in university, I quickly figured that semantically, and technically, the word &amp;ldquo;problem&amp;rdquo; holds a different shade of meaning when logic kicks in: &amp;ldquo;an inquiry starting from given conditions to investigate or demonstrate a fact, result, or law.&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;Thus, it is perfectly valid to conclude that knowledge workers, like programmers, solve problems on a daily basis. Naturally, the process of solving problems becomes a brain habit, which mingles between the logical system of variables and the more humanistic problem solving psychology.&lt;/p&gt;
+
+&lt;p&gt;My personal observation comes to that many people working in the technical sector (the IT sector) sometimes solve problems which are not really problems, because of lack of focus or because of a habit or inability to set the emotions and the psychology aside while solving logical problems.&lt;/p&gt;
+
+&lt;h3 id=&#34;questions&#34;&gt;Questions&lt;/h3&gt;
+
+&lt;p&gt;Asking/answering questions is the most natural way to manage attention and feelings. Questions are the leaders in both scenarios from above.&lt;/p&gt;
+
+&lt;p&gt;I think that seniors in any knowledge worker profession are those who have accumulated experience of asking good questions for the problems they are supposed to solve. (And browsing well through the ocean of information after this&amp;nbsp;:)&lt;/p&gt;
+
+&lt;p&gt;The ultimate question one can ask recursively: &amp;ldquo;What am I really trying to solve here?&amp;rdquo; I believe that answering this question first, during meetings for example, could bring many positive outcomes without too many discussions and roundabouts which take attention and energy to focus.&lt;/p&gt;
+
+&lt;h3 id=&#34;tools-are-not-solving-problems-people-nbsp-are&#34;&gt;Tools are not solving problems, people&amp;nbsp;are.&lt;/h3&gt;
+
+&lt;p&gt;This is a personal feeling and saying out loud: let&amp;rsquo;s please first find the problem we&amp;rsquo;re solving and then let&amp;rsquo;s look at the tools we&amp;rsquo;re using. Not to go into too many specifics of a profession, but I see so much energy being spent on things like: choosing programming languages, frameworks, etc. It&amp;rsquo;s so amazing sometimes to see projects like &lt;a href=&#34;https://lebab.io/&#34;&gt;lebab&lt;/a&gt;. I am sure that it&amp;rsquo;s solving real problems, however it&amp;rsquo;s not so obvious.&lt;/p&gt;
+
+&lt;p&gt;My appeal here is simple: please consider the energy you will spend on tools well, and please base your solutions on real problems, rather than the inner drive to prove oneself as a great problem solver for quick gratification for solving insignificant problems or such that might not exist. That is touching upon the topic of the &amp;ldquo;fatigue&amp;rdquo; that developers complain about frequently. It&amp;rsquo;s a real feeling based on real situations in real life — having to solve many problems at the same time. Managing focus on using problem-first approach in our tool-chains and workflows is a vital part of preserving one&amp;rsquo;s energy and attention to what really matters.&lt;/p&gt;
+
+&lt;h3 id=&#34;takeaways&#34;&gt;Takeaways&lt;/h3&gt;
+
+&lt;p&gt;Although being pretty abstract, the paragraphs above aim to basically communicate the following ideas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Problems are addictive&lt;/li&gt;
+&lt;li&gt;Solving problems feels good&lt;/li&gt;
+&lt;li&gt;Questions lead focus and attention&lt;/li&gt;
+&lt;li&gt;Attention should be invested into real problems&lt;/li&gt;
+&lt;li&gt;Use tools when really necessary to keep sanity and solve real problems&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Holidays digest 2016</title>
+      <link>https://kalinchernev.github.io/holiday-digest-2016/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/holiday-digest-2016/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/digital-beer/holidays-digest-68ecc2b115a8&#34; title=&#34;Permalink to Holidays digest – Digital Beer – Medium&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I decided to try a new format of writing a story — a &amp;ldquo;digest&amp;rdquo; one. In this format, I&amp;rsquo;ll be able to mix subjects and share about things I find interesting. Although I don&amp;rsquo;t plan to follow a strict structure, topics will be divided into sections to make it easy to jump between without having to read it all.&lt;/p&gt;
+
+&lt;h3 id=&#34;medium&#34;&gt;Medium&lt;/h3&gt;
+
+&lt;p&gt;Certainly, the trending topic in the context of this blog is the story about &lt;a href=&#34;https://blog.medium.com/renewing-mediums-focus-98f374a960be#.yuaggxs6c&#34;&gt;Renewing Medium&amp;rsquo;s focus&lt;/a&gt;. I think there are few really good points about the &amp;ldquo;why&amp;rdquo; and I hope that Medium will find the new way to provide the value they want for publishers.&lt;/p&gt;
+
+&lt;h3 id=&#34;kadira&#34;&gt;Kadira&lt;/h3&gt;
+
+&lt;p&gt;On a similar note, &lt;a href=&#34;https://voice.kadira.io/kadira-shutting-down-7d35994db85d#.mmph3hury&#34;&gt;Kadira: Shutting Down&lt;/a&gt; was an expected story from &lt;a href=&#34;https://medium.com/@arunoda&#34;&gt;Arunoda Susiripala&lt;/a&gt;. The decision is understandable from a business point of view. In a more global view, I feel that this story is a historic event for the JavaScript community in overall. It&amp;rsquo;s a reminder of how fierce the competition in the JavaScript ecosystem is and how important it is for vendors like MDG to manage their relations with driving contributors.&lt;/p&gt;
+
+&lt;h3 id=&#34;progressive-web-nbsp-apps&#34;&gt;Progressive Web&amp;nbsp;Apps&lt;/h3&gt;
+
+&lt;p&gt;My last post was about &lt;a href=&#34;https://medium.com/@kalin.chernev/think-about-apps-not-websites-13757f9736de#.5v5yhw1p3&#34;&gt;thinking about apps, not websites&lt;/a&gt;. My goal was to start a collection of good examples of making modern apps. I had plans to continue on this story-line by making a case study of an app with information about first aid that works offline, demonstrating both the technical and informational side.&lt;/p&gt;
+
+&lt;p&gt;To find a re-usable information about first aid was a tougher cookie that I thought. First, information on the web is not well structured. I was looking for a topical steps on how to help in a given urgent situation, but couldn&amp;rsquo;t find anything organized. Secondly — the information was copyright and it would have taken a massive amount of waiting time to get information for a demo case study. I managed to find some open information in &lt;a href=&#34;https://en.wikibooks.org/wiki/First_Aid&#34;&gt;wiki books&lt;/a&gt;, which got me started on the content. Finding free photos I could use was a bit easier as &lt;a href=&#34;https://medium.com/@disastacre&#34;&gt;Vladimir Vassilev&lt;/a&gt; suggested me a source collection of &lt;a href=&#34;http://re-wp.com/stock-photos/&#34;&gt;free stock photos&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By the time I got my content prepared, the team of &lt;a href=&#34;https://medium.com/@auth0&#34;&gt;Auth0&lt;/a&gt; had already published 2 great articles on the same subject!&amp;nbsp;:D&lt;/p&gt;
+
+&lt;p&gt;The first one (actually the second one), which continued on the same story line as I aimed to, was about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-instant-loading-part-2/&#34;&gt;instant loading and storage&lt;/a&gt;. At the same time, I was testing &lt;a href=&#34;https://github.com/GoogleChrome/sw-precache&#34;&gt;sw-precache&lt;/a&gt; more thoroughly and I had issues with the offline storage that erased the cache in an unpredictable ways on my mobile phone. Seeing that article during my work on the first aid case study, just discarded much of the things I wanted to share, as the article of &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is much more thorough and deeper explained.&lt;/p&gt;
+
+&lt;p&gt;Then, just before NY, came the second nice article from the same team, this time about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-push-notifications-part-3/&#34;&gt;push notifications&lt;/a&gt;. With this, I decided that it&amp;rsquo;s better to recommend these, rather than writing or trying to complete the first aid app. Mainly because I don&amp;rsquo;t believe it will be of any value added.&lt;/p&gt;
+
+&lt;p&gt;Anyway, if you read this and still consider it&amp;rsquo;s a good idea to make a progressive web app for first aid, then I&amp;rsquo;d recommend you check the &lt;a href=&#34;https://www.mediawiki.org/wiki/API:Main_page&#34;&gt;wikibooks REST API&lt;/a&gt; to get the information about the book I linked earlier, following the &lt;a href=&#34;https://wikimediafoundation.org/wiki/Developer_app_guidelines&#34;&gt;guidelines&lt;/a&gt;. From the little experience making the app, I&amp;rsquo;d recommend &lt;a href=&#34;https://visionmedia.github.io/page.js/&#34;&gt;page.js&lt;/a&gt; and reading &lt;a href=&#34;https://medium.com/@krasimirtsonev&#34;&gt;Krasimir Tsonev&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;http://krasimirtsonev.com/blog/article/deep-dive-into-client-side-routing-navigo-pushstate-hash&#34;&gt;Deep dive into client-side routing&lt;/a&gt;, that&amp;rsquo;s of course if you want to keep it simple, rather than using React (w/ react router) or Angular, etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;pishi-kur-18&#34;&gt;&lt;a href=&#34;https://pishikur.com/&#34;&gt;Pishi Kur&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;That&amp;rsquo;s a tiny project that I released around Christmas. It&amp;rsquo;s just taking an example app from &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt; and has some changed strings here and there. The idea of the project is to entertain Bulgarians travelling or living abroad by collecting pictures of a word. The idea came along in &lt;a href=&#34;https://en.wikipedia.org/wiki/Plovdiv&#34;&gt;Plovdiv&lt;/a&gt; when few Bulgarians shared that they see that word in France, Germany, in the mountains, etc. The project will not be translated in Bulgarian and will not encourage vandalism, or anything like this. It&amp;rsquo;s rather a surrealistic platform of sharing funny moments while being in special places around the world.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s also my first time to use Firebase. My impressions so far are positive: it was easy to setup the social authentication and deploy the app. The developer experience is close to what Meteor was about an year ago — easy development, ready plugin-like functionalities, etc. Only that, Meteor killed a lot of its interest by making Galaxy nothing more than a place to host your app, not providing a lot of services around it. With Firebase, Google services are easy to integrate at the finger tips of the developer.&lt;/p&gt;
+
+&lt;p&gt;So far, there are more than 30 registered users, average of 30 visits per day. If this grows organically, it will be an interesting case study to work with Firebase tools to scale and tweak the platform. Otherwise, I don&amp;rsquo;t plan to push advertising or any type of campaigns to make it bigger than that&amp;nbsp;:)&lt;/p&gt;
+
+&lt;h3 id=&#34;apis&#34;&gt;APIs&lt;/h3&gt;
+
+&lt;p&gt;Feeling that I strayed a bit from this topic in the last few months, I renewed reading and researching ways to get my hands back on things about APIs.&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;&lt;a href=&#34;https://hackernoon.com/how-i-made-a-saas-webservice-earning-1000-monthly-profit-6d2b782b95c8#.jrv7pfxuz&#34;&gt;How I made a SaaS webservice earning $1000 monthly profit&lt;/a&gt;&amp;rdquo; is a motivating piece about taking small steps towards monetization of a service.&lt;/p&gt;
+
+&lt;p&gt;Another interesting piece of information is the &lt;a href=&#34;https://www.programmableweb.com/news/programmablewebs-most-interesting-apis-2016-application-development-and-developer-tools/brief/2016/12/23&#34;&gt;ProgrammableWeb&amp;rsquo;s Most Interesting APIs in 2016: Application Development and Developer Tools&lt;/a&gt;. I really love the idea of website to API tools like the &lt;a href=&#34;https://www.jamapi.xyz/&#34;&gt;Jam API&lt;/a&gt; mentioned. It reminds me of &lt;a href=&#34;https://medium.com/@kimonolabs&#34;&gt;Kimono Labs&lt;/a&gt; who got acquired almost an year ago.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://www.npmjs.com/package/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; module that I sometimes work on in my free time continue on its path of wider adoption:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*yJ4w5B4sAANmTqrJlHpcFw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Based on data from &lt;https: npm-stat.com=&#34;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;It might be that the CLI tool played an important role in August. And because the module targets the developers&amp;rsquo; audience, I plan to work on a feature to &amp;ldquo;watch&amp;rdquo; for changes in the input files.&lt;/p&gt;
+
+&lt;p&gt;I believe it&amp;rsquo;s worth investing in learning and doing more of swagger apis this year, mainly for 2 reasons:&lt;/p&gt;
+
+&lt;p&gt;Trends look good:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*bVdbmTcQZsE4tYunE7Jh5Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Taken from &lt;a href=&#34;https://www.google.com/trends/explore?q=swagger%20api&#34;&gt;Google&amp;nbsp;Trends&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Adoption of &lt;a href=&#34;https://www.openapis.org/&#34;&gt;Open API specification&lt;/a&gt; also looks positive, and also the big players also support it. It&amp;rsquo;s hard to say what exactly will happen in 2017 after some of the &lt;a href=&#34;https://medium.com/the-era-of-apis/over-500m-invested-in-api-companies-in-2016-with-16-acquisitions-cc4f3d2beef8#.99codaicj&#34;&gt;acquisitions of 2016&lt;/a&gt;. Nevertheless, my gut feeling is that having a solid specification (with such adoption) is a key to having the true interoperability to other specifications and solutions such as GraphQL, in potential interest &lt;a href=&#34;https://medium.com/@raxwunter/moving-existing-api-from-rest-to-graphql-205bab22c184#.h6rctdrxm&#34;&gt;moving existing API from REST to GraphQL&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-chat-bot-story-32-became-my-best-story-of-2016-because-of-chatbots-life-33-publication&#34;&gt;&lt;a href=&#34;https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627#.rgfcezwnz&#34;&gt;My chat bot story&lt;/a&gt; became my best story of 2016 because of &lt;a href=&#34;https://medium.com/@ChatBotsLife&#34;&gt;Chatbots Life&lt;/a&gt; publication&lt;/h3&gt;
+
+&lt;p&gt;Being published on 1st December, and being one my last articles for 2016, the &amp;ldquo;Building a chat bot who understands emotions though your selfies&amp;rdquo; story grew to be my best story of the year, thanks to &lt;a href=&#34;https://medium.com/@kojouharov&#34;&gt;Stefan Kojouharov&lt;/a&gt; including it in a publication.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*HgTPQnk-aW0wxKdFitxtzg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only story that could have been a competition in fame to this one was the &amp;ldquo;&lt;a href=&#34;https://medium.com/@kalin.chernev/drupal-8-on-cloud9-ide-1a294328e1aa#.g3a7u6t68&#34;&gt;Drupal 8 on Cloud9 IDE&lt;/a&gt;&amp;rdquo; which got more views because of being included in the &lt;a href=&#34;http://www.theweeklydrop.com/archive/issue-258&#34;&gt;Weekly Drop issue 258&lt;/a&gt;, but didn&amp;rsquo;t reach as many number of reads and recommends.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Think about apps, not websites</title>
       <link>https://kalinchernev.github.io/think-about-apps-not-websites/</link>
-      <pubDate>Wed, 13 Dec 2017 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 13 Dec 2016 00:00:00 +0200</pubDate>
       
       <guid>https://kalinchernev.github.io/think-about-apps-not-websites/</guid>
       <description>
@@ -179,6 +529,14 @@
 
 &lt;p&gt;Apart from being bright, it will be filled with advancements and further variety in the developers&amp;rsquo; toolbox. Having in mind that browsers have always been an inconsistent environment, it will be vital to keep the following resources at hand and get fresh information every now and then.&lt;/p&gt;
 
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/Apps/Progressive&#34;&gt;MDN App Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/web/updates/&#34;&gt;Google Web Updates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.chrome.com/home&#34;&gt;Chrome&lt;/a&gt;, &lt;a href=&#34;https://blogs.windows.com/msedgedev/#aJK7cy6m0YfVUByl.97&#34;&gt;Microsoft Edge&lt;/a&gt;, etc. of interest&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.html5rocks.com/en/&#34;&gt;HTML5Rocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3.org/TR/&#34;&gt;The standards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;p&gt;It&amp;rsquo;s important to underline, that &lt;a href=&#34;https://medium.com/@nekrtemplar/progressive-web-apps-aint-google-s-thing-31ca581e7a1#.faazl83yx&#34;&gt;Progressive Web Apps isn&amp;rsquo;t a Google-only thing&lt;/a&gt; although many of the references in this article are going to resources authored by community contributions to Google documentation. This is mainly because the dedication and organization of knowledge seems to the best at the moment. &lt;a href=&#34;https://blogs.windows.com/msedgedev/2016/07/08/the-progress-of-web-apps/#ZeJAshXJM2BuqDRB.97&#34;&gt;Microsoft are also supporters of PWA&lt;/a&gt;. In fact, &lt;a href=&#34;http://manifoldjs.com&#34;&gt;manifoldjs&lt;/a&gt; is an interesting project you will probably meet should you decide to make PWA that works as a nice app in Windows.&lt;/p&gt;
 
 &lt;p&gt;In general, Web APIs will surely continue to evolve. You can bookmark the good ol&amp;rsquo; &lt;a href=&#34;http://caniuse.com/#search=push&#34;&gt;caniuse.com&lt;/a&gt; to verify whether an API you want to use is supported natively or you&amp;rsquo;ll have to search for a shim/polyfill and similar. Of course, there are many existing libraries and frameworks which are already taking developers attention (causing fatigue&amp;nbsp;:)&lt;/p&gt;
@@ -200,30 +558,6 @@
 &lt;p&gt;Hopefully, using native Web APIs will be fun during this experimentation, as &lt;a href=&#34;http://kangax.github.io/compat-table/es6/&#34;&gt;Chrome supports a lot of ES6 features&lt;/a&gt; and there is no need for you to transpile your code to see immediate results of your work.&lt;/p&gt;
 
 &lt;p&gt;Enjoy and good luck!&amp;nbsp;:)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://kalinchernev.github.io/about/</link>
-      <pubDate>Sat, 08 Apr 2017 15:33:06 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/about/</guid>
-      <description>&lt;p&gt;Hi, my name is Kalin Chernev, and this website is probably my 5th place to blog, I stopped counting.
-My track of experience is filled with projects on Drupal and sometimes a bit of WordPress,
-but this time there&amp;rsquo;s no CMS behind this website. This website/blog is hosted on github pages for 2 main reasons: &lt;strong&gt;be close to code&lt;/strong&gt; from github, and &lt;strong&gt;keep things simple&lt;/strong&gt; hosting only HTML, CSS and JavaScript.&lt;/p&gt;
-
-&lt;p&gt;Today, I&amp;rsquo;m working mostly with JavaScript in various forms. That&amp;rsquo;s why you will encounter the notes I&amp;rsquo;m taking
-in this blog on my way of understanding concepts, trying frameworks, experimenting with libraries
-and all sorts of tools solving problems with JavaScript. It&amp;rsquo;s just amazing how this language got so
-versatile to solve so many types of problems.&lt;/p&gt;
-
-&lt;p&gt;Web has evolved so much in recent years, and the speed of evolution is accelerating greatly.
-We solve more complex problems, which lead to even more sophisticated problems to solve.
-Thus, this blog keeps things simple - it&amp;rsquo;s plain good old HTML, CSS and JavaScript.&lt;/p&gt;
-
-&lt;p&gt;I believe in experimentation and open source contribution as a way to learn and keep up
-with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect from this blog.&lt;/p&gt;
 </description>
     </item>
     
@@ -1084,66 +1418,6 @@ respond(getDirection(data.possibleActions,myCourier.position,{x:1,y:2}));
 &lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-table.jpeg&#34; alt=&#34;Blackjack table&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the &amp;ldquo;table&amp;rdquo; server where bots (teams) play against a dealer&amp;nbsp;(bot)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Focus on community and good services</title>
-      <link>https://kalinchernev.github.io/focus-community-good-services/</link>
-      <pubDate>Mon, 11 Jan 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://kalinchernev.github.io/focus-community-good-services/</guid>
-      <description>
-
-&lt;h2 id=&#34;recap&#34;&gt;Recap&lt;/h2&gt;
-
-&lt;p&gt;For me, 2015 was the toughest year in my life so far, and I liked it. It was amazing - full of mental and emotional challenges. I will remember 2015 as the year I started to see important details from the big picture, which I didn&amp;rsquo;t see before. I want to share about these details.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-big-picture&#34;&gt;The big picture&lt;/h4&gt;
-
-&lt;p&gt;It&amp;rsquo;s very dynamic, because I relocated to Belgium, and that was the first time I had to deliberately synchronize &amp;ldquo;my world&amp;rdquo; with a new &amp;ldquo;other world&amp;rdquo;. Before, I&amp;rsquo;ve worked abroad for couple of months now and then, but I always had a return ticket, which was not the case this time.&lt;/p&gt;
-
-&lt;p&gt;&amp;ldquo;My world&amp;rdquo; was pretty ok generally. In Bulgaria, I had a nice job as a web developer, I regularly did community work for Drupal Bulgaria foundation, giving out training and presentations now and then — I was pretty happy of myself to be honest, I felt on a track. Or a good level (it&amp;rsquo;s &amp;ldquo;the level&amp;rdquo; for developers, see).&lt;/p&gt;
-
-&lt;p&gt;An year later, many details started to light up in the big picture, and I was not prepared, I didn&amp;rsquo;t feel ok. I had to focus more. I had high expectations about my level, so I started digging more into the specifics of how to be as good as I expect myself to be, compared to my previous life in Bulgaria.&lt;/p&gt;
-
-&lt;p&gt;Focusing on the details of the big picture, I managed to see opportunities and good practices that I can conclude to be reusable for anyone. Reusable in such a way that even I will benefit of a given paradigm if I read it after few years.&lt;/p&gt;
-
-&lt;h4 id=&#34;technology-and-code&#34;&gt;Technology and code&lt;/h4&gt;
-
-&lt;p&gt;It&amp;rsquo;s always been and will be a lot about technology for me. Until 2015, I was very heavy enthusiast about &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt;. There have been many big projects I&amp;rsquo;m proud of in the past. Working on big projects has always been a good way to battle-test good software as Drupal.&lt;/p&gt;
-
-&lt;p&gt;Starting my new job in Belgium, I quickly realized how much I don&amp;rsquo;t know. Even bigger project, infrastructure complexity, i.e. higher demands for my developer skills. Something was going on in my brain, I started being less enthusiastic about the specific software package or tool, but I got more enthusiastic about the factors that make a project successful.&lt;/p&gt;
-
-&lt;p&gt;My team was bigger and I had to learn new workflows, new tools and ways to communicate my personal beliefs about why a given solution is better than the other. &lt;strong&gt;I learned the hard way that good communication around issues improves results&lt;/strong&gt;. Sometimes even just looking at an issue from a perspective with good questions and communication, lead to solution without coding. Nothing new for communicators, but for hard-core devs: &lt;strong&gt;learn how to debate on your code solutions&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;It was also the first time to do peer reviews and anything else related to sitting down with another developer and showing my code. When I knew my code will be reviewed, I changed the way I express myself in code and started focusing also on beauty and technique, not only quick-fix. &lt;strong&gt;Writing code with aesthetics is good — the overall quality increases and it makes a given piece of work easier to validate.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I also started reading other developers&amp;rsquo; code more frequently. I guess it&amp;rsquo;s a natural reflex of comparing myself. &lt;strong&gt;Reading code from other developers turned so helpful — it&amp;rsquo;s like reading books, but more involving&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;people-and-community&#34;&gt;People and community&lt;/h4&gt;
-
-&lt;p&gt;At some point these small details started to shine. It was time to realize that no matter if I write JavaScript, PHP or any other programming language, a &lt;strong&gt;good project is not only about the code, but also about the human interaction around the code&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;I started joining code sprint, hack jams, issue queues in drupal.org, etc. I had the aha! moment that the human factor around code and software make the coding itself more fun. &lt;strong&gt;By collaborating with other developers in work, community and open source, I learned more times more than my previous level I had of 4 years of solo-learning.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I still have so much to learn about the good ways of interaction with other smart developers, but I&amp;rsquo;ve already hooked on my strong belief that healthy &lt;strong&gt;collaboration is the best way advance in any technology and project&lt;/strong&gt;. It&amp;rsquo;s not just about the software.&lt;/p&gt;
-
-&lt;p&gt;Even more motivation was the end of the year, my team at the European Commission was awarded to be the best project team&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/best-team.jpeg&#34; alt=&#34;Best team&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s pretty rewarding to be the best&amp;nbsp;:D&lt;/p&gt;
-
-&lt;h4 id=&#34;what-about-2016&#34;&gt;What about 2016&lt;/h4&gt;
-
-&lt;p&gt;For me, 2016 will most probably be the year of community and good service.&lt;/p&gt;
-
-&lt;p&gt;Community, because it&amp;rsquo;s the hidden jam of happy coding and rapid self-development. Learning is faster, contribution is better, collaboration is fun.&lt;/p&gt;
-
-&lt;p&gt;Good service, because it&amp;rsquo;s why we developers write code. It&amp;rsquo;s easy to lose focus from that because we have too many paradigms, frameworks and libraries to understand to be productive. Yet, we write code to make good products and provide good service.&lt;/p&gt;
-
-&lt;p&gt;First come the good product and service, then the good results give the means of winning the time to try and use the latest cutting edge technologies.&lt;/p&gt;
 </description>
     </item>
     

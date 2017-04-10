@@ -12,7 +12,7 @@
     <item>
       <title>Think about apps, not websites</title>
       <link>https://kalinchernev.github.io/think-about-apps-not-websites/</link>
-      <pubDate>Wed, 13 Dec 2017 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 13 Dec 2016 00:00:00 +0200</pubDate>
       
       <guid>https://kalinchernev.github.io/think-about-apps-not-websites/</guid>
       <description>
@@ -177,6 +177,14 @@
 &lt;h3 id=&#34;the-future&#34;&gt;The future&lt;/h3&gt;
 
 &lt;p&gt;Apart from being bright, it will be filled with advancements and further variety in the developers&amp;rsquo; toolbox. Having in mind that browsers have always been an inconsistent environment, it will be vital to keep the following resources at hand and get fresh information every now and then.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/Apps/Progressive&#34;&gt;MDN App Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/web/updates/&#34;&gt;Google Web Updates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.chrome.com/home&#34;&gt;Chrome&lt;/a&gt;, &lt;a href=&#34;https://blogs.windows.com/msedgedev/#aJK7cy6m0YfVUByl.97&#34;&gt;Microsoft Edge&lt;/a&gt;, etc. of interest&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.html5rocks.com/en/&#34;&gt;HTML5Rocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3.org/TR/&#34;&gt;The standards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;It&amp;rsquo;s important to underline, that &lt;a href=&#34;https://medium.com/@nekrtemplar/progressive-web-apps-aint-google-s-thing-31ca581e7a1#.faazl83yx&#34;&gt;Progressive Web Apps isn&amp;rsquo;t a Google-only thing&lt;/a&gt; although many of the references in this article are going to resources authored by community contributions to Google documentation. This is mainly because the dedication and organization of knowledge seems to the best at the moment. &lt;a href=&#34;https://blogs.windows.com/msedgedev/2016/07/08/the-progress-of-web-apps/#ZeJAshXJM2BuqDRB.97&#34;&gt;Microsoft are also supporters of PWA&lt;/a&gt;. In fact, &lt;a href=&#34;http://manifoldjs.com&#34;&gt;manifoldjs&lt;/a&gt; is an interesting project you will probably meet should you decide to make PWA that works as a nice app in Windows.&lt;/p&gt;
 
