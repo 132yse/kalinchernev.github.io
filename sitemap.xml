@@ -7,6 +7,36 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/march-digest-2017/</loc>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/prototyping-apis-open-api-specification/</loc>
+    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/february-digest-2017/</loc>
+    <lastmod>2017-03-01T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/graphql-guide-wish-found-before/</loc>
+    <lastmod>2017-02-16T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/reflecting-nodejs-design-patterns/</loc>
+    <lastmod>2017-02-04T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/january-digest-2017/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/agile-documentation-api-driven-project/</loc>
     <lastmod>2017-01-22T00:00:00+02:00</lastmod>
   </url>
@@ -88,6 +118,12 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/apis/</loc>
+    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/bots/</loc>
     <lastmod>2016-06-23T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -95,7 +131,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/cloud/</loc>
-    <lastmod>2016-08-29T00:00:00+02:00</lastmod>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -130,6 +166,12 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/design-patterns/</loc>
+    <lastmod>2017-02-04T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/drupal/</loc>
     <lastmod>2016-09-15T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -137,7 +179,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/graphql/</loc>
-    <lastmod>2016-08-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-01T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,14 +190,26 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/jam-stack/</loc>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/javascript/</loc>
-    <lastmod>2017-01-07T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/</loc>
     <lastmod>2017-04-08T15:33:06+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/medium/</loc>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,13 +227,13 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/nodejs/</loc>
-    <lastmod>2017-01-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/tags/open-apis/</loc>
-    <lastmod>2017-01-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -203,13 +257,19 @@
   
   <url>
     <loc>https://kalinchernev.github.io/post/</loc>
-    <lastmod>2017-01-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/tags/problem-solving/</loc>
     <lastmod>2017-01-11T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/productivity/</loc>
+    <lastmod>2017-03-01T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -222,6 +282,12 @@
   <url>
     <loc>https://kalinchernev.github.io/tags/progressive-web-apps/</loc>
     <lastmod>2016-12-13T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/prototyping/</loc>
+    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -243,8 +309,14 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/vim/</loc>
+    <lastmod>2017-03-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/web-development/</loc>
-    <lastmod>2017-01-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

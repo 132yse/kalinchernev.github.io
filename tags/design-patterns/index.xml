@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design Patterns on Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/tags/design-patterns/index.xml</link>
+    <description>Recent content in Design Patterns on Kalin Chernev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://kalinchernev.github.io/tags/design-patterns/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Reflecting on node.js design patterns</title>
+      <link>https://kalinchernev.github.io/reflecting-nodejs-design-patterns/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/reflecting-nodejs-design-patterns/</guid>
+      <description>
+
+&lt;p&gt;Once upon on a time, there was a designer …&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*o-Igk7ZgpSz2Zu4syTG3-A.jpeg&#34; alt=&#34;funny JavaScript image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;No matter if the story is true or not, working with JavaScript on the server with Node.js at the moment is a very different experience compared to working with Python, Ruby or PHP. I’d personally say that the advantage of working with a single language everywhere comes with the price of having to learn different design patterns in order to use the language effectively.&lt;/p&gt;
+
+&lt;p&gt;One of these fundamental concepts to learn is the asynchronous programming. There are many articles in the Node.js/JavaScript community about asynchronous programming in terms of what callbacks are and how to &lt;a href=&#34;https://www.npmjs.com/package/async&#34;&gt;solve problems of control flow with a library&lt;/a&gt;, a &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;promise&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function&#34;&gt;async/await&lt;/a&gt;, etc. These are useful when the question is generally:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How to use node modules in a good way?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And although it’s important to learn and follow best practices in implementation, I sometimes miss articles which answer another question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How to organize my code in node modules in a good way?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this story I’ll be reflecting on few patterns which answer the latter.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;continuation-passing-style-pattern&#34;&gt;Continuation-passing style pattern&lt;/h3&gt;
+
+&lt;p&gt;This is an easy concept to understand, but really fundamental for working with asynchronous code&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Synopsis&lt;/strong&gt;: In your continuation-passing style function (CPS):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;cb(null, data)&lt;/code&gt; instead of &lt;code&gt;return&lt;/code&gt; to pass on result.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;return cb(err)&lt;/code&gt; to pass on an error and exit the function.&lt;/li&gt;
+&lt;li&gt;Communicate one single outcome from the function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Synchronous
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 2));
+
+// Asynchronous
+function addAsync(a, b, cb) {
+  cb(a + b);
+}
+
+addAsync(2, 2, function add(result) {
+  console.log(result);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That’s it! Honestly, the first time I saw this type of snippet, I already felt an eye-opening moment. If you know this already, give yourself a tap on the shoulder! Good job!&lt;/p&gt;
+
+&lt;p&gt;For aesthetics, you can re-factor the last function as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;addAsync(2, 2, result =&amp;gt; console.log(result));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of even:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;addAsync(2, 2, console.log);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The important take-away here is that functions can be passed as arguments to other functions. These are &lt;strong&gt;functions acting like a return statement&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Node.js, conventions say that when you’re writing such CPS you must &lt;a href=&#34;https://nodejs.org/api/errors.html#errors_error_propagation_and_interception&#34;&gt;send the error to the first argument&lt;/a&gt; of the callback function.&lt;/p&gt;
+
+&lt;p&gt;Let’s do something a bit more practical — define a function which takes a list of files. If there are files, just return them, but if no files are supplied, return an error message.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function readFiles (files, cb) {
+  if (files.length) {
+    cb(null, files)
+  } else {
+    cb(&#39;no files supplied&#39;)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This function will then be consumed in this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;readFiles(process.argv.slice(2), (err, data) =&amp;gt; {
+  if (err) return console.error(err)
+  console.log(data)
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I highly encourage you to test this if you’re not sure how it works. If you are lazy to open a terminal session, just fire a &lt;a href=&#34;https://runkit.com/home&#34;&gt;RunKit&lt;/a&gt; and copy-paste these in the browser ;)&lt;/p&gt;
+
+&lt;p&gt;Notice the &lt;code&gt;return&lt;/code&gt; is used in the case of an error to exit the function. This pattern is very popular and comes handy for almost any case where the consumer of your module needs to do one single thing and get a result.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;observer-pattern-with-eventemitter&#34;&gt;Observer pattern with EventEmitter&lt;/h3&gt;
+
+&lt;p&gt;Node.js developers use the &lt;a href=&#34;https://nodejs.org/api/events.html#events_emitter_on_eventname_listener&#34;&gt;EventEmitter&lt;/a&gt; interface from day one as it’s “under the hood” of almost all node core modules. Especially when we speak about functions which take time to finish.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Synopsis&lt;/strong&gt;: Using the event emitter:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You create observable objects with &lt;em&gt;multiple listeners,&lt;/em&gt; where each listener is a callable function, i.e each &lt;em&gt;listener is a possible outcome.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;emitter.emit(eventName[, …args])&lt;/code&gt; instead of &lt;code&gt;cb(null, data)&lt;/code&gt;to pass on a result on listener function.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;emit(&#39;error&#39;, err)&lt;/code&gt; to pass on an error and exit.&lt;/li&gt;
+&lt;li&gt;Communicate multiple possible outcomes from your function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The EventEmitter provides a popular &lt;code&gt;on()&lt;/code&gt; method which “hooks” functions on an object. Then, it invokes them synchronously one by one when a given event happens. This approach provides more granularity and control than CPS which gives one outcome per function.&lt;/p&gt;
+
+&lt;p&gt;Let’s expand our previous function &lt;code&gt;readFiles()&lt;/code&gt; to &lt;code&gt;filterFiles()&lt;/code&gt; in order to provide a way to message all subscriber consumers on the event of finding a file during a search.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/15cbee0731612dc6388c2f0e1cafa6b7.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Then, in order to use this function, we’ll have an implementation like:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/4fb5f5129a202bd14bb9518bcef74244.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;We can also use some sugar to make the same functionality sweeter:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/223e3170b53307b5ca0e3d02afcd93ea.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;If you’ve visited the chapter about the observer patterns in the &lt;a href=&#34;https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8&#34;&gt;famous design patterns book&lt;/a&gt; you must already see a big difference in the way how you can implement the pattern. I like “the node-way” better — it’s simpler and you can express same ideas with less code. And honestly, if I were to teach this pattern to web developers, I am sure that I’d have a better chance of success relating on familiarity of jQuery’s popular &lt;code&gt;.on()&lt;/code&gt; method, without too much talking about abstractions and interfaces.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;combining-cps-and-observer-patterns&#34;&gt;Combining CPS and Observer patterns&lt;/h3&gt;
+
+&lt;p&gt;Our new function &lt;code&gt;findFiles()&lt;/code&gt; is definitely more flexible than &lt;code&gt;readFiles()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;findFiles()&lt;/code&gt; provides a way for the user to listen to events during the processing of each file, which could give useful control of the processing.&lt;/p&gt;
+
+&lt;p&gt;But what if we want to make it even more flexible, like letting the user choose whether he wants this control or not? What if the user is not actually interested in each file, but wants to get only the final result?&lt;/p&gt;
+
+&lt;p&gt;Well, let’s make our event emitter function CPS-friendly!&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/985b975fe6591675ce2272b53846b2c8.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This is only a demo implementation which you should not copy-paste into your code without including better checks on the various edge cases of the input, etc. However, the example gives a basic idea on how to make the callback argument optional and use it depending on the scenario.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;I hope that in the end of this article you have some useful high-level ideas about few options you have when designing your node modules. It’s good to start with the end in mind, imagining how you want your modules to be used. This will help you balance your decisions better between the level of flexibility and easiness of use that you want to provide to your users.&lt;/p&gt;
+
+&lt;p&gt;And remember — in most cases your choice of a programming language to use is less important than the way you use the programming language.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

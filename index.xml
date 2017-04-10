@@ -35,6 +35,554 @@ with the accelerated pace of change in Web. That&amp;rsquo;s what you can expect
     </item>
     
     <item>
+      <title>March digest 2017</title>
+      <link>https://kalinchernev.github.io/march-digest-2017/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/march-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;This one will be on various personal thoughts on Medium, the JAM stack, the OpenAPI specification, and coding katas.&lt;/p&gt;
+
+&lt;h3 id=&#34;medium&#34;&gt;Medium&lt;/h3&gt;
+
+&lt;p&gt;If you’re a regular reader or writer on Medium, you already know about the &lt;a href=&#34;https://medium.com/3minread&#34;&gt;latest changes&lt;/a&gt;. Together with the new features, a &lt;a href=&#34;https://help.medium.com/hc/en-us/articles/115004750267-Medium-Membership-Partner-Program-FAQ&#34;&gt;partner program&lt;/a&gt; came into play, where companies and vendors will be more motivated to publish content about their products and services.&lt;/p&gt;
+
+&lt;p&gt;Being a small fish without financial interests in blogging (at least here and now), I decided to research new channels of communicating my ideas out of Medium. As a casual happy writer, I really wish Medium best of luck in their search of even more and better ways of monetizing their great platform and continue connecting deep thinkers.&lt;/p&gt;
+
+&lt;p&gt;Medium is aiming to solve problems at large scale for businesses and important individuals in the mission of un-breaking the internet and the publishing again. As a technical blogger, I’m interested in achieving smaller goals:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I want to share about my wider “deep” thinking working with various technologies and tools&lt;/strong&gt;. I am not vendor-interested in this communication channel. I’m more into experimenting with many tools and using only a few, later sharing my findings from hands-on work. For this, I can place my thoughts anywhere I decide to — I lately admire &lt;a href=&#34;https://dev.to/&#34;&gt;dev.to&lt;/a&gt; which feels like “the right place to be” — but the editor is not as easy as in Medium. So yeah, I can just do the markdowns in a static site generator and re-post wherever …&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want to be part of a community somehow.&lt;/strong&gt; Here at Medium, things tend to happen naturally. For example, I post &lt;a href=&#34;https://medium.com/@kalin.chernev/the-guide-to-learn-graphql-i-wish-i-found-few-months-go-97f9d9ca6f12&#34;&gt;a story about GraphQL&lt;/a&gt; which reaches 1.5k visitors, 7 of which come &lt;a href=&#34;http://dev-blog.apollodata.com/&#34; title=&#34;dev-blog.apollodata.com&#34;&gt;dev-blog.apollodata.com&lt;/a&gt;. I mean, that’s amazing — If I hadn’t shared my short notes on Medium, no-one using or reading about Apollo would have ever have visited my blog post. For this, I plan on &lt;a href=&#34;https://disqus.com/&#34;&gt;disqus&lt;/a&gt; integration which seems straight-forward and covering this “business requirement”.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want my code to look really good, and I want it to be more interactive.&lt;/strong&gt; This comes simply from the fact that I write mostly about code, so I want it to look nice. Medium allows effective snippets placement and github gists, yet there are many nice-looking styling options for code parsed out of markdown. Having control over the parsed version of your writing is an advantage in some aspects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want to have statistics.&lt;/strong&gt; Medium provides stats on each story and it’s really useful to have a global idea what’s going on. For the same GraphQL article I mentioned above, over 1k of the visits come from flipboard.com. That’s all I know as my application request to have a publication with Google Analytics required a payment I got informed a month after making the application. No Google Analytics on Medium unless you are having business goals. I think I’ll manage to integrate Google Analytics in my new stack without 70 dollars for the infrastructure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At the moment, I’ve jotted just a few high-level milestones in the upcoming digital transformation …&lt;/p&gt;
+
+&lt;h3 id=&#34;jam-stack&#34;&gt;JAM stack&lt;/h3&gt;
+
+&lt;p&gt;As Medium evolves, as my interests into improving the ways of expressing my casual tech thoughts in writing. Researching on some of the nerdiest ways I can make a blog for myself — the JAM stack came into light. The &lt;a href=&#34;https://jamstack.org/&#34;&gt;JAM stack&lt;/a&gt; is an acronym of having JavaScript, APIs and Markup. It’s absolutely revolutionary — I mean — nobody ever though so far in history that the web could handle HTML, CSS and JavaScript in such ways. (That’s ironic) The stack is tightly related to the topic of &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;static sites generators&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;J&lt;/strong&gt; will maybe be in React. At this stage, I’ve found a decent &lt;a href=&#34;https://www.packtpub.com/web-development/mastering-react&#34;&gt;book to follow&lt;/a&gt; on the way. At any case, investing into learning React will pay much better for me rather than writing new articles on a platform which can change its business goals tomorrow and just go offline.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;A&lt;/strong&gt; will be the &lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;github API&lt;/a&gt;. With inspirations from &lt;a href=&#34;https://www.netlifycms.org/&#34;&gt;netlifycms&lt;/a&gt;, a well-known &lt;a href=&#34;https://www.netlifycms.org/docs/editorial-workflow/&#34;&gt;git flow translates to my upcoming publishing workflow&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;M&lt;/strong&gt; part of the stack — I didn’t manage to decide upon this yet as the trends are moving too fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So cool this is, google will show you a &lt;a href=&#34;https://www.kickstarter.com/projects/846364129/jamstack-the-worlds-first-attachable-guitar-amplif?lang=fr&#34;&gt;kickstarter campaign for the jam stack&lt;/a&gt; and there is a song to play while working:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/oFRbZJXjWIA?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&#34;open-api-specification&#34;&gt;Open API specification&lt;/h3&gt;
+
+&lt;p&gt;In this month, I wrote a story about &lt;a href=&#34;https://restful.io/prototyping-your-api-project-with-the-open-api-specification-and-node-js-tools-7cb19f47f72d&#34;&gt;prototyping with the OpenAPI specifcation&lt;/a&gt;. It’s describing some techniques using the &lt;a href=&#34;https://github.com/Rebilly/generator-openapi-repo&#34;&gt;generator-openapi&lt;/a&gt; — made by the team of &lt;a href=&#34;https://apis.guru/&#34;&gt;APIs.guru&lt;/a&gt; — really nice product to use!&lt;/p&gt;
+
+&lt;p&gt;I’m personally impressed by the community progress made around v3 of the latest spec. A release candidate was published in the beginning of the month, and various software packages literally sprouted in weeks.&lt;/p&gt;
+
+&lt;p&gt;I think there are mainly few links to follow the fast progress:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://openapi.toolbox.apievangelist.com/&#34;&gt;OpenAPI toolbox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mermade/awesome-openapi3&#34;&gt;Unofficial awesome list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;The github repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the awesome list, there are few tools I hadn’t seen before. They seem to be made in quite a different way than the swagger-ui and swagger-editor, etc. that still keep popular positions in the toolbox.&lt;/p&gt;
+
+&lt;p&gt;Another good news this month for fans of the OpenAPI initiative was the &lt;a href=&#34;https://github.com/swagger-api/swagger-editor/releases/tag/v3.0.0&#34;&gt;v3 release of the swagger-editor&lt;/a&gt; which brought a warmly-welcomed auto-suggest feature:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*n9qpZymZykXOuG9zxdUryQ.png&#34; alt=&#34;Nice autocomplete feature of the swagger editor&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;coding-katas&#34;&gt;Coding katas&lt;/h3&gt;
+
+&lt;p&gt;The first competitive learning event (coding battle) from the Hack League team took place.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*aqpQIY4DURgBoYGJTDyIQg.jpeg&#34; alt=&#34;An image from the hack event&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was my first event since a very long time, so I could see some new people and technologies during the event :)&lt;/p&gt;
+
+&lt;p&gt;As organizers mentioned, the &lt;a href=&#34;http://git.hackleague.io/root/cb-2017-03-20&#34;&gt;problems of the competition&lt;/a&gt; are open after the event and you are encouraged to see them and get encouraged to join the next event :)&lt;/p&gt;
+
+&lt;p&gt;I think (and I feel) that the problems are not the most complex thing you can see as a developer, but they definitely get closer to testing developers’ shape in solving problems fast and with confidence in the small steps.&lt;/p&gt;
+
+&lt;p&gt;As I really suck at making small steps really fast, I’m trying to get into the habit making regular exercise at &lt;a href=&#34;https://www.codewars.com&#34;&gt;codewars.com&lt;/a&gt; with the idea of improving shape through &lt;a href=&#34;https://en.wikipedia.org/wiki/Kata&#34;&gt;katas&lt;/a&gt;. This is not a radically new idea for me, as there are the &lt;a href=&#34;http://es6katas.org/&#34;&gt;ES6katas&lt;/a&gt; teaching TDD as codewards and &lt;a href=&#34;https://nodeschool.io/&#34;&gt;nodeschool&lt;/a&gt; which provides various exercises for developers. (If you really enjoy them, you can give me a hand at the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/issues&#34;&gt;stream-adventure workshopper&lt;/a&gt; and I promise quick reviews and quick contribution gratification)&lt;/p&gt;
+
+&lt;p&gt;I believe in the important of taking care of my coding shape. I think it’s similar to doing sports and exercising or playing musical instruments. The tricky part being that &lt;a href=&#34;https://hackhands.com/dont-code-katas/&#34;&gt;programmers tend to overthink it sometimes&lt;/a&gt; …&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototyping APIs with Open API Specification and Node.js</title>
+      <link>https://kalinchernev.github.io/prototyping-apis-open-api-specification/</link>
+      <pubDate>Fri, 10 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/prototyping-apis-open-api-specification/</guid>
+      <description>
+
+&lt;p&gt;A story about using Node.js community-built tools effectively in order to speed up the prototyping phase of your API project. In the whole article, &lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;Open API specification&lt;/a&gt; (which recently reached a RC on version 3) refers to version 2, also known as &lt;a href=&#34;http://swagger.io/&#34;&gt;Swagger specification&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this article I’ll briefly demonstrate how you can to make use of few community-driven tools which I came across recently and I definitely recommend: &lt;a href=&#34;https://medium.com/@typicode&#34;&gt;Typicode&lt;/a&gt;’s &lt;a href=&#34;https://github.com/typicode/json-server&#34;&gt;json-server&lt;/a&gt; and &lt;a href=&#34;https://medium.com/@Rebilly&#34;&gt;Rebilly&lt;/a&gt;’s &lt;a href=&#34;https://github.com/Rebilly/generator-openapi-repo&#34;&gt;Open API generator&lt;/a&gt;. By using a combination of them, you can quickly achieve a mock API server with really nice and useful documentation based in short deadlines.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-open-api-generator-http-generator-openapi-repo-specification-is-first&#34;&gt;The &lt;a href=&#34;http://generator-openapi-repo&#34;&gt;Open API generator&lt;/a&gt;: specification is first&lt;/h3&gt;
+
+&lt;p&gt;I think it’s better to start with the specification as it answers many questions, even before making any real or fake data for the API.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/Rebilly/generator-openapi-repo/blob/master/README.md&#34;&gt;official documentation&lt;/a&gt; is sufficient to get started. There’s really no need for detailed tutorial here on how to use the tool in order to make a working project — just follow the steps. (And maybe push an empty commit on the &lt;code&gt;gh-pages&lt;/code&gt; branch before first deploy just to make sure)&lt;/p&gt;
+
+&lt;p&gt;More importantly, you have to know why this generator is good and why I recommend it 😌&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It works with &lt;a href=&#34;http://swagger.io/swagger-editor/&#34;&gt;&lt;strong&gt;swagger editor&lt;/strong&gt;&lt;/a&gt; out of the box, which feels like having a back-end for building your specification and documentation&lt;/li&gt;
+&lt;li&gt;Your specification (aka swagger spec) can be split into several files, which makes the project more manageable and mainteanable&lt;/li&gt;
+&lt;li&gt;Sleek documentation with &lt;a href=&#34;http://swagger.io/redoc-openapi-powered-documentation/&#34;&gt;&lt;strong&gt;ReDoc&lt;/strong&gt;&lt;/a&gt; (though &lt;a href=&#34;http://swagger.io/swagger-ui/&#34;&gt;swagger-ui&lt;/a&gt; is also generated) I think ReDoc is excellent in following the API documentation trends.&lt;/li&gt;
+&lt;li&gt;The results of your work can easily be deployed to &lt;a href=&#34;https://pages.github.com/&#34;&gt;&lt;strong&gt;github pages&lt;/strong&gt;&lt;/a&gt;. It’s possible to make requests from here to external API server like the one we’ll have with json-server, as it supports CORS out of the box. Basically, as long as the server can accept requests from your github pages, these server really effectively as living documentation.&lt;/li&gt;
+&lt;li&gt;Continuous integration with &lt;strong&gt;Travis&lt;/strong&gt; comes out of the box. Every time you push an update in the specification on the master branch, Travis checks for errors and deploys to github pages if everything is ok.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you follow the steps correctly, you’ll end up with a simplified version of &lt;a href=&#34;https://github.com/Rebilly/RebillyAPI&#34;&gt;RebillyAPI repository&lt;/a&gt;. That’s the final outcome that’ll motivate you to try the generator now, if you haven’t already done so 😊&lt;/p&gt;
+
+&lt;p&gt;Probably you might find other similar tools such as &lt;a href=&#34;https://github.com/sourcey/spectacle&#34;&gt;spectacle&lt;/a&gt;, however this tool worked really well for me and it covers everything I think one might need during a prototyping phase of an API project.&lt;/p&gt;
+
+&lt;p&gt;Thus, you have a tool to develop an Open API specification and deploy its documentation to github pages, making it nice and accessible for the public. With this Open API specification, you can later generate server/client code with &lt;a href=&#34;http://swagger.io/swagger-codegen/&#34;&gt;Codegen&lt;/a&gt;, or just deploy the spec to services such as &lt;a href=&#34;https://cloud.google.com/endpoints/docs/open-api-spec&#34;&gt;Cloud Endpoints&lt;/a&gt; or any other that will soon come with similar integration.&lt;/p&gt;
+
+&lt;p&gt;Basically, there are many opportunities available for you when you have the specification. Next step is to generate a server with mock data which matches the specification’s “contract” with the documentation or just any front-end app meant to work with the specification.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-json-server-generator-fake-it-till-you-make-it&#34;&gt;The JSON server generator: fake it till you make it&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/typicode/json-server/blob/master/README.md&#34;&gt;JSON server tool&lt;/a&gt; is not really a generator per se, however it’s easy to integrate it as such in your toolchain. What I mean is, the tool is based on &lt;a href=&#34;http://com&#34;&gt;express.js&lt;/a&gt; and its popular middleware. You won’t need the express generator as you focus on the server. The endpoints are automatically discovered out of JSON files and you do not need express’ sophisticated templates views, routes, etc.&lt;/p&gt;
+
+&lt;p&gt;A simple &lt;a href=&#34;https://github.com/typicode/json-server/blob/master/README.md#generate-random-data&#34;&gt;function&lt;/a&gt; in a script run by a npm task can easily do for having a generator for the server part. Also, &lt;a href=&#34;https://www.npmjs.com/package/faker&#34;&gt;faker&lt;/a&gt; plays really well with this “generator” function. (no word play intended here) &lt;a href=&#34;https://coligo.io/create-mock-rest-api-with-json-server/&#34;&gt;Check an example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The main ideas you should understand with JSON server:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It’s an easy start out of an example or existing JSON files&lt;/li&gt;
+&lt;li&gt;It’s easy to make a generator script to work with the tool&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also, another benefit is that the server can be easily deployed. For example, if you decide to deploy on heroku, you’ll only need to update your server to use &lt;code&gt;process.env.IP&lt;/code&gt; and &lt;code&gt;process.env.PORT&lt;/code&gt;. The documentation points to the &lt;a href=&#34;http://jsonplaceholder.typicode.com/&#34;&gt;jsonplaceholder&lt;/a&gt; example, but surely &lt;a href=&#34;http://hook.io/&#34;&gt;hook.io&lt;/a&gt; or a similar cloud service will work just fine. Just keep it simple and working — the main idea of using this tool is to move fast and effectively.&lt;/p&gt;
+
+&lt;p&gt;Another option for generating a server on top of an existing specification is the &lt;a href=&#34;https://www.npmjs.com/package/swagger-server&#34;&gt;swagger-server&lt;/a&gt; package which also integrates with express.js, however does not necessarily provide the ready filters, sorts, etc. that json-server does.&lt;/p&gt;
+
+&lt;h3 id=&#34;additional-ideas&#34;&gt;Additional ideas&lt;/h3&gt;
+
+&lt;p&gt;I personally separated both tools in 2 repositories for the following reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The mock API server can be managed and deployed independently&lt;/li&gt;
+&lt;li&gt;Data from the mock server can be easily fetched from the github pages documentation, as JSON Server comes with CORS enabled by default&lt;/li&gt;
+&lt;li&gt;This same mock API server can be just thrown away when the real server comes into place to work with the documentation and/or application&lt;/li&gt;
+&lt;li&gt;It’s also good to have the documentation repository separate to make it easier to manage in a similar way as the server. Good example is how both swagger ui, swagger editor and ReDoc are integrated into a single project focusing on developing specification and documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;further-notes&#34;&gt;Further notes&lt;/h3&gt;
+
+&lt;p&gt;That was a brief article sharing some love about open source projects which deserve an applause for being simple and effective helpers for developers.&lt;/p&gt;
+
+&lt;p&gt;If this article gets any positive feedback, I will make a follow-up story to this one showing few tips to improve the workflow of editing and publishing specification to documentation to a working API.&lt;/p&gt;
+
+&lt;p&gt;At any case, the search of more effective and well-integrated API prototyping, documentation and deployment continues.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>February digest 2017</title>
+      <link>https://kalinchernev.github.io/february-digest-2017/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/february-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;After my &lt;a href=&#34;https://kalinchernev.github.io/january-digest-2017&#34;&gt;January digest&lt;/a&gt;, I got feedback from a precious reader that these stories must be toilet-friendly, so I’ll keep it short, directly to the essence :)&lt;/p&gt;
+
+&lt;h3 id=&#34;productivity&#34;&gt;Productivity&lt;/h3&gt;
+
+&lt;p&gt;Without a question, the first thing coming to my mind in this month is the set of small changes I made with regards to my typing habits.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&#34;&gt;Vimium&lt;/a&gt; turned out to be really useful utility in my daily work on my &lt;a href=&#34;http://shop.lenovo.com/us/en/laptops/thinkpad/x-series-tablet/x220tablet/&#34;&gt;x220t&lt;/a&gt;. Together with the &lt;a href=&#34;https://en.wikipedia.org/wiki/Pointing_stick&#34;&gt;clit mouse&lt;/a&gt;, browsing becomes more straight-forward, even when clicking is inevitable. Yes, I feel more comfortable in vim after having vimium in my life, but I still prefer to &lt;a href=&#34;https://www.toptal.com/php/how-to-be-efficient-in-phpstorm&#34;&gt;be pragmatic at work&lt;/a&gt;. In the end, it all comes to wiring up an effective association between the brain and the computer which boils down to having &lt;a href=&#34;http://www.ratatype.com/learn/&#34;&gt;effective typing habits&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another big discovery for me this month was the &lt;a href=&#34;https://www.imagemagick.org/script/convert.php&#34;&gt;imagemagick’s&lt;/a&gt; &lt;code&gt;[conver](https://www.imagemagick.org/script/convert.php)&lt;/code&gt; &lt;a href=&#34;https://www.imagemagick.org/script/convert.php&#34;&gt;cli tools&lt;/a&gt;. After spending more than 30 minutes of trying to make a &lt;a href=&#34;https://twitter.com/kalinchernev/status/835053566632964097&#34;&gt;screenshot of gmail message for a tweet&lt;/a&gt; and not managing to convert paged pdf into a single continuous image, that command in the CLI really did magic:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ convert in.pdf -append out.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;graphql&#34;&gt;GraphQL&lt;/h3&gt;
+
+&lt;p&gt;I managed to spend few hours with this technology this month and I will remember few highlights as a result of that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/the-guide-to-learn-graphql-i-wish-i-found-few-months-go-97f9d9ca6f12#.7ss1zopsu&#34;&gt;My short sharing session&lt;/a&gt; got more than 1000 visits on day 1, scoring for more than 1.4k at present moment.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://graphql-docs.com/&#34;&gt;GraphQL docs&lt;/a&gt; got published by &lt;a href=&#34;https://scaphold.io/&#34;&gt;Scaphold&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/APIs-guru/graphql-voyager&#34;&gt;GraphQL voyager&lt;/a&gt; got published by &lt;a href=&#34;https://medium.com/@apis.guru&#34;&gt;APIs.guru&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The technology is getting further traction and community love.&lt;/p&gt;
+
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+
+&lt;p&gt;Although there have been numerous resources coming by on a daily basis, these are the most prominent to my humble opinion:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://opensource.guide/&#34;&gt;Open source guides&lt;/a&gt; by github&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.dev-books.com/&#34;&gt;Dev books&lt;/a&gt; summary based on stackoverflow&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enjoy, and keep reading and writing code for pleasure! :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The guide to learn GraphQL I wish I found few months go</title>
+      <link>https://kalinchernev.github.io/graphql-guide-wish-found-before/</link>
+      <pubDate>Thu, 16 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/graphql-guide-wish-found-before/</guid>
+      <description>
+
+&lt;p&gt;Although I consider myself an intermediate JavaScript developer, I struggled for weeks to understand fundamental concepts which are obvious for those living in the React.js ecosystem. So, this is a list of things I now see which I consider to be not documented or explained well enough for people like myself — those who like the ideas behind GraphQL and want to use it, but not necessarily having any experience with the React.js toolchain.&lt;/p&gt;
+
+&lt;p&gt;The list will follow the style of &lt;a href=&#34;https://medium.com/@dceddia&#34;&gt;Dave Ceddia&lt;/a&gt; who made &lt;a href=&#34;https://daveceddia.com/timeline-for-learning-react/&#34;&gt;a timeline to learn React&lt;/a&gt;. It was really handy when I was experimenting with React few months ago, because it’s splitting the topics clearly and logically, smoothing the learning curve for newcomers. (At least it smoothed mine)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;0-introduction&#34;&gt;0. Introduction&lt;/h3&gt;
+
+&lt;p&gt;As a most fundamental start of everything, you have to have an idea what GraphQL is, and what it’s not.&lt;/p&gt;
+
+&lt;p&gt;Get motivated:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/UBGzsb2UkeY?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Get the basic concepts:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/WQLzZf34FJ8?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;For me, there are few reasons to invest time in learning GraphQL, even if I’m not a React developer, but an API enthusiast:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Less round trips to the server&lt;/li&gt;
+&lt;li&gt;Declare what you want, get exactly what you need&lt;/li&gt;
+&lt;li&gt;Introspection is convenient and useful&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://graphql.org/swapi-graphql/&#34;&gt;GraphiQL IDE&lt;/a&gt; is amazing&lt;/li&gt;
+&lt;li&gt;Building proxy servers on top of existing REST APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;GraphQL is a specification, it’s language independent, yet the most popular one is the JavaScript one. So, it’s useful to be comfortable with JavaScript for understanding the official documentation. (More or this later)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;1-languages&#34;&gt;1. Languages&lt;/h3&gt;
+
+&lt;p&gt;First, you have to be comfortable with at least one programming language and the concepts behind the GraphQL query language. Regardless of the language of choice, you have to be OK with 2 languages.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-syntax&#34;&gt;2. Syntax&lt;/h3&gt;
+
+&lt;p&gt;Assuming that you follow the official track of &lt;a href=&#34;http://graphql.org/learn/&#34;&gt;learning GraphQL&lt;/a&gt; you will get some ideas about the syntax of GraphQL. You can improve your skills with it following &lt;a href=&#34;https://learngraphql.com/&#34;&gt;an online hands-on course&lt;/a&gt; as a complementary. By the end of these two, you will feel the power of querying information in a declarative way, which is as special as writing declarative components in React.&lt;/p&gt;
+
+&lt;p&gt;Then, if you follow the &lt;a href=&#34;http://graphql.org/graphql-js/&#34;&gt;graphql.js&lt;/a&gt; track of the official website, which is something that I did, you will have to be comfortable with the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JavaScript syntax&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://es6katas.org/&#34;&gt;ES6&lt;/a&gt; syntax&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flowtype.org/&#34;&gt;Flow&lt;/a&gt; syntax&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The majority of developers will get around the ES6 for sure, but the Flow part was really problematic for me. Why? Because, it’s natural to head directly to the &lt;a href=&#34;http://graphql.org/graphql-js/type/&#34;&gt;types&lt;/a&gt; section as you already know that everything goes around types, but the syntax is nothing you have seen before. (I hadn’t)&lt;/p&gt;
+
+&lt;p&gt;So, after a while, you will most probably end up on a higher-level scenario of using graphql.js with express, reading about &lt;a href=&#34;http://graphql.org/graphql-js/type/#graphqlobjecttype&#34;&gt;GraphQLObjectType&lt;/a&gt;. The documentation is highly concise on types and what is what and what is where, etc. Without having an idea that it’s written in Flow syntax (with ES6), you will be guessing a lot.&lt;/p&gt;
+
+&lt;p&gt;The first eye-opening moment of syntax difference could be that you can &lt;a href=&#34;http://graphql.org/graphql-js/constructing-types/&#34;&gt;build types in several ways&lt;/a&gt;. The second one could be that &lt;a href=&#34;http://graphql.org/learn/execution/#root-fields-resolvers&#34;&gt;context, fields and resolvers&lt;/a&gt; start to speak to you. It’s one thing to follow the tutorials and achieving results mimicking the example code, but it’s a totally different thing when you can read the documentation and see that you can work with promises, globals, and how to work with fields in circular dependencies.&lt;/p&gt;
+
+&lt;p&gt;At the moment of writing this article there is no single mentioning of Flow in the official documentation on the website.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;3-resolve&#34;&gt;3. Resolve()&lt;/h3&gt;
+
+&lt;p&gt;If you come from React, &lt;code&gt;resolve()&lt;/code&gt; will maybe ring an association with &lt;code&gt;render()&lt;/code&gt; It serves a totally different purpose, as it’s basically answering the question of what a given field should consider part of the given type, but for me it bears a similar simplicity and importance to the declarative nature.&lt;/p&gt;
+
+&lt;p&gt;Again, the documentation is good in giving a &lt;a href=&#34;http://graphql.org/learn/execution/#root-fields-resolvers&#34;&gt;simple explanation what you can do with these&lt;/a&gt;, however it took me some time to decipher the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fields: GraphQLFieldConfigMapThunk | GraphQLFieldConfigMap;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It was not easy to understand that &lt;code&gt;GraphQLFieldConfigMapThunk&lt;/code&gt; is used when fields should be able to handle circular dependencies.&lt;/p&gt;
+
+&lt;p&gt;I have to be honest, it also took me more time to understand what are the magical parameters that go in this function. Different tutorials follow different ways to get the arguments they need, such as using &lt;code&gt;_&lt;/code&gt; for first arg (to skip using it), or using the &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment&#34;&gt;destructing assignment&lt;/a&gt; to get part of the context, etc. Again, understanding documentation with Flow helps more than the &lt;code&gt;console.log(...args)&lt;/code&gt; I was using to figure them out.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-relay&#34;&gt;4. Relay&lt;/h3&gt;
+
+&lt;p&gt;Relay is the tool that loosely couples with GraphQL. You need it for more sophisticated scenarios when you need caching, pagination, etc. I haven’t used it yet, as I’m on the fundamentals of GraphQL, but I know it’s out there and I will use it when “relay compliance” is necessary in bigger projects or special client scenarios.&lt;/p&gt;
+
+&lt;p&gt;Not required to learn GraphQL.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-apollo&#34;&gt;5. Apollo&lt;/h3&gt;
+
+&lt;p&gt;I follow it even more than relay, (because of &lt;a href=&#34;https://www.meteor.com/&#34;&gt;MDG&lt;/a&gt;) but I haven’t had the reasons to use it until now. From aside, it seems shiny and well supported. I think this is the direction to go when using non-React toolchain and when you need more sophisticated solutions with MDG-level of quality and coolness :)&lt;/p&gt;
+
+&lt;p&gt;Also not required to learn GraphQL.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;I think that React.js developers are in a better position of understanding and working with GraphQL at this time. That is normal, as little by little I start to see how the different tools work together to solve problems in specific ways that come naturally by understanding concepts behind the declarative ways of thinking in facebook products at the moment.&lt;/p&gt;
+
+&lt;p&gt;So, if you are a developer that does not know all the facebook products, like me, start small by understanding the syntax and the documentation well, experiment with small projects, and use the variety of more sophisticated tools when your projects grow and require more control and flexibility.&lt;/p&gt;
+
+&lt;p&gt;Think client-first approach. The client as your consumer of the API, and the client who wants to get something done. There must be a reason why the documentation of GraphQL does not mention inter-related and more sophisticated tools directly — you use them when you need them.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reflecting on node.js design patterns</title>
+      <link>https://kalinchernev.github.io/reflecting-nodejs-design-patterns/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/reflecting-nodejs-design-patterns/</guid>
+      <description>
+
+&lt;p&gt;Once upon on a time, there was a designer …&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*o-Igk7ZgpSz2Zu4syTG3-A.jpeg&#34; alt=&#34;funny JavaScript image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;No matter if the story is true or not, working with JavaScript on the server with Node.js at the moment is a very different experience compared to working with Python, Ruby or PHP. I’d personally say that the advantage of working with a single language everywhere comes with the price of having to learn different design patterns in order to use the language effectively.&lt;/p&gt;
+
+&lt;p&gt;One of these fundamental concepts to learn is the asynchronous programming. There are many articles in the Node.js/JavaScript community about asynchronous programming in terms of what callbacks are and how to &lt;a href=&#34;https://www.npmjs.com/package/async&#34;&gt;solve problems of control flow with a library&lt;/a&gt;, a &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;promise&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function&#34;&gt;async/await&lt;/a&gt;, etc. These are useful when the question is generally:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How to use node modules in a good way?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And although it’s important to learn and follow best practices in implementation, I sometimes miss articles which answer another question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How to organize my code in node modules in a good way?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this story I’ll be reflecting on few patterns which answer the latter.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;continuation-passing-style-pattern&#34;&gt;Continuation-passing style pattern&lt;/h3&gt;
+
+&lt;p&gt;This is an easy concept to understand, but really fundamental for working with asynchronous code&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Synopsis&lt;/strong&gt;: In your continuation-passing style function (CPS):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;cb(null, data)&lt;/code&gt; instead of &lt;code&gt;return&lt;/code&gt; to pass on result.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;return cb(err)&lt;/code&gt; to pass on an error and exit the function.&lt;/li&gt;
+&lt;li&gt;Communicate one single outcome from the function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Synchronous
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 2));
+
+// Asynchronous
+function addAsync(a, b, cb) {
+  cb(a + b);
+}
+
+addAsync(2, 2, function add(result) {
+  console.log(result);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That’s it! Honestly, the first time I saw this type of snippet, I already felt an eye-opening moment. If you know this already, give yourself a tap on the shoulder! Good job!&lt;/p&gt;
+
+&lt;p&gt;For aesthetics, you can re-factor the last function as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;addAsync(2, 2, result =&amp;gt; console.log(result));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of even:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;addAsync(2, 2, console.log);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The important take-away here is that functions can be passed as arguments to other functions. These are &lt;strong&gt;functions acting like a return statement&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Node.js, conventions say that when you’re writing such CPS you must &lt;a href=&#34;https://nodejs.org/api/errors.html#errors_error_propagation_and_interception&#34;&gt;send the error to the first argument&lt;/a&gt; of the callback function.&lt;/p&gt;
+
+&lt;p&gt;Let’s do something a bit more practical — define a function which takes a list of files. If there are files, just return them, but if no files are supplied, return an error message.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function readFiles (files, cb) {
+  if (files.length) {
+    cb(null, files)
+  } else {
+    cb(&#39;no files supplied&#39;)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This function will then be consumed in this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;readFiles(process.argv.slice(2), (err, data) =&amp;gt; {
+  if (err) return console.error(err)
+  console.log(data)
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I highly encourage you to test this if you’re not sure how it works. If you are lazy to open a terminal session, just fire a &lt;a href=&#34;https://runkit.com/home&#34;&gt;RunKit&lt;/a&gt; and copy-paste these in the browser ;)&lt;/p&gt;
+
+&lt;p&gt;Notice the &lt;code&gt;return&lt;/code&gt; is used in the case of an error to exit the function. This pattern is very popular and comes handy for almost any case where the consumer of your module needs to do one single thing and get a result.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;observer-pattern-with-eventemitter&#34;&gt;Observer pattern with EventEmitter&lt;/h3&gt;
+
+&lt;p&gt;Node.js developers use the &lt;a href=&#34;https://nodejs.org/api/events.html#events_emitter_on_eventname_listener&#34;&gt;EventEmitter&lt;/a&gt; interface from day one as it’s “under the hood” of almost all node core modules. Especially when we speak about functions which take time to finish.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Synopsis&lt;/strong&gt;: Using the event emitter:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You create observable objects with &lt;em&gt;multiple listeners,&lt;/em&gt; where each listener is a callable function, i.e each &lt;em&gt;listener is a possible outcome.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;emitter.emit(eventName[, …args])&lt;/code&gt; instead of &lt;code&gt;cb(null, data)&lt;/code&gt;to pass on a result on listener function.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;emit(&#39;error&#39;, err)&lt;/code&gt; to pass on an error and exit.&lt;/li&gt;
+&lt;li&gt;Communicate multiple possible outcomes from your function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The EventEmitter provides a popular &lt;code&gt;on()&lt;/code&gt; method which “hooks” functions on an object. Then, it invokes them synchronously one by one when a given event happens. This approach provides more granularity and control than CPS which gives one outcome per function.&lt;/p&gt;
+
+&lt;p&gt;Let’s expand our previous function &lt;code&gt;readFiles()&lt;/code&gt; to &lt;code&gt;filterFiles()&lt;/code&gt; in order to provide a way to message all subscriber consumers on the event of finding a file during a search.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/15cbee0731612dc6388c2f0e1cafa6b7.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Then, in order to use this function, we’ll have an implementation like:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/4fb5f5129a202bd14bb9518bcef74244.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;We can also use some sugar to make the same functionality sweeter:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/223e3170b53307b5ca0e3d02afcd93ea.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;If you’ve visited the chapter about the observer patterns in the &lt;a href=&#34;https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8&#34;&gt;famous design patterns book&lt;/a&gt; you must already see a big difference in the way how you can implement the pattern. I like “the node-way” better — it’s simpler and you can express same ideas with less code. And honestly, if I were to teach this pattern to web developers, I am sure that I’d have a better chance of success relating on familiarity of jQuery’s popular &lt;code&gt;.on()&lt;/code&gt; method, without too much talking about abstractions and interfaces.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;combining-cps-and-observer-patterns&#34;&gt;Combining CPS and Observer patterns&lt;/h3&gt;
+
+&lt;p&gt;Our new function &lt;code&gt;findFiles()&lt;/code&gt; is definitely more flexible than &lt;code&gt;readFiles()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;findFiles()&lt;/code&gt; provides a way for the user to listen to events during the processing of each file, which could give useful control of the processing.&lt;/p&gt;
+
+&lt;p&gt;But what if we want to make it even more flexible, like letting the user choose whether he wants this control or not? What if the user is not actually interested in each file, but wants to get only the final result?&lt;/p&gt;
+
+&lt;p&gt;Well, let’s make our event emitter function CPS-friendly!&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/985b975fe6591675ce2272b53846b2c8.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This is only a demo implementation which you should not copy-paste into your code without including better checks on the various edge cases of the input, etc. However, the example gives a basic idea on how to make the callback argument optional and use it depending on the scenario.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;I hope that in the end of this article you have some useful high-level ideas about few options you have when designing your node modules. It’s good to start with the end in mind, imagining how you want your modules to be used. This will help you balance your decisions better between the level of flexibility and easiness of use that you want to provide to your users.&lt;/p&gt;
+
+&lt;p&gt;And remember — in most cases your choice of a programming language to use is less important than the way you use the programming language.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>January Digest 2017</title>
+      <link>https://kalinchernev.github.io/january-digest-2017/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/january-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;I’ve prepared a warm-up digest for those of you who made a resolution to improve their JavaScript skills in 2017, so let’s get it started!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;stories&#34;&gt;Stories&lt;/h3&gt;
+
+&lt;p&gt;I published 2 articles this month and I enjoyed writing both of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/problem-first-problem-solving-87369b84551f#.zg5l97itd&#34;&gt;Problem-first problem-solving&lt;/a&gt; — don’t be mislead by the title, it’s about positive concepts going randomly through my brain.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://restful.io/agile-documentation-for-your-api-driven-project-based-on-open-api-standards-11e54d4326bb#.jaw6kcohk&#34;&gt;Agile documentation for your API-driven project&lt;/a&gt; — this got a tweet from the community few minutes after being published. So, the spread started before I make a tweet about the new publication myself. Nothing makes me happier than that as a writer.&lt;/p&gt;
+
+&lt;p&gt;I got enthusiastic to write this article after release 1.9.0 of &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; which introduced 2 new features. Both of them being focused on developers’ experience and productivity.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+
+&lt;p&gt;It’s just the beginning of 2017, so let’s warm up right for it!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodesource.com/blog/the-21-most-awesome-awesome-lists-for-node-js-developers&#34;&gt;The 21 Most Awesome Awesome Lists for Node.js Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://risingstars2016.js.org/&#34;&gt;2016 rising stars&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.mybridge.co/node-js-top-10-articles-of-the-year-v-2017-79df8269d0f3#.naz5q020y&#34;&gt;Node.JS Top 10 Articles of the Year (v.2017)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.risingstack.com/node-js-async-best-practices-avoiding-callback-hell-node-js-at-scale/&#34;&gt;Node.js Async Best Practices &amp;amp; Avoiding Callback Hell — Node.js at Scale&lt;/a&gt; — this article is full of advertisements just as a typical American TV show. It’s also as good as such because it shows you problems and solutions that you might actually have in your real life.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And one more which is not only about JavaScript but the broader spectrum of front-end development: &lt;a href=&#34;https://www.gitbook.com/book/frontendmasters/front-end-handbook-2017/details&#34;&gt;Front-End Developer Handbook 2017&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;cloud&#34;&gt;Cloud&lt;/h3&gt;
+
+&lt;p&gt;I feel that video gives a useful overview of one of the new hypes: serverless.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/Dh_UXXtSvjQ?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In addition, this feels down-to-earth about production usage:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/c4rvh_Iq6LE?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In my personal opinion, this “serverless” hype is not a ground-breaking new technology, but a smooth transition towards customer-oriented architectures and services. Containers could be considered as a ground-breaking thing which solve problems in infrastructure management, and they will probably be still the background “hidden” behind serverless.&lt;/p&gt;
+
+&lt;p&gt;When I visualize a transition towards customer-oriented API architectures and services, I imagine services like &lt;a href=&#34;http://swagger.io/go-serverless-with-swaggerhub-and-amazon/&#34;&gt;SwaggerHub&lt;/a&gt; which hide complexity of infrastructure management and let’s the user focus on building products.&lt;/span&gt; I also imagine that at some point Amazon will be in a position to offer amazing user AND developers experience directly in the cloud when &lt;a href=&#34;http://www.forbes.com/sites/janakirammsv/2016/07/18/the-master-plan-behind-amazons-acquisition-of-cloud9-ide/#6e580c0028db&#34;&gt;Cloud9 comes move integrated&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;At some point, AWS (? will ?) be the de-facto platform for building cloud applications where the user starts off easily — just clicking here and there and making configurations which integrate what-ever is necessary, where-ever necessary. And when super-specific tweak is necessary, code editor with all &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2&#34;&gt;debugging capabilities&lt;/a&gt; will be at hand. Thus, covering scenarios from small startup projects that don’t want to focus on infrastructure, to enterprise which is there because of the fine control over the server side.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;trends&#34;&gt;Trends&lt;/h3&gt;
+
+&lt;p&gt;On a similar note about trends, &lt;a href=&#34;https://www.oracle.com/corporate/acquisitions/apiary/index.html&#34;&gt;Apiary got acquired by Oracle&lt;/a&gt;. Though I’m not a pro at understanding mergers, it’s obvious that API economy companies are on success reaping wave. Only few months ago &lt;a href=&#34;http://www.forbes.com/sites/greatspeculations/2016/09/13/heres-why-google-is-acquiring-apigee/#52eceafc693f&#34;&gt;Apigee was in the news in a similar way&lt;/a&gt;, and there is a compelling reason for these trending acquisitions.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;time-saving-tricks&#34;&gt;Time-saving tricks&lt;/h3&gt;
+
+&lt;h4 id=&#34;phpstorm-convert-between-array-syntax&#34;&gt;PHPStorm convert between array syntax&lt;/h4&gt;
+
+&lt;p&gt;Laugh at me, but I still sometimes see &lt;code&gt;array()&lt;/code&gt; syntax during my work (and not &lt;code&gt;[]&lt;/code&gt;) It appeared to be an easy thing to change automatically in the editor.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Code | Inspect Code...&lt;/code&gt; — run it on your files. One of the inspections called &lt;strong&gt;&amp;ldquo;Traditional syntax array literal detected&amp;rdquo;&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Alternatively just run that specific inspection only via &lt;code&gt;Code | Run Inspection by Name...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Once done, you will see a list with results. Find that particular inspection in results (in case if 1st option was used (all inspections)).&lt;/li&gt;
+&lt;li&gt;From there you can apply “Fix it” action on all (or individual) results of that inspection.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*t5kfn0iW_I3uC3mWxA5Ntg.png&#34; alt=&#34;php storm converting array syntax&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Checking the daily ebook by&lt;/strong&gt; &lt;a href=&#34;https://www.packtpub.com/packt/offers/free-learning&#34;&gt;&lt;strong&gt;Packt’s Free Leaning campaign&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s an option to subscribe for updates via twitter or facebook, which is understandable. This is a good way to have leads and metrics of the campaign. However, it’s not very practical to open the website and see it every day, thus I made a lazy-logic implementation to be able to check this from the command line like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ node ~/scripts/freeEbook.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There’s the gist for it (it’s super-lazy)&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/5f67405d46914897ee8ff95b46b55898.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This script is just the basic concept that can be integrated with internal cron tasks or cloud services to automate the check. For example, I imagine that with some investigation it will be possible to work out an &lt;a href=&#34;https://auth0.com/blog/if-this-then-node-dot-js-extending-ifttt-with-webtask-dot-io/&#34;&gt;integration with IFTTT&lt;/a&gt; or a similar service.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Agile documentation for your API-driven project</title>
       <link>https://kalinchernev.github.io/agile-documentation-api-driven-project/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0200</pubDate>
@@ -914,510 +1462,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;h3 id=&#34;feedback-is-nbsp-welcome&#34;&gt;Feedback is&amp;nbsp;welcome&lt;/h3&gt;
 
 &lt;p&gt;Use the comments below to share your techniques and opinions.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Cloud9 IDE</title>
-      <link>https://kalinchernev.github.io/cloud9-editor/</link>
-      <pubDate>Mon, 29 Aug 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/cloud9-editor/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*uc-REJYHbk02nuzVQmDHHQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Few months ago I attended a &lt;a href=&#34;https://medium.com/@kalin.chernev/coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots-f0887c15e257&#34;&gt;coding competition&lt;/a&gt;. In the end of the event the winners demonstrated one of their tools: the &lt;a href=&#34;https://c9.io&#34;&gt;Cloud9 editor&lt;/a&gt;. Then it hit me — I had to experiment with it! Later I used it working on various projects in my free time. Here I&amp;rsquo;m going to share my experience so far — I&amp;rsquo;m a happy user&amp;nbsp;:)&lt;/p&gt;
-
-&lt;h3 id=&#34;cloud9-is-nbsp-great&#34;&gt;Cloud9 is&amp;nbsp;great&lt;/h3&gt;
-
-&lt;p&gt;So far, I&amp;rsquo;ve found several key points/facts why I consider the editor to be truly astounding tool:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Accessibility and User/Developer experience&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;Pair programming&lt;/a&gt; and education&lt;/li&gt;
-&lt;li&gt;Collaboration and open source&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;accessibility&#34;&gt;Accessibility&lt;/h3&gt;
-
-&lt;p&gt;The tool is currently &lt;a href=&#34;https://c9.io/pricing&#34;&gt;free&lt;/a&gt; and &lt;a href=&#34;https://github.com/c9&#34;&gt;open source&lt;/a&gt;. Even if you&amp;rsquo;re not a technical person you already have reason #1 to either make a &lt;a href=&#34;https://c9.io/signup&#34;&gt;new registration&lt;/a&gt; or use your existing code-oriented account to &lt;a href=&#34;https://c9.io/login&#34;&gt;log in&lt;/a&gt; to the service. (No affiliation in the links) If you are non-technical, but very business person, you might know that &lt;a href=&#34;https://c9.io/blog/great-news/&#34;&gt;Amazon will probably grow Cloud9 in the future&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, if you are a technical person and you take a closer look, you&amp;rsquo;ll see that it&amp;rsquo;s a charming service of &lt;a href=&#34;https://ace.c9.io/#nav=about&#34;&gt;ace&lt;/a&gt; which directly accesses &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; instances. The first time I showed a working &lt;a href=&#34;https://docs.c9.io/docs/create-a-workspace&#34;&gt;workspace&lt;/a&gt; to a friend developer telling him to use the environment just as Ubuntu — the response was something like&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*DBGdHlkB6DVjBy62d3TANQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Later, he setup all his bash aliases and specific configurations and started to work with the terminal just as he&amp;rsquo;s working with his own Linux machine&amp;nbsp;:)&lt;/p&gt;
-
-&lt;h3 id=&#34;pair-programming-and-education&#34;&gt;Pair programming and education&lt;/h3&gt;
-
-&lt;p&gt;As soon as the environment was ready (understand having all the aliases and custom shell scripts, drush, drupal console, etc. cli tools) we went into using some of the &lt;a href=&#34;https://docs.c9.io/docs/share-a-workspace#section-collaboration-features&#34;&gt;collaboration features&lt;/a&gt;. I will not put a meme here, but I&amp;rsquo;ll tell you this: the experience is very similar to using Google Drive for collaborating on documents in real-time, so if you like this — you&amp;rsquo;ll surely like this real-time coding experience too!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;Pair programming&lt;/a&gt; on same git branch and code base is not something we usually do for various reasons, but if you like doing it, or you need to do it — I&amp;rsquo;d definitely recommend you Cloud9. You can pair program remotely just as you&amp;rsquo;d normally do on 1 computer: sharing terminal, files, git branches, etc.&lt;/p&gt;
-
-&lt;p&gt;From these pair program opportunities come also very interesting education opportunities. For example, &lt;a href=&#34;https://cs50.harvard.edu/&#34;&gt;CS50&lt;/a&gt; and &lt;a href=&#34;https://www.freecodecamp.com/challenges/start-a-nodejs-server&#34;&gt;freeCodeCamp&lt;/a&gt;. These are good case studies of the cloud editor to encourage people of all walks of life to give programming a try and learn their &lt;a href=&#34;https://docs.c9.io/docs/supported-languages&#34;&gt;preferred programming language&lt;/a&gt; without any special computer hardware requirements, i.e. they can code real applications in the browser.&lt;/p&gt;
-
-&lt;h3 id=&#34;collaboration-and-open-nbsp-source&#34;&gt;Collaboration and open&amp;nbsp;source&lt;/h3&gt;
-
-&lt;p&gt;Because the service is free and very fun to use, it&amp;rsquo;s naturally an optional tool when working on various projects requiring tight collaboration such as open source projects.&lt;/p&gt;
-
-&lt;p&gt;For example, I decided to work on &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; node module which I used for a small project. All I had to do to make a pull request is:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Make a new workspace (new virtual machine in the cloud)&lt;/li&gt;
-&lt;li&gt;Git clone the fork repository&lt;/li&gt;
-&lt;li&gt;Create a new branch and do your task&lt;/li&gt;
-&lt;li&gt;Push back to fork repository and open a pull request&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Note that I didn&amp;rsquo;t even have to install any software, all I had to make this contribution was to open my browser and use Cloud9 as a cloud service.&lt;/p&gt;
-
-&lt;h3 id=&#34;keybindings&#34;&gt;Keybindings&lt;/h3&gt;
-
-&lt;p&gt;These are some of the items I&amp;rsquo;m using quite often and sometimes get a WOW effect from people watching me doing things like that in my browser:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.c9.io/docs/multiple-cursors&#34;&gt;Multiple cursors&lt;/a&gt; (yep, &lt;a href=&#34;https://www.sublimetext.com/&#34;&gt;sublime&lt;/a&gt; is to blame for our expectations)&lt;/li&gt;
-&lt;li&gt;Command line tricks work just well (Ctrl+U, Ctrl+L)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.c9.io/docs/keybindings&#34;&gt;Find in tree&lt;/a&gt; (and others)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.c9.io/docs/find-and-replacing-in-files#find-in-files&#34;&gt;Search/Find&lt;/a&gt; is handy working with namespaces&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I think normally people don&amp;rsquo;t expect a full IDE experience in the browser, as I didn&amp;rsquo;t too, and that&amp;rsquo;s the reason I mentioned Docked previously for an eye-opener. Just by the way, PHP developers might be even more surprised with things like &lt;a href=&#34;https://c9.io/blog/debug-your-php-code-with-xdebug-and-cloud9/&#34;&gt;xdebugger&lt;/a&gt; being available in their development environments.&lt;/p&gt;
-
-&lt;h3 id=&#34;setting-up-drupal-nbsp-8&#34;&gt;Setting up Drupal&amp;nbsp;8&lt;/h3&gt;
-
-&lt;p&gt;This might come even more shocking for people having an idea what &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt; is. It&amp;rsquo;s an association of heavy CMS with high resource demand.&lt;/p&gt;
-
-&lt;p&gt;Yet, do the following the sake of having your WOW moment yourself:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Create a new workspace based on &lt;a href=&#34;https://github.com/drupal-composer/drupal-project&#34;&gt;Drupal Composer&lt;/a&gt; github repository&lt;/li&gt;
-&lt;li&gt;Follow the instructions to run an installation from the cli or the web (you might need to read &lt;a href=&#34;https://community.c9.io/t/setting-up-mysql/1718&#34;&gt;this MySQL&lt;/a&gt; article if you don&amp;rsquo;t have the idea to see your &lt;a href=&#34;https://help.ubuntu.com/community/EnvironmentVariables&#34;&gt;environment variables&lt;/a&gt; from the command line.&lt;/li&gt;
-&lt;li&gt;Profit from having a running Drupal 8 which uses &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt; scripts for managing modules and dependencies to external libraries.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*12EXDc2rgRcy11wQk4SVjA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Drupalaton 2016</title>
-      <link>https://kalinchernev.github.io/drupalaton-2016/</link>
-      <pubDate>Mon, 22 Aug 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/drupalaton-2016/</guid>
-      <description>
-
-&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;Recently, I joined an event on &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt; in Hungary — the &lt;a href=&#34;http://drupalaton.hu&#34;&gt;Drupalaton&lt;/a&gt;. It is one of the most exciting yearly Drupal events in Europe, organized by the local community. It gathers hundreds of contributors who collaborate on Drupal issues, share knowledge and have fun together&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;I really enjoyed this year&amp;rsquo;s event since it covered a lot of my favorite topics. (discussed shortly after) Good sessions, pleasant talks with the community, and also — a lot of new things to learn. The event took place at the shore of the biggest warm-water lake in Europe, at Lake Balaton.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ME6rgg3pXT8oid14R5RNVg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;sessions&#34;&gt;Sessions&lt;/h3&gt;
-
-&lt;p&gt;Sure enough, sessions were covering important &lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; features. There were several tracks, as well as sprints, where participants were able to collaborate.&lt;/p&gt;
-
-&lt;p&gt;I visited mainly the workshops related to the &lt;a href=&#34;http://buytaert.net/a-roadmap-for-making-drupal-more-api-first&#34;&gt;API-first initiative&lt;/a&gt;. This is a futuristic initiative, involving many JavaScript tools and modern concepts and practices for building service-oriented apps, not only websites.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s a vital initiative for Drupal as a platform for the future. Presently, Drupal is one of the best systems for content modelling, querying, and building websites in general. This means that normal people can make websites with complex information structures with very little or no programming.&lt;/p&gt;
-
-&lt;p&gt;The API-first initiative could potentially take Drupal into a place where &lt;strong&gt;the content modelling and querying becomes data modelling and querying, enabling non-developers to build complex APIs for the next generation apps.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Apart from these, there were also sessions about Drupal-specific modules being upgraded between Drupal 7 and 8. In overall, I think we&amp;rsquo;ll see more &amp;ldquo;good stuff&amp;rdquo; of &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony&lt;/a&gt;, PHP OOP, design patterns, etc topics during next Drupal events.&lt;/p&gt;
-
-&lt;h3 id=&#34;workshops&#34;&gt;Workshops&lt;/h3&gt;
-
-&lt;p&gt;This is my humble list of highlighted sessions I focused on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-166&#34;&gt;&lt;strong&gt;REST APIs&lt;/strong&gt;&lt;/a&gt; by Pieter Frenssen (&lt;a href=&#34;https://www.drupal.org/u/pfrenssen&#34;&gt;pfrenssen&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*4o8SJ8Q9EhrUt4fkz8DKpQ.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Well-formed, step-by-step guide, covering all important concepts of having Drupal as both server and/or a client in &lt;a href=&#34;http://www.restapitutorial.com/&#34;&gt;REST API architectures&lt;/a&gt;. If you want to skip the details in this section, check &lt;a href=&#34;https://www.drupal.org/developing/api/8/rest#practical&#34;&gt;Drupal REST API docs&lt;/a&gt; which covers great amount of information around the topic.&lt;/p&gt;
-
-&lt;p&gt;The beginning was a general information about what REST actually is. This included status codes, methods, design patterns, etc.&lt;/p&gt;
-
-&lt;p&gt;After presenting the basics, the next step was to use Drupal as a client, fetching data from &lt;a href=&#34;https://www.drupal.org/drupalorg/docs/api&#34;&gt;drupal.org REST API&lt;/a&gt; and displaying it in a block.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/generate-plugin-block.html&#34;&gt;Creating a block with Drupal Console&lt;/a&gt; was super-easy. That was a really neat way to demonstrate injecting the &lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal.php/function/Drupal%3A%3AhttpClient/8.2.x&#34;&gt;http_client service&lt;/a&gt; via the cli from the &lt;a href=&#34;https://api.drupal.org/api/drupal/core!core.api.php/group/container/8.2.x&#34;&gt;container&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There was also a demo of using the &lt;a href=&#34;https://www.drupal.org/documentation/modules/rest&#34;&gt;core REST API module&lt;/a&gt;, which transforms Drupal into an API server. &lt;a href=&#34;https://www.drupal.org/project/restui&#34;&gt;REST UI module&lt;/a&gt; was demonstrated as a site builders&amp;rsquo; tool to manage the configurations which are otherwise &lt;a href=&#34;https://www.chapterthree.com/blog/custom-restful-api-drupal-8&#34;&gt;managed through&amp;nbsp;.yml files&lt;/a&gt;. Here, it&amp;rsquo;s important to note, that the endpoints of the REST API are controllers. Developers have the freedom to choose which format of data to return and via which components. For example, one can use the &lt;a href=&#34;https://github.com/symfony/http-foundation&#34;&gt;Symfony&amp;rsquo;s HttpFoundation&lt;/a&gt; and its JsonResponse instance.&lt;/p&gt;
-
-&lt;p&gt;In short, there was a lot of good advice, both about REST APIs in general, and Drupal-specific implementations, in combination with third-party tools and components.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-171&#34;&gt;&lt;strong&gt;Headless Drupal&lt;/strong&gt;&lt;/a&gt; by Ruben Teijeiro (&lt;a href=&#34;https://www.drupal.org/u/rteijeiro&#34;&gt;rteijeiro&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Even though I did not attend the workshop, it was still part of the Drupal API-first series of topics. &lt;a href=&#34;https://github.com/rteijeiro/headless-drupal8&#34;&gt;Code of the session&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-106&#34;&gt;&lt;strong&gt;Progressive web apps&lt;/strong&gt;&lt;/a&gt; by Théodore Biadala (&lt;a href=&#34;https://www.drupal.org/u/nod_&#34;&gt;nod_&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;That was an intermediate-level session. &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;Promises&lt;/a&gt; were in the core of all code snippets and demonstrations. Highlight APIs: &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API/Fetch_API&#34;&gt;Fetch API&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers&#34;&gt;Service Workers&lt;/a&gt;, and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API&#34;&gt;Web APIs&lt;/a&gt; in general. The main idea was to demonstrate how modern web APIs can be used to build web apps, having functionalities very similar to native apps.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/theodoreb/pwa-workshop&#34;&gt;The repository&lt;/a&gt; of the workshop is public, so go and check it for further details in case you&amp;rsquo;re interested into the interface implementations.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s interesting to note the example of &lt;a href=&#34;https://github.com/theodoreb/pwa-workshop/blob/master/js/1-promise.js#L12&#34;&gt;promise-based&lt;/a&gt; &lt;a href=&#34;https://www.drupal.org/node/756722#behaviors&#34;&gt;behaviors system&lt;/a&gt;. A modernized implementation of classic concept on managing JavaScript.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-111&#34;&gt;&lt;strong&gt;GraphQL&lt;/strong&gt;&lt;/a&gt; by Sebastian Siemssen (&lt;a href=&#34;https://www.drupal.org/u/fubhy&#34;&gt;fubhy&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;The &lt;a href=&#34;https://twitter.com/hashtag/GraphQL?src=hash&#34;&gt;#GraphQL&lt;/a&gt; workshop w/ &lt;a href=&#34;https://twitter.com/thefubhy&#34;&gt;@thefubhy&lt;/a&gt;  at &lt;a href=&#34;https://twitter.com/hashtag/Drupalaton?src=hash&#34;&gt;#Drupalaton&lt;/a&gt; &lt;a href=&#34;https://t.co/AgfQGzCq81&#34;&gt;pic.twitter.com/AgfQGzCq81&lt;/a&gt;&lt;/p&gt;&amp;mdash; Kalin Chernev (@kalinchernev) &lt;a href=&#34;https://twitter.com/kalinchernev/status/764072778773344256&#34;&gt;August 12, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Needless to say, that was the &amp;ldquo;cherry&amp;rdquo; session. It was about the &lt;a href=&#34;http://graphql.org/docs/getting-started/&#34;&gt;Facebook&amp;rsquo;s GraphQL&lt;/a&gt;, which developers were ready to understand, after touching upon REST APIs, JavaScript Frameworks, knowing what is a server and a client in general in the previous sessions.&lt;/p&gt;
-
-&lt;p&gt;I personally enjoyed the workshop. In fact, I was even able follow along with the live coding on the main screen. It was also nice that it made a clear association between specification and language implementation. This means that same concepts of data architecture were demonstrated and practices with &lt;a href=&#34;https://github.com/graphql/express-graphql&#34;&gt;JavaScript&lt;/a&gt; and &lt;a href=&#34;https://github.com/Youshido/GraphQL&#34;&gt;PHP&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the first part, the &lt;a href=&#34;https://github.com/graphql/swapi-graphql&#34;&gt;Star Wars API&lt;/a&gt; was used with the &lt;a href=&#34;http://graphql-swapi.parseapp.com/&#34;&gt;GraphiQL&lt;/a&gt; — a hands-on tutorial to &lt;a href=&#34;http://slides.com/sebastiansiemssen/graphql-meets-drupal-dd#/3/7&#34;&gt;understand the basic concepts&lt;/a&gt; like queries, fragments, variables, sub selections, etc.&lt;/p&gt;
-
-&lt;p&gt;Second was the usage of node.js app with express, express-graphql, graphiql, graphql and other popular modules to transpile ES6 code. In this playground, the building part started. Various types were used: GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, etc. That was my first time to actually write something working out of the &lt;a href=&#34;https://learngraphql.com/&#34;&gt;learngraphql.com&lt;/a&gt; online tutorials.&lt;/p&gt;
-
-&lt;p&gt;There was a demo of Relay in-between, as a bonus, to grab a general understanding of the additional features provided on top of the fundamental specification.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*tpPTqCyZnfPqhb1er6ECpw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;After the GraphQL implementation in JavaScript was getting convenient, then we continued using the same concepts, but to build a server in PHP and the &lt;a href=&#34;https://www.drupal.org/project/graphql&#34;&gt;Drupal GraphQL module&lt;/a&gt;. Sure enough, the approach was similar, but this time extending SchemaProviderBase and implementing framework-specific EntityTypeManager (&lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21EntityTypeManagerInterface.php/interface/EntityTypeManagerInterface/8.2.x&#34;&gt;Interface&lt;/a&gt;) to manage &lt;a href=&#34;https://www.drupal.org/node/2192175&#34;&gt;Content Entity&lt;/a&gt; items.&lt;/p&gt;
-
-&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
-
-&lt;p&gt;The event was awesome, the people were great, and the sessions were truly useful. I feel somehow privileged with the opportunity to attend such a good series of sessions related to API-s in the Drupal community!&lt;/p&gt;
-
-&lt;p&gt;There are a lot of new technologies and tools to learn and play with. I hope the summary above is a good starter for anyone enthusiastic about the future of the tools mentioned.&lt;/p&gt;
-
-&lt;h3 id=&#34;community&#34;&gt;Community&lt;/h3&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;End of the first day at &lt;a href=&#34;https://twitter.com/drupalaton&#34;&gt;@drupalaton&lt;/a&gt; we have a great dinner. &lt;a href=&#34;https://t.co/CN795wXixz&#34;&gt;pic.twitter.com/CN795wXixz&lt;/a&gt;&lt;/p&gt;&amp;mdash; 5NET Interactive (@5NEThu) &lt;a href=&#34;https://twitter.com/5NEThu/status/763818240954998789&#34;&gt;August 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Many thanks to the local Drupal community in Hungary!&amp;nbsp;:)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coding battle with Skygate @MolenGeek</title>
-      <link>https://kalinchernev.github.io/coding-battle-molengeek/</link>
-      <pubDate>Sat, 09 Jul 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/coding-battle-molengeek/</guid>
-      <description>
-
-&lt;p&gt;The last event from the series of coding battles organized by &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt;, this time in cooperation with Skygate on a life-saving topic using tools like Google Maps and Firebase.&lt;/p&gt;
-
-&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/denisomelcenco&#34;&gt;Denis Omelcenco&lt;/a&gt; from Skygate presented the challenge: make an app to locate the closest defibrillator. The initial code base contained helpful starting materials such as a &lt;a href=&#34;https://github.com/DenisSkygate/CodingBattle/blob/master/Defibrillators.json&#34;&gt;JSON file listing the defibrillators&lt;/a&gt; and their locations, together with some &lt;a href=&#34;https://github.com/DenisSkygate/CodingBattle&#34;&gt;HTML files&lt;/a&gt; to facilitate the app building. Also, &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; provided additional helpful resources on &lt;a href=&#34;https://developers.google.com/maps/&#34;&gt;Google Maps API&lt;/a&gt;, &lt;a href=&#34;https://www.firebase.com/&#34;&gt;Firebase&lt;/a&gt;, etc. As you can imagine, the topic inspired the developers since it&amp;rsquo;s based on meaningful cause.&lt;/p&gt;
-
-&lt;p&gt;In the spirit of &amp;ldquo;Never too early to start&amp;rdquo;, there was a very young participant. I wish this inspires more lads and ladies to join in next events&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZiiIav-nONmY-C8LqOIxdw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-tools&#34;&gt;The tools&lt;/h4&gt;
-
-&lt;p&gt;The &lt;strong&gt;Google Maps API&lt;/strong&gt; was the easiest for the developers, probably because it&amp;rsquo;s a popular tool many of us had used before. Needless to say, good start examples were present, together with many answers on the internet on how to handle the various topics like directions, geo-locations, etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Firebase&lt;/strong&gt; was a new tool for my team. The tool came super-handy on building an API based on an existing &lt;a href=&#34;https://www.firebase.com/docs/rest/quickstart.html&#34;&gt;JSON really really easy&lt;/a&gt;. The only step necessary was to normalize the key:value pairs to have good naming for the import. Otherwise, we built a RESTful back-end with data about defibrillators in minutes.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/swift/&#34;&gt;&lt;strong&gt;Swift&lt;/strong&gt;&lt;/a&gt; was also useful tool for some who decided to build a native app&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*EEgjG4Ja_L5iScKDLYM2Yg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;winners-and-working-nbsp-apps&#34;&gt;Winners and working&amp;nbsp;apps&lt;/h4&gt;
-
-&lt;p&gt;In the end, there were 2 working apps: the one with Swift, and one with &lt;a href=&#34;https://github.com/DenisSkygate&#34;&gt;the &amp;ldquo;starterkit&amp;rdquo;&lt;/a&gt;. The final presentations of the projects gave some insights on the Google Maps APIs used.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*A5RYiojFrUUUxRklNiRT8Q.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;time-to-enjoy-the-summer-nbsp&#34;&gt;Time to enjoy the summer&amp;nbsp;:)&lt;/h4&gt;
-
-&lt;p&gt;Next event will be somewhere in September, but it&amp;rsquo;s not fixed yet because of the forthcoming summer months. To get notified for the next editions, just sign in the &lt;a href=&#34;http://www.meetup.com/javascriptlab/&#34;&gt;meetup group&lt;/a&gt; or in the facebook group page.&lt;/p&gt;
-
-&lt;p&gt;Thanks to Philos we saw a growing community and interest of hacking making small useful apps in very short time. Wish them luck and more opportunities for organizing even bigger projects in the future!&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*T1IwXqRxsa26rQ2Wu1Sf8A.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)</title>
-      <link>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</link>
-      <pubDate>Thu, 23 Jun 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</guid>
-      <description>
-
-&lt;h1 id=&#34;coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots&#34;&gt;Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots-f0887c15e257&#34;&gt;Originally published on Medium&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Continuing on the exciting journey of coding battles and events, this time I&amp;rsquo;m so trilled on what happened that I can&amp;rsquo;t wait to put my hands back to code. So the story will be short and simple, hopefully inspiring for you to try building some cool chat bots and join me in the next coding event.&lt;/p&gt;
-
-&lt;h4 id=&#34;chat-bots-1&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Chatbot&#34;&gt;Chat Bots&lt;/a&gt;&lt;/h4&gt;
-
-&lt;p&gt;Recently, there&amp;rsquo;s been quite some noise around the topic and many companies have already jumped into it — using and developing chat bots. The benefits, as I personally feel them: &lt;em&gt;for users, chat bots are a promise for better user experience, while for developers chat bots are a promise for cool task automation and beautifully integrated event-driven apps&lt;/em&gt;. Of course, the biggest value is when a machine understands natural human communication and responds in a smart and useful way.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-organizers&#34;&gt;The Organizers&lt;/h4&gt;
-
-&lt;p&gt;I have to say this was the best coding event I&amp;rsquo;ve ever been so far. The flow was really smooth, the whole atmosphere was really good, and there were winners with a result in the end, which is a real-life app with purpose.&lt;/p&gt;
-
-&lt;p&gt;The organizing team comprised of &lt;a href=&#34;http://www.carasap.be/en/&#34;&gt;CarASAP&lt;/a&gt;, &lt;a href=&#34;http://www.mic-brussels.be/en/home/&#34;&gt;Microsoft Innovation Center&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt;. Probably because of their good collaboration, the challenge was well prepared — clear problem definition, steps to solve, examples, ongoing support during the event, and last but not least — clear end goal in mind. In short, CarASAP presented their need to automate the process of car ordering for their customers, so that they can receive service via chat. Representatives from Microsoft were going around the room answering questions, showing small steps and debugging together with us — it was really friendly environment.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZVk4GCCCk6zithaBa8I3-Q.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-challenge&#34;&gt;The Challenge&lt;/h4&gt;
-
-&lt;p&gt;Participants were provided with a JSON file representing the time schedule of a list of drivers. Thus, the schedule was the base information for our chat bots assisting CarASAP customers to find and order a driver. They were able to input natural sentences which the bot should understand by learning: time, date and address. (Read further to see which is the service used for understanding the natural speech&amp;nbsp;;)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;I think this event was a very good example how a business need can be solved elegantly in very short time with focused effort by a community&lt;/strong&gt;. I believe that this challenge set a good example for other companies to consider working with Philos too. Facilitating community contributions which solve real-life problems is a big thing. The way I see it, this is a Win-Win where developers learn, contribute and have fun, while business benefit resolutions and results.&lt;/p&gt;
-
-&lt;p&gt;In the end of the event, there was a demonstration of the working solution:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*7OYP5OSbEVuKgF4eIs9Xcw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Credits: &lt;a href=&#34;https://www.facebook.com/philos.io/&#34;&gt;Philos&amp;nbsp;Lab&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;tools-amp-best-practices&#34;&gt;Tools &amp;amp; Best Practices&lt;/h4&gt;
-
-&lt;p&gt;There was a lot of sharing during the event!&lt;/p&gt;
-
-&lt;p&gt;From the developers around me I learned about &lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;, which was a handy tool to just start and run a local node.js server which is easy to integrate with other systems. It&amp;rsquo;s a time-saver when there&amp;rsquo;s no time to deploy an app to a cloud server. Deployment can be a painful part of the development.&lt;/p&gt;
-
-&lt;p&gt;From the winning team, I got inspired to research &lt;a href=&#34;https://c9.io/&#34;&gt;cloud9&lt;/a&gt; as a tool for collaborating during the next hack event, since it&amp;rsquo;s another way to save from setup and deployment procedures which can lead to errors and frustration. Also, it looks awesome to be able to pair-program in real-time with other developers directly in the editor. Research homework for me&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;Managing API keys was another common setback for many. All I can say here is that it&amp;rsquo;s just something that has to be handled with care, because if it isn&amp;rsquo;t, it leads to mystical error codes without clear path to resolve. And a lot of time is wasted poking around debugging systems that should just work.&lt;/p&gt;
-
-&lt;p&gt;But don&amp;rsquo;t worry, you are not alone with these issues! Here&amp;rsquo;s a short motivational video that will make you laugh and encourage you to go forward&amp;nbsp;:)&lt;/p&gt;
-
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/zFO1cRr5-qY?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;p&gt;For building the bots, we used the &lt;a href=&#34;https://dev.botframework.com/&#34;&gt;Microsoft Bot Framework&lt;/a&gt;. I can&amp;rsquo;t explain you how amazing the APIs are! Just head directly into the &lt;a href=&#34;http://docs.botframework.com/builder/node/overview/#navtitle&#34;&gt;documentation&lt;/a&gt; and skim through some of the example code. I&amp;rsquo;m sure you&amp;rsquo;ll see the easy way to start building functionalities, for which the code looks familiar to other &lt;a href=&#34;http://loopback.io/resources/#compare&#34;&gt;node.js frameworks&lt;/a&gt;. Apart from the core bot framework for managing the communication, we used &lt;a href=&#34;https://www.luis.ai/&#34;&gt;LUIS&lt;/a&gt; to understand the user natural language, and process the important information from it. As a developer, I give my respect to the people who have built the framework and its documentation. It took us just few hours to figure out the APIs and make a working product!&lt;/p&gt;
-
-&lt;h4 id=&#34;apis-are-really-nbsp-cool&#34;&gt;APIs are really&amp;nbsp;cool!&lt;/h4&gt;
-
-&lt;p&gt;I&amp;rsquo;m generally a big fan of &lt;a href=&#34;https://en.wikipedia.org/wiki/Representational_state_transfer&#34;&gt;REST APIs&lt;/a&gt; and everything related to building and consuming them. For me, it&amp;rsquo;s a good architectural approach for decoupling logic and functionality to focus on solving specific problems in a re-usable way. (Yes, the &lt;a href=&#34;http://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; we hear about a lot recently solves some drawbacks of the design, still I think the first wave of common usage will be based on fetching data from existing REST APIs and mainly combining them.)&lt;/p&gt;
-
-&lt;p&gt;What I&amp;rsquo;m saying is that having the opportunity to work with &lt;a href=&#34;http://docs.botframework.com/builder/node/dialogs/LuisDialog/&#34;&gt;LUIS&lt;/a&gt; API is really really cool, especially in a hack event like this coding battle. Using services to solve complex problems feels good, and honestly I think this is the other topic that could be re-used many times, just like building chat bots for various purposes and business cases.&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;That&amp;#39;s &lt;a href=&#34;https://twitter.com/hashtag/API?src=hash&#34;&gt;#API&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/management?src=hash&#34;&gt;#management&lt;/a&gt; &lt;a href=&#34;https://t.co/mV5CJD84t7&#34;&gt;pic.twitter.com/mV5CJD84t7&lt;/a&gt;&lt;/p&gt;&amp;mdash; Amancio Bouza (@AmancioBouza) &lt;a href=&#34;https://twitter.com/AmancioBouza/status/738993707140190208&#34;&gt;June 4, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-community&#34;&gt;The Community&lt;/h4&gt;
-
-&lt;p&gt;Living in Brussels and following almost every initiative from Philos, I feel that the community around is getting bigger and stronger. Especially because there are opportunities to get together, learn and share! Also, this particular coding battle was an excellent example of good collaboration and focused efforts which brought real-life useful results. I speak about good collaboration between the business side of CarASAP, Microsoft Innovation Center and Philos, but also the good collaboration of developers solving challenges together!&lt;/p&gt;
-
-&lt;h4 id=&#34;what-s-next&#34;&gt;What’s next?&lt;/h4&gt;
-
-&lt;p&gt;First, make sure you sign up for the next coding battle — it’s the last one from the 1st edition of the HackLeague. It sounds to be really flexible on the skills necessary for the challenges, expect a lot of creativity! :)&lt;/p&gt;
-
-&lt;p&gt;HackLeague and Coding Battles were new concepts, but it’s easy to see that they are getting more traction on every step. Just looking at the number of participants increasing and the challenges getting better formulation, I firmly believe in the bright future ahead.&lt;/p&gt;
-
-&lt;p&gt;I also believe that HackLeague will continue to improve, as the community grows and more companies join the game. The more companies, the more interesting problems to tackle, and finally — the more knowledge sharing.&lt;/p&gt;
-
-&lt;p&gt;I can imagine that with enough traction, Philos will be able to possibility develop some sort of divisions based on specific needs and markets: VR, IoT, security, algorithms, you name it. I hope these will come naturally with the upcoming partnerships and collaborations.&lt;/p&gt;
-
-&lt;p&gt;I really liked the way Max presented his vision during the last event:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Let people learn and share with each other, the fun way. In other words: &lt;strong&gt;gamification for people creating the future&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Game on coders!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coding battle at Take Eat Easy</title>
-      <link>https://kalinchernev.github.io/coding-battle-take-eat-easy/</link>
-      <pubDate>Thu, 09 Jun 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/coding-battle-take-eat-easy/</guid>
-      <description>
-
-&lt;p&gt;Short retrospective on my second coding competition with JavaScript. Lessons learned and thoughts on how to improve for the future.&lt;/p&gt;
-
-&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.takeeateasy.be/en/&#34;&gt;Take Eat Easy&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt; organized this coding competition.&lt;/p&gt;
-
-&lt;p&gt;Similarly to &lt;a href=&#34;https://medium.com/@kalin.chernev/the-first-coding-battle-in-belgium-d4f4285ffb32#.ses1gau0l&#34;&gt;the first coding battle&lt;/a&gt;, good news from &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; came right from the beginning: the event was part of a hack league. For developers, this means that we can hope for continuity of the coding battles: more play, plus more opportunities to interact and share with others from the &lt;a href=&#34;https://twitter.com/jsl4b&#34;&gt;JavaScript community in Belgium&lt;/a&gt;. Few other cities have benefited from similar coding competitions: &lt;a href=&#34;https://twitter.com/maxczet/status/725623059344986112&#34;&gt;Paris&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/maxczet/status/728555974672449536&#34;&gt;London&lt;/a&gt; recently, I am looking forward to see how the wave will grow even further&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;After this intro, &lt;a href=&#34;http://www.takeeateasy.be/en/about&#34;&gt;Jean-Christophe Libbrecht&lt;/a&gt; presented what Take Eat Easy is in simple words: delivery on time. &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league&#34;&gt;The technical challenge&lt;/a&gt; was presented with focus on the same company values: optimal delivery management. I gotta say that I had a flashback to my university discipline of &lt;a href=&#34;https://en.wikipedia.org/wiki/Operations_research&#34;&gt;operations research&lt;/a&gt; for a minute, when thinking about routes and shortest distance. Luckily, the challenge was easier to understand than the academic subject!&lt;/p&gt;
-
-&lt;p&gt;The overall atmosphere was agréable et la majorité parlèrent en français. Positive support and guidance was coming all the time.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-challenge&#34;&gt;The challenge&lt;/h4&gt;
-
-&lt;p&gt;Quoting an abstract from the problem definition:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;You play one of TEE&amp;rsquo;s bike courier&lt;/p&gt;
-
-&lt;p&gt;Your goal is to make as much € as you can&lt;/p&gt;
-
-&lt;p&gt;You compete with other couriers in the city&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*zt3n7YspKUDLmP8Q4lN5qw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So, participants had to program a courier bot, which plays with other courier bots in an imaginary city. Taking and delivering orders in an optimal way.&lt;/p&gt;
-
-&lt;p&gt;An example &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league/tree/master/node-client&#34;&gt;node client bot&lt;/a&gt; was given. I find it to be a good boilerplate for a start. Most importantly it&amp;rsquo;s clear where to include the custom logic and what are the tools to use to take actions.&lt;/p&gt;
-
-&lt;p&gt;Another positive prerequisite was &lt;strong&gt;the sample state object&lt;/strong&gt;, which contained enough structure to understand the data that will be received by the client on every turn of the game. Note some important concepts are pretty obvious, I think: &lt;strong&gt;orders, possible actions and score&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/kalinchernev/d2d3e5e9ade9bca4f8ae94bc58dd5e88.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;All possible actions&lt;/strong&gt; that the bots were able to play with: moving up/down/left/right, pick order, drop order. There were 2 advanced actions: upgrade fighter (be able to kick other players) and upgrade electric (move doubled).&lt;/p&gt;
-
-&lt;p&gt;I will repeat this again, I was content with the organizers. Help was kindly provided, with hints and advice all the way during the game. That made it fun to play. (No matter the fact that my team didn&amp;rsquo;t manage to get points&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*641YUOoQZYNKW5N2d4G-kw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h4&gt;
-
-&lt;p&gt;I got a good &lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;pair&lt;/a&gt; for the event. (&lt;a href=&#34;https://github.com/Gregoirevda&#34;&gt;Gregoirevda&lt;/a&gt;) I think we got along easily and we had good time working together. Here are some highlights of the informal retrospective we did after the game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Visualize the end result (expectation) before going in the code&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We never ran the server &amp;ldquo;city&amp;rdquo; to see how our bot moves. That was not a clear problem until the end of the competition until when we were still working on the details on how to move our courier. &lt;a href=&#34;https://en.wikipedia.org/wiki/Grep&#34;&gt;Grep&lt;/a&gt;-ing the continuously changing state object helped us get some ideas about the dynamics, but honestly it was not easy to imagine how the courier bot is actually moving on the map without the real picture.&lt;/p&gt;
-
-&lt;p&gt;Now I believe it&amp;rsquo;s important to run the server (mock) locally during development just to understand and visualize the dynamics as they will be in the real game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Learn and understand the start examples and code samples&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;In my first competition I made the mistake to try to understand the logic of the core engine (server) running the game, but this time was better focusing on the sample code. Yet, I think we missed useful points and functions that we could have utilized in our favor without thinking too much.&lt;/p&gt;
-
-&lt;p&gt;More specifically, the head of the function that was invoked in every turn of the game contained the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Fetch my courier and possible order from the state  
-var state = data.state;  
-var possibleActions = data.possibleActions;  
-var myCourier;  
-var myOrder;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And guess what? That was prepared for us before-hand so that we could use these variables &amp;ldquo;as-is&amp;rdquo;. I have to say, I was mixing the &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;state&lt;/code&gt; variables pretty much, but that&amp;rsquo;s another topic.&lt;/p&gt;
-
-&lt;p&gt;Another part of the code contained this line:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Sample response.
-respond(getDirection(data.possibleActions,myCourier.position,{x:1,y:2}));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;getDirection()&lt;/code&gt; returns the best move depending on the current position and possible actions.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;respond()&lt;/code&gt; is the function to invoke in order to take actions.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;respond()&lt;/code&gt; took us away, because we decided to focus on the actions, and somehow it was pretty late in the game when we figured the getDirection() function for possible re-use.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. Strategy and task separation&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Probably the most complex part of all.&lt;/p&gt;
-
-&lt;p&gt;Even though we didn&amp;rsquo;t have clear strategy while developing the bot, it surely would have helped. For example, we started implementing functions for the bonus skills like having an electric bike and kicking other players before deciding how to move and take orders&amp;nbsp;:D&lt;/p&gt;
-
-&lt;p&gt;But seriously, possible strategy for this challenge could probably be to separate the approach in 2: functions for working with distance, and such for working with actions. Though we didn&amp;rsquo;t manage to have a complete combination of actions based on distance and value, we spoke about the fact that we were not clear about the order of combined actions we need to take. We took a delivery and then we were just standing at a place, since the next step was not foreseen. However, we prepared to be able to kick other players just standing there with our delivery in our hands! (we never got the points for the advanced action of kicking)&lt;/p&gt;
-
-&lt;p&gt;I feel that breaking down a challenge into small tasks plays an important role in problem solving, especially in short-time hack event. Also, event handling actions with state management seem to be recurring patterns, so it&amp;rsquo;s worth getting some more practice there too.&lt;/p&gt;
-
-&lt;h4 id=&#34;coming-up&#34;&gt;Coming up&lt;/h4&gt;
-
-&lt;p&gt;Many developers don&amp;rsquo;t go to competitions because they believe they are not good enough with JavaScript or they will not perform well in hack events under stress. Even though there is positive stress, with this retrospective and code samples I hope that I&amp;rsquo;ve managed to demonstrate that the challenge itself was doable and fun to do.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://www.eventbrite.com/e/coding-battle-microsoft-innovation-center-brussels-carasap-tickets-25839985091&#34;&gt;next coding battle will be at Microsoft&lt;/a&gt; and the event is open for registrations. I&amp;rsquo;d recommend you to grab the opportunity to broaden your experience.&lt;/p&gt;
-
-&lt;p&gt;Lastly, consider inviting your colleagues to join you too. As you can imagine, the short hacking time will naturally give you ideas on how to communicate effectively with your colleagues when you work together in different environment. Also, you will see new ways to break down tasks and problem solve by observing and sharing with other developers you meet at the event.&lt;/p&gt;
-
-&lt;h4 id=&#34;what-do-you-nbsp-think&#34;&gt;What do you&amp;nbsp;think?&lt;/h4&gt;
-
-&lt;p&gt;I&amp;rsquo;m really interested to hear feedback on my thoughts and ideas about the code and the highlights. Maybe you have a different point of view? Share it in the comments!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The first coding battle in Belgium</title>
-      <link>https://kalinchernev.github.io/first-coding-battle-belgium/</link>
-      <pubDate>Thu, 14 Apr 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/first-coding-battle-belgium/</guid>
-      <description>
-
-&lt;h2 id=&#34;coding-battle-what&#34;&gt;Coding? Battle? What?&lt;/h2&gt;
-
-&lt;p&gt;For me, coding is an act of expressing ways of thinking and problem-solving skills. However, in reality, it&amp;rsquo;s a more than that. It&amp;rsquo;s a proof of understanding complex concepts, and creating useful solutions with this understanding. Also, in fact, coding is frequently an act of showing narrow knowledge of a specific framework or knowledge of an API.&lt;/p&gt;
-
-&lt;p&gt;Battles, on the other hand, are not an every-day thing. Rap battles and games are fun though, why not take the same experience into another subject matter as an expression of quick-thinking and winning attitude?&lt;/p&gt;
-
-&lt;p&gt;Combining those, one can already enjoy online platforms like &lt;a href=&#34;https://codefights.com/&#34;&gt;codefights.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;What happens in offline, face-to-face world though?&lt;/p&gt;
-
-&lt;h4 id=&#34;coding-battle&#34;&gt;Coding battle&lt;/h4&gt;
-
-&lt;p&gt;That&amp;rsquo;s an opportunity to get experience actively. Battling is not only about watching a presentation, but solving problems. Quickly. And effectively.&lt;/p&gt;
-
-&lt;p&gt;Going into a battle is a learning experience.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-organizers&#34;&gt;The organizers&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos Lab&lt;/a&gt; is a frequent organizer of &lt;a href=&#34;http://www.meetup.com/javascriptlab/&#34;&gt;JavaScript events&lt;/a&gt; around Belgium, Netherlands, Luxembourg and France.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.woorank.com/&#34;&gt;Woorank&lt;/a&gt; is a product-oriented company who kindly prepared the challenges and hosted the battle.&lt;/p&gt;
-
-&lt;p&gt;Together, they organized the first coding battle in Brussels.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-battle&#34;&gt;The battle&lt;/h4&gt;
-
-&lt;p&gt;It was more enjoyable than you might think.&lt;/p&gt;
-
-&lt;p&gt;Honestly, I was doubtful about my own skills and readiness to go into a competition. That&amp;rsquo;s because JavaScript is changing every day, learning fatigue is something normal.&lt;/p&gt;
-
-&lt;p&gt;In this competition, developers had to program a bot, playing against a dealer bot based on this &lt;a href=&#34;https://github.com/Woorank/blackjack-challenge&#34;&gt;blackjack challenge&lt;/a&gt;. The rules were simple, there were teams (4 rounds by 4), playing against each other on playoffs principle. The better ratio of games won vs games lost ruled winning teams to the top.&lt;/p&gt;
-
-&lt;p&gt;Personally, I enjoyed the challenge. It didn&amp;rsquo;t require any previous knowledge of frameworks like Angular or React, but rather assumed general knowledge: variables, scope, functions and loops. That was really important in terms of facilitating the teams to focus on strategic thinking programming their automated bots, rather frameworks.&lt;/p&gt;
-
-&lt;p&gt;I believe these characteristics of the challenge were truly important. In the end, it was not really about whether or not developers know JavaScript or frameworks deeply, but rather: can developers understand requirements, code and logic quickly (2 hours and 30 minutes :), and provide solutions based on mathematics.&lt;/p&gt;
-
-&lt;h4 id=&#34;what-did-i-nbsp-learn&#34;&gt;What did I&amp;nbsp;learn&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Re-consider understanding the core algorithms&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Out of 2 hours and 30 minutes, I spent maybe around 40 minutes trying to figure out the structure of the code of the &amp;ldquo;dealer&amp;rdquo;. (the server) That might have been useful if I knew specifically that my results/winning will be evaluated based on understanding other people&amp;rsquo;s code. That&amp;rsquo;s not impossible, but takes a lot of time! Take-away: listen carefully for the expectations. Reading and understanding API-s as-is is not helping in a battle.&lt;/p&gt;
-
-&lt;p&gt;Maybe it&amp;rsquo;s useful to know the subject matter of the challenge, i.e. blackjack. Though every challenge will be different, I wouldn&amp;rsquo;t focus on this in my next challenge.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Focus on super-clear communication&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It happens every day, it happens in battles as well — discussing scope, persistence and making use of history of actions for future actions. There is no place for bad communication in a battle. Global scope is so much not an object scope. And dependency injection is not always possible, don&amp;rsquo;t take it for granted.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. Focus on mathematics&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Even though I don&amp;rsquo;t take myself as an expert in algorithms, making mathematical model of if-else-s is important. Me and my team-mate did not have any idea what a blackjack is, but we googled for strategies we translated into mathematics we implemented: and we ended up in the finals. You really have to experience this to believe it: creating code with clear mathematics that solves problems for you is beautiful.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. Team-work is important&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;No need to go too deep into this. I was lucky with this one during the particular event. I worked together with a colleague I work with every day&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;Splitting down the small details was a breeze: which functions should do what, why, how, etc. The action was so hot that at some point using the &amp;ldquo;&lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of&#34;&gt;for of&lt;/a&gt;&amp;rdquo; syntax fit perfectly for the general foreach() equivalent for the major chunk for the decider logic. Believe me, there is no time to re-factor, questions like sugar in JS: Class vs Function, public method of a module vs private method of an instance are too tiny of topics in dynamic circumstances.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-code.jpeg&#34; alt=&#34;Team work during coding event&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;community&#34;&gt;Community&lt;/h4&gt;
-
-&lt;p&gt;In overall, the big winning was absolutely going into the community.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-community.jpeg&#34; alt=&#34;Community&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Good-bye picture at the spacious Woorank&amp;nbsp;office&lt;/p&gt;
-
-&lt;h4 id=&#34;bragging-time&#34;&gt;Bragging time&lt;/h4&gt;
-
-&lt;p&gt;In this competition, my team reached the finals, team-6&amp;nbsp;;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/coding-battle-table.jpeg&#34; alt=&#34;Blackjack table&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This is the &amp;ldquo;table&amp;rdquo; server where bots (teams) play against a dealer&amp;nbsp;(bot)&lt;/p&gt;
 </description>
     </item>
     

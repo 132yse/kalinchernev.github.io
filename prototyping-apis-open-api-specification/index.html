@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="https://kalinchernev.github.io//images/prototyping-apis.png"/>
+    
+
+
+
+<meta name="twitter:title" content="Prototyping APIs with Open API Specification and Node.js"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="Prototyping APIs with Open API Specification and Node.js &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/prototyping-apis-open-api-specification/" />
+
+    
+       <meta property="og:image" content="https://kalinchernev.github.io//images/prototyping-apis.png"/>
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io//images/prototyping-apis.png" />
+    <meta property="article:published_time" content="2017-03-10T00:00:00&#43;02:00" />
+
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    <meta property="article:tag" content="APIs" />
+    
+    <meta property="article:tag" content="Open APIs" />
+    
+    <meta property="article:tag" content="nodejs" />
+    
+    <meta property="article:tag" content="Prototyping" />
+    
+    
+
+    <title>Prototyping APIs with Open API Specification and Node.js &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://kalinchernev.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/prototyping-apis-open-api-specification/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": T-shaped web developer
+        
+    },
+    "headline": Prototyping APIs with Open API Specification and Node.js,
+    "name": Prototyping APIs with Open API Specification and Node.js,
+    "wordCount": 972,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/prototyping-apis-open-api-specification/,
+    "datePublished": 2017-03-10T00:00Z,
+    "dateModified": 2017-03-10T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://kalinchernev.github.io//images/prototyping-apis.png,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": JavaScript, APIs, Open APIs, nodejs, Prototyping,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/prototyping-apis-open-api-specification/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+  
+  <header class="main-header post-head" style="background-image: url(https://kalinchernev.github.io//images/prototyping-apis.png)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Prototyping APIs with Open API Specification and Node.js</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-03-10T00:00:00&#43;02:00">
+            Mar 10, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/apis/">#APIs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/open-apis/">#Open APIs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/prototyping/">#Prototyping</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>A story about using Node.js community-built tools effectively in order to speed up the prototyping phase of your API project. In the whole article, <a href="https://github.com/OAI/OpenAPI-Specification">Open API specification</a> (which recently reached a RC on version 3) refers to version 2, also known as <a href="http://swagger.io/">Swagger specification</a>.</p>
+
+<p>In this article I’ll briefly demonstrate how you can to make use of few community-driven tools which I came across recently and I definitely recommend: <a href="https://medium.com/@typicode">Typicode</a>’s <a href="https://github.com/typicode/json-server">json-server</a> and <a href="https://medium.com/@Rebilly">Rebilly</a>’s <a href="https://github.com/Rebilly/generator-openapi-repo">Open API generator</a>. By using a combination of them, you can quickly achieve a mock API server with really nice and useful documentation based in short deadlines.</p>
+
+<h3 id="the-open-api-generator-http-generator-openapi-repo-specification-is-first">The <a href="http://generator-openapi-repo">Open API generator</a>: specification is first</h3>
+
+<p>I think it’s better to start with the specification as it answers many questions, even before making any real or fake data for the API.</p>
+
+<p>The <a href="https://github.com/Rebilly/generator-openapi-repo/blob/master/README.md">official documentation</a> is sufficient to get started. There’s really no need for detailed tutorial here on how to use the tool in order to make a working project — just follow the steps. (And maybe push an empty commit on the <code>gh-pages</code> branch before first deploy just to make sure)</p>
+
+<p>More importantly, you have to know why this generator is good and why I recommend it 😌</p>
+
+<ul>
+<li>It works with <a href="http://swagger.io/swagger-editor/"><strong>swagger editor</strong></a> out of the box, which feels like having a back-end for building your specification and documentation</li>
+<li>Your specification (aka swagger spec) can be split into several files, which makes the project more manageable and mainteanable</li>
+<li>Sleek documentation with <a href="http://swagger.io/redoc-openapi-powered-documentation/"><strong>ReDoc</strong></a> (though <a href="http://swagger.io/swagger-ui/">swagger-ui</a> is also generated) I think ReDoc is excellent in following the API documentation trends.</li>
+<li>The results of your work can easily be deployed to <a href="https://pages.github.com/"><strong>github pages</strong></a>. It’s possible to make requests from here to external API server like the one we’ll have with json-server, as it supports CORS out of the box. Basically, as long as the server can accept requests from your github pages, these server really effectively as living documentation.</li>
+<li>Continuous integration with <strong>Travis</strong> comes out of the box. Every time you push an update in the specification on the master branch, Travis checks for errors and deploys to github pages if everything is ok.</li>
+</ul>
+
+<p>When you follow the steps correctly, you’ll end up with a simplified version of <a href="https://github.com/Rebilly/RebillyAPI">RebillyAPI repository</a>. That’s the final outcome that’ll motivate you to try the generator now, if you haven’t already done so 😊</p>
+
+<p>Probably you might find other similar tools such as <a href="https://github.com/sourcey/spectacle">spectacle</a>, however this tool worked really well for me and it covers everything I think one might need during a prototyping phase of an API project.</p>
+
+<p>Thus, you have a tool to develop an Open API specification and deploy its documentation to github pages, making it nice and accessible for the public. With this Open API specification, you can later generate server/client code with <a href="http://swagger.io/swagger-codegen/">Codegen</a>, or just deploy the spec to services such as <a href="https://cloud.google.com/endpoints/docs/open-api-spec">Cloud Endpoints</a> or any other that will soon come with similar integration.</p>
+
+<p>Basically, there are many opportunities available for you when you have the specification. Next step is to generate a server with mock data which matches the specification’s “contract” with the documentation or just any front-end app meant to work with the specification.</p>
+
+<h3 id="the-json-server-generator-fake-it-till-you-make-it">The JSON server generator: fake it till you make it</h3>
+
+<p>The <a href="https://github.com/typicode/json-server/blob/master/README.md">JSON server tool</a> is not really a generator per se, however it’s easy to integrate it as such in your toolchain. What I mean is, the tool is based on <a href="http://com">express.js</a> and its popular middleware. You won’t need the express generator as you focus on the server. The endpoints are automatically discovered out of JSON files and you do not need express’ sophisticated templates views, routes, etc.</p>
+
+<p>A simple <a href="https://github.com/typicode/json-server/blob/master/README.md#generate-random-data">function</a> in a script run by a npm task can easily do for having a generator for the server part. Also, <a href="https://www.npmjs.com/package/faker">faker</a> plays really well with this “generator” function. (no word play intended here) <a href="https://coligo.io/create-mock-rest-api-with-json-server/">Check an example</a>.</p>
+
+<p>The main ideas you should understand with JSON server:</p>
+
+<ul>
+<li>It’s an easy start out of an example or existing JSON files</li>
+<li>It’s easy to make a generator script to work with the tool</li>
+</ul>
+
+<p>Also, another benefit is that the server can be easily deployed. For example, if you decide to deploy on heroku, you’ll only need to update your server to use <code>process.env.IP</code> and <code>process.env.PORT</code>. The documentation points to the <a href="http://jsonplaceholder.typicode.com/">jsonplaceholder</a> example, but surely <a href="http://hook.io/">hook.io</a> or a similar cloud service will work just fine. Just keep it simple and working — the main idea of using this tool is to move fast and effectively.</p>
+
+<p>Another option for generating a server on top of an existing specification is the <a href="https://www.npmjs.com/package/swagger-server">swagger-server</a> package which also integrates with express.js, however does not necessarily provide the ready filters, sorts, etc. that json-server does.</p>
+
+<h3 id="additional-ideas">Additional ideas</h3>
+
+<p>I personally separated both tools in 2 repositories for the following reasons:</p>
+
+<ul>
+<li>The mock API server can be managed and deployed independently</li>
+<li>Data from the mock server can be easily fetched from the github pages documentation, as JSON Server comes with CORS enabled by default</li>
+<li>This same mock API server can be just thrown away when the real server comes into place to work with the documentation and/or application</li>
+<li>It’s also good to have the documentation repository separate to make it easier to manage in a similar way as the server. Good example is how both swagger ui, swagger editor and ReDoc are integrated into a single project focusing on developing specification and documentation</li>
+</ul>
+
+<h3 id="further-notes">Further notes</h3>
+
+<p>That was a brief article sharing some love about open source projects which deserve an applause for being simple and effective helpers for developers.</p>
+
+<p>If this article gets any positive feedback, I will make a follow-up story to this one showing few tips to improve the workflow of editing and publishing specification to documentation to a working API.</p>
+
+<p>At any case, the search of more effective and well-integrated API prototyping, documentation and deployment continues.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>T-shaped web developer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Prototyping%20APIs%20with%20Open%20API%20Specification%20and%20Node.js&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2fprototyping-apis-open-api-specification%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2fprototyping-apis-open-api-specification%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2fprototyping-apis-open-api-specification%2f&amp;description=Prototyping%20APIs%20with%20Open%20API%20Specification%20and%20Node.js"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2fprototyping-apis-open-api-specification%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/prototyping-apis-open-api-specification\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/march-digest-2017/">
+          <section class="post">
+              <h2>March digest 2017</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/february-digest-2017/">
+          <section class="post">
+              <h2>February digest 2017</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

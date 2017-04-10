@@ -10,6 +10,99 @@
     <atom:link href="https://kalinchernev.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>January Digest 2017</title>
+      <link>https://kalinchernev.github.io/january-digest-2017/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/january-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;I’ve prepared a warm-up digest for those of you who made a resolution to improve their JavaScript skills in 2017, so let’s get it started!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;stories&#34;&gt;Stories&lt;/h3&gt;
+
+&lt;p&gt;I published 2 articles this month and I enjoyed writing both of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/problem-first-problem-solving-87369b84551f#.zg5l97itd&#34;&gt;Problem-first problem-solving&lt;/a&gt; — don’t be mislead by the title, it’s about positive concepts going randomly through my brain.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://restful.io/agile-documentation-for-your-api-driven-project-based-on-open-api-standards-11e54d4326bb#.jaw6kcohk&#34;&gt;Agile documentation for your API-driven project&lt;/a&gt; — this got a tweet from the community few minutes after being published. So, the spread started before I make a tweet about the new publication myself. Nothing makes me happier than that as a writer.&lt;/p&gt;
+
+&lt;p&gt;I got enthusiastic to write this article after release 1.9.0 of &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; which introduced 2 new features. Both of them being focused on developers’ experience and productivity.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+
+&lt;p&gt;It’s just the beginning of 2017, so let’s warm up right for it!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodesource.com/blog/the-21-most-awesome-awesome-lists-for-node-js-developers&#34;&gt;The 21 Most Awesome Awesome Lists for Node.js Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://risingstars2016.js.org/&#34;&gt;2016 rising stars&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.mybridge.co/node-js-top-10-articles-of-the-year-v-2017-79df8269d0f3#.naz5q020y&#34;&gt;Node.JS Top 10 Articles of the Year (v.2017)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.risingstack.com/node-js-async-best-practices-avoiding-callback-hell-node-js-at-scale/&#34;&gt;Node.js Async Best Practices &amp;amp; Avoiding Callback Hell — Node.js at Scale&lt;/a&gt; — this article is full of advertisements just as a typical American TV show. It’s also as good as such because it shows you problems and solutions that you might actually have in your real life.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And one more which is not only about JavaScript but the broader spectrum of front-end development: &lt;a href=&#34;https://www.gitbook.com/book/frontendmasters/front-end-handbook-2017/details&#34;&gt;Front-End Developer Handbook 2017&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;cloud&#34;&gt;Cloud&lt;/h3&gt;
+
+&lt;p&gt;I feel that video gives a useful overview of one of the new hypes: serverless.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/Dh_UXXtSvjQ?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In addition, this feels down-to-earth about production usage:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/c4rvh_Iq6LE?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In my personal opinion, this “serverless” hype is not a ground-breaking new technology, but a smooth transition towards customer-oriented architectures and services. Containers could be considered as a ground-breaking thing which solve problems in infrastructure management, and they will probably be still the background “hidden” behind serverless.&lt;/p&gt;
+
+&lt;p&gt;When I visualize a transition towards customer-oriented API architectures and services, I imagine services like &lt;a href=&#34;http://swagger.io/go-serverless-with-swaggerhub-and-amazon/&#34;&gt;SwaggerHub&lt;/a&gt; which hide complexity of infrastructure management and let’s the user focus on building products.&lt;/span&gt; I also imagine that at some point Amazon will be in a position to offer amazing user AND developers experience directly in the cloud when &lt;a href=&#34;http://www.forbes.com/sites/janakirammsv/2016/07/18/the-master-plan-behind-amazons-acquisition-of-cloud9-ide/#6e580c0028db&#34;&gt;Cloud9 comes move integrated&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;At some point, AWS (? will ?) be the de-facto platform for building cloud applications where the user starts off easily — just clicking here and there and making configurations which integrate what-ever is necessary, where-ever necessary. And when super-specific tweak is necessary, code editor with all &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2&#34;&gt;debugging capabilities&lt;/a&gt; will be at hand. Thus, covering scenarios from small startup projects that don’t want to focus on infrastructure, to enterprise which is there because of the fine control over the server side.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;trends&#34;&gt;Trends&lt;/h3&gt;
+
+&lt;p&gt;On a similar note about trends, &lt;a href=&#34;https://www.oracle.com/corporate/acquisitions/apiary/index.html&#34;&gt;Apiary got acquired by Oracle&lt;/a&gt;. Though I’m not a pro at understanding mergers, it’s obvious that API economy companies are on success reaping wave. Only few months ago &lt;a href=&#34;http://www.forbes.com/sites/greatspeculations/2016/09/13/heres-why-google-is-acquiring-apigee/#52eceafc693f&#34;&gt;Apigee was in the news in a similar way&lt;/a&gt;, and there is a compelling reason for these trending acquisitions.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;time-saving-tricks&#34;&gt;Time-saving tricks&lt;/h3&gt;
+
+&lt;h4 id=&#34;phpstorm-convert-between-array-syntax&#34;&gt;PHPStorm convert between array syntax&lt;/h4&gt;
+
+&lt;p&gt;Laugh at me, but I still sometimes see &lt;code&gt;array()&lt;/code&gt; syntax during my work (and not &lt;code&gt;[]&lt;/code&gt;) It appeared to be an easy thing to change automatically in the editor.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Code | Inspect Code...&lt;/code&gt; — run it on your files. One of the inspections called &lt;strong&gt;&amp;ldquo;Traditional syntax array literal detected&amp;rdquo;&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Alternatively just run that specific inspection only via &lt;code&gt;Code | Run Inspection by Name...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Once done, you will see a list with results. Find that particular inspection in results (in case if 1st option was used (all inspections)).&lt;/li&gt;
+&lt;li&gt;From there you can apply “Fix it” action on all (or individual) results of that inspection.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*t5kfn0iW_I3uC3mWxA5Ntg.png&#34; alt=&#34;php storm converting array syntax&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Checking the daily ebook by&lt;/strong&gt; &lt;a href=&#34;https://www.packtpub.com/packt/offers/free-learning&#34;&gt;&lt;strong&gt;Packt’s Free Leaning campaign&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s an option to subscribe for updates via twitter or facebook, which is understandable. This is a good way to have leads and metrics of the campaign. However, it’s not very practical to open the website and see it every day, thus I made a lazy-logic implementation to be able to check this from the command line like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ node ~/scripts/freeEbook.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There’s the gist for it (it’s super-lazy)&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/kalinchernev/5f67405d46914897ee8ff95b46b55898.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This script is just the basic concept that can be integrated with internal cron tasks or cloud services to automate the check. For example, I imagine that with some investigation it will be possible to work out an &lt;a href=&#34;https://auth0.com/blog/if-this-then-node-dot-js-extending-ifttt-with-webtask-dot-io/&#34;&gt;integration with IFTTT&lt;/a&gt; or a similar service.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Cloud9 IDE</title>
       <link>https://kalinchernev.github.io/cloud9-editor/</link>
       <pubDate>Mon, 29 Aug 2016 00:00:00 +0200</pubDate>

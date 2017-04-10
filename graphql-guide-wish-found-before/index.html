@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="The guide to learn GraphQL I wish I found few months go"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="The guide to learn GraphQL I wish I found few months go &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/graphql-guide-wish-found-before/" />
+
+    
+        
+            <meta property="og:image" content="https://kalinchernev.github.io/images/lego-life.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io/" />
+    <meta property="article:published_time" content="2017-02-16T00:00:00&#43;02:00" />
+
+    
+    <meta property="article:tag" content="GraphQL" />
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    
+
+    <title>The guide to learn GraphQL I wish I found few months go &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://kalinchernev.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/graphql-guide-wish-found-before/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": T-shaped web developer
+        
+    },
+    "headline": The guide to learn GraphQL I wish I found few months go,
+    "name": The guide to learn GraphQL I wish I found few months go,
+    "wordCount": 1035,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/graphql-guide-wish-found-before/,
+    "datePublished": 2017-02-16T00:00Z,
+    "dateModified": 2017-02-16T00:00Z,
+    
+    "keywords": GraphQL, JavaScript,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/graphql-guide-wish-found-before/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">The guide to learn GraphQL I wish I found few months go</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-02-16T00:00:00&#43;02:00">
+            Feb 16, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/graphql/">#GraphQL</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Although I consider myself an intermediate JavaScript developer, I struggled for weeks to understand fundamental concepts which are obvious for those living in the React.js ecosystem. So, this is a list of things I now see which I consider to be not documented or explained well enough for people like myself — those who like the ideas behind GraphQL and want to use it, but not necessarily having any experience with the React.js toolchain.</p>
+
+<p>The list will follow the style of <a href="https://medium.com/@dceddia">Dave Ceddia</a> who made <a href="https://daveceddia.com/timeline-for-learning-react/">a timeline to learn React</a>. It was really handy when I was experimenting with React few months ago, because it’s splitting the topics clearly and logically, smoothing the learning curve for newcomers. (At least it smoothed mine)</p>
+
+<hr>
+
+<h3 id="0-introduction">0. Introduction</h3>
+
+<p>As a most fundamental start of everything, you have to have an idea what GraphQL is, and what it’s not.</p>
+
+<p>Get motivated:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UBGzsb2UkeY?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Get the basic concepts:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WQLzZf34FJ8?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>For me, there are few reasons to invest time in learning GraphQL, even if I’m not a React developer, but an API enthusiast:</p>
+
+<ul>
+<li>Less round trips to the server</li>
+<li>Declare what you want, get exactly what you need</li>
+<li>Introspection is convenient and useful</li>
+<li><a href="http://graphql.org/swapi-graphql/">GraphiQL IDE</a> is amazing</li>
+<li>Building proxy servers on top of existing REST APIs</li>
+</ul>
+
+<p>GraphQL is a specification, it’s language independent, yet the most popular one is the JavaScript one. So, it’s useful to be comfortable with JavaScript for understanding the official documentation. (More or this later)</p>
+
+<hr>
+
+<h3 id="1-languages">1. Languages</h3>
+
+<p>First, you have to be comfortable with at least one programming language and the concepts behind the GraphQL query language. Regardless of the language of choice, you have to be OK with 2 languages.</p>
+
+<h3 id="2-syntax">2. Syntax</h3>
+
+<p>Assuming that you follow the official track of <a href="http://graphql.org/learn/">learning GraphQL</a> you will get some ideas about the syntax of GraphQL. You can improve your skills with it following <a href="https://learngraphql.com/">an online hands-on course</a> as a complementary. By the end of these two, you will feel the power of querying information in a declarative way, which is as special as writing declarative components in React.</p>
+
+<p>Then, if you follow the <a href="http://graphql.org/graphql-js/">graphql.js</a> track of the official website, which is something that I did, you will have to be comfortable with the following:</p>
+
+<ul>
+<li>JavaScript syntax</li>
+<li><a href="http://es6katas.org/">ES6</a> syntax</li>
+<li><a href="https://flowtype.org/">Flow</a> syntax</li>
+</ul>
+
+<p>The majority of developers will get around the ES6 for sure, but the Flow part was really problematic for me. Why? Because, it’s natural to head directly to the <a href="http://graphql.org/graphql-js/type/">types</a> section as you already know that everything goes around types, but the syntax is nothing you have seen before. (I hadn’t)</p>
+
+<p>So, after a while, you will most probably end up on a higher-level scenario of using graphql.js with express, reading about <a href="http://graphql.org/graphql-js/type/#graphqlobjecttype">GraphQLObjectType</a>. The documentation is highly concise on types and what is what and what is where, etc. Without having an idea that it’s written in Flow syntax (with ES6), you will be guessing a lot.</p>
+
+<p>The first eye-opening moment of syntax difference could be that you can <a href="http://graphql.org/graphql-js/constructing-types/">build types in several ways</a>. The second one could be that <a href="http://graphql.org/learn/execution/#root-fields-resolvers">context, fields and resolvers</a> start to speak to you. It’s one thing to follow the tutorials and achieving results mimicking the example code, but it’s a totally different thing when you can read the documentation and see that you can work with promises, globals, and how to work with fields in circular dependencies.</p>
+
+<p>At the moment of writing this article there is no single mentioning of Flow in the official documentation on the website.</p>
+
+<hr>
+
+<h3 id="3-resolve">3. Resolve()</h3>
+
+<p>If you come from React, <code>resolve()</code> will maybe ring an association with <code>render()</code> It serves a totally different purpose, as it’s basically answering the question of what a given field should consider part of the given type, but for me it bears a similar simplicity and importance to the declarative nature.</p>
+
+<p>Again, the documentation is good in giving a <a href="http://graphql.org/learn/execution/#root-fields-resolvers">simple explanation what you can do with these</a>, however it took me some time to decipher the following:</p>
+
+<pre><code>fields: GraphQLFieldConfigMapThunk | GraphQLFieldConfigMap;
+</code></pre>
+
+<p>It was not easy to understand that <code>GraphQLFieldConfigMapThunk</code> is used when fields should be able to handle circular dependencies.</p>
+
+<p>I have to be honest, it also took me more time to understand what are the magical parameters that go in this function. Different tutorials follow different ways to get the arguments they need, such as using <code>_</code> for first arg (to skip using it), or using the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructing assignment</a> to get part of the context, etc. Again, understanding documentation with Flow helps more than the <code>console.log(...args)</code> I was using to figure them out.</p>
+
+<h3 id="4-relay">4. Relay</h3>
+
+<p>Relay is the tool that loosely couples with GraphQL. You need it for more sophisticated scenarios when you need caching, pagination, etc. I haven’t used it yet, as I’m on the fundamentals of GraphQL, but I know it’s out there and I will use it when “relay compliance” is necessary in bigger projects or special client scenarios.</p>
+
+<p>Not required to learn GraphQL.</p>
+
+<h3 id="5-apollo">5. Apollo</h3>
+
+<p>I follow it even more than relay, (because of <a href="https://www.meteor.com/">MDG</a>) but I haven’t had the reasons to use it until now. From aside, it seems shiny and well supported. I think this is the direction to go when using non-React toolchain and when you need more sophisticated solutions with MDG-level of quality and coolness :)</p>
+
+<p>Also not required to learn GraphQL.</p>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<p>I think that React.js developers are in a better position of understanding and working with GraphQL at this time. That is normal, as little by little I start to see how the different tools work together to solve problems in specific ways that come naturally by understanding concepts behind the declarative ways of thinking in facebook products at the moment.</p>
+
+<p>So, if you are a developer that does not know all the facebook products, like me, start small by understanding the syntax and the documentation well, experiment with small projects, and use the variety of more sophisticated tools when your projects grow and require more control and flexibility.</p>
+
+<p>Think client-first approach. The client as your consumer of the API, and the client who wants to get something done. There must be a reason why the documentation of GraphQL does not mention inter-related and more sophisticated tools directly — you use them when you need them.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>T-shaped web developer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=The%20guide%20to%20learn%20GraphQL%20I%20wish%20I%20found%20few%20months%20go&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2fgraphql-guide-wish-found-before%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2fgraphql-guide-wish-found-before%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2fgraphql-guide-wish-found-before%2f&amp;description=The%20guide%20to%20learn%20GraphQL%20I%20wish%20I%20found%20few%20months%20go"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2fgraphql-guide-wish-found-before%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/graphql-guide-wish-found-before\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/february-digest-2017/">
+          <section class="post">
+              <h2>February digest 2017</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="background-image: url(https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg)" href="/reflecting-nodejs-design-patterns/">
+          <section class="post">
+              <h2>Reflecting on node.js design patterns</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

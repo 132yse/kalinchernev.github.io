@@ -10,6 +10,153 @@
     <atom:link href="https://kalinchernev.github.io/tags/graphql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>February digest 2017</title>
+      <link>https://kalinchernev.github.io/february-digest-2017/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/february-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;After my &lt;a href=&#34;https://kalinchernev.github.io/january-digest-2017&#34;&gt;January digest&lt;/a&gt;, I got feedback from a precious reader that these stories must be toilet-friendly, so I’ll keep it short, directly to the essence :)&lt;/p&gt;
+
+&lt;h3 id=&#34;productivity&#34;&gt;Productivity&lt;/h3&gt;
+
+&lt;p&gt;Without a question, the first thing coming to my mind in this month is the set of small changes I made with regards to my typing habits.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&#34;&gt;Vimium&lt;/a&gt; turned out to be really useful utility in my daily work on my &lt;a href=&#34;http://shop.lenovo.com/us/en/laptops/thinkpad/x-series-tablet/x220tablet/&#34;&gt;x220t&lt;/a&gt;. Together with the &lt;a href=&#34;https://en.wikipedia.org/wiki/Pointing_stick&#34;&gt;clit mouse&lt;/a&gt;, browsing becomes more straight-forward, even when clicking is inevitable. Yes, I feel more comfortable in vim after having vimium in my life, but I still prefer to &lt;a href=&#34;https://www.toptal.com/php/how-to-be-efficient-in-phpstorm&#34;&gt;be pragmatic at work&lt;/a&gt;. In the end, it all comes to wiring up an effective association between the brain and the computer which boils down to having &lt;a href=&#34;http://www.ratatype.com/learn/&#34;&gt;effective typing habits&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another big discovery for me this month was the &lt;a href=&#34;https://www.imagemagick.org/script/convert.php&#34;&gt;imagemagick’s&lt;/a&gt; &lt;code&gt;[conver](https://www.imagemagick.org/script/convert.php)&lt;/code&gt; &lt;a href=&#34;https://www.imagemagick.org/script/convert.php&#34;&gt;cli tools&lt;/a&gt;. After spending more than 30 minutes of trying to make a &lt;a href=&#34;https://twitter.com/kalinchernev/status/835053566632964097&#34;&gt;screenshot of gmail message for a tweet&lt;/a&gt; and not managing to convert paged pdf into a single continuous image, that command in the CLI really did magic:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ convert in.pdf -append out.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;graphql&#34;&gt;GraphQL&lt;/h3&gt;
+
+&lt;p&gt;I managed to spend few hours with this technology this month and I will remember few highlights as a result of that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/the-guide-to-learn-graphql-i-wish-i-found-few-months-go-97f9d9ca6f12#.7ss1zopsu&#34;&gt;My short sharing session&lt;/a&gt; got more than 1000 visits on day 1, scoring for more than 1.4k at present moment.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://graphql-docs.com/&#34;&gt;GraphQL docs&lt;/a&gt; got published by &lt;a href=&#34;https://scaphold.io/&#34;&gt;Scaphold&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/APIs-guru/graphql-voyager&#34;&gt;GraphQL voyager&lt;/a&gt; got published by &lt;a href=&#34;https://medium.com/@apis.guru&#34;&gt;APIs.guru&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The technology is getting further traction and community love.&lt;/p&gt;
+
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+
+&lt;p&gt;Although there have been numerous resources coming by on a daily basis, these are the most prominent to my humble opinion:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://opensource.guide/&#34;&gt;Open source guides&lt;/a&gt; by github&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.dev-books.com/&#34;&gt;Dev books&lt;/a&gt; summary based on stackoverflow&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enjoy, and keep reading and writing code for pleasure! :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The guide to learn GraphQL I wish I found few months go</title>
+      <link>https://kalinchernev.github.io/graphql-guide-wish-found-before/</link>
+      <pubDate>Thu, 16 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/graphql-guide-wish-found-before/</guid>
+      <description>
+
+&lt;p&gt;Although I consider myself an intermediate JavaScript developer, I struggled for weeks to understand fundamental concepts which are obvious for those living in the React.js ecosystem. So, this is a list of things I now see which I consider to be not documented or explained well enough for people like myself — those who like the ideas behind GraphQL and want to use it, but not necessarily having any experience with the React.js toolchain.&lt;/p&gt;
+
+&lt;p&gt;The list will follow the style of &lt;a href=&#34;https://medium.com/@dceddia&#34;&gt;Dave Ceddia&lt;/a&gt; who made &lt;a href=&#34;https://daveceddia.com/timeline-for-learning-react/&#34;&gt;a timeline to learn React&lt;/a&gt;. It was really handy when I was experimenting with React few months ago, because it’s splitting the topics clearly and logically, smoothing the learning curve for newcomers. (At least it smoothed mine)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;0-introduction&#34;&gt;0. Introduction&lt;/h3&gt;
+
+&lt;p&gt;As a most fundamental start of everything, you have to have an idea what GraphQL is, and what it’s not.&lt;/p&gt;
+
+&lt;p&gt;Get motivated:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/UBGzsb2UkeY?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Get the basic concepts:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/WQLzZf34FJ8?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;For me, there are few reasons to invest time in learning GraphQL, even if I’m not a React developer, but an API enthusiast:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Less round trips to the server&lt;/li&gt;
+&lt;li&gt;Declare what you want, get exactly what you need&lt;/li&gt;
+&lt;li&gt;Introspection is convenient and useful&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://graphql.org/swapi-graphql/&#34;&gt;GraphiQL IDE&lt;/a&gt; is amazing&lt;/li&gt;
+&lt;li&gt;Building proxy servers on top of existing REST APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;GraphQL is a specification, it’s language independent, yet the most popular one is the JavaScript one. So, it’s useful to be comfortable with JavaScript for understanding the official documentation. (More or this later)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;1-languages&#34;&gt;1. Languages&lt;/h3&gt;
+
+&lt;p&gt;First, you have to be comfortable with at least one programming language and the concepts behind the GraphQL query language. Regardless of the language of choice, you have to be OK with 2 languages.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-syntax&#34;&gt;2. Syntax&lt;/h3&gt;
+
+&lt;p&gt;Assuming that you follow the official track of &lt;a href=&#34;http://graphql.org/learn/&#34;&gt;learning GraphQL&lt;/a&gt; you will get some ideas about the syntax of GraphQL. You can improve your skills with it following &lt;a href=&#34;https://learngraphql.com/&#34;&gt;an online hands-on course&lt;/a&gt; as a complementary. By the end of these two, you will feel the power of querying information in a declarative way, which is as special as writing declarative components in React.&lt;/p&gt;
+
+&lt;p&gt;Then, if you follow the &lt;a href=&#34;http://graphql.org/graphql-js/&#34;&gt;graphql.js&lt;/a&gt; track of the official website, which is something that I did, you will have to be comfortable with the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JavaScript syntax&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://es6katas.org/&#34;&gt;ES6&lt;/a&gt; syntax&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flowtype.org/&#34;&gt;Flow&lt;/a&gt; syntax&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The majority of developers will get around the ES6 for sure, but the Flow part was really problematic for me. Why? Because, it’s natural to head directly to the &lt;a href=&#34;http://graphql.org/graphql-js/type/&#34;&gt;types&lt;/a&gt; section as you already know that everything goes around types, but the syntax is nothing you have seen before. (I hadn’t)&lt;/p&gt;
+
+&lt;p&gt;So, after a while, you will most probably end up on a higher-level scenario of using graphql.js with express, reading about &lt;a href=&#34;http://graphql.org/graphql-js/type/#graphqlobjecttype&#34;&gt;GraphQLObjectType&lt;/a&gt;. The documentation is highly concise on types and what is what and what is where, etc. Without having an idea that it’s written in Flow syntax (with ES6), you will be guessing a lot.&lt;/p&gt;
+
+&lt;p&gt;The first eye-opening moment of syntax difference could be that you can &lt;a href=&#34;http://graphql.org/graphql-js/constructing-types/&#34;&gt;build types in several ways&lt;/a&gt;. The second one could be that &lt;a href=&#34;http://graphql.org/learn/execution/#root-fields-resolvers&#34;&gt;context, fields and resolvers&lt;/a&gt; start to speak to you. It’s one thing to follow the tutorials and achieving results mimicking the example code, but it’s a totally different thing when you can read the documentation and see that you can work with promises, globals, and how to work with fields in circular dependencies.&lt;/p&gt;
+
+&lt;p&gt;At the moment of writing this article there is no single mentioning of Flow in the official documentation on the website.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;3-resolve&#34;&gt;3. Resolve()&lt;/h3&gt;
+
+&lt;p&gt;If you come from React, &lt;code&gt;resolve()&lt;/code&gt; will maybe ring an association with &lt;code&gt;render()&lt;/code&gt; It serves a totally different purpose, as it’s basically answering the question of what a given field should consider part of the given type, but for me it bears a similar simplicity and importance to the declarative nature.&lt;/p&gt;
+
+&lt;p&gt;Again, the documentation is good in giving a &lt;a href=&#34;http://graphql.org/learn/execution/#root-fields-resolvers&#34;&gt;simple explanation what you can do with these&lt;/a&gt;, however it took me some time to decipher the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fields: GraphQLFieldConfigMapThunk | GraphQLFieldConfigMap;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It was not easy to understand that &lt;code&gt;GraphQLFieldConfigMapThunk&lt;/code&gt; is used when fields should be able to handle circular dependencies.&lt;/p&gt;
+
+&lt;p&gt;I have to be honest, it also took me more time to understand what are the magical parameters that go in this function. Different tutorials follow different ways to get the arguments they need, such as using &lt;code&gt;_&lt;/code&gt; for first arg (to skip using it), or using the &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment&#34;&gt;destructing assignment&lt;/a&gt; to get part of the context, etc. Again, understanding documentation with Flow helps more than the &lt;code&gt;console.log(...args)&lt;/code&gt; I was using to figure them out.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-relay&#34;&gt;4. Relay&lt;/h3&gt;
+
+&lt;p&gt;Relay is the tool that loosely couples with GraphQL. You need it for more sophisticated scenarios when you need caching, pagination, etc. I haven’t used it yet, as I’m on the fundamentals of GraphQL, but I know it’s out there and I will use it when “relay compliance” is necessary in bigger projects or special client scenarios.&lt;/p&gt;
+
+&lt;p&gt;Not required to learn GraphQL.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-apollo&#34;&gt;5. Apollo&lt;/h3&gt;
+
+&lt;p&gt;I follow it even more than relay, (because of &lt;a href=&#34;https://www.meteor.com/&#34;&gt;MDG&lt;/a&gt;) but I haven’t had the reasons to use it until now. From aside, it seems shiny and well supported. I think this is the direction to go when using non-React toolchain and when you need more sophisticated solutions with MDG-level of quality and coolness :)&lt;/p&gt;
+
+&lt;p&gt;Also not required to learn GraphQL.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;I think that React.js developers are in a better position of understanding and working with GraphQL at this time. That is normal, as little by little I start to see how the different tools work together to solve problems in specific ways that come naturally by understanding concepts behind the declarative ways of thinking in facebook products at the moment.&lt;/p&gt;
+
+&lt;p&gt;So, if you are a developer that does not know all the facebook products, like me, start small by understanding the syntax and the documentation well, experiment with small projects, and use the variety of more sophisticated tools when your projects grow and require more control and flexibility.&lt;/p&gt;
+
+&lt;p&gt;Think client-first approach. The client as your consumer of the API, and the client who wants to get something done. There must be a reason why the documentation of GraphQL does not mention inter-related and more sophisticated tools directly — you use them when you need them.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Drupalaton 2016</title>
       <link>https://kalinchernev.github.io/drupalaton-2016/</link>
       <pubDate>Mon, 22 Aug 2016 00:00:00 +0200</pubDate>

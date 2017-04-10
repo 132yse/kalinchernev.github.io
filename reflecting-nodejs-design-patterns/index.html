@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg"/>
+    
+
+
+
+<meta name="twitter:title" content="Reflecting on node.js design patterns"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="Reflecting on node.js design patterns &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/reflecting-nodejs-design-patterns/" />
+
+    
+       <meta property="og:image" content="https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg"/>
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg" />
+    <meta property="article:published_time" content="2017-02-04T00:00:00&#43;02:00" />
+
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    <meta property="article:tag" content="nodejs" />
+    
+    <meta property="article:tag" content="Design Patterns" />
+    
+    
+
+    <title>Reflecting on node.js design patterns &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://kalinchernev.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/reflecting-nodejs-design-patterns/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": T-shaped web developer
+        
+    },
+    "headline": Reflecting on node.js design patterns,
+    "name": Reflecting on node.js design patterns,
+    "wordCount": 1015,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/reflecting-nodejs-design-patterns/,
+    "datePublished": 2017-02-04T00:00Z,
+    "dateModified": 2017-02-04T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": JavaScript, nodejs, Design Patterns,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/reflecting-nodejs-design-patterns/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+  
+  <header class="main-header post-head" style="background-image: url(https://kalinchernev.github.io/images/nodejs-design-patterns.jpeg)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Reflecting on node.js design patterns</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-02-04T00:00:00&#43;02:00">
+            Feb 4, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/design-patterns/">#Design Patterns</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Once upon on a time, there was a designer …</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*o-Igk7ZgpSz2Zu4syTG3-A.jpeg" alt="funny JavaScript image" /></p>
+
+<p>No matter if the story is true or not, working with JavaScript on the server with Node.js at the moment is a very different experience compared to working with Python, Ruby or PHP. I’d personally say that the advantage of working with a single language everywhere comes with the price of having to learn different design patterns in order to use the language effectively.</p>
+
+<p>One of these fundamental concepts to learn is the asynchronous programming. There are many articles in the Node.js/JavaScript community about asynchronous programming in terms of what callbacks are and how to <a href="https://www.npmjs.com/package/async">solve problems of control flow with a library</a>, a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">promise</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async/await</a>, etc. These are useful when the question is generally:</p>
+
+<blockquote>
+<p>How to use node modules in a good way?</p>
+</blockquote>
+
+<p>And although it’s important to learn and follow best practices in implementation, I sometimes miss articles which answer another question:</p>
+
+<blockquote>
+<p>How to organize my code in node modules in a good way?</p>
+</blockquote>
+
+<p>In this story I’ll be reflecting on few patterns which answer the latter.</p>
+
+<hr>
+
+<h3 id="continuation-passing-style-pattern">Continuation-passing style pattern</h3>
+
+<p>This is an easy concept to understand, but really fundamental for working with asynchronous code</p>
+
+<p><strong>Synopsis</strong>: In your continuation-passing style function (CPS):</p>
+
+<ul>
+<li>Use <code>cb(null, data)</code> instead of <code>return</code> to pass on result.</li>
+<li>Use <code>return cb(err)</code> to pass on an error and exit the function.</li>
+<li>Communicate one single outcome from the function.</li>
+</ul>
+
+<pre><code class="language-js">// Synchronous
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 2));
+
+// Asynchronous
+function addAsync(a, b, cb) {
+  cb(a + b);
+}
+
+addAsync(2, 2, function add(result) {
+  console.log(result);
+});
+</code></pre>
+
+<p>That’s it! Honestly, the first time I saw this type of snippet, I already felt an eye-opening moment. If you know this already, give yourself a tap on the shoulder! Good job!</p>
+
+<p>For aesthetics, you can re-factor the last function as:</p>
+
+<pre><code class="language-js">addAsync(2, 2, result =&gt; console.log(result));
+</code></pre>
+
+<p>Of even:</p>
+
+<pre><code class="language-js">addAsync(2, 2, console.log);
+</code></pre>
+
+<p>The important take-away here is that functions can be passed as arguments to other functions. These are <strong>functions acting like a return statement</strong>.</p>
+
+<p>Node.js, conventions say that when you’re writing such CPS you must <a href="https://nodejs.org/api/errors.html#errors_error_propagation_and_interception">send the error to the first argument</a> of the callback function.</p>
+
+<p>Let’s do something a bit more practical — define a function which takes a list of files. If there are files, just return them, but if no files are supplied, return an error message.</p>
+
+<pre><code class="language-js">function readFiles (files, cb) {
+  if (files.length) {
+    cb(null, files)
+  } else {
+    cb('no files supplied')
+  }
+}
+</code></pre>
+
+<p>This function will then be consumed in this way:</p>
+
+<pre><code class="language-js">readFiles(process.argv.slice(2), (err, data) =&gt; {
+  if (err) return console.error(err)
+  console.log(data)
+})
+</code></pre>
+
+<p>I highly encourage you to test this if you’re not sure how it works. If you are lazy to open a terminal session, just fire a <a href="https://runkit.com/home">RunKit</a> and copy-paste these in the browser ;)</p>
+
+<p>Notice the <code>return</code> is used in the case of an error to exit the function. This pattern is very popular and comes handy for almost any case where the consumer of your module needs to do one single thing and get a result.</p>
+
+<hr>
+
+<h3 id="observer-pattern-with-eventemitter">Observer pattern with EventEmitter</h3>
+
+<p>Node.js developers use the <a href="https://nodejs.org/api/events.html#events_emitter_on_eventname_listener">EventEmitter</a> interface from day one as it’s “under the hood” of almost all node core modules. Especially when we speak about functions which take time to finish.</p>
+
+<p><strong>Synopsis</strong>: Using the event emitter:</p>
+
+<ul>
+<li>You create observable objects with <em>multiple listeners,</em> where each listener is a callable function, i.e each <em>listener is a possible outcome.</em></li>
+<li>Use <code>emitter.emit(eventName[, …args])</code> instead of <code>cb(null, data)</code>to pass on a result on listener function.</li>
+<li>Use <code>emit('error', err)</code> to pass on an error and exit.</li>
+<li>Communicate multiple possible outcomes from your function.</li>
+</ul>
+
+<p>The EventEmitter provides a popular <code>on()</code> method which “hooks” functions on an object. Then, it invokes them synchronously one by one when a given event happens. This approach provides more granularity and control than CPS which gives one outcome per function.</p>
+
+<p>Let’s expand our previous function <code>readFiles()</code> to <code>filterFiles()</code> in order to provide a way to message all subscriber consumers on the event of finding a file during a search.</p>
+
+<script src="https://gist.github.com/kalinchernev/15cbee0731612dc6388c2f0e1cafa6b7.js"></script>
+
+<p>Then, in order to use this function, we’ll have an implementation like:</p>
+
+<script src="https://gist.github.com/kalinchernev/4fb5f5129a202bd14bb9518bcef74244.js"></script>
+
+<p>We can also use some sugar to make the same functionality sweeter:</p>
+
+<script src="https://gist.github.com/kalinchernev/223e3170b53307b5ca0e3d02afcd93ea.js"></script>
+
+<p>If you’ve visited the chapter about the observer patterns in the <a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8">famous design patterns book</a> you must already see a big difference in the way how you can implement the pattern. I like “the node-way” better — it’s simpler and you can express same ideas with less code. And honestly, if I were to teach this pattern to web developers, I am sure that I’d have a better chance of success relating on familiarity of jQuery’s popular <code>.on()</code> method, without too much talking about abstractions and interfaces.</p>
+
+<hr>
+
+<h3 id="combining-cps-and-observer-patterns">Combining CPS and Observer patterns</h3>
+
+<p>Our new function <code>findFiles()</code> is definitely more flexible than <code>readFiles()</code>.</p>
+
+<p><code>findFiles()</code> provides a way for the user to listen to events during the processing of each file, which could give useful control of the processing.</p>
+
+<p>But what if we want to make it even more flexible, like letting the user choose whether he wants this control or not? What if the user is not actually interested in each file, but wants to get only the final result?</p>
+
+<p>Well, let’s make our event emitter function CPS-friendly!</p>
+
+<script src="https://gist.github.com/kalinchernev/985b975fe6591675ce2272b53846b2c8.js"></script>
+
+<p>This is only a demo implementation which you should not copy-paste into your code without including better checks on the various edge cases of the input, etc. However, the example gives a basic idea on how to make the callback argument optional and use it depending on the scenario.</p>
+
+<hr>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<p>I hope that in the end of this article you have some useful high-level ideas about few options you have when designing your node modules. It’s good to start with the end in mind, imagining how you want your modules to be used. This will help you balance your decisions better between the level of flexibility and easiness of use that you want to provide to your users.</p>
+
+<p>And remember — in most cases your choice of a programming language to use is less important than the way you use the programming language.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>T-shaped web developer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Reflecting%20on%20node.js%20design%20patterns&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2freflecting-nodejs-design-patterns%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2freflecting-nodejs-design-patterns%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2freflecting-nodejs-design-patterns%2f&amp;description=Reflecting%20on%20node.js%20design%20patterns"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2freflecting-nodejs-design-patterns%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/reflecting-nodejs-design-patterns\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/graphql-guide-wish-found-before/">
+          <section class="post">
+              <h2>The guide to learn GraphQL I wish I found few months go</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/january-digest-2017/">
+          <section class="post">
+              <h2>January Digest 2017</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

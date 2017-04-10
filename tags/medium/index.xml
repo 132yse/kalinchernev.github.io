@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Medium on Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/tags/medium/index.xml</link>
+    <description>Recent content in Medium on Kalin Chernev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://kalinchernev.github.io/tags/medium/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>March digest 2017</title>
+      <link>https://kalinchernev.github.io/march-digest-2017/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/march-digest-2017/</guid>
+      <description>
+
+&lt;p&gt;This one will be on various personal thoughts on Medium, the JAM stack, the OpenAPI specification, and coding katas.&lt;/p&gt;
+
+&lt;h3 id=&#34;medium&#34;&gt;Medium&lt;/h3&gt;
+
+&lt;p&gt;If you’re a regular reader or writer on Medium, you already know about the &lt;a href=&#34;https://medium.com/3minread&#34;&gt;latest changes&lt;/a&gt;. Together with the new features, a &lt;a href=&#34;https://help.medium.com/hc/en-us/articles/115004750267-Medium-Membership-Partner-Program-FAQ&#34;&gt;partner program&lt;/a&gt; came into play, where companies and vendors will be more motivated to publish content about their products and services.&lt;/p&gt;
+
+&lt;p&gt;Being a small fish without financial interests in blogging (at least here and now), I decided to research new channels of communicating my ideas out of Medium. As a casual happy writer, I really wish Medium best of luck in their search of even more and better ways of monetizing their great platform and continue connecting deep thinkers.&lt;/p&gt;
+
+&lt;p&gt;Medium is aiming to solve problems at large scale for businesses and important individuals in the mission of un-breaking the internet and the publishing again. As a technical blogger, I’m interested in achieving smaller goals:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I want to share about my wider “deep” thinking working with various technologies and tools&lt;/strong&gt;. I am not vendor-interested in this communication channel. I’m more into experimenting with many tools and using only a few, later sharing my findings from hands-on work. For this, I can place my thoughts anywhere I decide to — I lately admire &lt;a href=&#34;https://dev.to/&#34;&gt;dev.to&lt;/a&gt; which feels like “the right place to be” — but the editor is not as easy as in Medium. So yeah, I can just do the markdowns in a static site generator and re-post wherever …&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want to be part of a community somehow.&lt;/strong&gt; Here at Medium, things tend to happen naturally. For example, I post &lt;a href=&#34;https://medium.com/@kalin.chernev/the-guide-to-learn-graphql-i-wish-i-found-few-months-go-97f9d9ca6f12&#34;&gt;a story about GraphQL&lt;/a&gt; which reaches 1.5k visitors, 7 of which come &lt;a href=&#34;http://dev-blog.apollodata.com/&#34; title=&#34;dev-blog.apollodata.com&#34;&gt;dev-blog.apollodata.com&lt;/a&gt;. I mean, that’s amazing — If I hadn’t shared my short notes on Medium, no-one using or reading about Apollo would have ever have visited my blog post. For this, I plan on &lt;a href=&#34;https://disqus.com/&#34;&gt;disqus&lt;/a&gt; integration which seems straight-forward and covering this “business requirement”.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want my code to look really good, and I want it to be more interactive.&lt;/strong&gt; This comes simply from the fact that I write mostly about code, so I want it to look nice. Medium allows effective snippets placement and github gists, yet there are many nice-looking styling options for code parsed out of markdown. Having control over the parsed version of your writing is an advantage in some aspects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I want to have statistics.&lt;/strong&gt; Medium provides stats on each story and it’s really useful to have a global idea what’s going on. For the same GraphQL article I mentioned above, over 1k of the visits come from flipboard.com. That’s all I know as my application request to have a publication with Google Analytics required a payment I got informed a month after making the application. No Google Analytics on Medium unless you are having business goals. I think I’ll manage to integrate Google Analytics in my new stack without 70 dollars for the infrastructure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At the moment, I’ve jotted just a few high-level milestones in the upcoming digital transformation …&lt;/p&gt;
+
+&lt;h3 id=&#34;jam-stack&#34;&gt;JAM stack&lt;/h3&gt;
+
+&lt;p&gt;As Medium evolves, as my interests into improving the ways of expressing my casual tech thoughts in writing. Researching on some of the nerdiest ways I can make a blog for myself — the JAM stack came into light. The &lt;a href=&#34;https://jamstack.org/&#34;&gt;JAM stack&lt;/a&gt; is an acronym of having JavaScript, APIs and Markup. It’s absolutely revolutionary — I mean — nobody ever though so far in history that the web could handle HTML, CSS and JavaScript in such ways. (That’s ironic) The stack is tightly related to the topic of &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;static sites generators&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;J&lt;/strong&gt; will maybe be in React. At this stage, I’ve found a decent &lt;a href=&#34;https://www.packtpub.com/web-development/mastering-react&#34;&gt;book to follow&lt;/a&gt; on the way. At any case, investing into learning React will pay much better for me rather than writing new articles on a platform which can change its business goals tomorrow and just go offline.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;A&lt;/strong&gt; will be the &lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;github API&lt;/a&gt;. With inspirations from &lt;a href=&#34;https://www.netlifycms.org/&#34;&gt;netlifycms&lt;/a&gt;, a well-known &lt;a href=&#34;https://www.netlifycms.org/docs/editorial-workflow/&#34;&gt;git flow translates to my upcoming publishing workflow&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;M&lt;/strong&gt; part of the stack — I didn’t manage to decide upon this yet as the trends are moving too fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So cool this is, google will show you a &lt;a href=&#34;https://www.kickstarter.com/projects/846364129/jamstack-the-worlds-first-attachable-guitar-amplif?lang=fr&#34;&gt;kickstarter campaign for the jam stack&lt;/a&gt; and there is a song to play while working:&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/oFRbZJXjWIA?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&#34;open-api-specification&#34;&gt;Open API specification&lt;/h3&gt;
+
+&lt;p&gt;In this month, I wrote a story about &lt;a href=&#34;https://restful.io/prototyping-your-api-project-with-the-open-api-specification-and-node-js-tools-7cb19f47f72d&#34;&gt;prototyping with the OpenAPI specifcation&lt;/a&gt;. It’s describing some techniques using the &lt;a href=&#34;https://github.com/Rebilly/generator-openapi-repo&#34;&gt;generator-openapi&lt;/a&gt; — made by the team of &lt;a href=&#34;https://apis.guru/&#34;&gt;APIs.guru&lt;/a&gt; — really nice product to use!&lt;/p&gt;
+
+&lt;p&gt;I’m personally impressed by the community progress made around v3 of the latest spec. A release candidate was published in the beginning of the month, and various software packages literally sprouted in weeks.&lt;/p&gt;
+
+&lt;p&gt;I think there are mainly few links to follow the fast progress:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://openapi.toolbox.apievangelist.com/&#34;&gt;OpenAPI toolbox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mermade/awesome-openapi3&#34;&gt;Unofficial awesome list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;The github repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the awesome list, there are few tools I hadn’t seen before. They seem to be made in quite a different way than the swagger-ui and swagger-editor, etc. that still keep popular positions in the toolbox.&lt;/p&gt;
+
+&lt;p&gt;Another good news this month for fans of the OpenAPI initiative was the &lt;a href=&#34;https://github.com/swagger-api/swagger-editor/releases/tag/v3.0.0&#34;&gt;v3 release of the swagger-editor&lt;/a&gt; which brought a warmly-welcomed auto-suggest feature:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*n9qpZymZykXOuG9zxdUryQ.png&#34; alt=&#34;Nice autocomplete feature of the swagger editor&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;coding-katas&#34;&gt;Coding katas&lt;/h3&gt;
+
+&lt;p&gt;The first competitive learning event (coding battle) from the Hack League team took place.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*aqpQIY4DURgBoYGJTDyIQg.jpeg&#34; alt=&#34;An image from the hack event&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was my first event since a very long time, so I could see some new people and technologies during the event :)&lt;/p&gt;
+
+&lt;p&gt;As organizers mentioned, the &lt;a href=&#34;http://git.hackleague.io/root/cb-2017-03-20&#34;&gt;problems of the competition&lt;/a&gt; are open after the event and you are encouraged to see them and get encouraged to join the next event :)&lt;/p&gt;
+
+&lt;p&gt;I think (and I feel) that the problems are not the most complex thing you can see as a developer, but they definitely get closer to testing developers’ shape in solving problems fast and with confidence in the small steps.&lt;/p&gt;
+
+&lt;p&gt;As I really suck at making small steps really fast, I’m trying to get into the habit making regular exercise at &lt;a href=&#34;https://www.codewars.com&#34;&gt;codewars.com&lt;/a&gt; with the idea of improving shape through &lt;a href=&#34;https://en.wikipedia.org/wiki/Kata&#34;&gt;katas&lt;/a&gt;. This is not a radically new idea for me, as there are the &lt;a href=&#34;http://es6katas.org/&#34;&gt;ES6katas&lt;/a&gt; teaching TDD as codewards and &lt;a href=&#34;https://nodeschool.io/&#34;&gt;nodeschool&lt;/a&gt; which provides various exercises for developers. (If you really enjoy them, you can give me a hand at the &lt;a href=&#34;https://github.com/workshopper/stream-adventure/issues&#34;&gt;stream-adventure workshopper&lt;/a&gt; and I promise quick reviews and quick contribution gratification)&lt;/p&gt;
+
+&lt;p&gt;I believe in the important of taking care of my coding shape. I think it’s similar to doing sports and exercising or playing musical instruments. The tricky part being that &lt;a href=&#34;https://hackhands.com/dont-code-katas/&#34;&gt;programmers tend to overthink it sometimes&lt;/a&gt; …&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
