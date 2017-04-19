@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kalinchernev.github.io/releasing-new-blog/</loc>
+    <lastmod>2017-04-19T11:04:38+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/about/</loc>
     <lastmod>2017-04-08T15:33:06+02:00</lastmod>
   </url>
@@ -124,6 +129,12 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/blogging/</loc>
+    <lastmod>2017-04-19T11:04:38+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/bots/</loc>
     <lastmod>2016-06-23T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -191,7 +202,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/jam-stack/</loc>
-    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
+    <lastmod>2017-04-19T11:04:38+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -203,7 +214,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/</loc>
-    <lastmod>2017-04-08T15:33:06+02:00</lastmod>
+    <lastmod>2017-04-19T11:04:38+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -257,7 +268,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/post/</loc>
-    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
+    <lastmod>2017-04-19T11:04:38+02:00</lastmod>
     <priority>0</priority>
   </url>
   
