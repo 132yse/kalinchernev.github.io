@@ -120,7 +120,7 @@
              
             
         ],
-        "description": T-shaped web developer
+        "description": Web engineer trying to bring value in various projects.
         
     },
     "headline": Agile documentation for your API-driven project,
@@ -406,15 +406,15 @@ app.post('/login', (req, res) =&gt; {
 
 <p><img src="/images/swagger-jsdoc-improves-documentation-workflow.png" alt="Improved documentation workflow with swagger-jsdoc" /></p>
 
-<p>Some time ago, an article about <a href="https://javascriptkicks.com/stories/94009/watching-file-changes-with-npm-scripts">watching files changes with npm scripts got popular</a>. I believe there is a reason why comments are not possible under the original article, but never mind, it got me on the path of researching the <a href="https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a> and its behavior. After experimentation I reached to prefer <code>[chokidar](https://www.npmjs.com/package/chokidar)</code> which is a module improving the <code>fs.watch()</code> interface. In fact, I liked <code>chokidar</code> so much that I took the opportunity to suggest a <a href="https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0">new feature in the CLI tool of</a> <code>[swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0)</code> which is, duh, a watch task working with the API files. (Briefly mentioned in the previous chapter)</p>
+<p>Some time ago, an article about <a href="https://javascriptkicks.com/stories/94009/watching-file-changes-with-npm-scripts">watching files changes with npm scripts got popular</a>. I believe there is a reason why comments are not possible under the original article, but never mind, it got me on the path of researching the <a href="https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener">fs.watch()</a> and its behavior. After experimentation I reached to prefer <a href="https://www.npmjs.com/package/chokidar"><code>chokidar</code></a> which is a module improving the <code>fs.watch()</code> interface. In fact, I liked <code>chokidar</code> so much that I took the opportunity to suggest a <a href="https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0">new feature in the CLI tool of</a> <a href="https://github.com/Surnet/swagger-jsdoc/releases/tag/v1.9.0"><code>swagger-jsdoc</code></a> which is, duh, a watch task working with the API files. (Briefly mentioned in the previous chapter)</p>
 
-<p>The <code>chokidar</code> module is also an integral part of the <code>[browser-sync](https://www.npmjs.com/package/browser-sync)</code> module which, in turn, an already mature and battle-tested piece of software. It is widely adopted in various products and projects to increase development experience and productivity.</p>
+<p>The <code>chokidar</code> module is also an integral part of the <a href="https://www.npmjs.com/package/browser-sync"><code>browser-sync</code></a> module which, in turn, an already mature and battle-tested piece of software. It is widely adopted in various products and projects to increase development experience and productivity.</p>
 
 <p>Having this understanding, I saw another opportunity — making a simple integration between instruments which integrate the <code>chokidar</code> module. I only needed a better understanding of <a href="http://swagger.io/swagger-ui/">Swagger UI</a> which is the “glue”, or the “contract”, between the back-end server side (the API) and the front-end (client) side. I feel it’s comfortable (and smart) that the documentation pages are the first-hand client and consumer of the API. Also, I believe that this consumer should be easy to make and maintain, but still really nice-looking, so that there is something pleasant for our paying clients to see. With <code>browser-sync</code> Swagger UI got a bit more fun to work with.</p>
 
 <p>In order to demonstrate the idea better in visual and kinesthetic way, I created a <a href="https://github.com/kalinchernev/agile-open-api-docs">supplementary repository</a>. It contains examples of the first approach that came to my mind keeping <a href="https://en.wikipedia.org/wiki/KISS_principle">the KISS principle</a>. Basically, there are few npm scripts that make the system work together.</p>
 
-<p>First, you can have a look at <a href="https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json">the</a> <code>[package.json](https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json)</code> <a href="https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json">manifest</a>. Tasks are separated in two main categories: tasks for the server side (the API) and tasks related to the documentation. For the API development part, <code>npm run api</code> fires a server with <code>nodemon</code> and <code>swagger-jsdoc</code> As a result, any changes in the <code>api/</code> folder trigger server restart and re-generation of <code>swagger.json</code> specification which goes to <code>api-docs/</code> folder.</p>
+<p>First, you can have a look at <a href="https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json">the</a> <a href="https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json"><code>package.json</code></a> <a href="https://github.com/kalinchernev/agile-open-api-docs/blob/master/package.json">manifest</a>. Tasks are separated in two main categories: tasks for the server side (the API) and tasks related to the documentation. For the API development part, <code>npm run api</code> fires a server with <code>nodemon</code> and <code>swagger-jsdoc</code> As a result, any changes in the <code>api/</code> folder trigger server restart and re-generation of <code>swagger.json</code> specification which goes to <code>api-docs/</code> folder.</p>
 
 <p>Secondly, the <code>npm run docs:develop</code> task fires a <code>browser-sync</code> server for the client side serving the <code>api-docs/</code> folder which receives automatically updated <code>swagger.json</code> specification from the previous task. You can run those two tasks in separate terminal sessions or just create another parallel task following the examples of the <code>package.json</code> file with <code>npm-run-all</code>.</p>
 
@@ -432,7 +432,7 @@ app.post('/login', (req, res) =&gt; {
 
 <h3 id="deployment">Deployment</h3>
 
-<p>I have intentionally left out the deployment part out of this story, because I believe there are many good options on the market and it really depends on the personal preferences how to manage this part of the process. For example, you can follow the scotch.io tutorial mentioned earlier to place the docs on heroku, or you can also include an npm script which works with <code>[gh-pages](https://github.com/tschaub/gh-pages)</code> to deploy the assets directly to your repository, etc. The main thing is that the <code>api-docs</code> folder is already built and ready to be deployed as-is.</p>
+<p>I have intentionally left out the deployment part out of this story, because I believe there are many good options on the market and it really depends on the personal preferences how to manage this part of the process. For example, you can follow the scotch.io tutorial mentioned earlier to place the docs on heroku, or you can also include an npm script which works with <a href="https://github.com/tschaub/gh-pages"><code>gh-pages</code></a> to deploy the assets directly to your repository, etc. The main thing is that the <code>api-docs</code> folder is already built and ready to be deployed as-is.</p>
 
 <p>Myself, I plan to experiment with <a href="https://cloudplatform.googleblog.com/2016/09/manage-your-APIs-with-Google-Cloud-Endpoints.html">Google Endpoints</a> in near future although it’s a new service. That’s because it supports the <a href="https://cloud.google.com/endpoints/docs/open-api-spec">Open API specification</a> and provides flexible options on deployment for both the API and the documentation on reasonable terms. An interesting point to notice is that the service guidelines show deployment only of the swagger/openapi specification file which can be generated by the <code>swagger-jsdoc</code> This is a good example of re-using single specification for multiple purposes.</p>
 
@@ -471,7 +471,7 @@ app.post('/login', (req, res) =&gt; {
 <section class="author">
   <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
   
-  <p>T-shaped web developer</p>
+  <p>Web engineer trying to bring value in various projects.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Brussels, Belgium</span>
