@@ -7,8 +7,97 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Wed, 19 Apr 2017 11:04:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>From personal computers to personal assistants</title>
+      <link>https://kalinchernev.github.io/personal-computers-personal-assistants/</link>
+      <pubDate>Tue, 09 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/personal-computers-personal-assistants/</guid>
+      <description>
+
+&lt;p&gt;The &lt;a href=&#34;https://www.fbf8.com/&#34;&gt;F8 event&lt;/a&gt; took place recently and I managed to watch a video about
+&lt;a href=&#34;https://developers.facebook.com/docs/messenger-platform&#34;&gt;the messenger platform&lt;/a&gt;. Since it was during the Easter holidays, I also had few hours to make a simple chat bot for Facebook. Since then, I touched upon few of the topics around
+the growing popularity of the so called &lt;a href=&#34;http://www.crn.com/slide-shows/components-peripherals/300083432/10-cool-smart-home-assistants-at-ces-2017.htm&#34;&gt;home assistants&lt;/a&gt;. In this article I&amp;rsquo;ll summarize some of the corners stones I found.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-a-chat-bot-this-time-on-facebook&#34;&gt;Making a chat bot, this time on Facebook&lt;/h3&gt;
+
+&lt;p&gt;For me the story began with &lt;a href=&#34;https://kalinchernev.github.io/coding-battle-microsoft-innovation-center&#34;&gt;a coding event&lt;/a&gt;
+at Microsoft almost an year ago when I &amp;ldquo;met&amp;rdquo; LUIS for the first time. Later, there was &lt;a href=&#34;https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627&#34;&gt;the selfie chat bot&lt;/a&gt;, which was fun and also easy to make. So, trying the messenger platform was easy and smooth experience. Here&amp;rsquo;s a very short story of this journey:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s quite some tokens to be generated.&lt;/li&gt;
+&lt;li&gt;I learned &lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt; a bit better.&lt;/li&gt;
+&lt;li&gt;I found that all this can be much easier with &lt;a href=&#34;https://api.ai/&#34;&gt;api.ai&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even though api.ai saves a lot of time in the setup of a chat bot for many platforms, it&amp;rsquo;s still useful to go through the long configuration options in facebook in order to have a good idea about the possibilities.&lt;/p&gt;
+
+&lt;p&gt;A bit of an inconvenience it is that one has to make a page for the bot to live. Probably that will change with time. Follow &lt;a href=&#34;https://developers.facebook.com/docs/messenger-platform/guides/quick-start&#34;&gt;this guide&lt;/a&gt; to see what I talk about.&lt;/p&gt;
+
+&lt;h3 id=&#34;technical-implementation-of-chat-bots&#34;&gt;Technical implementation of chat bots&lt;/h3&gt;
+
+&lt;p&gt;If you are like me and you have reached this far to have setup 1 or 2 chat bots, a normal question to ask would be - what are the other platforms to build chat bots only with configuration? In the end, if it&amp;rsquo;s so easy to make a bot for facebook, then probably there are other services right?&lt;/p&gt;
+
+&lt;p&gt;You can bet:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wit.ai/&#34;&gt;wit.ai&lt;/a&gt; - owned by Facebook since &lt;a href=&#34;https://www.crunchbase.com/organization/wit-ai#/entity&#34;&gt;5th January 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://api.ai/&#34;&gt;api.ai&lt;/a&gt; - owned by Google since &lt;a href=&#34;https://www.crunchbase.com/organization/api-ai#/entity&#34;&gt;19th September 2016&lt;/a&gt; - Google Assistant which is integrated with this was announced in &lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Assistant&#34;&gt;May 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.luis.ai/home/index&#34;&gt;LUIS&lt;/a&gt; by Microsoft&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rasa.ai/&#34;&gt;rasa.ai&lt;/a&gt; by &lt;a href=&#34;https://golastmile.com/&#34;&gt;LASTMILE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these share similar goals and ideas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a bot that takes input of human speech.&lt;/li&gt;
+&lt;li&gt;Apply some NLP (natural language processing) or/and NLU (natural language understanding).&lt;/li&gt;
+&lt;li&gt;Extract entities, sentiments, etc. out of the human input of information.&lt;/li&gt;
+&lt;li&gt;Return information or call an API webhook to do some action based on the context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Depending on your language needs, level of interests in the subjects and needs for privacy, you can go either way. Basically, the &amp;ldquo;brain&amp;rdquo; of the &lt;code&gt;.ai&lt;/code&gt; is a cloud service communicating with clients via REST APIs, so that the intelligence can be reused in many ways.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Over the past decades computers have broadly automated tasks that programmers could describe with clear rules and algorithms. Modern machine learning techniques now allow us to do the same for tasks where describing the precise rules is much harder.” - &lt;a href=&#34;https://futurism.com/amazon-ceo-perfectly-explains-ai-just-two-sentences/&#34;&gt;Jeff Bezos&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;chat-bots-personal-assistants&#34;&gt;Chat bots =&amp;gt; Personal Assistants&lt;/h3&gt;
+
+&lt;p&gt;In a recent &lt;a href=&#34;https://www.meetup.com/Brussels-chatbot-Meetup/events/238677762/&#34;&gt;chatbot meetup&lt;/a&gt; &lt;a href=&#34;https://www.meetup.com/Brussels-chatbot-Meetup/members/224607756/&#34;&gt;Frédéric Feytons&lt;/a&gt; made few points which resonated in me for a while. Here&amp;rsquo;s a short summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We are shifting from
+the Personal Computer era to the Personal Assistant era.&lt;/li&gt;
+&lt;li&gt;There are cases where assisting bots really help - Google maps telling us about the traffic in the morning, the &lt;a href=&#34;https://chatbotsmagazine.com/5-use-cases-where-building-a-bot-makes-sense-c1bd3aab13db&#34;&gt;Pizza bot&lt;/a&gt; confirming we want the same as before, etc.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Bots will not kill apps (we kill tools nowadays see &amp;hellip;) although the &lt;a href=&#34;http://marketingland.com/facebook-messenger-adds-option-chat-bots-avoid-chatting-208255&#34;&gt;chat experience can resemble the app experience&lt;/a&gt; to an extend.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s important to manage expectations towards our bots. They have models, but can&amp;rsquo;t be super-smart at the moment. It&amp;rsquo;s good to have a human interaction as a fallback in case the bot can&amp;rsquo;t handle an important conversation out of a predefined script route.&lt;/li&gt;
+&lt;li&gt;Facebook chat bots marketplace is still messy as discovering valuable bots (which are not actually people behind their facebook pages) is sometimes hard.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Although the &lt;a href=&#34;https://www.technologyreview.com/s/601441/moores-law-is-dead-now-what/&#34;&gt;Moore&amp;rsquo;s law is dead&lt;/a&gt; (we kill ideas as well as technology stacks and tools nowadays) the big players are in yet another big game of AI which is related to the chat bots being personal assistants - the physical personal assistants! :D&lt;/p&gt;
+
+&lt;h3 id=&#34;personal-assistants&#34;&gt;Personal assistants =&amp;gt; ?&lt;/h3&gt;
+
+&lt;p&gt;Amazon has been doing &lt;a href=&#34;http://uk.businessinsider.com/amazon-echo-sales-figures-stats-chart-2016-12?r=US&amp;amp;IR=T&#34;&gt;quite well since the release&lt;/a&gt; of the Amazon Echo, which already has several versions. Almost an year ago, Google made a &lt;a href=&#34;https://www.cnet.com/news/google-home-vs-amazon-echo/&#34;&gt;fast reply with Google Home&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Believe it or not, I realized just recently that Google announced &lt;a href=&#34;https://assistant.google.com/&#34;&gt;Google Assistant&lt;/a&gt; and Google Home together for a reason. For me, the assistant was this dummy chat bot with little sense of humour on Duo, but I never took him seriously, because the time it takes to open the app and start a conversation was taking more than actually doing the thing I wanted to do directly in the apps. Also, there are so many other chat apps on the market that I never even made a try to invite a friend to try Duo with some assistant spice.&lt;/p&gt;
+
+&lt;p&gt;In Europe, it&amp;rsquo;s still not straight-forward to buy Google Home device in the same way it would be in the USA, so I was recently browsing for ways to emulate the device, and still have the Google Assistant in the box - it&amp;rsquo;s integrated with &lt;a href=&#34;https://developers.google.com/actions/&#34;&gt;api.ai&lt;/a&gt; that I already tried for making the chat bot on Facebook!&lt;/p&gt;
+
+&lt;p&gt;Few days ago, the &lt;a href=&#34;https://www.raspberrypi.org/magpi/find-the-magpi-57/&#34;&gt;#57 issue of MagPi&lt;/a&gt; got published with an interesting toy - a &lt;a href=&#34;https://aiyprojects.withgoogle.com/&#34;&gt;Google AIY&lt;/a&gt; - a do-it-yourself AI similar to Google Home :D
+Google say that the assistant will be soon be published as an app for wide range of Android phones, but if you want to play with the actions sooner, and test if the this new wave would work for you or not - the AIY might be a really nice weekend / hack project.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS1&lt;/strong&gt;: Google I/O is coming really soon, and it&amp;rsquo;s quite possible to see another product improving upon Google Home. The idea of trying the Assistant with some custom code/actions/webhooks from api.ai will still be a viable project regardless.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS2&lt;/strong&gt;: If you prefer to have the shiny device at home, better wait a bit, because Apple &lt;a href=&#34;https://www.cnet.com/news/apple-exec-mocks-google-home-and-amazon-echo/&#34;&gt;probably has something in mind too&lt;/a&gt; for this year ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS3&lt;/strong&gt;: If you are in the telco business, you might want to follow &lt;a href=&#34;https://www.bloomberg.com/news/articles/2017-04-20/european-telcos-team-up-to-take-ai-fight-to-google-amazon&#34;&gt;the story around the European mobile network operators&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Releasing new blog</title>
@@ -1263,178 +1352,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;p&gt;Suggestions and pull requests are welcome at the &lt;a href=&#34;https://github.com/kalinchernev/odp&#34;&gt;github page of the project&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;For inspirations of use, more information about the data or introduction training of the benefits of using open data, visit the &lt;a href=&#34;https://www.europeandataportal.eu/&#34;&gt;europeandataportal.eu&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Drupal 8 on Cloud9 IDE</title>
-      <link>https://kalinchernev.github.io/drupal8-cloud9-ide/</link>
-      <pubDate>Thu, 15 Sep 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/drupal8-cloud9-ide/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;You see things; and you say, &amp;lsquo;Why?&amp;rsquo; But I dream things that never were; and I say, &amp;lsquo;Why not?&amp;ldquo; — George Bernard Shaw&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; will soon celebrate 1 year since its release. One interesting fact about this version of the popular PHP CMS is that the &lt;a href=&#34;https://www.drupal.org/core/release-cycle-overview&#34;&gt;release cycles&lt;/a&gt; are smaller and feature-focused. This makes everybody happier than previous major versions and I will focus on developers&amp;rsquo; experience. It&amp;rsquo;s been steadily improving since the focused adoption of popular and well-maintained projects from the wide PHP community. &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;, &lt;a href=&#34;https://drupalconsole.com/&#34;&gt;Drupal Console&lt;/a&gt; (an implementation of Symfony Console) and adopting PHP OOP design patterns in overall are some of the highlights in this article.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, &lt;a href=&#34;http://c9.io&#34;&gt;Cloud9 Editor&lt;/a&gt; is an interesting project to my personal experience as a developer. I&amp;rsquo;ve shared some enthusiasm about it before, summarizing &lt;a href=&#34;https://medium.com/@kalin.chernev/cloud9-ide-6e26940c6130#.nxqgf2ree&#34;&gt;some of my favorite features&lt;/a&gt;, and going deeper into &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2#.tknem3kcp&#34;&gt;debugging applications in the cloud&lt;/a&gt;. At this step, I start to dream about scenarios where this cloud editor will be THE editor for massive amount of open source contributors, experimenters and agile practitioners alike. I also visualize scenarios where it could fill in the gap in the hearts of many who use tools like &lt;a href=&#34;https://dreditor.org/&#34;&gt;dreditor&lt;/a&gt;. Dreditor on steroids: git, drush, mysql, php, etc — all the tools a developer needs to start, test, develop and deploy!&lt;/p&gt;
-
-&lt;h3 id=&#34;repository-based-development-environment&#34;&gt;Repository based development environment&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/drupal-composer/drupal-project&#34;&gt;Drupal Composer&amp;rsquo;s drupal-project&lt;/a&gt; seems like a really interesting repository which can enable me to start a Drupal 8 project and make an installation. Also it will provide me with a door of opportunities to manage all my project-global dependencies via composer.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s what I can do to start a &lt;a href=&#34;https://docs.c9.io/docs/getting-started&#34;&gt;Cloud9 workspace&lt;/a&gt; linked my own fork repository of the drupal-project.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Forked the original repo to my own &lt;a href=&#34;https://github.com/kalinchernev/drupal-project&#34;&gt;drupal-project repo&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Create a new workspace pointing to the my fork repo.&lt;/li&gt;
-&lt;li&gt;Selecting template &amp;ldquo;The popular stack in shiny cloud wrappings: Apache, PHP5 and MySQL pre-configured&amp;rdquo; seems ok for the moment.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This should look similar to:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*nbj-D9ufx-wlGZ-MdBj6Jw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Creating my new development environment&lt;/p&gt;
-
-&lt;p&gt;At the end of this process, I have an &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;-based &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; container. In it, there is a local repository linked to my upstream repository on the origin. I&amp;rsquo;m ready to use the tools I know in Linux because composer, npm, node, etc. are already installed, and I also have a command line interface to run or install anything I need on top of this initial setup. As a side note, &lt;a href=&#34;https://c9.io/community/templates&#34;&gt;custom templates&lt;/a&gt; will soon make this initial setup even more flexible and personalized.&lt;/p&gt;
-
-&lt;p&gt;As the terminal is already open for you, run &lt;code&gt;git remote -v&lt;/code&gt; to ensure this origin linking if you like.&lt;/p&gt;
-
-&lt;h3 id=&#34;selecting-drupal-nbsp-8&#34;&gt;Selecting Drupal&amp;nbsp;8&lt;/h3&gt;
-
-&lt;p&gt;Now that the workspace is ready, you have to select a branch for the Drupal version you are going to work with. I&amp;rsquo;m going to do &lt;code&gt;git checkout 8.x&lt;/code&gt; in the ternimal to use the 8.x version of the the repository files in the container machine. When you do that, you&amp;rsquo;ll see the files in the tree.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Eoo2-TstzN_2AtY1m4kagw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal 8 branch of the repository&lt;/p&gt;
-
-&lt;p&gt;These are the source files I can use to build the project with the dependencies and the tools of my personal preference.&lt;/p&gt;
-
-&lt;h3 id=&#34;building-project-dependencies&#34;&gt;Building project dependencies&lt;/h3&gt;
-
-&lt;p&gt;The dependencies can be &lt;a href=&#34;https://getcomposer.org/doc/00-intro.md#dependency-management&#34;&gt;managed globally for the project&lt;/a&gt; via the composer.json file. What interests me the most are the Drupal, Drupal Console and Drush which are already &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#the-require-key&#34;&gt;required&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*3AcZBLBGsVdelfdFPJcmMw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal-specific initial dependencies.&lt;/p&gt;
-
-&lt;p&gt;As the readme file of the repo points out, additional dependencies can be added later by &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies&#34;&gt;installing dependencies through the composer&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Run &lt;code&gt;composer install&lt;/code&gt; in the terminal to download all the dependencies and run all the composer special things defined in the composer.json file.&lt;/p&gt;
-
-&lt;p&gt;When all downloads are finished — you can just run the Run button and start the apache server in the machine to open the project in the project browser or your own browser:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Wk4VtthU1g6TbvI70Q7u3Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Open the project in the browser after the dependencies installation.&lt;/p&gt;
-
-&lt;p&gt;If you resist your perfectionist nature and expectations on domain names, now you can open the project at &lt;a href=&#34;https://%7Bprojectname%7D-%7Busername%7D.c9users.io/web/core/install.php&#34;&gt;https://{projectname}-{username}.c9users.io/web/core/install.php&lt;/a&gt; replacing the variables of course. And there you go, you have Drupal 8 ready for your install!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZOtYTj11S-Mi9h_894NoMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Yep, the wizard is&amp;nbsp;ready!&lt;/p&gt;
-
-&lt;h3 id=&#34;installing-the-nbsp-project&#34;&gt;Installing the&amp;nbsp;project&lt;/h3&gt;
-
-&lt;p&gt;I deliberately left this out from the previous one. You can, of course, continue with the installation in the most user-friendly way with the wizard above. Classical and easy and you don&amp;rsquo;t worry even for file permissions. If you are a databases guy, probably you&amp;rsquo;ll be interested to check the tutorial for &lt;a href=&#34;https://community.c9.io/t/setting-up-mysql/1718&#34;&gt;setting up mysql&lt;/a&gt; and/or &lt;a href=&#34;https://docs.c9.io/docs/setup-a-database&#34;&gt;setting up a database&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Another option for making the installation is using the command line interface and Drupal Console. If you&amp;rsquo;re a non-idealist developer, you can directly run the binary from the vendor folder like &lt;code&gt;/vendor/bin/drupal&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dx0IRYUqpwRv512zYSBGJg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal Console initialization&lt;/p&gt;
-
-&lt;p&gt;This will hint you to run an initial setup for the tool, just do it and then you can have &lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/site-install.html&#34;&gt;&lt;code&gt;vendor/bin/drupal site:install&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For more ideas around this installation step, check &lt;a href=&#34;https://drupalconsole.com/articles/how-to-download-and-install-drupal-8-using-drupal-console&#34;&gt;this tutorial&lt;/a&gt; which also includes steps to download the project if it was not done by Composer.&lt;/p&gt;
-
-&lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;commands:
-# Install Drupal
-  - command: site:install
-    options:
-      langcode: &#39;en&#39;
-      db-type: &#39;%{{db_type|mysql}}&#39;
-      db-host: &#39;%{{db_host|127.0.0.1}}&#39;
-      db-name: &#39;%{{db_name|c9}}&#39;
-      db-user: &#39;%{{db_user|root}}&#39;
-      db-pass: &#39;%{{db_pass|}}&#39;
-      db-port: &#39;%{{db_port|3306}}&#39;
-      site-name: &#39;Drupal 8 site&#39;
-      site-mail: &#39;admin@example.org&#39; # default email
-      account-name: &#39;admin&#39; # default account
-      account-mail: &#39;admin@example.org&#39; # default email
-      account-pass: &#39;admin&#39; # default pass
-    arguments:
-      profile: &#39;standard&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
-
-&lt;p&gt;A small helper subject after the setup — since xdebug is available in the docker in &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner, there is a way to debug apps.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Start &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner with debugger on:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ksgXbNGH5Lp_HtVdLoQWMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The green debugger button is the important detail to&amp;nbsp;notice.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Set a break-point and open the application to trigger a request:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*26fDzn9eaCW1fwMcB9BSEQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The app can be run either in preview in the IDE or in another&amp;nbsp;tab.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Inspect the state of the system and profit from deeper understanding&amp;nbsp;:)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*lfPKCwwocB8NkegBzv7fOA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Use the inspector for observing both global and local&amp;nbsp;scopes.&lt;/p&gt;
-
-&lt;p&gt;Note that the runner properties can be edited:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*m1WawXoob6Jg7DiUIlN9hg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Runners are editable.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner
-// For more information see http://docs.c9.io:8080/#!/api/run-method-run
-{
-  &amp;quot;cmd&amp;quot;: [
-    &amp;quot;run-apache2&amp;quot;,
-    &amp;quot;${debug?debug}&amp;quot;
-  ],
-  &amp;quot;cmdStop&amp;quot;: [
-    &amp;quot;run-apache2&amp;quot;,
-    &amp;quot;stop&amp;quot;
-  ],
-  &amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,
-  &amp;quot;debugport&amp;quot;: 9000,
-  &amp;quot;$debugDefaultState&amp;quot;: false,
-  &amp;quot;selector&amp;quot;: &amp;quot;^.*\\.(php|phtml|html|shtml)$&amp;quot;,
-  &amp;quot;env&amp;quot;: {
-    &amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;
-  },
-  &amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving \\033[01;34m$hostname_path\\033[00m.&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
-
-&lt;p&gt;It&amp;rsquo;s an ambitious initiative/dream to work with Drupal 8 projects in the cloud but you see that it&amp;rsquo;s possible and easy. In the end of this tutorial you have a working instance built out of a composer-based dependency management system, your custom repository, and the vital tools to help you develop well: Drupal Console, Drush and any other script you can think of that run on an Ubuntu machine.&lt;/p&gt;
-
-&lt;p&gt;Now it&amp;rsquo;s up to you to use these tools to your best interest: teaching Drupal 8 interactively, pair-programming, &lt;a href=&#34;https://www.drupal.org/contributor-tasks/triage-novice-issues&#34;&gt;triage&lt;/a&gt; issues by making/testing patches or just experimenting with features you&amp;rsquo;re interested in anywhere, anytime.&lt;/p&gt;
 </description>
     </item>
     

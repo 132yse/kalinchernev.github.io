@@ -7,8 +7,97 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Wed, 19 Apr 2017 11:04:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>From personal computers to personal assistants</title>
+      <link>https://kalinchernev.github.io/personal-computers-personal-assistants/</link>
+      <pubDate>Tue, 09 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/personal-computers-personal-assistants/</guid>
+      <description>
+
+&lt;p&gt;The &lt;a href=&#34;https://www.fbf8.com/&#34;&gt;F8 event&lt;/a&gt; took place recently and I managed to watch a video about
+&lt;a href=&#34;https://developers.facebook.com/docs/messenger-platform&#34;&gt;the messenger platform&lt;/a&gt;. Since it was during the Easter holidays, I also had few hours to make a simple chat bot for Facebook. Since then, I touched upon few of the topics around
+the growing popularity of the so called &lt;a href=&#34;http://www.crn.com/slide-shows/components-peripherals/300083432/10-cool-smart-home-assistants-at-ces-2017.htm&#34;&gt;home assistants&lt;/a&gt;. In this article I&amp;rsquo;ll summarize some of the corners stones I found.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-a-chat-bot-this-time-on-facebook&#34;&gt;Making a chat bot, this time on Facebook&lt;/h3&gt;
+
+&lt;p&gt;For me the story began with &lt;a href=&#34;https://kalinchernev.github.io/coding-battle-microsoft-innovation-center&#34;&gt;a coding event&lt;/a&gt;
+at Microsoft almost an year ago when I &amp;ldquo;met&amp;rdquo; LUIS for the first time. Later, there was &lt;a href=&#34;https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627&#34;&gt;the selfie chat bot&lt;/a&gt;, which was fun and also easy to make. So, trying the messenger platform was easy and smooth experience. Here&amp;rsquo;s a very short story of this journey:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s quite some tokens to be generated.&lt;/li&gt;
+&lt;li&gt;I learned &lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt; a bit better.&lt;/li&gt;
+&lt;li&gt;I found that all this can be much easier with &lt;a href=&#34;https://api.ai/&#34;&gt;api.ai&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even though api.ai saves a lot of time in the setup of a chat bot for many platforms, it&amp;rsquo;s still useful to go through the long configuration options in facebook in order to have a good idea about the possibilities.&lt;/p&gt;
+
+&lt;p&gt;A bit of an inconvenience it is that one has to make a page for the bot to live. Probably that will change with time. Follow &lt;a href=&#34;https://developers.facebook.com/docs/messenger-platform/guides/quick-start&#34;&gt;this guide&lt;/a&gt; to see what I talk about.&lt;/p&gt;
+
+&lt;h3 id=&#34;technical-implementation-of-chat-bots&#34;&gt;Technical implementation of chat bots&lt;/h3&gt;
+
+&lt;p&gt;If you are like me and you have reached this far to have setup 1 or 2 chat bots, a normal question to ask would be - what are the other platforms to build chat bots only with configuration? In the end, if it&amp;rsquo;s so easy to make a bot for facebook, then probably there are other services right?&lt;/p&gt;
+
+&lt;p&gt;You can bet:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wit.ai/&#34;&gt;wit.ai&lt;/a&gt; - owned by Facebook since &lt;a href=&#34;https://www.crunchbase.com/organization/wit-ai#/entity&#34;&gt;5th January 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://api.ai/&#34;&gt;api.ai&lt;/a&gt; - owned by Google since &lt;a href=&#34;https://www.crunchbase.com/organization/api-ai#/entity&#34;&gt;19th September 2016&lt;/a&gt; - Google Assistant which is integrated with this was announced in &lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Assistant&#34;&gt;May 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.luis.ai/home/index&#34;&gt;LUIS&lt;/a&gt; by Microsoft&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rasa.ai/&#34;&gt;rasa.ai&lt;/a&gt; by &lt;a href=&#34;https://golastmile.com/&#34;&gt;LASTMILE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these share similar goals and ideas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a bot that takes input of human speech.&lt;/li&gt;
+&lt;li&gt;Apply some NLP (natural language processing) or/and NLU (natural language understanding).&lt;/li&gt;
+&lt;li&gt;Extract entities, sentiments, etc. out of the human input of information.&lt;/li&gt;
+&lt;li&gt;Return information or call an API webhook to do some action based on the context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Depending on your language needs, level of interests in the subjects and needs for privacy, you can go either way. Basically, the &amp;ldquo;brain&amp;rdquo; of the &lt;code&gt;.ai&lt;/code&gt; is a cloud service communicating with clients via REST APIs, so that the intelligence can be reused in many ways.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Over the past decades computers have broadly automated tasks that programmers could describe with clear rules and algorithms. Modern machine learning techniques now allow us to do the same for tasks where describing the precise rules is much harder.” - &lt;a href=&#34;https://futurism.com/amazon-ceo-perfectly-explains-ai-just-two-sentences/&#34;&gt;Jeff Bezos&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;chat-bots-personal-assistants&#34;&gt;Chat bots =&amp;gt; Personal Assistants&lt;/h3&gt;
+
+&lt;p&gt;In a recent &lt;a href=&#34;https://www.meetup.com/Brussels-chatbot-Meetup/events/238677762/&#34;&gt;chatbot meetup&lt;/a&gt; &lt;a href=&#34;https://www.meetup.com/Brussels-chatbot-Meetup/members/224607756/&#34;&gt;Frédéric Feytons&lt;/a&gt; made few points which resonated in me for a while. Here&amp;rsquo;s a short summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We are shifting from
+the Personal Computer era to the Personal Assistant era.&lt;/li&gt;
+&lt;li&gt;There are cases where assisting bots really help - Google maps telling us about the traffic in the morning, the &lt;a href=&#34;https://chatbotsmagazine.com/5-use-cases-where-building-a-bot-makes-sense-c1bd3aab13db&#34;&gt;Pizza bot&lt;/a&gt; confirming we want the same as before, etc.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Bots will not kill apps (we kill tools nowadays see &amp;hellip;) although the &lt;a href=&#34;http://marketingland.com/facebook-messenger-adds-option-chat-bots-avoid-chatting-208255&#34;&gt;chat experience can resemble the app experience&lt;/a&gt; to an extend.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s important to manage expectations towards our bots. They have models, but can&amp;rsquo;t be super-smart at the moment. It&amp;rsquo;s good to have a human interaction as a fallback in case the bot can&amp;rsquo;t handle an important conversation out of a predefined script route.&lt;/li&gt;
+&lt;li&gt;Facebook chat bots marketplace is still messy as discovering valuable bots (which are not actually people behind their facebook pages) is sometimes hard.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Although the &lt;a href=&#34;https://www.technologyreview.com/s/601441/moores-law-is-dead-now-what/&#34;&gt;Moore&amp;rsquo;s law is dead&lt;/a&gt; (we kill ideas as well as technology stacks and tools nowadays) the big players are in yet another big game of AI which is related to the chat bots being personal assistants - the physical personal assistants! :D&lt;/p&gt;
+
+&lt;h3 id=&#34;personal-assistants&#34;&gt;Personal assistants =&amp;gt; ?&lt;/h3&gt;
+
+&lt;p&gt;Amazon has been doing &lt;a href=&#34;http://uk.businessinsider.com/amazon-echo-sales-figures-stats-chart-2016-12?r=US&amp;amp;IR=T&#34;&gt;quite well since the release&lt;/a&gt; of the Amazon Echo, which already has several versions. Almost an year ago, Google made a &lt;a href=&#34;https://www.cnet.com/news/google-home-vs-amazon-echo/&#34;&gt;fast reply with Google Home&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Believe it or not, I realized just recently that Google announced &lt;a href=&#34;https://assistant.google.com/&#34;&gt;Google Assistant&lt;/a&gt; and Google Home together for a reason. For me, the assistant was this dummy chat bot with little sense of humour on Duo, but I never took him seriously, because the time it takes to open the app and start a conversation was taking more than actually doing the thing I wanted to do directly in the apps. Also, there are so many other chat apps on the market that I never even made a try to invite a friend to try Duo with some assistant spice.&lt;/p&gt;
+
+&lt;p&gt;In Europe, it&amp;rsquo;s still not straight-forward to buy Google Home device in the same way it would be in the USA, so I was recently browsing for ways to emulate the device, and still have the Google Assistant in the box - it&amp;rsquo;s integrated with &lt;a href=&#34;https://developers.google.com/actions/&#34;&gt;api.ai&lt;/a&gt; that I already tried for making the chat bot on Facebook!&lt;/p&gt;
+
+&lt;p&gt;Few days ago, the &lt;a href=&#34;https://www.raspberrypi.org/magpi/find-the-magpi-57/&#34;&gt;#57 issue of MagPi&lt;/a&gt; got published with an interesting toy - a &lt;a href=&#34;https://aiyprojects.withgoogle.com/&#34;&gt;Google AIY&lt;/a&gt; - a do-it-yourself AI similar to Google Home :D
+Google say that the assistant will be soon be published as an app for wide range of Android phones, but if you want to play with the actions sooner, and test if the this new wave would work for you or not - the AIY might be a really nice weekend / hack project.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS1&lt;/strong&gt;: Google I/O is coming really soon, and it&amp;rsquo;s quite possible to see another product improving upon Google Home. The idea of trying the Assistant with some custom code/actions/webhooks from api.ai will still be a viable project regardless.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS2&lt;/strong&gt;: If you prefer to have the shiny device at home, better wait a bit, because Apple &lt;a href=&#34;https://www.cnet.com/news/apple-exec-mocks-google-home-and-amazon-echo/&#34;&gt;probably has something in mind too&lt;/a&gt; for this year ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PS3&lt;/strong&gt;: If you are in the telco business, you might want to follow &lt;a href=&#34;https://www.bloomberg.com/news/articles/2017-04-20/european-telcos-team-up-to-take-ai-fight-to-google-amazon&#34;&gt;the story around the European mobile network operators&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Releasing new blog</title>
@@ -1412,82 +1501,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;p&gt;It&amp;rsquo;s an ambitious initiative/dream to work with Drupal 8 projects in the cloud but you see that it&amp;rsquo;s possible and easy. In the end of this tutorial you have a working instance built out of a composer-based dependency management system, your custom repository, and the vital tools to help you develop well: Drupal Console, Drush and any other script you can think of that run on an Ubuntu machine.&lt;/p&gt;
 
 &lt;p&gt;Now it&amp;rsquo;s up to you to use these tools to your best interest: teaching Drupal 8 interactively, pair-programming, &lt;a href=&#34;https://www.drupal.org/contributor-tasks/triage-novice-issues&#34;&gt;triage&lt;/a&gt; issues by making/testing patches or just experimenting with features you&amp;rsquo;re interested in anywhere, anytime.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Debugging node.js in Cloud9 IDE</title>
-      <link>https://kalinchernev.github.io/debugging-nodejs-in-cloud9-ide/</link>
-      <pubDate>Sun, 04 Sep 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/debugging-nodejs-in-cloud9-ide/</guid>
-      <description>
-
-&lt;p&gt;In this article I&amp;rsquo;ll be sharing some of my level-up experience learning how to debug node.js apps. It was not easy at first, but once I got it, I felt empowered that now I can work with any code base.&lt;/p&gt;
-
-&lt;p&gt;Debugging is useful for solving vague problems in other people&amp;rsquo;s code and it&amp;rsquo;s also useful for learning how something actually works. The article might be particularly useful for those used to having debugger experience in WebStorm or similar IDEs.&lt;/p&gt;
-
-&lt;h3 id=&#34;quick-reference&#34;&gt;Quick reference&lt;/h3&gt;
-
-&lt;p&gt;That article is meant to be more like a cheat sheet rather than too detailed step by step guide, here&amp;rsquo;s a go-to list of techniques:&lt;/p&gt;
-
-&lt;h3 id=&#34;node-debugger&#34;&gt;Node debugger&lt;/h3&gt;
-
-&lt;p&gt;Let&amp;rsquo;s start by the basics — using the &lt;a href=&#34;https://nodejs.org/api/debugger.html&#34;&gt;node&amp;rsquo;s native debugger&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For example, &lt;a href=&#34;https://github.com/Surnet/swagger-jsdoc/blob/master/example/app.js&#34;&gt;this app&lt;/a&gt; contains a simple server returning a JSON object which is a &lt;a href=&#34;https://www.google.be/url?sa=t&amp;amp;amp;rct=j&amp;amp;amp;q=&amp;amp;amp;esrc=s&amp;amp;amp;source=web&amp;amp;amp;cd=1&amp;amp;amp;cad=rja&amp;amp;amp;uact=8&amp;amp;amp;ved=0ahUKEwiG4Pi0qfbOAhUEOhQKHaQICOAQFggcMAA&amp;amp;amp;url=http%3A%2F%2Fswagger.io%2Fspecification%2F&amp;amp;amp;usg=AFQjCNH_jZB7rkJVVCg-JHFmeLAHwMnUfw&amp;amp;amp;sig2=R2rG7_9EH1ctFeFwtJ7cPw&amp;amp;amp;bvm=bv.131783435,d.d24&#34;&gt;swagger specification&lt;/a&gt; and I need to debug and see its value. So, in this example, I&amp;rsquo;ll follow this steps to see the contents of the variable:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Set a break point with &lt;code&gt;debugger&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Run the script with &lt;code&gt;node debug example/app.js&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Work with the controls of the debugger to reach a good value: &lt;code&gt;c&lt;/code&gt; to continue and &lt;code&gt;n&lt;/code&gt; for next&lt;/li&gt;
-&lt;li&gt;Use &lt;code&gt;repl&lt;/code&gt; to execute some code which access current state of the system&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*CHRmYU912yZDRmqz7Z490w.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;simple-script&#34;&gt;Simple script&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add a break point&lt;/li&gt;
-&lt;li&gt;Press the Run button to execute the default node runner (ensure the debugger is enabled — &lt;a href=&#34;https://docs.c9.io/docs/debugging-your-code&#34;&gt;more info&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*I-mVNLptBFDG-EaJpLR6rQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;mocha-tests&#34;&gt;Mocha tests&lt;/h3&gt;
-
-&lt;p&gt;This is an &lt;a href=&#34;https://docs.c9.io/docs/experimental-features&#34;&gt;experimental feature&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*-8oDjYBTEU4-G8H5_vw5lg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Enable &amp;lsquo;Tests&amp;rdquo; from the editor settings&lt;/li&gt;
-&lt;li&gt;Refresh the page and see the panel&lt;/li&gt;
-&lt;li&gt;Put a break point in the test&lt;/li&gt;
-&lt;li&gt;Enable debugging in the &amp;ldquo;Test&amp;rdquo; panel&lt;/li&gt;
-&lt;li&gt;Run the test suite or scenario&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This feature actually worked for me, I felt just the same way when I made my first &lt;a href=&#34;http://mortalkombat.wikia.com/wiki/Animality&#34;&gt;animality in MK3&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*OHINaf_jcvN75EN1M0ozlQ.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;command-line-apps&#34;&gt;Command-line apps&lt;/h3&gt;
-
-&lt;p&gt;In fact it&amp;rsquo;s almost identical to debugging a simple script, the only detail you have to notice is an input box where you put the actual command as if ran in the command line.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Open the command-line app and place a break point&lt;/li&gt;
-&lt;li&gt;Use the Run menu to start the process in debug more&lt;/li&gt;
-&lt;li&gt;Change the input process name and restart the runner&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*V9xHSnqzwCasqzHiHyBD5Q.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;feedback-is-nbsp-welcome&#34;&gt;Feedback is&amp;nbsp;welcome&lt;/h3&gt;
-
-&lt;p&gt;Use the comments below to share your techniques and opinions.&lt;/p&gt;
 </description>
     </item>
     
