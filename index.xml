@@ -61,6 +61,10 @@ at Microsoft almost an year ago when I &amp;ldquo;met&amp;rdquo; LUIS for the fi
 
 &lt;p&gt;Depending on your language needs, level of interests in the subjects and needs for privacy, you can go either way. Basically, the &amp;ldquo;brain&amp;rdquo; of the &lt;code&gt;.ai&lt;/code&gt; is a cloud service communicating with clients via REST APIs, so that the intelligence can be reused in many ways.&lt;/p&gt;
 
+&lt;p&gt;Here&amp;rsquo;s an example of using &lt;a href=&#34;https://www.slideshare.net/PaulPrae/azure-as-a-chatbot-service-from-purpose-to-production-with-a-cloud-bot-architecture&#34;&gt;Microsoft stack&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/images/cloud-bot-architecture.jpg&#34; alt=&#34;Chat bot cloud architecture&#34; /&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;“Over the past decades computers have broadly automated tasks that programmers could describe with clear rules and algorithms. Modern machine learning techniques now allow us to do the same for tasks where describing the precise rules is much harder.” - &lt;a href=&#34;https://futurism.com/amazon-ceo-perfectly-explains-ai-just-two-sentences/&#34;&gt;Jeff Bezos&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -83,6 +87,8 @@ the Personal Computer era to the Personal Assistant era.&lt;/li&gt;
 &lt;h3 id=&#34;personal-assistants&#34;&gt;Personal assistants =&amp;gt; ?&lt;/h3&gt;
 
 &lt;p&gt;Amazon has been doing &lt;a href=&#34;http://uk.businessinsider.com/amazon-echo-sales-figures-stats-chart-2016-12?r=US&amp;amp;IR=T&#34;&gt;quite well since the release&lt;/a&gt; of the Amazon Echo, which already has several versions. Almost an year ago, Google made a &lt;a href=&#34;https://www.cnet.com/news/google-home-vs-amazon-echo/&#34;&gt;fast reply with Google Home&lt;/a&gt;.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/2KpLHdAURGo?rel=0&amp;amp;showinfo=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;Believe it or not, I realized just recently that Google announced &lt;a href=&#34;https://assistant.google.com/&#34;&gt;Google Assistant&lt;/a&gt; and Google Home together for a reason. For me, the assistant was this dummy chat bot with little sense of humour on Duo, but I never took him seriously, because the time it takes to open the app and start a conversation was taking more than actually doing the thing I wanted to do directly in the apps. Also, there are so many other chat apps on the market that I never even made a try to invite a friend to try Duo with some assistant spice.&lt;/p&gt;
 
