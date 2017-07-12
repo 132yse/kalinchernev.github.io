@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</loc>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/personal-computers-personal-assistants/</loc>
     <lastmod>2017-05-09T00:00:00+02:00</lastmod>
   </url>
@@ -146,6 +151,12 @@
   </url>
   
   <url>
+    <loc>https://kalinchernev.github.io/tags/aws/</loc>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/tags/blogging/</loc>
     <lastmod>2017-04-19T11:04:38+02:00</lastmod>
     <priority>0</priority>
@@ -153,7 +164,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/bots/</loc>
-    <lastmod>2017-05-09T00:00:00+02:00</lastmod>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -225,13 +236,13 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/javascript/</loc>
-    <lastmod>2017-03-31T00:00:00+02:00</lastmod>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/</loc>
-    <lastmod>2017-05-09T00:00:00+02:00</lastmod>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -255,7 +266,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/nodejs/</loc>
-    <lastmod>2017-03-10T00:00:00+02:00</lastmod>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -285,7 +296,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/post/</loc>
-    <lastmod>2017-05-09T00:00:00+02:00</lastmod>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -316,6 +327,12 @@
   <url>
     <loc>https://kalinchernev.github.io/tags/prototyping/</loc>
     <lastmod>2017-03-10T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/serverless/</loc>
+    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

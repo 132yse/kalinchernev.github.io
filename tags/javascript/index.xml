@@ -10,6 +10,182 @@
     <atom:link href="https://kalinchernev.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Serverless github bot with AWS Lambda and API Gateway </title>
+      <link>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</link>
+      <pubDate>Tue, 11 Jul 2017 22:40:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</guid>
+      <description>
+
+&lt;p&gt;This tutorial will show you how to build a small github bot app which is &amp;ldquo;listening&amp;rdquo; for pull requests&amp;rsquo; events on &amp;ldquo;open&amp;rdquo; and &amp;ldquo;reopen&amp;rdquo; by &lt;a href=&#34;https://greenkeeper.io/&#34;&gt;greenkeeper.io&lt;/a&gt;. When the author is the greenkeeper bot, our bot will in turn, correct the title and the tags of the pull request to match conventions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/github_bot_correcting_greenkeeper-1.png&#34; alt=&#34;Github bot correcting the greenkeeper bot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve come to this article because you already have knowledge about the technical topics, but you are more interested in the concrete steps, you can skip the following introductory parts and go directly to the technical specifics below. To go to the technical details scroll down to the &lt;strong&gt;&amp;ldquo;10 steps to make it happen&amp;rdquo;&lt;/strong&gt; section ;)&lt;/p&gt;
+
+&lt;p&gt;The script will actually be pretty small and simple, though there are quite some interesting ideas you might get on the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;serverless&#34;&gt;Serverless&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Serverless_computing&#34;&gt;Serverless computing&lt;/a&gt; is a relatively new trend which is getting greater popularity after Amazon released their &lt;a href=&#34;https://aws.amazon.com/lambda/&#34;&gt;AWS Lambda&lt;/a&gt; service in the end of 2014. I published about this topic in a bit &lt;a href=&#34;https://kalinchernev.github.io/january-digest-2017/#cloud&#34;&gt;more details earlier this year&lt;/a&gt;. In one sentence, serverless architectures (aka cloud functions) are getting traction in cases where high-level architecture control is sufficient for developers who delegate the details about the infrastructure management to a hidden underlying layer managed by a cloud provider.&lt;/p&gt;
+
+&lt;p&gt;In addition to the low maintenance efforts, pricing per resource is also a lucrative opportunity for app developers - at the moment 1 million requests to AWS Lambda are &lt;a href=&#34;https://aws.amazon.com/free/&#34;&gt;free&lt;/a&gt; - this is generous! Later, &lt;a href=&#34;https://aws.amazon.com/lambda/pricing/&#34;&gt;pricing&lt;/a&gt; continues to be calculated based on actual usage. This means that applications cost money when they actually compute. That&amp;rsquo;s good for both up-scaling and down-scaling.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a graphic from &lt;a href=&#34;https://acloud.guru/&#34;&gt;acloud.guru&lt;/a&gt; which explains this evolution step in simple terms, I think:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/11/brief-history-of-cloud-acloud-guru.png&#34; alt=&#34;Where is the serverless in the history of the cloud&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lastly, cloud functions such as AWS Lambda come well into play in event-oriented designs. Here&amp;rsquo;s a simplified list of some &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html&#34;&gt;official use cases&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;event-driven services where the cloud function is run in response to other events - usually triggered by AWS S3, SNS, DynamoDB, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;services responding to HTTP requests - triggered by Amazon API Gateway or other AWS clients.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A github bot app can be considered as a service from the second set of scenarios. The end result is an API endpoint responding to &lt;code&gt;POST&lt;/code&gt; requests (events) from &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;github webhooks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-aws-serverless-stack&#34;&gt;Notes on the AWS serverless stack&lt;/h2&gt;
+
+&lt;p&gt;Watching videos and reading tutorials on the topic can get you pretty excited. Here are some notes about steps which didn&amp;rsquo;t go totally smooth during my journey, i.e. I want to prepare you for the reality before you get frustrated ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) The AWS services ain&amp;rsquo;t that easy, especially if you&amp;rsquo;re relatively new to AWS in overall&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/lambda/&#34;&gt;AWS Lambda developer guide&lt;/a&gt; - 300+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/apigateway/&#34;&gt;Amazon API Gateway developer guide&lt;/a&gt; - 450+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/iam/&#34;&gt;IAM documentation&lt;/a&gt; - I don&amp;rsquo;t even want to check &amp;hellip;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short - there&amp;rsquo;s a lot of information and you have to find your way through the important parts which will help you in the specific case.&lt;/p&gt;
+
+&lt;p&gt;For our case in this tutorial, let&amp;rsquo;s assume we can follow the getting started guide and build a simple cloud function working behind an &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html&#34;&gt;API gateway endpoint&lt;/a&gt;. If you want to do it right, you will have to have an idea about concepts such as: &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/request-response-data-mappings.html&#34;&gt;mapping request and response data&lt;/a&gt;, getting to know some new &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html&#34;&gt;template language for mapping variables&lt;/a&gt;, etc. These are the basics of API Gateway to get you going with the request and response management. Then come some fundamentals you&amp;rsquo;ll need about the AWS Lambda too - knowing what is a &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html&#34;&gt;handler function&lt;/a&gt; (the cloud function), figure &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html&#34;&gt;the parameters of the handler&lt;/a&gt; and &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html&#34;&gt;reading logs&lt;/a&gt; from another AWS service.&lt;/p&gt;
+
+&lt;p&gt;In short, &amp;ldquo;keep calm and learn AWS services&amp;rdquo;, at least the basics.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2) We speak cloud abstraction here - it is not easily reproducible for local development&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I spent quite some time researching on ways to have the whole AWS API Gateway + AWS Lambda setup locally so that I can start hacking quickly on my computer, but I haven&amp;rsquo;t found anything so far. If you have one or some in mind - please tell me!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3) We still write JavaScript and Node.js - be ready for the regular hurdles you&amp;rsquo;ll normally have&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The fact that you&amp;rsquo;re delegating the infrastructure complexity to someone else out there doesn&amp;rsquo;t mean that your code will automagically work, at least not in the Node.js world, not at the moment.&lt;/p&gt;
+
+&lt;p&gt;For example, sometimes you would receive errors &lt;a href=&#34;https://forums.aws.amazon.com/thread.jspa?threadID=229528&#34;&gt;like this&lt;/a&gt; and you will have to apply your JavaScript knowledge and patience to switch between versions of Node, transpile the code for the Lambda to be able to show you useful error messages &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;For me, the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework worked pretty well in the deployment part. It definitely hid most of the complexity of understanding template languages and setting up boilerplate code for the function to work.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-serverless-https-serverless-com-framework&#34;&gt;Notes on the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework&lt;/h2&gt;
+
+&lt;p&gt;If you, like me, feel that the setup of the framework is a bit too much, then just go directly to the &lt;a href=&#34;https://github.com/serverless/examples&#34;&gt;example repository&lt;/a&gt; and get to know the &lt;a href=&#34;https://github.com/serverless/examples/tree/master/aws-node-github-webhook-listener&#34;&gt;aws-node-github-webhook-listener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using this example boilerplate, you will need only 2 keys auth components to make the communication between services work:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/&#34;&gt;Github user token&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html&#34;&gt;AWS user tokens&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Try to keep the scope of permissions to a minimum to ensure best security in your applications. Both AWS and serverless provide other authentication options you might feel more comfortable with.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-github-part&#34;&gt;Notes on the github part&lt;/h2&gt;
+
+&lt;p&gt;The setup on github is simpler than AWS. Basically, you&amp;rsquo;ll need to read about &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;webhooks&lt;/a&gt;. The documentation is without a doubt - great - it walks you through all the stages from setting up a local dev environment, testing a hook, and also having a good knowledge of the structure of the webhooks&amp;rsquo; payloads.&lt;/p&gt;
+
+&lt;p&gt;This is a high-level action plan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Have an account, a repo, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate a user token. (&lt;a href=&#34;https://help.github.com/articles/differences-between-user-and-organization-accounts/&#34;&gt;user can be a bot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup webhooks for a repository.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter information about the API Gateway endpoint which works with the cloud function, this is your bot.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;10-steps-to-make-it-happen&#34;&gt;10 steps to make it happen&lt;/h2&gt;
+
+&lt;p&gt;Ok, enough introductory talks, that&amp;rsquo;s the more visual part of the article containing the main milestones making the things actually work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Create a user that can work with AWS Lambda and API Gateway services.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/create_aws_user_lambda.gif&#34; alt=&#34;Creating an AWS user you can operate with&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For simplicity, I&amp;rsquo;m adding the user to the group of admins. Then I&amp;rsquo;m downloading the tokens for later use with the serverless framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Go to your github profile settings page and &lt;a href=&#34;https://github.com/settings/tokens/new&#34;&gt;generate a user token&lt;/a&gt; by which the bot will act on your behalf.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can make a cool bot separate from your account, of course.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/new_user_token_github.png&#34; alt=&#34;Creating a new user token on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you save this form, you will see the token, which you have to save somewhere with the same attention you would have to your password:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. &lt;a href=&#34;https://developer.github.com/webhooks/securing&#34;&gt;Generate a webhook secret&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/generate_webhook_secret-1.png&#34; alt=&#34;Generating a webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Input the user token and the webhook secret in the serverless config file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/save_config.png&#34; alt=&#34;Saving configurations in the serverless framework config file&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Put function code in the &lt;code&gt;handler.js&lt;/code&gt; file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/handler.png&#34; alt=&#34;Editing the cloud function&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. You can try to deploy the function:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Watch it fail ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/enter_credentials_serverless.png&#34; alt=&#34;Failing deployment in the serverless framework&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. Export your keys (which you downloaded in the &lt;code&gt;credentials.csv&lt;/code&gt; files earlier as:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ export AWS_ACCESS_KEY_ID=
+$ export AWS_SECRET_ACCESS_KEY=
+# AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are now available for serverless to use
+serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;8. Run &lt;code&gt;serverless deploy&lt;/code&gt; again and watch it succeeding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/serverless_deploy_success.gif&#34; alt=&#34;Showing a successful deployment of a function on AWS&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9. Take the provided URL and add it to the webhooks of your repository where you want the bot to take effect&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/adding_webhook_github.png&#34; alt=&#34;Adding a new webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Few notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;This is the secret you previously generated via the command line&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;It&amp;rsquo;s a good practice to filter only the necessary events in order to minimize the load to the endpoint&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;10. Trigger the webhook either by github or by closing and re-opening an existing pull request which has been opened by greenkeeper bot.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s an example script you can use:
+&lt;script src=&#34;https://gist.github.com/kalinchernev/d1e79a7f883a4d37f50519d9b05df0c5.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;extras&#34;&gt;Extras&lt;/h2&gt;
+
+&lt;p&gt;When you have this automated corrections on pull request titles and tags, you might also need to &lt;a href=&#34;https://github.com/greenkeeperio/greenkeeper-lockfile&#34;&gt;update the lock files&lt;/a&gt; of the pull request to make all ready for merging.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>March digest 2017</title>
       <link>https://kalinchernev.github.io/march-digest-2017/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0200</pubDate>
@@ -1242,115 +1418,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;/blockquote&gt;
 
 &lt;p&gt;Game on coders!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coding battle at Take Eat Easy</title>
-      <link>https://kalinchernev.github.io/coding-battle-take-eat-easy/</link>
-      <pubDate>Thu, 09 Jun 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/coding-battle-take-eat-easy/</guid>
-      <description>
-
-&lt;p&gt;Short retrospective on my second coding competition with JavaScript. Lessons learned and thoughts on how to improve for the future.&lt;/p&gt;
-
-&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.takeeateasy.be/en/&#34;&gt;Take Eat Easy&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt; organized this coding competition.&lt;/p&gt;
-
-&lt;p&gt;Similarly to &lt;a href=&#34;https://medium.com/@kalin.chernev/the-first-coding-battle-in-belgium-d4f4285ffb32#.ses1gau0l&#34;&gt;the first coding battle&lt;/a&gt;, good news from &lt;a href=&#34;https://twitter.com/maxczet&#34;&gt;Max&lt;/a&gt; came right from the beginning: the event was part of a hack league. For developers, this means that we can hope for continuity of the coding battles: more play, plus more opportunities to interact and share with others from the &lt;a href=&#34;https://twitter.com/jsl4b&#34;&gt;JavaScript community in Belgium&lt;/a&gt;. Few other cities have benefited from similar coding competitions: &lt;a href=&#34;https://twitter.com/maxczet/status/725623059344986112&#34;&gt;Paris&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/maxczet/status/728555974672449536&#34;&gt;London&lt;/a&gt; recently, I am looking forward to see how the wave will grow even further&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;After this intro, &lt;a href=&#34;http://www.takeeateasy.be/en/about&#34;&gt;Jean-Christophe Libbrecht&lt;/a&gt; presented what Take Eat Easy is in simple words: delivery on time. &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league&#34;&gt;The technical challenge&lt;/a&gt; was presented with focus on the same company values: optimal delivery management. I gotta say that I had a flashback to my university discipline of &lt;a href=&#34;https://en.wikipedia.org/wiki/Operations_research&#34;&gt;operations research&lt;/a&gt; for a minute, when thinking about routes and shortest distance. Luckily, the challenge was easier to understand than the academic subject!&lt;/p&gt;
-
-&lt;p&gt;The overall atmosphere was agréable et la majorité parlèrent en français. Positive support and guidance was coming all the time.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-challenge&#34;&gt;The challenge&lt;/h4&gt;
-
-&lt;p&gt;Quoting an abstract from the problem definition:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;You play one of TEE&amp;rsquo;s bike courier&lt;/p&gt;
-
-&lt;p&gt;Your goal is to make as much € as you can&lt;/p&gt;
-
-&lt;p&gt;You compete with other couriers in the city&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*zt3n7YspKUDLmP8Q4lN5qw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So, participants had to program a courier bot, which plays with other courier bots in an imaginary city. Taking and delivering orders in an optimal way.&lt;/p&gt;
-
-&lt;p&gt;An example &lt;a href=&#34;https://github.com/TakeEatEasy/hack-league/tree/master/node-client&#34;&gt;node client bot&lt;/a&gt; was given. I find it to be a good boilerplate for a start. Most importantly it&amp;rsquo;s clear where to include the custom logic and what are the tools to use to take actions.&lt;/p&gt;
-
-&lt;p&gt;Another positive prerequisite was &lt;strong&gt;the sample state object&lt;/strong&gt;, which contained enough structure to understand the data that will be received by the client on every turn of the game. Note some important concepts are pretty obvious, I think: &lt;strong&gt;orders, possible actions and score&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/kalinchernev/d2d3e5e9ade9bca4f8ae94bc58dd5e88.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;All possible actions&lt;/strong&gt; that the bots were able to play with: moving up/down/left/right, pick order, drop order. There were 2 advanced actions: upgrade fighter (be able to kick other players) and upgrade electric (move doubled).&lt;/p&gt;
-
-&lt;p&gt;I will repeat this again, I was content with the organizers. Help was kindly provided, with hints and advice all the way during the game. That made it fun to play. (No matter the fact that my team didn&amp;rsquo;t manage to get points&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*641YUOoQZYNKW5N2d4G-kw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h4&gt;
-
-&lt;p&gt;I got a good &lt;a href=&#34;https://en.wikipedia.org/wiki/Pair_programming&#34;&gt;pair&lt;/a&gt; for the event. (&lt;a href=&#34;https://github.com/Gregoirevda&#34;&gt;Gregoirevda&lt;/a&gt;) I think we got along easily and we had good time working together. Here are some highlights of the informal retrospective we did after the game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Visualize the end result (expectation) before going in the code&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We never ran the server &amp;ldquo;city&amp;rdquo; to see how our bot moves. That was not a clear problem until the end of the competition until when we were still working on the details on how to move our courier. &lt;a href=&#34;https://en.wikipedia.org/wiki/Grep&#34;&gt;Grep&lt;/a&gt;-ing the continuously changing state object helped us get some ideas about the dynamics, but honestly it was not easy to imagine how the courier bot is actually moving on the map without the real picture.&lt;/p&gt;
-
-&lt;p&gt;Now I believe it&amp;rsquo;s important to run the server (mock) locally during development just to understand and visualize the dynamics as they will be in the real game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Learn and understand the start examples and code samples&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;In my first competition I made the mistake to try to understand the logic of the core engine (server) running the game, but this time was better focusing on the sample code. Yet, I think we missed useful points and functions that we could have utilized in our favor without thinking too much.&lt;/p&gt;
-
-&lt;p&gt;More specifically, the head of the function that was invoked in every turn of the game contained the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Fetch my courier and possible order from the state  
-var state = data.state;  
-var possibleActions = data.possibleActions;  
-var myCourier;  
-var myOrder;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And guess what? That was prepared for us before-hand so that we could use these variables &amp;ldquo;as-is&amp;rdquo;. I have to say, I was mixing the &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;state&lt;/code&gt; variables pretty much, but that&amp;rsquo;s another topic.&lt;/p&gt;
-
-&lt;p&gt;Another part of the code contained this line:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Sample response.
-respond(getDirection(data.possibleActions,myCourier.position,{x:1,y:2}));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;getDirection()&lt;/code&gt; returns the best move depending on the current position and possible actions.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;respond()&lt;/code&gt; is the function to invoke in order to take actions.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;respond()&lt;/code&gt; took us away, because we decided to focus on the actions, and somehow it was pretty late in the game when we figured the getDirection() function for possible re-use.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. Strategy and task separation&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Probably the most complex part of all.&lt;/p&gt;
-
-&lt;p&gt;Even though we didn&amp;rsquo;t have clear strategy while developing the bot, it surely would have helped. For example, we started implementing functions for the bonus skills like having an electric bike and kicking other players before deciding how to move and take orders&amp;nbsp;:D&lt;/p&gt;
-
-&lt;p&gt;But seriously, possible strategy for this challenge could probably be to separate the approach in 2: functions for working with distance, and such for working with actions. Though we didn&amp;rsquo;t manage to have a complete combination of actions based on distance and value, we spoke about the fact that we were not clear about the order of combined actions we need to take. We took a delivery and then we were just standing at a place, since the next step was not foreseen. However, we prepared to be able to kick other players just standing there with our delivery in our hands! (we never got the points for the advanced action of kicking)&lt;/p&gt;
-
-&lt;p&gt;I feel that breaking down a challenge into small tasks plays an important role in problem solving, especially in short-time hack event. Also, event handling actions with state management seem to be recurring patterns, so it&amp;rsquo;s worth getting some more practice there too.&lt;/p&gt;
-
-&lt;h4 id=&#34;coming-up&#34;&gt;Coming up&lt;/h4&gt;
-
-&lt;p&gt;Many developers don&amp;rsquo;t go to competitions because they believe they are not good enough with JavaScript or they will not perform well in hack events under stress. Even though there is positive stress, with this retrospective and code samples I hope that I&amp;rsquo;ve managed to demonstrate that the challenge itself was doable and fun to do.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://www.eventbrite.com/e/coding-battle-microsoft-innovation-center-brussels-carasap-tickets-25839985091&#34;&gt;next coding battle will be at Microsoft&lt;/a&gt; and the event is open for registrations. I&amp;rsquo;d recommend you to grab the opportunity to broaden your experience.&lt;/p&gt;
-
-&lt;p&gt;Lastly, consider inviting your colleagues to join you too. As you can imagine, the short hacking time will naturally give you ideas on how to communicate effectively with your colleagues when you work together in different environment. Also, you will see new ways to break down tasks and problem solve by observing and sharing with other developers you meet at the event.&lt;/p&gt;
-
-&lt;h4 id=&#34;what-do-you-nbsp-think&#34;&gt;What do you&amp;nbsp;think?&lt;/h4&gt;
-
-&lt;p&gt;I&amp;rsquo;m really interested to hear feedback on my thoughts and ideas about the code and the highlights. Maybe you have a different point of view? Share it in the comments!&lt;/p&gt;
 </description>
     </item>
     

@@ -7,8 +7,184 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Jul 2017 22:40:00 +0000</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Serverless github bot with AWS Lambda and API Gateway </title>
+      <link>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</link>
+      <pubDate>Tue, 11 Jul 2017 22:40:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</guid>
+      <description>
+
+&lt;p&gt;This tutorial will show you how to build a small github bot app which is &amp;ldquo;listening&amp;rdquo; for pull requests&amp;rsquo; events on &amp;ldquo;open&amp;rdquo; and &amp;ldquo;reopen&amp;rdquo; by &lt;a href=&#34;https://greenkeeper.io/&#34;&gt;greenkeeper.io&lt;/a&gt;. When the author is the greenkeeper bot, our bot will in turn, correct the title and the tags of the pull request to match conventions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/github_bot_correcting_greenkeeper-1.png&#34; alt=&#34;Github bot correcting the greenkeeper bot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve come to this article because you already have knowledge about the technical topics, but you are more interested in the concrete steps, you can skip the following introductory parts and go directly to the technical specifics below. To go to the technical details scroll down to the &lt;strong&gt;&amp;ldquo;10 steps to make it happen&amp;rdquo;&lt;/strong&gt; section ;)&lt;/p&gt;
+
+&lt;p&gt;The script will actually be pretty small and simple, though there are quite some interesting ideas you might get on the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;serverless&#34;&gt;Serverless&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Serverless_computing&#34;&gt;Serverless computing&lt;/a&gt; is a relatively new trend which is getting greater popularity after Amazon released their &lt;a href=&#34;https://aws.amazon.com/lambda/&#34;&gt;AWS Lambda&lt;/a&gt; service in the end of 2014. I published about this topic in a bit &lt;a href=&#34;https://kalinchernev.github.io/january-digest-2017/#cloud&#34;&gt;more details earlier this year&lt;/a&gt;. In one sentence, serverless architectures (aka cloud functions) are getting traction in cases where high-level architecture control is sufficient for developers who delegate the details about the infrastructure management to a hidden underlying layer managed by a cloud provider.&lt;/p&gt;
+
+&lt;p&gt;In addition to the low maintenance efforts, pricing per resource is also a lucrative opportunity for app developers - at the moment 1 million requests to AWS Lambda are &lt;a href=&#34;https://aws.amazon.com/free/&#34;&gt;free&lt;/a&gt; - this is generous! Later, &lt;a href=&#34;https://aws.amazon.com/lambda/pricing/&#34;&gt;pricing&lt;/a&gt; continues to be calculated based on actual usage. This means that applications cost money when they actually compute. That&amp;rsquo;s good for both up-scaling and down-scaling.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a graphic from &lt;a href=&#34;https://acloud.guru/&#34;&gt;acloud.guru&lt;/a&gt; which explains this evolution step in simple terms, I think:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/11/brief-history-of-cloud-acloud-guru.png&#34; alt=&#34;Where is the serverless in the history of the cloud&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lastly, cloud functions such as AWS Lambda come well into play in event-oriented designs. Here&amp;rsquo;s a simplified list of some &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html&#34;&gt;official use cases&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;event-driven services where the cloud function is run in response to other events - usually triggered by AWS S3, SNS, DynamoDB, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;services responding to HTTP requests - triggered by Amazon API Gateway or other AWS clients.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A github bot app can be considered as a service from the second set of scenarios. The end result is an API endpoint responding to &lt;code&gt;POST&lt;/code&gt; requests (events) from &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;github webhooks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-aws-serverless-stack&#34;&gt;Notes on the AWS serverless stack&lt;/h2&gt;
+
+&lt;p&gt;Watching videos and reading tutorials on the topic can get you pretty excited. Here are some notes about steps which didn&amp;rsquo;t go totally smooth during my journey, i.e. I want to prepare you for the reality before you get frustrated ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) The AWS services ain&amp;rsquo;t that easy, especially if you&amp;rsquo;re relatively new to AWS in overall&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/lambda/&#34;&gt;AWS Lambda developer guide&lt;/a&gt; - 300+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/apigateway/&#34;&gt;Amazon API Gateway developer guide&lt;/a&gt; - 450+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/iam/&#34;&gt;IAM documentation&lt;/a&gt; - I don&amp;rsquo;t even want to check &amp;hellip;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short - there&amp;rsquo;s a lot of information and you have to find your way through the important parts which will help you in the specific case.&lt;/p&gt;
+
+&lt;p&gt;For our case in this tutorial, let&amp;rsquo;s assume we can follow the getting started guide and build a simple cloud function working behind an &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html&#34;&gt;API gateway endpoint&lt;/a&gt;. If you want to do it right, you will have to have an idea about concepts such as: &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/request-response-data-mappings.html&#34;&gt;mapping request and response data&lt;/a&gt;, getting to know some new &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html&#34;&gt;template language for mapping variables&lt;/a&gt;, etc. These are the basics of API Gateway to get you going with the request and response management. Then come some fundamentals you&amp;rsquo;ll need about the AWS Lambda too - knowing what is a &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html&#34;&gt;handler function&lt;/a&gt; (the cloud function), figure &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html&#34;&gt;the parameters of the handler&lt;/a&gt; and &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html&#34;&gt;reading logs&lt;/a&gt; from another AWS service.&lt;/p&gt;
+
+&lt;p&gt;In short, &amp;ldquo;keep calm and learn AWS services&amp;rdquo;, at least the basics.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2) We speak cloud abstraction here - it is not easily reproducible for local development&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I spent quite some time researching on ways to have the whole AWS API Gateway + AWS Lambda setup locally so that I can start hacking quickly on my computer, but I haven&amp;rsquo;t found anything so far. If you have one or some in mind - please tell me!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3) We still write JavaScript and Node.js - be ready for the regular hurdles you&amp;rsquo;ll normally have&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The fact that you&amp;rsquo;re delegating the infrastructure complexity to someone else out there doesn&amp;rsquo;t mean that your code will automagically work, at least not in the Node.js world, not at the moment.&lt;/p&gt;
+
+&lt;p&gt;For example, sometimes you would receive errors &lt;a href=&#34;https://forums.aws.amazon.com/thread.jspa?threadID=229528&#34;&gt;like this&lt;/a&gt; and you will have to apply your JavaScript knowledge and patience to switch between versions of Node, transpile the code for the Lambda to be able to show you useful error messages &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;For me, the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework worked pretty well in the deployment part. It definitely hid most of the complexity of understanding template languages and setting up boilerplate code for the function to work.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-serverless-https-serverless-com-framework&#34;&gt;Notes on the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework&lt;/h2&gt;
+
+&lt;p&gt;If you, like me, feel that the setup of the framework is a bit too much, then just go directly to the &lt;a href=&#34;https://github.com/serverless/examples&#34;&gt;example repository&lt;/a&gt; and get to know the &lt;a href=&#34;https://github.com/serverless/examples/tree/master/aws-node-github-webhook-listener&#34;&gt;aws-node-github-webhook-listener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using this example boilerplate, you will need only 2 keys auth components to make the communication between services work:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/&#34;&gt;Github user token&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html&#34;&gt;AWS user tokens&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Try to keep the scope of permissions to a minimum to ensure best security in your applications. Both AWS and serverless provide other authentication options you might feel more comfortable with.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-github-part&#34;&gt;Notes on the github part&lt;/h2&gt;
+
+&lt;p&gt;The setup on github is simpler than AWS. Basically, you&amp;rsquo;ll need to read about &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;webhooks&lt;/a&gt;. The documentation is without a doubt - great - it walks you through all the stages from setting up a local dev environment, testing a hook, and also having a good knowledge of the structure of the webhooks&amp;rsquo; payloads.&lt;/p&gt;
+
+&lt;p&gt;This is a high-level action plan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Have an account, a repo, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate a user token. (&lt;a href=&#34;https://help.github.com/articles/differences-between-user-and-organization-accounts/&#34;&gt;user can be a bot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup webhooks for a repository.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter information about the API Gateway endpoint which works with the cloud function, this is your bot.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;10-steps-to-make-it-happen&#34;&gt;10 steps to make it happen&lt;/h2&gt;
+
+&lt;p&gt;Ok, enough introductory talks, that&amp;rsquo;s the more visual part of the article containing the main milestones making the things actually work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Create a user that can work with AWS Lambda and API Gateway services.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/create_aws_user_lambda.gif&#34; alt=&#34;Creating an AWS user you can operate with&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For simplicity, I&amp;rsquo;m adding the user to the group of admins. Then I&amp;rsquo;m downloading the tokens for later use with the serverless framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Go to your github profile settings page and &lt;a href=&#34;https://github.com/settings/tokens/new&#34;&gt;generate a user token&lt;/a&gt; by which the bot will act on your behalf.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can make a cool bot separate from your account, of course.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/new_user_token_github.png&#34; alt=&#34;Creating a new user token on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you save this form, you will see the token, which you have to save somewhere with the same attention you would have to your password:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. &lt;a href=&#34;https://developer.github.com/webhooks/securing&#34;&gt;Generate a webhook secret&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/generate_webhook_secret-1.png&#34; alt=&#34;Generating a webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Input the user token and the webhook secret in the serverless config file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/save_config.png&#34; alt=&#34;Saving configurations in the serverless framework config file&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Put function code in the &lt;code&gt;handler.js&lt;/code&gt; file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/handler.png&#34; alt=&#34;Editing the cloud function&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. You can try to deploy the function:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Watch it fail ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/enter_credentials_serverless.png&#34; alt=&#34;Failing deployment in the serverless framework&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. Export your keys (which you downloaded in the &lt;code&gt;credentials.csv&lt;/code&gt; files earlier as:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ export AWS_ACCESS_KEY_ID=
+$ export AWS_SECRET_ACCESS_KEY=
+# AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are now available for serverless to use
+serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;8. Run &lt;code&gt;serverless deploy&lt;/code&gt; again and watch it succeeding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/serverless_deploy_success.gif&#34; alt=&#34;Showing a successful deployment of a function on AWS&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9. Take the provided URL and add it to the webhooks of your repository where you want the bot to take effect&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/adding_webhook_github.png&#34; alt=&#34;Adding a new webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Few notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;This is the secret you previously generated via the command line&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;It&amp;rsquo;s a good practice to filter only the necessary events in order to minimize the load to the endpoint&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;10. Trigger the webhook either by github or by closing and re-opening an existing pull request which has been opened by greenkeeper bot.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s an example script you can use:
+&lt;script src=&#34;https://gist.github.com/kalinchernev/d1e79a7f883a4d37f50519d9b05df0c5.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;extras&#34;&gt;Extras&lt;/h2&gt;
+
+&lt;p&gt;When you have this automated corrections on pull request titles and tags, you might also need to &lt;a href=&#34;https://github.com/greenkeeperio/greenkeeper-lockfile&#34;&gt;update the lock files&lt;/a&gt; of the pull request to make all ready for merging.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>From personal computers to personal assistants</title>
@@ -1337,178 +1513,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;p&gt;Suggestions and pull requests are welcome at the &lt;a href=&#34;https://github.com/kalinchernev/odp&#34;&gt;github page of the project&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;For inspirations of use, more information about the data or introduction training of the benefits of using open data, visit the &lt;a href=&#34;https://www.europeandataportal.eu/&#34;&gt;europeandataportal.eu&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Drupal 8 on Cloud9 IDE</title>
-      <link>https://kalinchernev.github.io/drupal8-cloud9-ide/</link>
-      <pubDate>Thu, 15 Sep 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/drupal8-cloud9-ide/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;You see things; and you say, &amp;lsquo;Why?&amp;rsquo; But I dream things that never were; and I say, &amp;lsquo;Why not?&amp;ldquo; — George Bernard Shaw&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; will soon celebrate 1 year since its release. One interesting fact about this version of the popular PHP CMS is that the &lt;a href=&#34;https://www.drupal.org/core/release-cycle-overview&#34;&gt;release cycles&lt;/a&gt; are smaller and feature-focused. This makes everybody happier than previous major versions and I will focus on developers&amp;rsquo; experience. It&amp;rsquo;s been steadily improving since the focused adoption of popular and well-maintained projects from the wide PHP community. &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;, &lt;a href=&#34;https://drupalconsole.com/&#34;&gt;Drupal Console&lt;/a&gt; (an implementation of Symfony Console) and adopting PHP OOP design patterns in overall are some of the highlights in this article.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, &lt;a href=&#34;http://c9.io&#34;&gt;Cloud9 Editor&lt;/a&gt; is an interesting project to my personal experience as a developer. I&amp;rsquo;ve shared some enthusiasm about it before, summarizing &lt;a href=&#34;https://medium.com/@kalin.chernev/cloud9-ide-6e26940c6130#.nxqgf2ree&#34;&gt;some of my favorite features&lt;/a&gt;, and going deeper into &lt;a href=&#34;https://medium.com/@kalin.chernev/debugging-node-js-in-cloud9-ide-59712c043fb2#.tknem3kcp&#34;&gt;debugging applications in the cloud&lt;/a&gt;. At this step, I start to dream about scenarios where this cloud editor will be THE editor for massive amount of open source contributors, experimenters and agile practitioners alike. I also visualize scenarios where it could fill in the gap in the hearts of many who use tools like &lt;a href=&#34;https://dreditor.org/&#34;&gt;dreditor&lt;/a&gt;. Dreditor on steroids: git, drush, mysql, php, etc — all the tools a developer needs to start, test, develop and deploy!&lt;/p&gt;
-
-&lt;h3 id=&#34;repository-based-development-environment&#34;&gt;Repository based development environment&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/drupal-composer/drupal-project&#34;&gt;Drupal Composer&amp;rsquo;s drupal-project&lt;/a&gt; seems like a really interesting repository which can enable me to start a Drupal 8 project and make an installation. Also it will provide me with a door of opportunities to manage all my project-global dependencies via composer.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s what I can do to start a &lt;a href=&#34;https://docs.c9.io/docs/getting-started&#34;&gt;Cloud9 workspace&lt;/a&gt; linked my own fork repository of the drupal-project.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Forked the original repo to my own &lt;a href=&#34;https://github.com/kalinchernev/drupal-project&#34;&gt;drupal-project repo&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Create a new workspace pointing to the my fork repo.&lt;/li&gt;
-&lt;li&gt;Selecting template &amp;ldquo;The popular stack in shiny cloud wrappings: Apache, PHP5 and MySQL pre-configured&amp;rdquo; seems ok for the moment.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This should look similar to:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*nbj-D9ufx-wlGZ-MdBj6Jw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Creating my new development environment&lt;/p&gt;
-
-&lt;p&gt;At the end of this process, I have an &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;-based &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; container. In it, there is a local repository linked to my upstream repository on the origin. I&amp;rsquo;m ready to use the tools I know in Linux because composer, npm, node, etc. are already installed, and I also have a command line interface to run or install anything I need on top of this initial setup. As a side note, &lt;a href=&#34;https://c9.io/community/templates&#34;&gt;custom templates&lt;/a&gt; will soon make this initial setup even more flexible and personalized.&lt;/p&gt;
-
-&lt;p&gt;As the terminal is already open for you, run &lt;code&gt;git remote -v&lt;/code&gt; to ensure this origin linking if you like.&lt;/p&gt;
-
-&lt;h3 id=&#34;selecting-drupal-nbsp-8&#34;&gt;Selecting Drupal&amp;nbsp;8&lt;/h3&gt;
-
-&lt;p&gt;Now that the workspace is ready, you have to select a branch for the Drupal version you are going to work with. I&amp;rsquo;m going to do &lt;code&gt;git checkout 8.x&lt;/code&gt; in the ternimal to use the 8.x version of the the repository files in the container machine. When you do that, you&amp;rsquo;ll see the files in the tree.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Eoo2-TstzN_2AtY1m4kagw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal 8 branch of the repository&lt;/p&gt;
-
-&lt;p&gt;These are the source files I can use to build the project with the dependencies and the tools of my personal preference.&lt;/p&gt;
-
-&lt;h3 id=&#34;building-project-dependencies&#34;&gt;Building project dependencies&lt;/h3&gt;
-
-&lt;p&gt;The dependencies can be &lt;a href=&#34;https://getcomposer.org/doc/00-intro.md#dependency-management&#34;&gt;managed globally for the project&lt;/a&gt; via the composer.json file. What interests me the most are the Drupal, Drupal Console and Drush which are already &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#the-require-key&#34;&gt;required&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*3AcZBLBGsVdelfdFPJcmMw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal-specific initial dependencies.&lt;/p&gt;
-
-&lt;p&gt;As the readme file of the repo points out, additional dependencies can be added later by &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies&#34;&gt;installing dependencies through the composer&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Run &lt;code&gt;composer install&lt;/code&gt; in the terminal to download all the dependencies and run all the composer special things defined in the composer.json file.&lt;/p&gt;
-
-&lt;p&gt;When all downloads are finished — you can just run the Run button and start the apache server in the machine to open the project in the project browser or your own browser:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*Wk4VtthU1g6TbvI70Q7u3Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Open the project in the browser after the dependencies installation.&lt;/p&gt;
-
-&lt;p&gt;If you resist your perfectionist nature and expectations on domain names, now you can open the project at &lt;a href=&#34;https://%7Bprojectname%7D-%7Busername%7D.c9users.io/web/core/install.php&#34;&gt;https://{projectname}-{username}.c9users.io/web/core/install.php&lt;/a&gt; replacing the variables of course. And there you go, you have Drupal 8 ready for your install!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZOtYTj11S-Mi9h_894NoMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Yep, the wizard is&amp;nbsp;ready!&lt;/p&gt;
-
-&lt;h3 id=&#34;installing-the-nbsp-project&#34;&gt;Installing the&amp;nbsp;project&lt;/h3&gt;
-
-&lt;p&gt;I deliberately left this out from the previous one. You can, of course, continue with the installation in the most user-friendly way with the wizard above. Classical and easy and you don&amp;rsquo;t worry even for file permissions. If you are a databases guy, probably you&amp;rsquo;ll be interested to check the tutorial for &lt;a href=&#34;https://community.c9.io/t/setting-up-mysql/1718&#34;&gt;setting up mysql&lt;/a&gt; and/or &lt;a href=&#34;https://docs.c9.io/docs/setup-a-database&#34;&gt;setting up a database&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Another option for making the installation is using the command line interface and Drupal Console. If you&amp;rsquo;re a non-idealist developer, you can directly run the binary from the vendor folder like &lt;code&gt;/vendor/bin/drupal&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*dx0IRYUqpwRv512zYSBGJg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Drupal Console initialization&lt;/p&gt;
-
-&lt;p&gt;This will hint you to run an initial setup for the tool, just do it and then you can have &lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/site-install.html&#34;&gt;&lt;code&gt;vendor/bin/drupal site:install&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For more ideas around this installation step, check &lt;a href=&#34;https://drupalconsole.com/articles/how-to-download-and-install-drupal-8-using-drupal-console&#34;&gt;this tutorial&lt;/a&gt; which also includes steps to download the project if it was not done by Composer.&lt;/p&gt;
-
-&lt;p&gt;Shooting some ideas of a quick-start yml file for the &lt;a href=&#34;https://docs.drupalconsole.com/en/commands/chain.html&#34;&gt;`chain&lt;/a&gt;`.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;commands:
-# Install Drupal
-  - command: site:install
-    options:
-      langcode: &#39;en&#39;
-      db-type: &#39;%{{db_type|mysql}}&#39;
-      db-host: &#39;%{{db_host|127.0.0.1}}&#39;
-      db-name: &#39;%{{db_name|c9}}&#39;
-      db-user: &#39;%{{db_user|root}}&#39;
-      db-pass: &#39;%{{db_pass|}}&#39;
-      db-port: &#39;%{{db_port|3306}}&#39;
-      site-name: &#39;Drupal 8 site&#39;
-      site-mail: &#39;admin@example.org&#39; # default email
-      account-name: &#39;admin&#39; # default account
-      account-mail: &#39;admin@example.org&#39; # default email
-      account-pass: &#39;admin&#39; # default pass
-    arguments:
-      profile: &#39;standard&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
-
-&lt;p&gt;A small helper subject after the setup — since xdebug is available in the docker in &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner, there is a way to debug apps.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Start &amp;ldquo;Apache &amp;amp; PHP&amp;rdquo; runner with debugger on:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ksgXbNGH5Lp_HtVdLoQWMA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The green debugger button is the important detail to&amp;nbsp;notice.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Set a break-point and open the application to trigger a request:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*26fDzn9eaCW1fwMcB9BSEQ.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The app can be run either in preview in the IDE or in another&amp;nbsp;tab.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Inspect the state of the system and profit from deeper understanding&amp;nbsp;:)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*lfPKCwwocB8NkegBzv7fOA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Use the inspector for observing both global and local&amp;nbsp;scopes.&lt;/p&gt;
-
-&lt;p&gt;Note that the runner properties can be edited:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*m1WawXoob6Jg7DiUIlN9hg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Runners are editable.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// This file overrides the built-in Apache httpd (PHP, HTML) runner
-// For more information see http://docs.c9.io:8080/#!/api/run-method-run
-{
-  &amp;quot;cmd&amp;quot;: [
-    &amp;quot;run-apache2&amp;quot;,
-    &amp;quot;${debug?debug}&amp;quot;
-  ],
-  &amp;quot;cmdStop&amp;quot;: [
-    &amp;quot;run-apache2&amp;quot;,
-    &amp;quot;stop&amp;quot;
-  ],
-  &amp;quot;debugger&amp;quot;: &amp;quot;xdebug&amp;quot;,
-  &amp;quot;debugport&amp;quot;: 9000,
-  &amp;quot;$debugDefaultState&amp;quot;: false,
-  &amp;quot;selector&amp;quot;: &amp;quot;^.*\\.(php|phtml|html|shtml)$&amp;quot;,
-  &amp;quot;env&amp;quot;: {
-    &amp;quot;XDEBUG_CONFIG&amp;quot;: &amp;quot;xdebug.remote_enable=1 idekey=cloud9ide remote_host=localhost remote_port=9000 remote_mode=req&amp;quot;
-  },
-  &amp;quot;info&amp;quot;: &amp;quot;Starting Apache httpd, serving \\033[01;34m$hostname_path\\033[00m.&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
-
-&lt;p&gt;It&amp;rsquo;s an ambitious initiative/dream to work with Drupal 8 projects in the cloud but you see that it&amp;rsquo;s possible and easy. In the end of this tutorial you have a working instance built out of a composer-based dependency management system, your custom repository, and the vital tools to help you develop well: Drupal Console, Drush and any other script you can think of that run on an Ubuntu machine.&lt;/p&gt;
-
-&lt;p&gt;Now it&amp;rsquo;s up to you to use these tools to your best interest: teaching Drupal 8 interactively, pair-programming, &lt;a href=&#34;https://www.drupal.org/contributor-tasks/triage-novice-issues&#34;&gt;triage&lt;/a&gt; issues by making/testing patches or just experimenting with features you&amp;rsquo;re interested in anywhere, anytime.&lt;/p&gt;
 </description>
     </item>
     

@@ -10,6 +10,182 @@
     <atom:link href="https://kalinchernev.github.io/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Serverless github bot with AWS Lambda and API Gateway </title>
+      <link>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</link>
+      <pubDate>Tue, 11 Jul 2017 22:40:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</guid>
+      <description>
+
+&lt;p&gt;This tutorial will show you how to build a small github bot app which is &amp;ldquo;listening&amp;rdquo; for pull requests&amp;rsquo; events on &amp;ldquo;open&amp;rdquo; and &amp;ldquo;reopen&amp;rdquo; by &lt;a href=&#34;https://greenkeeper.io/&#34;&gt;greenkeeper.io&lt;/a&gt;. When the author is the greenkeeper bot, our bot will in turn, correct the title and the tags of the pull request to match conventions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/github_bot_correcting_greenkeeper-1.png&#34; alt=&#34;Github bot correcting the greenkeeper bot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve come to this article because you already have knowledge about the technical topics, but you are more interested in the concrete steps, you can skip the following introductory parts and go directly to the technical specifics below. To go to the technical details scroll down to the &lt;strong&gt;&amp;ldquo;10 steps to make it happen&amp;rdquo;&lt;/strong&gt; section ;)&lt;/p&gt;
+
+&lt;p&gt;The script will actually be pretty small and simple, though there are quite some interesting ideas you might get on the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;serverless&#34;&gt;Serverless&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Serverless_computing&#34;&gt;Serverless computing&lt;/a&gt; is a relatively new trend which is getting greater popularity after Amazon released their &lt;a href=&#34;https://aws.amazon.com/lambda/&#34;&gt;AWS Lambda&lt;/a&gt; service in the end of 2014. I published about this topic in a bit &lt;a href=&#34;https://kalinchernev.github.io/january-digest-2017/#cloud&#34;&gt;more details earlier this year&lt;/a&gt;. In one sentence, serverless architectures (aka cloud functions) are getting traction in cases where high-level architecture control is sufficient for developers who delegate the details about the infrastructure management to a hidden underlying layer managed by a cloud provider.&lt;/p&gt;
+
+&lt;p&gt;In addition to the low maintenance efforts, pricing per resource is also a lucrative opportunity for app developers - at the moment 1 million requests to AWS Lambda are &lt;a href=&#34;https://aws.amazon.com/free/&#34;&gt;free&lt;/a&gt; - this is generous! Later, &lt;a href=&#34;https://aws.amazon.com/lambda/pricing/&#34;&gt;pricing&lt;/a&gt; continues to be calculated based on actual usage. This means that applications cost money when they actually compute. That&amp;rsquo;s good for both up-scaling and down-scaling.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a graphic from &lt;a href=&#34;https://acloud.guru/&#34;&gt;acloud.guru&lt;/a&gt; which explains this evolution step in simple terms, I think:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/11/brief-history-of-cloud-acloud-guru.png&#34; alt=&#34;Where is the serverless in the history of the cloud&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lastly, cloud functions such as AWS Lambda come well into play in event-oriented designs. Here&amp;rsquo;s a simplified list of some &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html&#34;&gt;official use cases&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;event-driven services where the cloud function is run in response to other events - usually triggered by AWS S3, SNS, DynamoDB, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;services responding to HTTP requests - triggered by Amazon API Gateway or other AWS clients.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A github bot app can be considered as a service from the second set of scenarios. The end result is an API endpoint responding to &lt;code&gt;POST&lt;/code&gt; requests (events) from &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;github webhooks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-aws-serverless-stack&#34;&gt;Notes on the AWS serverless stack&lt;/h2&gt;
+
+&lt;p&gt;Watching videos and reading tutorials on the topic can get you pretty excited. Here are some notes about steps which didn&amp;rsquo;t go totally smooth during my journey, i.e. I want to prepare you for the reality before you get frustrated ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) The AWS services ain&amp;rsquo;t that easy, especially if you&amp;rsquo;re relatively new to AWS in overall&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/lambda/&#34;&gt;AWS Lambda developer guide&lt;/a&gt; - 300+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/apigateway/&#34;&gt;Amazon API Gateway developer guide&lt;/a&gt; - 450+ pages&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/documentation/iam/&#34;&gt;IAM documentation&lt;/a&gt; - I don&amp;rsquo;t even want to check &amp;hellip;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short - there&amp;rsquo;s a lot of information and you have to find your way through the important parts which will help you in the specific case.&lt;/p&gt;
+
+&lt;p&gt;For our case in this tutorial, let&amp;rsquo;s assume we can follow the getting started guide and build a simple cloud function working behind an &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html&#34;&gt;API gateway endpoint&lt;/a&gt;. If you want to do it right, you will have to have an idea about concepts such as: &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/request-response-data-mappings.html&#34;&gt;mapping request and response data&lt;/a&gt;, getting to know some new &lt;a href=&#34;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html&#34;&gt;template language for mapping variables&lt;/a&gt;, etc. These are the basics of API Gateway to get you going with the request and response management. Then come some fundamentals you&amp;rsquo;ll need about the AWS Lambda too - knowing what is a &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html&#34;&gt;handler function&lt;/a&gt; (the cloud function), figure &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html&#34;&gt;the parameters of the handler&lt;/a&gt; and &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html&#34;&gt;reading logs&lt;/a&gt; from another AWS service.&lt;/p&gt;
+
+&lt;p&gt;In short, &amp;ldquo;keep calm and learn AWS services&amp;rdquo;, at least the basics.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2) We speak cloud abstraction here - it is not easily reproducible for local development&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I spent quite some time researching on ways to have the whole AWS API Gateway + AWS Lambda setup locally so that I can start hacking quickly on my computer, but I haven&amp;rsquo;t found anything so far. If you have one or some in mind - please tell me!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3) We still write JavaScript and Node.js - be ready for the regular hurdles you&amp;rsquo;ll normally have&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The fact that you&amp;rsquo;re delegating the infrastructure complexity to someone else out there doesn&amp;rsquo;t mean that your code will automagically work, at least not in the Node.js world, not at the moment.&lt;/p&gt;
+
+&lt;p&gt;For example, sometimes you would receive errors &lt;a href=&#34;https://forums.aws.amazon.com/thread.jspa?threadID=229528&#34;&gt;like this&lt;/a&gt; and you will have to apply your JavaScript knowledge and patience to switch between versions of Node, transpile the code for the Lambda to be able to show you useful error messages &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;For me, the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework worked pretty well in the deployment part. It definitely hid most of the complexity of understanding template languages and setting up boilerplate code for the function to work.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-serverless-https-serverless-com-framework&#34;&gt;Notes on the &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless&lt;/a&gt; framework&lt;/h2&gt;
+
+&lt;p&gt;If you, like me, feel that the setup of the framework is a bit too much, then just go directly to the &lt;a href=&#34;https://github.com/serverless/examples&#34;&gt;example repository&lt;/a&gt; and get to know the &lt;a href=&#34;https://github.com/serverless/examples/tree/master/aws-node-github-webhook-listener&#34;&gt;aws-node-github-webhook-listener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using this example boilerplate, you will need only 2 keys auth components to make the communication between services work:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/&#34;&gt;Github user token&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html&#34;&gt;AWS user tokens&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Try to keep the scope of permissions to a minimum to ensure best security in your applications. Both AWS and serverless provide other authentication options you might feel more comfortable with.&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-on-the-github-part&#34;&gt;Notes on the github part&lt;/h2&gt;
+
+&lt;p&gt;The setup on github is simpler than AWS. Basically, you&amp;rsquo;ll need to read about &lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;webhooks&lt;/a&gt;. The documentation is without a doubt - great - it walks you through all the stages from setting up a local dev environment, testing a hook, and also having a good knowledge of the structure of the webhooks&amp;rsquo; payloads.&lt;/p&gt;
+
+&lt;p&gt;This is a high-level action plan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Have an account, a repo, etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate a user token. (&lt;a href=&#34;https://help.github.com/articles/differences-between-user-and-organization-accounts/&#34;&gt;user can be a bot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup webhooks for a repository.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter information about the API Gateway endpoint which works with the cloud function, this is your bot.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;10-steps-to-make-it-happen&#34;&gt;10 steps to make it happen&lt;/h2&gt;
+
+&lt;p&gt;Ok, enough introductory talks, that&amp;rsquo;s the more visual part of the article containing the main milestones making the things actually work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Create a user that can work with AWS Lambda and API Gateway services.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/create_aws_user_lambda.gif&#34; alt=&#34;Creating an AWS user you can operate with&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For simplicity, I&amp;rsquo;m adding the user to the group of admins. Then I&amp;rsquo;m downloading the tokens for later use with the serverless framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Go to your github profile settings page and &lt;a href=&#34;https://github.com/settings/tokens/new&#34;&gt;generate a user token&lt;/a&gt; by which the bot will act on your behalf.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can make a cool bot separate from your account, of course.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/new_user_token_github.png&#34; alt=&#34;Creating a new user token on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you save this form, you will see the token, which you have to save somewhere with the same attention you would have to your password:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. &lt;a href=&#34;https://developer.github.com/webhooks/securing&#34;&gt;Generate a webhook secret&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/generate_webhook_secret-1.png&#34; alt=&#34;Generating a webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Input the user token and the webhook secret in the serverless config file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/save_config.png&#34; alt=&#34;Saving configurations in the serverless framework config file&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Put function code in the &lt;code&gt;handler.js&lt;/code&gt; file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/handler.png&#34; alt=&#34;Editing the cloud function&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. You can try to deploy the function:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Watch it fail ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/enter_credentials_serverless.png&#34; alt=&#34;Failing deployment in the serverless framework&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. Export your keys (which you downloaded in the &lt;code&gt;credentials.csv&lt;/code&gt; files earlier as:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ export AWS_ACCESS_KEY_ID=
+$ export AWS_SECRET_ACCESS_KEY=
+# AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are now available for serverless to use
+serverless deploy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;8. Run &lt;code&gt;serverless deploy&lt;/code&gt; again and watch it succeeding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/serverless_deploy_success.gif&#34; alt=&#34;Showing a successful deployment of a function on AWS&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9. Take the provided URL and add it to the webhooks of your repository where you want the bot to take effect&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/07/12/adding_webhook_github.png&#34; alt=&#34;Adding a new webhook on github.com&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Few notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;This is the secret you previously generated via the command line&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;It&amp;rsquo;s a good practice to filter only the necessary events in order to minimize the load to the endpoint&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;10. Trigger the webhook either by github or by closing and re-opening an existing pull request which has been opened by greenkeeper bot.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s an example script you can use:
+&lt;script src=&#34;https://gist.github.com/kalinchernev/d1e79a7f883a4d37f50519d9b05df0c5.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;extras&#34;&gt;Extras&lt;/h2&gt;
+
+&lt;p&gt;When you have this automated corrections on pull request titles and tags, you might also need to &lt;a href=&#34;https://github.com/greenkeeperio/greenkeeper-lockfile&#34;&gt;update the lock files&lt;/a&gt; of the pull request to make all ready for merging.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Prototyping APIs with Open API Specification and Node.js</title>
       <link>https://kalinchernev.github.io/prototyping-apis-open-api-specification/</link>
       <pubDate>Fri, 10 Mar 2017 00:00:00 +0200</pubDate>

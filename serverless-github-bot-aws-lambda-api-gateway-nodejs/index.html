@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Serverless github bot with AWS Lambda and API Gateway "/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="Serverless github bot with AWS Lambda and API Gateway  &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/" />
+
+    
+        
+            <meta property="og:image" content="https://kalinchernev.github.io/images/lego-life.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io/" />
+    <meta property="article:published_time" content="2017-07-11T22:40:00Z" />
+
+    
+    <meta property="article:tag" content="Bots" />
+    
+    <meta property="article:tag" content="nodejs" />
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    <meta property="article:tag" content="serverless" />
+    
+    <meta property="article:tag" content="AWS" />
+    
+    
+
+    <title>Serverless github bot with AWS Lambda and API Gateway  &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kalinchernev.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="https://kalinchernev.github.io/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://kalinchernev.github.io/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://kalinchernev.github.io//manifest.json">
+    <link rel="mask-icon" href="https://kalinchernev.github.io/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/print.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": Web engineer trying to bring value in various projects.
+        
+    },
+    "headline": Serverless github bot with AWS Lambda and API Gateway ,
+    "name": Serverless github bot with AWS Lambda and API Gateway ,
+    "wordCount": 1320,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/,
+    "datePublished": 2017-07-11T22:40Z,
+    "dateModified": 2017-07-11T22:40Z,
+    
+    "keywords": Bots, nodejs, JavaScript, serverless, AWS,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Serverless github bot with AWS Lambda and API Gateway </h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-07-11T22:40:00Z">
+            Jul 11, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/bots/">#Bots</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/serverless/">#serverless</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/aws/">#AWS</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>This tutorial will show you how to build a small github bot app which is &ldquo;listening&rdquo; for pull requests&rsquo; events on &ldquo;open&rdquo; and &ldquo;reopen&rdquo; by <a href="https://greenkeeper.io/">greenkeeper.io</a>. When the author is the greenkeeper bot, our bot will in turn, correct the title and the tags of the pull request to match conventions.</p>
+
+<p><img src="/uploads/2017/07/12/github_bot_correcting_greenkeeper-1.png" alt="Github bot correcting the greenkeeper bot" /></p>
+
+<p>If you&rsquo;ve come to this article because you already have knowledge about the technical topics, but you are more interested in the concrete steps, you can skip the following introductory parts and go directly to the technical specifics below. To go to the technical details scroll down to the <strong>&ldquo;10 steps to make it happen&rdquo;</strong> section ;)</p>
+
+<p>The script will actually be pretty small and simple, though there are quite some interesting ideas you might get on the way.</p>
+
+<h2 id="serverless">Serverless</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Serverless_computing">Serverless computing</a> is a relatively new trend which is getting greater popularity after Amazon released their <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> service in the end of 2014. I published about this topic in a bit <a href="https://kalinchernev.github.io/january-digest-2017/#cloud">more details earlier this year</a>. In one sentence, serverless architectures (aka cloud functions) are getting traction in cases where high-level architecture control is sufficient for developers who delegate the details about the infrastructure management to a hidden underlying layer managed by a cloud provider.</p>
+
+<p>In addition to the low maintenance efforts, pricing per resource is also a lucrative opportunity for app developers - at the moment 1 million requests to AWS Lambda are <a href="https://aws.amazon.com/free/">free</a> - this is generous! Later, <a href="https://aws.amazon.com/lambda/pricing/">pricing</a> continues to be calculated based on actual usage. This means that applications cost money when they actually compute. That&rsquo;s good for both up-scaling and down-scaling.</p>
+
+<p>Here&rsquo;s a graphic from <a href="https://acloud.guru/">acloud.guru</a> which explains this evolution step in simple terms, I think:</p>
+
+<p><img src="/uploads/2017/07/11/brief-history-of-cloud-acloud-guru.png" alt="Where is the serverless in the history of the cloud" /></p>
+
+<p>Lastly, cloud functions such as AWS Lambda come well into play in event-oriented designs. Here&rsquo;s a simplified list of some <a href="http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html">official use cases</a>:</p>
+
+<ul>
+<li><p>event-driven services where the cloud function is run in response to other events - usually triggered by AWS S3, SNS, DynamoDB, etc.</p></li>
+
+<li><p>services responding to HTTP requests - triggered by Amazon API Gateway or other AWS clients.</p></li>
+</ul>
+
+<p>A github bot app can be considered as a service from the second set of scenarios. The end result is an API endpoint responding to <code>POST</code> requests (events) from <a href="https://developer.github.com/webhooks/">github webhooks</a>.</p>
+
+<h2 id="notes-on-the-aws-serverless-stack">Notes on the AWS serverless stack</h2>
+
+<p>Watching videos and reading tutorials on the topic can get you pretty excited. Here are some notes about steps which didn&rsquo;t go totally smooth during my journey, i.e. I want to prepare you for the reality before you get frustrated ;)</p>
+
+<p><strong>1) The AWS services ain&rsquo;t that easy, especially if you&rsquo;re relatively new to AWS in overall</strong></p>
+
+<p>For example:</p>
+
+<ul>
+<li><p><a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda developer guide</a> - 300+ pages</p></li>
+
+<li><p><a href="https://aws.amazon.com/documentation/apigateway/">Amazon API Gateway developer guide</a> - 450+ pages</p></li>
+
+<li><p><a href="https://aws.amazon.com/documentation/iam/">IAM documentation</a> - I don&rsquo;t even want to check &hellip;</p></li>
+</ul>
+
+<p>In short - there&rsquo;s a lot of information and you have to find your way through the important parts which will help you in the specific case.</p>
+
+<p>For our case in this tutorial, let&rsquo;s assume we can follow the getting started guide and build a simple cloud function working behind an <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html">API gateway endpoint</a>. If you want to do it right, you will have to have an idea about concepts such as: <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/request-response-data-mappings.html">mapping request and response data</a>, getting to know some new <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html">template language for mapping variables</a>, etc. These are the basics of API Gateway to get you going with the request and response management. Then come some fundamentals you&rsquo;ll need about the AWS Lambda too - knowing what is a <a href="http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html">handler function</a> (the cloud function), figure <a href="http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html">the parameters of the handler</a> and <a href="http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html">reading logs</a> from another AWS service.</p>
+
+<p>In short, &ldquo;keep calm and learn AWS services&rdquo;, at least the basics.</p>
+
+<p><strong>2) We speak cloud abstraction here - it is not easily reproducible for local development</strong></p>
+
+<p>I spent quite some time researching on ways to have the whole AWS API Gateway + AWS Lambda setup locally so that I can start hacking quickly on my computer, but I haven&rsquo;t found anything so far. If you have one or some in mind - please tell me!</p>
+
+<p><strong>3) We still write JavaScript and Node.js - be ready for the regular hurdles you&rsquo;ll normally have</strong></p>
+
+<p>The fact that you&rsquo;re delegating the infrastructure complexity to someone else out there doesn&rsquo;t mean that your code will automagically work, at least not in the Node.js world, not at the moment.</p>
+
+<p>For example, sometimes you would receive errors <a href="https://forums.aws.amazon.com/thread.jspa?threadID=229528">like this</a> and you will have to apply your JavaScript knowledge and patience to switch between versions of Node, transpile the code for the Lambda to be able to show you useful error messages &hellip;</p>
+
+<p>For me, the <a href="https://serverless.com/">serverless</a> framework worked pretty well in the deployment part. It definitely hid most of the complexity of understanding template languages and setting up boilerplate code for the function to work.</p>
+
+<h2 id="notes-on-the-serverless-https-serverless-com-framework">Notes on the <a href="https://serverless.com/">serverless</a> framework</h2>
+
+<p>If you, like me, feel that the setup of the framework is a bit too much, then just go directly to the <a href="https://github.com/serverless/examples">example repository</a> and get to know the <a href="https://github.com/serverless/examples/tree/master/aws-node-github-webhook-listener">aws-node-github-webhook-listener</a>.</p>
+
+<p>By using this example boilerplate, you will need only 2 keys auth components to make the communication between services work:</p>
+
+<ul>
+<li><p><a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">Github user token</a></p></li>
+
+<li><p><a href="http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html">AWS user tokens</a></p></li>
+</ul>
+
+<p>Try to keep the scope of permissions to a minimum to ensure best security in your applications. Both AWS and serverless provide other authentication options you might feel more comfortable with.</p>
+
+<h2 id="notes-on-the-github-part">Notes on the github part</h2>
+
+<p>The setup on github is simpler than AWS. Basically, you&rsquo;ll need to read about <a href="https://developer.github.com/webhooks/">webhooks</a>. The documentation is without a doubt - great - it walks you through all the stages from setting up a local dev environment, testing a hook, and also having a good knowledge of the structure of the webhooks&rsquo; payloads.</p>
+
+<p>This is a high-level action plan:</p>
+
+<ul>
+<li><p>Have an account, a repo, etc.</p></li>
+
+<li><p>Generate a user token. (<a href="https://help.github.com/articles/differences-between-user-and-organization-accounts/">user can be a bot</a>)</p></li>
+
+<li><p>Setup webhooks for a repository.</p></li>
+
+<li><p>Enter information about the API Gateway endpoint which works with the cloud function, this is your bot.</p></li>
+</ul>
+
+<h2 id="10-steps-to-make-it-happen">10 steps to make it happen</h2>
+
+<p>Ok, enough introductory talks, that&rsquo;s the more visual part of the article containing the main milestones making the things actually work.</p>
+
+<p><strong>1. Create a user that can work with AWS Lambda and API Gateway services.</strong></p>
+
+<p><img src="/uploads/2017/07/12/create_aws_user_lambda.gif" alt="Creating an AWS user you can operate with" /></p>
+
+<p>For simplicity, I&rsquo;m adding the user to the group of admins. Then I&rsquo;m downloading the tokens for later use with the serverless framework.</p>
+
+<p><strong>2. Go to your github profile settings page and <a href="https://github.com/settings/tokens/new">generate a user token</a> by which the bot will act on your behalf.</strong></p>
+
+<p>You can make a cool bot separate from your account, of course.</p>
+
+<p><img src="/uploads/2017/07/12/new_user_token_github.png" alt="Creating a new user token on github.com" /></p>
+
+<p>When you save this form, you will see the token, which you have to save somewhere with the same attention you would have to your password:</p>
+
+<p><strong>3. <a href="https://developer.github.com/webhooks/securing">Generate a webhook secret</a></strong></p>
+
+<p><img src="/uploads/2017/07/12/generate_webhook_secret-1.png" alt="Generating a webhook on github.com" /></p>
+
+<p><strong>4. Input the user token and the webhook secret in the serverless config file</strong></p>
+
+<p><img src="/uploads/2017/07/12/save_config.png" alt="Saving configurations in the serverless framework config file" /></p>
+
+<p><strong>5. Put function code in the <code>handler.js</code> file</strong></p>
+
+<p><img src="/uploads/2017/07/12/handler.png" alt="Editing the cloud function" /></p>
+
+<p><strong>6. You can try to deploy the function:</strong></p>
+
+<pre><code>$ serverless deploy
+
+</code></pre>
+
+<p>Watch it fail ;)</p>
+
+<p><img src="/uploads/2017/07/12/enter_credentials_serverless.png" alt="Failing deployment in the serverless framework" /></p>
+
+<p><strong>7. Export your keys (which you downloaded in the <code>credentials.csv</code> files earlier as:</strong></p>
+
+<pre><code>$ export AWS_ACCESS_KEY_ID=
+$ export AWS_SECRET_ACCESS_KEY=
+# AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are now available for serverless to use
+serverless deploy
+
+</code></pre>
+
+<p><strong>8. Run <code>serverless deploy</code> again and watch it succeeding</strong></p>
+
+<p><img src="/uploads/2017/07/12/serverless_deploy_success.gif" alt="Showing a successful deployment of a function on AWS" /></p>
+
+<p><strong>9. Take the provided URL and add it to the webhooks of your repository where you want the bot to take effect</strong></p>
+
+<p><img src="/uploads/2017/07/12/adding_webhook_github.png" alt="Adding a new webhook on github.com" /></p>
+
+<p>Few notes:</p>
+
+<ul>
+<li><p>This is the secret you previously generated via the command line</p></li>
+
+<li><p>It&rsquo;s a good practice to filter only the necessary events in order to minimize the load to the endpoint</p></li>
+</ul>
+
+<p><strong>10. Trigger the webhook either by github or by closing and re-opening an existing pull request which has been opened by greenkeeper bot.</strong></p>
+
+<p>That&rsquo;s an example script you can use:
+<script src="https://gist.github.com/kalinchernev/d1e79a7f883a4d37f50519d9b05df0c5.js"></script></p>
+
+<h2 id="extras">Extras</h2>
+
+<p>When you have this automated corrections on pull request titles and tags, you might also need to <a href="https://github.com/greenkeeperio/greenkeeper-lockfile">update the lock files</a> of the pull request to make all ready for merging.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>Web engineer trying to bring value in various projects.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Serverless%20github%20bot%20with%20AWS%20Lambda%20and%20API%20Gateway%20&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2fserverless-github-bot-aws-lambda-api-gateway-nodejs%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2fserverless-github-bot-aws-lambda-api-gateway-nodejs%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2fserverless-github-bot-aws-lambda-api-gateway-nodejs%2f&amp;description=Serverless%20github%20bot%20with%20AWS%20Lambda%20and%20API%20Gateway%20"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2fserverless-github-bot-aws-lambda-api-gateway-nodejs%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/serverless-github-bot-aws-lambda-api-gateway-nodejs\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="background-image: url(https://kalinchernev.github.io//images/bot-assistant.jpg)" href="/personal-computers-personal-assistants/">
+          <section class="post">
+              <h2>From personal computers to personal assistants</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
