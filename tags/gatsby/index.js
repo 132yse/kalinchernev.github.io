@@ -13,15 +13,15 @@
 
 
 
-<meta name="twitter:title" content="Javascript"/>
+<meta name="twitter:title" content="Gatsby.Js"/>
 <meta name="twitter:description" content="Whatever the mind of man can conceive and believe, it can achieve."/>
 <meta name="twitter:site" content="@kalinchernev"/>
 
 
 
-  	<meta property="og:title" content="Javascript &middot; Kalin Chernev" />
+  	<meta property="og:title" content="Gatsby.Js &middot; Kalin Chernev" />
   	<meta property="og:site_name" content="Kalin Chernev" />
-  	<meta property="og:url" content="https://kalinchernev.github.io/tags/javascript/" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/tags/gatsby/index.js/" />
 
     
         
@@ -34,7 +34,7 @@
     <meta property="og:description" content="Whatever the mind of man can conceive and believe, it can achieve." />
     
 
-    <title>Javascript &middot; Kalin Chernev</title>
+    <title>Gatsby.Js &middot; Kalin Chernev</title>
 
     
     <meta name="description" content="Whatever the mind of man can conceive and believe, it can achieve." />
@@ -64,12 +64,12 @@
           <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
       
       
-        <link href="https://kalinchernev.github.io/tags/javascript/index.xml" rel="alternate" type="application/rss+xml" title="Javascript &middot; Kalin Chernev" />
+        <link href="https://kalinchernev.github.io/tags/gatsby.js/index.xml" rel="alternate" type="application/rss+xml" title="Gatsby.Js &middot; Kalin Chernev" />
       
     
     <meta name="generator" content="Hugo 0.19" />
 
-    <link rel="canonical" href="https://kalinchernev.github.io/tags/javascript/" />
+    <link rel="canonical" href="https://kalinchernev.github.io/tags/gatsby/index.js/" />
 
     
       
@@ -170,7 +170,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/tags/javascript/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/tags/gatsby.js/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -195,7 +195,7 @@
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            <h1 class="page-title">Javascript</h1>
+            <h1 class="page-title">Gatsby.Js</h1>
             <h2 class="page-description">
                 
             </h2>
@@ -209,9 +209,7 @@
 	<div class="extra-pagination inner">
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 4</span>
-	
-	    <a class="older-posts" href="/tags/javascript/page/2/">Older Posts &rarr;</a>
+	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 
@@ -257,174 +255,10 @@
 </article>
 
 	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/serverless-github-bot-aws-lambda-api-gateway-nodejs/">Serverless github bot with AWS Lambda and API Gateway </a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>This tutorial will show you how to build a small github bot app which is &ldquo;listening&rdquo; for pull requests&rsquo; events on &ldquo;open&rdquo; and &ldquo;reopen&rdquo; by greenkeeper.io. When the author is the greenkeeper bot, our bot will in turn, correct the title and the tags of the pull request to match conventions.
-If you&rsquo;ve come to this article because you already have knowledge about the technical topics, but you are more interested in the concrete steps, you can skip the following introductory parts and go directly to the technical specifics below. <a class="read-more" href="/serverless-github-bot-aws-lambda-api-gateway-nodejs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="https://kalinchernev.github.io/images/logo.png" alt="Author image" nopin="nopin" />
-        
-        
-            Kalin Chernev
-        
-        on
-            
-                <a href="https://kalinchernev.github.io/tags/bots/">#Bots</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/serverless/">#serverless</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/aws/">#AWS</a>,
-            
-        
-        <time class="post-date" datetime="2017-07-11T22:40:00Z">
-            11 Jul 2017
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/march-digest-2017/">March digest 2017</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>This one will be on various personal thoughts on Medium, the JAM stack, the OpenAPI specification, and coding katas.
-Medium If you’re a regular reader or writer on Medium, you already know about the latest changes. Together with the new features, a partner program came into play, where companies and vendors will be more motivated to publish content about their products and services.
-Being a small fish without financial interests in blogging (at least here and now), I decided to research new channels of communicating my ideas out of Medium. <a class="read-more" href="/march-digest-2017/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="https://kalinchernev.github.io/images/logo.png" alt="Author image" nopin="nopin" />
-        
-        
-            Kalin Chernev
-        
-        on
-            
-                <a href="https://kalinchernev.github.io/tags/web-development/">#Web Development</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/jam-stack/">#JAM stack</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/medium/">#Medium</a>,
-            
-        
-        <time class="post-date" datetime="2017-03-31T00:00:00&#43;02:00">
-            31 Mar 2017
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/prototyping-apis-open-api-specification/">Prototyping APIs with Open API Specification and Node.js</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>A story about using Node.js community-built tools effectively in order to speed up the prototyping phase of your API project. In the whole article, Open API specification (which recently reached a RC on version 3) refers to version 2, also known as Swagger specification.
-In this article I’ll briefly demonstrate how you can to make use of few community-driven tools which I came across recently and I definitely recommend: Typicode’s json-server and Rebilly’s Open API generator. <a class="read-more" href="/prototyping-apis-open-api-specification/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="https://kalinchernev.github.io/images/logo.png" alt="Author image" nopin="nopin" />
-        
-        
-            Kalin Chernev
-        
-        on
-            
-                <a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/apis/">#APIs</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/open-apis/">#Open APIs</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/prototyping/">#Prototyping</a>,
-            
-        
-        <time class="post-date" datetime="2017-03-10T00:00:00&#43;02:00">
-            10 Mar 2017
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/february-digest-2017/">February digest 2017</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>After my January digest, I got feedback from a precious reader that these stories must be toilet-friendly, so I’ll keep it short, directly to the essence :)
-Productivity Without a question, the first thing coming to my mind in this month is the set of small changes I made with regards to my typing habits.
-Vimium turned out to be really useful utility in my daily work on my x220t. <a class="read-more" href="/february-digest-2017/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="https://kalinchernev.github.io/images/logo.png" alt="Author image" nopin="nopin" />
-        
-        
-            Kalin Chernev
-        
-        on
-            
-                <a href="https://kalinchernev.github.io/tags/graphql/">#GraphQL</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/productivity/">#Productivity</a>,
-            
-                <a href="https://kalinchernev.github.io/tags/vim/">#Vim</a>,
-            
-        
-        <time class="post-date" datetime="2017-03-01T00:00:00&#43;02:00">
-            1 Mar 2017
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 4</span>
-	
-	    <a class="older-posts" href="/tags/javascript/page/2/">Older Posts &rarr;</a>
+	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 

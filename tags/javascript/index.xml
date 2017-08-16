@@ -10,6 +10,66 @@
     <atom:link href="https://kalinchernev.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Admin UI for Gatsby static site generator</title>
+      <link>https://kalinchernev.github.io/admin-ui-gatsby-static-site-generator/</link>
+      <pubDate>Wed, 16 Aug 2017 23:33:31 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/admin-ui-gatsby-static-site-generator/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Recently I was looking into &lt;a href=&#34;https://www.gatsbyjs.org/&#34;&gt;Gatsby.js&lt;/a&gt; as a generator for a blog site. As many others, I one of the first steps into using the system as other popular CMS solutions, I started to look around for an online back-end UI for the content creation part. I found this list of &lt;a href=&#34;https://headlesscms.org/&#34;&gt;headless CMS options&lt;/a&gt; and since &lt;a href=&#34;forestry.io&#34;&gt;forestry&lt;/a&gt; (the service I use for my blog) does not support Gatsby, I decided to try &lt;a href=&#34;https://www.netlifycms.org/&#34;&gt;NetlifyCMS&lt;/a&gt;. This tutorial will be about it :)&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not going into details on the separate services and software packages, their advantages and super features. Rather, I will keep the tutorial concise on how to integrate the systems within few steps.&lt;/p&gt;
+
+&lt;p&gt;If, on the other hand, you like more background about the JAM stack, you can see previous mentions &lt;a href=&#34;https://kalinchernev.github.io/march-digest-2017/#jam-stack&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://kalinchernev.github.io/releasing-new-blog/&#34;&gt;here&lt;/a&gt; ;)&lt;/p&gt;
+
+&lt;h3 id=&#34;start&#34;&gt;Start&lt;/h3&gt;
+
+&lt;p&gt;For the tutorial, assume I&amp;rsquo;m speaking about &lt;a href=&#34;https://github.com/Vagr9K/gatsby-advanced-starter&#34;&gt;gatsby advanced starterkit&lt;/a&gt; although same principles can be applied to which-ever starterkit or gatsby setup. The important part is to have markdown as data source, as well as well-defined front-matter which is parsed by &lt;a href=&#34;https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark&#34;&gt;gatsby-transformer-remark&lt;/a&gt; and exposed to a GraphQL API within the Gatsby. In short, make sure you have markdown files so that the information you write could be understood by NetlifyCMS and Gatsby, and many others actually.&lt;/p&gt;
+
+&lt;h3 id=&#34;netlifycms&#34;&gt;NetlifyCMS&lt;/h3&gt;
+
+&lt;p&gt;NetlifyCMS is an open source decoupled back-end built on React, which &lt;a href=&#34;https://www.netlifycms.org/docs/intro/&#34;&gt;integrates with Github API&lt;/a&gt;. I personally really like this idea, because publishing workflows actually translate to steps developers already take on code repositories.&lt;/p&gt;
+
+&lt;p&gt;To use this admin UI application easily, you can &lt;a href=&#34;https://github.com/netlify/netlify-cms/blob/master/docs/quick-start.md&#34;&gt;integrate it with the Netlify service&lt;/a&gt; which will watch for changes in your github repository and do the necessary builds, previews and deploys.&lt;/p&gt;
+
+&lt;p&gt;In order to make Gatsby work with this tutorial, you will need to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;make a &lt;a href=&#34;https://www.gatsbyjs.org/docs/building-with-components/#page-components&#34;&gt;page component&lt;/a&gt; for the admin page, this should include the scripts loading the NetlifyCMS app&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;include the &lt;code&gt;config.yml&lt;/code&gt;&lt;span style=&#34;font-size: 1rem;&#34;&gt;​ file in&amp;nbsp;&lt;/span&gt;&lt;code&gt;static&lt;/code&gt;&lt;span style=&#34;font-size: 1rem;&#34;&gt;​ folder of Gatsby, as it does not need to be optimized by webpack&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have configured Netlify service to take your master branch and execute &lt;code&gt;npm run build&lt;/code&gt; on new deployments, a new push will already give you access to the admin UI app.&lt;/p&gt;
+
+&lt;h3 id=&#34;gatsby&#34;&gt;Gatsby&lt;/h3&gt;
+
+&lt;p&gt;This side might seem a bit more complex compared to copy-paste and rework to a React component of few lines of code, but it&amp;rsquo;s actually a simple process.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;move all markdown files into 1 folder, you need a flat structure, otherwise NetlifyCMS won&amp;rsquo;t be able to list the existing content in the dashboard&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;configure the &lt;code&gt;SiteConfig.js&lt;/code&gt;&lt;span style=&#34;font-size: 1rem;&#34;&gt;​to point to this folder containing the files&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;configure also, by the way, configure also the &lt;code&gt;config.yml&lt;/code&gt; of Netlify to be the same target&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Check if all works, and if yes, just make another deployment to the your repository. I personally removed all the unnecessary content manually and had to flush the cache of the last deploy in the console.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-result&#34;&gt;The result&lt;/h3&gt;
+
+&lt;p&gt;You have a modern toolchain of React, GraphQL, webpack and similar called Getsby, and you have a working Admin UI to manage your content when you&amp;rsquo;re lazy to open your editor ;)&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a &lt;a href=&#34;https://github.com/kalinchernev/kalinchernev.github.io/blob/blog/static/videos/netlify-cms-gatsby.mp4&#34;&gt;video to demonstrate the process&lt;/a&gt; from making a draft which is a pull request, opening a preview and then publishing the change which gets automatically deployed on the site.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kalinchernev.github.io/uploads/2017/08/16/Aug%2017%202017%2012-41%20AM.mp4&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Serverless github bot with AWS Lambda and API Gateway </title>
       <link>https://kalinchernev.github.io/serverless-github-bot-aws-lambda-api-gateway-nodejs/</link>
       <pubDate>Tue, 11 Jul 2017 22:40:00 +0000</pubDate>
@@ -1331,93 +1391,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;p&gt;Thanks to Philos we saw a growing community and interest of hacking making small useful apps in very short time. Wish them luck and more opportunities for organizing even bigger projects in the future!&amp;nbsp;:)&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*T1IwXqRxsa26rQ2Wu1Sf8A.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)</title>
-      <link>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</link>
-      <pubDate>Thu, 23 Jun 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/coding-battle-microsoft-innovation-center/</guid>
-      <description>
-
-&lt;h1 id=&#34;coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots&#34;&gt;Coding battle at Microsoft Innovation Center Brussels (The Rise of the Bots)&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/@kalin.chernev/coding-battle-at-microsoft-innovation-center-brussels-the-rise-of-the-bots-f0887c15e257&#34;&gt;Originally published on Medium&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Continuing on the exciting journey of coding battles and events, this time I&amp;rsquo;m so trilled on what happened that I can&amp;rsquo;t wait to put my hands back to code. So the story will be short and simple, hopefully inspiring for you to try building some cool chat bots and join me in the next coding event.&lt;/p&gt;
-
-&lt;h4 id=&#34;chat-bots-1&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Chatbot&#34;&gt;Chat Bots&lt;/a&gt;&lt;/h4&gt;
-
-&lt;p&gt;Recently, there&amp;rsquo;s been quite some noise around the topic and many companies have already jumped into it — using and developing chat bots. The benefits, as I personally feel them: &lt;em&gt;for users, chat bots are a promise for better user experience, while for developers chat bots are a promise for cool task automation and beautifully integrated event-driven apps&lt;/em&gt;. Of course, the biggest value is when a machine understands natural human communication and responds in a smart and useful way.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-organizers&#34;&gt;The Organizers&lt;/h4&gt;
-
-&lt;p&gt;I have to say this was the best coding event I&amp;rsquo;ve ever been so far. The flow was really smooth, the whole atmosphere was really good, and there were winners with a result in the end, which is a real-life app with purpose.&lt;/p&gt;
-
-&lt;p&gt;The organizing team comprised of &lt;a href=&#34;http://www.carasap.be/en/&#34;&gt;CarASAP&lt;/a&gt;, &lt;a href=&#34;http://www.mic-brussels.be/en/home/&#34;&gt;Microsoft Innovation Center&lt;/a&gt; and &lt;a href=&#34;https://www.philos.io/&#34;&gt;Philos&lt;/a&gt;. Probably because of their good collaboration, the challenge was well prepared — clear problem definition, steps to solve, examples, ongoing support during the event, and last but not least — clear end goal in mind. In short, CarASAP presented their need to automate the process of car ordering for their customers, so that they can receive service via chat. Representatives from Microsoft were going around the room answering questions, showing small steps and debugging together with us — it was really friendly environment.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ZVk4GCCCk6zithaBa8I3-Q.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-challenge&#34;&gt;The Challenge&lt;/h4&gt;
-
-&lt;p&gt;Participants were provided with a JSON file representing the time schedule of a list of drivers. Thus, the schedule was the base information for our chat bots assisting CarASAP customers to find and order a driver. They were able to input natural sentences which the bot should understand by learning: time, date and address. (Read further to see which is the service used for understanding the natural speech&amp;nbsp;;)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;I think this event was a very good example how a business need can be solved elegantly in very short time with focused effort by a community&lt;/strong&gt;. I believe that this challenge set a good example for other companies to consider working with Philos too. Facilitating community contributions which solve real-life problems is a big thing. The way I see it, this is a Win-Win where developers learn, contribute and have fun, while business benefit resolutions and results.&lt;/p&gt;
-
-&lt;p&gt;In the end of the event, there was a demonstration of the working solution:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*7OYP5OSbEVuKgF4eIs9Xcw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Credits: &lt;a href=&#34;https://www.facebook.com/philos.io/&#34;&gt;Philos&amp;nbsp;Lab&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;tools-amp-best-practices&#34;&gt;Tools &amp;amp; Best Practices&lt;/h4&gt;
-
-&lt;p&gt;There was a lot of sharing during the event!&lt;/p&gt;
-
-&lt;p&gt;From the developers around me I learned about &lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;, which was a handy tool to just start and run a local node.js server which is easy to integrate with other systems. It&amp;rsquo;s a time-saver when there&amp;rsquo;s no time to deploy an app to a cloud server. Deployment can be a painful part of the development.&lt;/p&gt;
-
-&lt;p&gt;From the winning team, I got inspired to research &lt;a href=&#34;https://c9.io/&#34;&gt;cloud9&lt;/a&gt; as a tool for collaborating during the next hack event, since it&amp;rsquo;s another way to save from setup and deployment procedures which can lead to errors and frustration. Also, it looks awesome to be able to pair-program in real-time with other developers directly in the editor. Research homework for me&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;Managing API keys was another common setback for many. All I can say here is that it&amp;rsquo;s just something that has to be handled with care, because if it isn&amp;rsquo;t, it leads to mystical error codes without clear path to resolve. And a lot of time is wasted poking around debugging systems that should just work.&lt;/p&gt;
-
-&lt;p&gt;But don&amp;rsquo;t worry, you are not alone with these issues! Here&amp;rsquo;s a short motivational video that will make you laugh and encourage you to go forward&amp;nbsp;:)&lt;/p&gt;
-
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/zFO1cRr5-qY?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;p&gt;For building the bots, we used the &lt;a href=&#34;https://dev.botframework.com/&#34;&gt;Microsoft Bot Framework&lt;/a&gt;. I can&amp;rsquo;t explain you how amazing the APIs are! Just head directly into the &lt;a href=&#34;http://docs.botframework.com/builder/node/overview/#navtitle&#34;&gt;documentation&lt;/a&gt; and skim through some of the example code. I&amp;rsquo;m sure you&amp;rsquo;ll see the easy way to start building functionalities, for which the code looks familiar to other &lt;a href=&#34;http://loopback.io/resources/#compare&#34;&gt;node.js frameworks&lt;/a&gt;. Apart from the core bot framework for managing the communication, we used &lt;a href=&#34;https://www.luis.ai/&#34;&gt;LUIS&lt;/a&gt; to understand the user natural language, and process the important information from it. As a developer, I give my respect to the people who have built the framework and its documentation. It took us just few hours to figure out the APIs and make a working product!&lt;/p&gt;
-
-&lt;h4 id=&#34;apis-are-really-nbsp-cool&#34;&gt;APIs are really&amp;nbsp;cool!&lt;/h4&gt;
-
-&lt;p&gt;I&amp;rsquo;m generally a big fan of &lt;a href=&#34;https://en.wikipedia.org/wiki/Representational_state_transfer&#34;&gt;REST APIs&lt;/a&gt; and everything related to building and consuming them. For me, it&amp;rsquo;s a good architectural approach for decoupling logic and functionality to focus on solving specific problems in a re-usable way. (Yes, the &lt;a href=&#34;http://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; we hear about a lot recently solves some drawbacks of the design, still I think the first wave of common usage will be based on fetching data from existing REST APIs and mainly combining them.)&lt;/p&gt;
-
-&lt;p&gt;What I&amp;rsquo;m saying is that having the opportunity to work with &lt;a href=&#34;http://docs.botframework.com/builder/node/dialogs/LuisDialog/&#34;&gt;LUIS&lt;/a&gt; API is really really cool, especially in a hack event like this coding battle. Using services to solve complex problems feels good, and honestly I think this is the other topic that could be re-used many times, just like building chat bots for various purposes and business cases.&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;That&amp;#39;s &lt;a href=&#34;https://twitter.com/hashtag/API?src=hash&#34;&gt;#API&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/management?src=hash&#34;&gt;#management&lt;/a&gt; &lt;a href=&#34;https://t.co/mV5CJD84t7&#34;&gt;pic.twitter.com/mV5CJD84t7&lt;/a&gt;&lt;/p&gt;&amp;mdash; Amancio Bouza (@AmancioBouza) &lt;a href=&#34;https://twitter.com/AmancioBouza/status/738993707140190208&#34;&gt;June 4, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-community&#34;&gt;The Community&lt;/h4&gt;
-
-&lt;p&gt;Living in Brussels and following almost every initiative from Philos, I feel that the community around is getting bigger and stronger. Especially because there are opportunities to get together, learn and share! Also, this particular coding battle was an excellent example of good collaboration and focused efforts which brought real-life useful results. I speak about good collaboration between the business side of CarASAP, Microsoft Innovation Center and Philos, but also the good collaboration of developers solving challenges together!&lt;/p&gt;
-
-&lt;h4 id=&#34;what-s-next&#34;&gt;What’s next?&lt;/h4&gt;
-
-&lt;p&gt;First, make sure you sign up for the next coding battle — it’s the last one from the 1st edition of the HackLeague. It sounds to be really flexible on the skills necessary for the challenges, expect a lot of creativity! :)&lt;/p&gt;
-
-&lt;p&gt;HackLeague and Coding Battles were new concepts, but it’s easy to see that they are getting more traction on every step. Just looking at the number of participants increasing and the challenges getting better formulation, I firmly believe in the bright future ahead.&lt;/p&gt;
-
-&lt;p&gt;I also believe that HackLeague will continue to improve, as the community grows and more companies join the game. The more companies, the more interesting problems to tackle, and finally — the more knowledge sharing.&lt;/p&gt;
-
-&lt;p&gt;I can imagine that with enough traction, Philos will be able to possibility develop some sort of divisions based on specific needs and markets: VR, IoT, security, algorithms, you name it. I hope these will come naturally with the upcoming partnerships and collaborations.&lt;/p&gt;
-
-&lt;p&gt;I really liked the way Max presented his vision during the last event:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Let people learn and share with each other, the fun way. In other words: &lt;strong&gt;gamification for people creating the future&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Game on coders!&lt;/p&gt;
 </description>
     </item>
     
