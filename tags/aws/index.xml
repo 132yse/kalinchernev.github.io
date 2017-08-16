@@ -185,5 +185,48 @@ serverless deploy
 </description>
     </item>
     
+    <item>
+      <title>Building a github bot with aws services</title>
+      <link>https://kalinchernev.github.io/github-bot-aws-services/</link>
+      <pubDate>Tue, 04 Jul 2017 22:55:34 +0200</pubDate>
+      
+      <guid>https://kalinchernev.github.io/github-bot-aws-services/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Bots - a new fancy tech buzzword which frequently mean writing automation scripts which help us in mundane tasks. In this article, I&amp;rsquo;ll be writing about building a bot which automates reviews on pull requests on github.com.&lt;/p&gt;
+
+&lt;h3 id=&#34;github-bot&#34;&gt;Github bot&lt;/h3&gt;
+
+&lt;p&gt;Github&amp;rsquo;s &lt;a href=&#34;https://help.github.com/articles/differences-between-user-and-organization-accounts/&#34;&gt;user documentation&lt;/a&gt;, it says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;User accounts are intended for humans, but you can give one to a robot, such as a continuous integration bot, if necessary.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So, the bot can be as basic as a regular user which has a token and access permissions to take some actions on our behalf during automation.&lt;/p&gt;
+
+&lt;h3 id=&#34;api-on-aws&#34;&gt;API on AWS&lt;/h3&gt;
+
+&lt;p&gt;Getting started with the &lt;a href=&#34;https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-intro.html&#34;&gt;Amazon API Gateway&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;api-back-end-service&#34;&gt;API back-end service&lt;/h3&gt;
+
+&lt;p&gt;Lambda, &amp;ldquo;server-less&amp;rdquo;.
+options:
+- &lt;a href=&#34;https://github.com/motdotla/node-lambda&#34;&gt;https://github.com/motdotla/node-lambda&lt;/a&gt;
+- &lt;a href=&#34;https://serverless.com/&#34;&gt;https://serverless.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;communication-flow&#34;&gt;Communication flow&lt;/h3&gt;
+
+&lt;p&gt;Webhooks&lt;/p&gt;
+
+&lt;h3 id=&#34;enforcing-rules-on-pull-requests&#34;&gt;Enforcing rules on pull requests&lt;/h3&gt;
+
+&lt;p&gt;danger.js&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

@@ -9,7 +9,9 @@
 
 
     
-        <meta name="twitter:card" content="summary"/>
+        
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="https://kalinchernev.github.io/images/gatsby-netlify-cover.png"/>
     
 
 
@@ -25,15 +27,13 @@
   	<meta property="og:url" content="https://kalinchernev.github.io/admin-ui-gatsby-static-site-generator/" />
 
     
-        
-            <meta property="og:image" content="https://kalinchernev.github.io/images/lego-life.jpg"/>
-        
+       <meta property="og:image" content="https://kalinchernev.github.io/images/gatsby-netlify-cover.png"/>
     
 
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="og:image" content="https://kalinchernev.github.io/" />
+    <meta property="og:image" content="https://kalinchernev.github.io/images/gatsby-netlify-cover.png" />
     <meta property="article:published_time" content="2017-08-16T23:33:31Z" />
 
     
@@ -54,6 +54,8 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    
+      <script src="https://kalinchernev.github.io/js/service-worker.js"></script>
     
 
     <link rel="shortcut icon" href="https://kalinchernev.github.io/favicons/favicon.ico">
@@ -119,7 +121,7 @@
     },
     "headline": Admin UI for Gatsby static site generator,
     "name": Admin UI for Gatsby static site generator,
-    "wordCount": 541,
+    "wordCount": 516,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
@@ -128,6 +130,13 @@
     "url": https://kalinchernev.github.io/admin-ui-gatsby-static-site-generator/,
     "datePublished": 2017-08-16T23:33Z,
     "dateModified": 2017-08-16T23:33Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://kalinchernev.github.io/images/gatsby-netlify-cover.png,
+        "width": 3000,
+        "height": 1445
+    },
     
     "keywords": JAM stack, JavaScript, Gatsby.js,
     "description": ,
@@ -207,8 +216,10 @@
 
 
 
-<header class="main-header post-head no-cover">
-  <nav class="main-nav clearfix">
+  
+  <header class="main-header post-head" style="background-image: url(https://kalinchernev.github.io/images/gatsby-netlify-cover.png)">
+  
+  <nav class="main-nav overlay clearfix">
 
 
   
@@ -254,35 +265,35 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>Recently I was looking into <a href="https://www.gatsbyjs.org/">Gatsby.js</a> as a generator for a blog site. As many others, I one of the first steps into using the system as other popular CMS solutions, I started to look around for an online back-end UI for the content creation part. I found this list of <a href="https://headlesscms.org/">headless CMS options</a> and since <a href="forestry.io">forestry</a> (the service I use for my blog) does not support Gatsby, I decided to try <a href="https://www.netlifycms.org/">NetlifyCMS</a>. This tutorial will be about it :)</p>
+<p>Recently, I was looking into <a href="https://www.gatsbyjs.org/">Gatsby.js</a> as a generator for a blog site. As many others, I one of the first steps into using the system as other popular CMS solutions, I started to look around for an online back-end UI for the content creation part. I found this list of <a href="https://headlesscms.org/">headless CMS options</a> and since <a href="forestry.io">forestry</a> (the service I use for my blog) does not support Gatsby, I decided to try <a href="https://www.netlifycms.org/">NetlifyCMS</a>. This tutorial will be about it :)</p>
 
-<p>I&rsquo;m not going into details on the separate services and software packages, their advantages and super features. Rather, I will keep the tutorial concise on how to integrate the systems within few steps.</p>
+<p>I&rsquo;m not going into details on the separate services and software packages, their advantages and super features. Rather, I will keep the tutorial concise on how to integrate the systems.</p>
 
-<p>If, on the other hand, you like more background about the JAM stack, you can see previous mentions <a href="https://kalinchernev.github.io/march-digest-2017/#jam-stack">here</a> and <a href="https://kalinchernev.github.io/releasing-new-blog/">here</a> ;)</p>
+<p>If you like more background about the JAM stack, you can see previous mentions <a href="https://kalinchernev.github.io/march-digest-2017/#jam-stack">here</a> and <a href="https://kalinchernev.github.io/releasing-new-blog/">here</a> ;)</p>
 
 <h3 id="start">Start</h3>
 
-<p>For the tutorial, assume I&rsquo;m speaking about <a href="https://github.com/Vagr9K/gatsby-advanced-starter">gatsby advanced starterkit</a> although same principles can be applied to which-ever starterkit or gatsby setup. The important part is to have markdown as data source, as well as well-defined front-matter which is parsed by <a href="https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark">gatsby-transformer-remark</a> and exposed to a GraphQL API within the Gatsby. In short, make sure you have markdown files so that the information you write could be understood by NetlifyCMS and Gatsby, and many others actually.</p>
+<p>For the tutorial, assume I&rsquo;m speaking about <a href="https://github.com/Vagr9K/gatsby-advanced-starter">gatsby advanced starterkit</a> although same principles apply to which-ever starterkit or gatsby setup. The important part is to have markdown as data source, as well as well-defined front-matter parsed by <a href="https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark">gatsby-transformer-remark</a> and exposed to a GraphQL API within the Gatsby. In short, make sure you have markdown files so that the information you write is &ldquo;understood&rdquo; by NetlifyCMS and Gatsby, and others.</p>
 
 <h3 id="netlifycms">NetlifyCMS</h3>
 
-<p>NetlifyCMS is an open source decoupled back-end built on React, which <a href="https://www.netlifycms.org/docs/intro/">integrates with Github API</a>. I personally really like this idea, because publishing workflows actually translate to steps developers already take on code repositories.</p>
+<p>It&rsquo;s an open source decoupled back-end built on React, which <a href="https://www.netlifycms.org/docs/intro/">integrates with Github API</a>. I personally like this idea, because publishing work-flows actually translate to steps developers already take on code repositories.</p>
 
 <p>To use this admin UI application easily, you can <a href="https://github.com/netlify/netlify-cms/blob/master/docs/quick-start.md">integrate it with the Netlify service</a> which will watch for changes in your github repository and do the necessary builds, previews and deploys.</p>
 
-<p>In order to make Gatsby work with this tutorial, you will need to:</p>
+<p>To make Gatsby work with this tutorial, you will need to:</p>
 
 <ul>
 <li><p>make a <a href="https://www.gatsbyjs.org/docs/building-with-components/#page-components">page component</a> for the admin page, this should include the scripts loading the NetlifyCMS app</p></li>
 
-<li><p>include the <code>config.yml</code><span style="font-size: 1rem;">​ file in&nbsp;</span><code>static</code><span style="font-size: 1rem;">​ folder of Gatsby, as it does not need to be optimized by webpack</span></p></li>
+<li><p>include the <code>config.yml</code> file in <code>static</code> folder of Gatsby, as it does not need optimization by webpack</span></p></li>
 </ul>
 
 <p>If you have configured Netlify service to take your master branch and execute <code>npm run build</code> on new deployments, a new push will already give you access to the admin UI app.</p>
 
 <h3 id="gatsby">Gatsby</h3>
 
-<p>This side might seem a bit more complex compared to copy-paste and rework to a React component of few lines of code, but it&rsquo;s actually a simple process.</p>
+<p>This side might seem a bit more complex compared to copy-paste and rework to a small React component, but it&rsquo;s actually a simple process.</p>
 
 <ul>
 <li><p>move all markdown files into 1 folder, you need a flat structure, otherwise NetlifyCMS won&rsquo;t be able to list the existing content in the dashboard</p></li>
@@ -292,13 +303,13 @@
 <li><p>configure also, by the way, configure also the <code>config.yml</code> of Netlify to be the same target</p></li>
 </ul>
 
-<p>Check if all works, and if yes, just make another deployment to the your repository. I personally removed all the unnecessary content manually and had to flush the cache of the last deploy in the console.</p>
+<p>Check if all works, and if yes, make another deployment to the your repository. I personally removed all the unnecessary content manually and had to flush the cache of the last deploy in the console.</p>
 
 <h3 id="the-result">The result</h3>
 
-<p>You have a modern toolchain of React, GraphQL, webpack and similar called Getsby, and you have a working Admin UI to manage your content when you&rsquo;re lazy to open your editor ;)</p>
+<p>You have a modern tool-chain of React, GraphQL, webpack, and similar, called Gatsby, and you have a working administration UI to manage your content when you&rsquo;re lazy to open your editor ;)</p>
 
-<p>Here&rsquo;s a <a href="https://github.com/kalinchernev/kalinchernev.github.io/blob/blog/static/videos/netlify-cms-gatsby.mp4">video to demonstrate the process</a> from making a draft which is a pull request, opening a preview and then publishing the change which gets automatically deployed on the site.</p>
+<p>Here&rsquo;s a <a href="https://github.com/kalinchernev/kalinchernev.github.io/blob/blog/static/videos/netlify-cms-gatsby.mp4">video of the process</a> from making a draft which is a pull request, opening a preview and then publishing the change which gets automatically deployed on the site.</p>
 
 <p><img src="/uploads/2017/08/16/Aug%2017%202017%2012-41%20AM.mp4" alt="" /></p>
 
