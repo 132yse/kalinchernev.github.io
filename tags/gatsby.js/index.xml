@@ -52,7 +52,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;move all markdown files into 1 folder, you need a flat structure, otherwise NetlifyCMS won&amp;rsquo;t be able to list the existing content in the dashboard&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;configure the &lt;code&gt;SiteConfig.js&lt;/code&gt;&lt;span style=&#34;font-size: 1rem;&#34;&gt;​to point to this folder containing the files&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;configure the &lt;code&gt;SiteConfig.js&lt;/code&gt; ​to point to this folder containing the files&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;configure also, by the way, configure also the &lt;code&gt;config.yml&lt;/code&gt; of Netlify to be the same target&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
