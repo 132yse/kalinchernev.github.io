@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on Kalin Chernev</title>
+    <link>https://kalinchernev.github.io/tags/misc/index.xml</link>
+    <description>Recent content in Misc on Kalin Chernev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://kalinchernev.github.io/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fixing my mobile phone</title>
+      <link>https://kalinchernev.github.io/fixing-mobile-phone/</link>
+      <pubDate>Fri, 29 Sep 2017 23:33:31 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/fixing-mobile-phone/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;One of the most popular requests I get around Christmas when I meet family
+is to fix mobile phones - you name it - some issues with different SIM cards,
+mobile Internet, optimizing space and memory, etc. I personally don&amp;rsquo;t like
+modifying my own phone and try to be really honest with people that I just don&amp;rsquo;t
+know a lot about mobile technologies which are out of the scope of making apps.&lt;/p&gt;
+
+&lt;p&gt;During my holidays this year I started to have struggles with my
+ALE-L21: I was never able to share Internet from mobile data via hotspot,
+the welcome screen was getting sluggish, and all Google apps were getting
+slower. For me, that&amp;rsquo;s uncomfortable since we speak about a phone which,
+although the not-so-high-end-specs, has always been practical enough for me.
+I researched the latest phones in a similar model range, and my conclusion was
+that this time I will have to find a way to tweak the phone a bit, rather than
+buying a new one because &amp;ldquo;this one is getting old&amp;rdquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;losing-a-few-kilos-is-easy&#34;&gt;Losing a few kilos is easy&lt;/h3&gt;
+
+&lt;p&gt;In the beginning, cleaning some app cache, removing unnecessary apps and things
+like this helped a bit to speed up the performance, but the gains were mainly
+in the freed storage space. For example, &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.facebook.lite&amp;amp;hl=en&#34;&gt;Facebook Lite&lt;/a&gt;
+combines both main and messenger apps in less than 2MB, which is x70 times less
+than 84MB + 56MB for both otherwise. And btw, the user experience is still good.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-factory-reset&#34;&gt;The factory reset&lt;/h3&gt;
+
+&lt;p&gt;In ALE-L21 there are regular updates to the official EMUI. Normally, making a
+hard reset means a clean start in a comparatively safe way after a backup.
+Though, I had bad experience figuring that the factory version of Google Play Services
+under the last official update of the EMUI was simply &lt;a href=&#34;Cannot connect or communicate with Google servers&#34;&gt;unable to log me in&lt;/a&gt;.
+Particularly nasty when I needed to install the Google Authenticator
+to be able to pass 2FA to a service which I had to demo during the day. The way
+I managed to solve this problem was installing the latest version of the service
+from &lt;a href=&#34;https://www.apkmirror.com/apk/google-inc/google-play-services/&#34;&gt;the mirror&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The factory reset was a huge performance gain. After it, even the welcome screen
+does not freeze or slow down any more. Together with cache reset, the phone feels
+like new.&lt;/p&gt;
+
+&lt;h3 id=&#34;mobile-operator-drama&#34;&gt;Mobile operator drama&lt;/h3&gt;
+
+&lt;p&gt;Interestingly enough, other problems I had, such as not being able to share mobile
+data, appeared to be purely operator-specific. With a bit of phone-blame, of course.&lt;/p&gt;
+
+&lt;p&gt;For Mobile Vikings, it appeared that a simple difference between &lt;code&gt;supl&lt;/code&gt; and &lt;code&gt;default, supl&lt;/code&gt;
+&lt;a href=&#34;https://mobilevikings.be/en/v2/setup/?page=device/huawei/p8-lite/topic/internet/manual-configuration/14&#34;&gt;configurations&lt;/a&gt;
+is telling the phone apart from being able to use some services or not. In addition,
+&lt;a href=&#34;https://forums.lenovo.com/t5/Moto-G4-Moto-G4-Plus-Moto-G4/Moto-G-mobile-hotspot-no-internet-connection/m-p/3666348#M23145&#34;&gt;debugging&lt;/a&gt; the reason why an APN of my homeland Vivacom would work on SIM2, reglarless of the SIM slot, in
+hotspot sharing, and Mobile Viking wouldn&amp;rsquo;t - it appeared that the default APN
+of another mobile operator was the non-active first option which was messing around.
+Resetting these settings and modifying the settings a bit enabled both mobile
+operators to be equally good hotspot providers.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;I don&amp;rsquo;t feel like a specialist in tweaking my mobile phone, as I am a dumb
+user who don&amp;rsquo;t want to root his phone, change ROM, etc. for speeding up a bit.
+I&amp;rsquo;m happy reviving a 2-year-old phone and being able to maximize its use
+for the functions I need.&lt;/p&gt;
+
+&lt;p&gt;I also still don&amp;rsquo;t think that developers are to be expected to be able to fix
+any technical problem at hand. Though, going through all these issues
+and having my final positive result at hand, I tend to believe that anyone
+with enough interest of debugging and optimizing systems would do a good phone
+technician.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
