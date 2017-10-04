@@ -221,6 +221,47 @@
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/learn-gatsbyjs/">Learn Gatsby.js</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>“There are those that look at things the way they are, and ask why? I dream of things that never were, and ask why not?”
+ Dedicated to all visionaries who move the Web forward
+Introduction In this article, I let myself write about various topics before I reach the essence. The story line goes from how and why the MEAN stack got popular, to the JAM stack, Gatsby. <a class="read-more" href="/learn-gatsbyjs/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+        
+            
+            
+        
+
+        
+            <img class="author-thumb" src="https://kalinchernev.github.io/images/logo.png" alt="Author image" nopin="nopin" />
+        
+        
+            Kalin Chernev
+        
+        on
+            
+                <a href="https://kalinchernev.github.io/tags/jam-stack/">#JAM stack</a>,
+            
+                <a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a>,
+            
+                <a href="https://kalinchernev.github.io/tags/gatsby.js/">#Gatsby.js</a>,
+            
+        
+        <time class="post-date" datetime="2017-10-03T23:33:31Z">
+            3 Oct 2017
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/admin-ui-gatsby-static-site-generator/">Admin UI for Gatsby static site generator</a></h2>
     </header>
     <section class="post-excerpt">
