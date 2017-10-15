@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kalinchernev.github.io/tdd-serverless-jest/</loc>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kalinchernev.github.io/learn-gatsbyjs/</loc>
     <lastmod>2017-10-03T23:33:31+00:00</lastmod>
   </url>
@@ -167,7 +172,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/aws/</loc>
-    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -257,13 +262,13 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/javascript/</loc>
-    <lastmod>2017-10-03T23:33:31+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kalinchernev.github.io/</loc>
-    <lastmod>2017-10-03T23:33:31+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -293,7 +298,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/nodejs/</loc>
-    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -323,7 +328,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/post/</loc>
-    <lastmod>2017-10-03T23:33:31+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -359,7 +364,7 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/serverless/</loc>
-    <lastmod>2017-07-11T22:40:00+00:00</lastmod>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -371,6 +376,12 @@
   
   <url>
     <loc>https://kalinchernev.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kalinchernev.github.io/tags/tdd/</loc>
+    <lastmod>2017-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

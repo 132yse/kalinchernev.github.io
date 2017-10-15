@@ -7,8 +7,296 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Tue, 03 Oct 2017 23:33:31 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest</title>
+      <link>https://kalinchernev.github.io/tdd-serverless-jest/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/tdd-serverless-jest/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless framework&lt;/a&gt; makes it easy to develop and deploy cloud functions. In this article I&amp;rsquo;ll cover the &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/&#34;&gt;AWS&lt;/a&gt; provider of the framework, although the principles should be very similar for the other providers, especially given the fact the serverless team works hard for a truly multi-provider framework.&lt;/p&gt;
+
+&lt;p&gt;There is a good document with guidelines for &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/guide/testing/&#34;&gt;writing tests in serverless&lt;/a&gt; already. Also, there is another &lt;a href=&#34;https://serverless.com/blog/tdd-serverless/&#34;&gt;blog post about the basics&lt;/a&gt;. However, currently there&amp;rsquo;s no much information on using &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;Jest&lt;/a&gt; which is trending in the community.&lt;/p&gt;
+
+&lt;p&gt;By the end of this article, you will:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;have a working development environment with modern JavaScript (ES2005 and up)&lt;/li&gt;
+&lt;li&gt;be able to use Jest effectively&lt;/li&gt;
+&lt;li&gt;know how to test your library code - the helpers used by lambda functions&lt;/li&gt;
+&lt;li&gt;be able to test lambda functions without killing yourself with abstractions&lt;/li&gt;
+&lt;li&gt;learn how to use test doubles for AWS services&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;project-setup&#34;&gt;Project setup&lt;/h2&gt;
+
+&lt;p&gt;Before going into the testing framework and the details about the testing itself, it&amp;rsquo;s worth spending some time configuring your environment so that you work effectively.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a high-level overview of the file structure for the tutorial:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;├── config.example.json --&amp;gt; Copy and configure as config.json
+├── package.json
+├── README.md
+├── serverless.yml --&amp;gt; Check if you want to tweak it
+├── src --&amp;gt; You store your functions here, 1 file per each
+│   └── upload.js --&amp;gt; the lambda function
+├── test
+│   └── upload.spec.js --&amp;gt; the test for the lambda function
+├── webpack.config.js
+└── yarn.lock
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The full code for the tutorial can be seen in &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;this repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a list of the package used in this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;serverless&lt;/code&gt; with &lt;code&gt;webpack&lt;/code&gt; and &lt;code&gt;serverless-webpack&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;babel&lt;/code&gt; with some add-ons, mainly &lt;code&gt;babel-preset-env&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eslint&lt;/code&gt; with more add-ons, and &lt;code&gt;prettier&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws-sdk&lt;/code&gt; and &lt;code&gt;aws-sdk-mock&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;jest&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;optimizations&#34;&gt;Optimizations&lt;/h3&gt;
+
+&lt;p&gt;Although this topic is not directly related to writing tests, it&amp;rsquo;s always good to consider any possible optimizations you can have in your stack.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;babel-preset-env&lt;/code&gt; with its &lt;code&gt;babel-*&lt;/code&gt; related packages. By using the &lt;code&gt;env&lt;/code&gt; &lt;a href=&#34;http://babeljs.io/env&#34;&gt;preset&lt;/a&gt; you both gain in less configurations and less amount of code necessary after transpilations for a given target runtime platform. For example, delivering a bundle targeting &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html&#34;&gt;node 6.x&lt;/a&gt; will be lighter than the one for earlier versions, because the runtime supports more features natively.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;serverless-webpack&lt;/code&gt; with its webpack settings can further optimize functions when they are &lt;a href=&#34;https://github.com/serverless-heaven/serverless-webpack#optimization--individual-packaging-per-function&#34;&gt;bundled individually&lt;/a&gt;. Also, a configuration for external resources make the bundled upload lighter, excluding dependencies to &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html&#34;&gt;&lt;code&gt;aws-sdk&lt;/code&gt; already available&lt;/a&gt; on AWS premises.&lt;/p&gt;
+
+&lt;h3 id=&#34;configurations&#34;&gt;Configurations&lt;/h3&gt;
+
+&lt;p&gt;In the example project linked to this article you can have a look at the configurations necessary to have modern JavaScript running with serverless and Jest.&lt;/p&gt;
+
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+
+&lt;p&gt;To learn about the test framework, read the official &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;documentation site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;My high-level impressions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Working with promises is natural.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s the watch mode.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s also an integrated code coverage reporting.&lt;/li&gt;
+&lt;li&gt;Snapshot testing for comparing and asserting differences in structures.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, Jest is a full-fledged framework with all necessary features for testing. It&amp;rsquo;s easy to learn and it has good documentation.&lt;/p&gt;
+
+&lt;h2 id=&#34;unit-testing&#34;&gt;Unit testing&lt;/h2&gt;
+
+&lt;p&gt;Organizing code in &lt;a href=&#34;https://claudiajs.com/tutorials/designing-testable-lambdas.html&#34;&gt;testable chunks&lt;/a&gt; is the the most challenging and important step before anything else.&lt;/p&gt;
+
+&lt;p&gt;In the context of lambda functions and the serverless framework, unit testing is useful for covering mainly 2 types of code: library (helper) functions and the lambda functions in a given service. If you&amp;rsquo;re using the serverless framework only with &lt;code&gt;serverless.yml&lt;/code&gt; file in order to make your Cloud Formation templates more manageable, you don&amp;rsquo;t need unit testing. It&amp;rsquo;s only uesful when there is logic in the service.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-library-used-by-a-lambda-function&#34;&gt;Testing a library used by a lambda function&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s imagine that our lambda function signature and beginning is the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;export const handler = (event, context, callback) =&amp;gt; {
+  const bucket = process.env.BUCKET;
+  const region = process.env.REGION;
+
+  ...
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because we will most probably need to make checks about the input arguments of environment variables several times, we can make a &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads/blob/master/src/lib/envVarsChecker.js&#34;&gt;simple helper&lt;/a&gt; which takes an object of the &lt;code&gt;process.env&lt;/code&gt; and returns a list of required keys for the function to work.&lt;/p&gt;
+
+&lt;p&gt;This scenario is easy, we can assert for various of useful edge cases like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import checker from &#39;../../src/lib/envVarsChecker&#39;;
+
+describe(`Utility library envVarsChecker`, () =&amp;gt; {
+  test(`The helper exists`, () =&amp;gt; {
+    expect(checker).toBeTruthy();
+  });
+
+  test(`Asks for both BUCKET and REGION environment variables`, () =&amp;gt; {
+    const input = {};
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;, &#39;REGION&#39;]);
+  });
+
+  test(`Asks for a missing BUCKET environment variables`, () =&amp;gt; {
+    const input = {
+      REGION: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;]);
+  });
+
+  test(`Asks for a missing REGION environment variables`, () =&amp;gt; {
+    const input = {
+      BUCKET: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;REGION&#39;]);
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When functions are simple, but yet reusable for several lambda functions, we can test these helpers in a conventional way.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-lambda-function&#34;&gt;Testing a lambda function&lt;/h2&gt;
+
+&lt;p&gt;The lambda functions can be considered as a more complex piece of code to test.&lt;/p&gt;
+
+&lt;p&gt;Initially, I started by spawning processes and running the serverless CLI and asserting for results. This didn&amp;rsquo;t work efficiently because every unresolved promise in the serverless framework abstraction is impossible to handle in a convenient way in the test suite.&lt;/p&gt;
+
+&lt;p&gt;Since the original process of the lambda function was not easy to get done with, I also tried the &lt;code&gt;serverless-jest-plugin&lt;/code&gt; which was mentioned in the beginners article about TDD in serverless. As I already knew it&amp;rsquo;s ineffective to test against cli processes, I used the plugin programmatically to wrap the original lambda functions invocation. This also didn&amp;rsquo;t work well enough.&lt;/p&gt;
+
+&lt;p&gt;In the end of a long day I finally decided to treat lambda functions as normal functions and just wrap them in promises in order to make them more convenient for the Jest runner.&lt;/p&gt;
+
+&lt;p&gt;Like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads`, () =&amp;gt; {
+  test(`Require environment variables`, () =&amp;gt; {
+    const event = {};
+    const context = {};
+
+    const result = handler(event, context);
+    result
+      .then(data =&amp;gt; {
+        expect(data).toBeFalsy();
+      })
+      .catch(e =&amp;gt; {
+        expect(e).toBe(
+          `Missing required environment variables: BUCKET, REGION`
+        );
+      });
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This approach does the job ok and keeps things relatively simple. It handles the lambda handler as a normal exported function which takes the arguments as described in the official signature of the function, and wraps it all in a promise, for Jest.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://facebook.github.io/jest/docs/en/asynchronous.html#resolves-rejects&#34;&gt;syntax of promise assertions&lt;/a&gt; can be prettier, by the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;mocking-aws-services&#34;&gt;Mocking AWS services&lt;/h2&gt;
+
+&lt;p&gt;Testing lambda functions with the assumption that they are just functions can take you long way if the logic inside these functions is relatively simple. However, the real reason for lambda functions to be, is that they are the glue between AWS services.&lt;/p&gt;
+
+&lt;p&gt;So, sooner or later you will have to find a way to mock AWS services in your tests :)&lt;/p&gt;
+
+&lt;p&gt;For us, the &lt;code&gt;aws-sdk-mock&lt;/code&gt; package works well so far. It supports mocking constructors and nested methods, it can restore originals. &lt;a href=&#34;https://www.npmjs.com/package/aws-sdk-mock&#34;&gt;Documentation&lt;/a&gt; and support seem mature.&lt;/p&gt;
+
+&lt;p&gt;Together with mocking AWS services, we also take &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/eventsources.html&#34;&gt;examples for events from the official AWS documentation&lt;/a&gt;. These can serve as a fast-track to creating stubs for the &lt;code&gt;event&lt;/code&gt; argument of a lambda function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import AWS from &amp;quot;aws-sdk-mock&amp;quot;;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+import eventStub from &amp;quot;./stubs/eventHttpApiGateway.json&amp;quot;;
+
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads: S3 mock for successful operations`, () =&amp;gt; {
+  beforeAll(() =&amp;gt; {
+    AWS.mock(&amp;quot;S3&amp;quot;, &amp;quot;getSignedUrl&amp;quot;, (method, _, callback) =&amp;gt; {
+      callback(null, {
+        data: &amp;quot;https://example.com&amp;quot;
+      });
+    });
+  });
+
+  afterEach(() =&amp;gt; {
+    delete process.env.BUCKET;
+    delete process.env.REGION;
+  });
+
+  afterAll(() =&amp;gt; {
+    AWS.restore(&amp;quot;S3&amp;quot;);
+  });
+
+  test(`Replies back with a JSON for a signed upload on success`, () =&amp;gt; {
+    process.env.BUCKET = &amp;quot;foo&amp;quot;;
+    process.env.REGION = &amp;quot;bar&amp;quot;;
+
+    const event = eventStub;
+    const context = {};
+
+    const result = handler(event, context);
+    expect(result).resolves.toMatchSnapshot();
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, the &lt;code&gt;beforeAll&lt;/code&gt; life cycle setups the AWS S3 mock for the &lt;code&gt;getSignedUrl&lt;/code&gt; method. &lt;code&gt;afterEach&lt;/code&gt; environment variables are reset and &lt;code&gt;afterAll&lt;/code&gt; the original S3 service is restored so that it operates to the AWS API after the test suite has finished.&lt;/p&gt;
+
+&lt;h2 id=&#34;snapshot-testing&#34;&gt;Snapshot testing&lt;/h2&gt;
+
+&lt;p&gt;Maybe you&amp;rsquo;ve noticed this line already &lt;code&gt;expect(result).resolves.toMatchSnapshot();&lt;/code&gt;.
+This is how you use the Jest snapshot feature:&lt;/p&gt;
+
+&lt;iframe width=&#34;853&#34; height=&#34;480&#34; src=&#34;https://www.youtube.com/embed/HAuXJVI_bUs?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This feature helps you test structures in a simple way.&lt;/p&gt;
+
+&lt;h3 id=&#34;further-resources&#34;&gt;Further resources&lt;/h3&gt;
+
+&lt;p&gt;This tutorial covers mostly techniques with Jest on making unit tests. As you can see, to an extend we can say that testing lambda functions can be seen as a &lt;a href=&#34;https://read.acloud.guru/testing-and-the-serverless-approach-495cef7495ea&#34;&gt;simple&lt;/a&gt; process.&lt;/p&gt;
+
+&lt;p&gt;However, mocking AWS services can get tricky and there are vocal opinions &lt;a href=&#34;http://theburningmonk.com/2017/02/yubls-road-to-serverless-architecture-part-2/&#34;&gt;against&lt;/a&gt; this practice for a reason.&lt;/p&gt;
+
+&lt;p&gt;More specifically, take the &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;aws-node-signed-uploads&lt;/a&gt; package as an example. The unit tests and the mocks are showing 100% test coverage for the code which gets executed by Jest and this is really encouraging.&lt;/p&gt;
+
+&lt;p&gt;Do the following for me as an exercise after this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clone the repository.&lt;/li&gt;
+&lt;li&gt;Install the dependencies.&lt;/li&gt;
+&lt;li&gt;Reconfigure the serverless settings.&lt;/li&gt;
+&lt;li&gt;Make a deployment to your AWS account.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;yarn start&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You will see a server running and waiting for your requests. You can make an example request with &lt;a href=&#34;https://www.getpostman.com/&#34;&gt;Postman&lt;/a&gt; which will show you the same issues as tested in the unit tests :)
+And if you manage to get your header key correctly, you&amp;rsquo;ll be even able to upload a large file to an S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;Now make the same test on the deployed service. You will get an error message for access denied because there is a specific configuration on the upload endpoint:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;functions:
+  upsert-objects:
+    handler: src/upload.handler
+    name: ${self:provider.stage}-${self:service}-upload
+    memorySize: 128
+    events:
+      - http:
+          path: upload
+          method: put
+          private: true
+          cors: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is &lt;code&gt;private: true&lt;/code&gt;. When deployed on real AWS premises, the endpoint will require an API key in the header, which neither &lt;code&gt;serverless&lt;/code&gt; nor &lt;code&gt;serverless-offline&lt;/code&gt;, nor tests will warn you about.&lt;/p&gt;
+
+&lt;p&gt;Mocking AWS services however, will give you the basic safely net that your lambda functions are handling positive and negative scenarios and invoke the correct callbacks in the correct scenarios.&lt;/p&gt;
+
+&lt;p&gt;Also, using Jest for testing the independent logic and making snapshot make an excellent addition to secure the very vital behaviors of your cloud functions even when working independently from the AWS service.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Learn Gatsby.js</title>
@@ -1555,84 +1843,6 @@ app.post(&#39;/login&#39;, (req, res) =&amp;gt; {
 &lt;li&gt;Attention should be invested into real problems&lt;/li&gt;
 &lt;li&gt;Use tools when really necessary to keep sanity and solve real problems&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Holidays digest 2016</title>
-      <link>https://kalinchernev.github.io/holiday-digest-2016/</link>
-      <pubDate>Sat, 07 Jan 2017 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/holiday-digest-2016/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/digital-beer/holidays-digest-68ecc2b115a8&#34; title=&#34;Permalink to Holidays digest – Digital Beer – Medium&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I decided to try a new format of writing a story — a &amp;ldquo;digest&amp;rdquo; one. In this format, I&amp;rsquo;ll be able to mix subjects and share about things I find interesting. Although I don&amp;rsquo;t plan to follow a strict structure, topics will be divided into sections to make it easy to jump between without having to read it all.&lt;/p&gt;
-
-&lt;h3 id=&#34;medium&#34;&gt;Medium&lt;/h3&gt;
-
-&lt;p&gt;Certainly, the trending topic in the context of this blog is the story about &lt;a href=&#34;https://blog.medium.com/renewing-mediums-focus-98f374a960be#.yuaggxs6c&#34;&gt;Renewing Medium&amp;rsquo;s focus&lt;/a&gt;. I think there are few really good points about the &amp;ldquo;why&amp;rdquo; and I hope that Medium will find the new way to provide the value they want for publishers.&lt;/p&gt;
-
-&lt;h3 id=&#34;kadira&#34;&gt;Kadira&lt;/h3&gt;
-
-&lt;p&gt;On a similar note, &lt;a href=&#34;https://voice.kadira.io/kadira-shutting-down-7d35994db85d#.mmph3hury&#34;&gt;Kadira: Shutting Down&lt;/a&gt; was an expected story from &lt;a href=&#34;https://medium.com/@arunoda&#34;&gt;Arunoda Susiripala&lt;/a&gt;. The decision is understandable from a business point of view. In a more global view, I feel that this story is a historic event for the JavaScript community in overall. It&amp;rsquo;s a reminder of how fierce the competition in the JavaScript ecosystem is and how important it is for vendors like MDG to manage their relations with driving contributors.&lt;/p&gt;
-
-&lt;h3 id=&#34;progressive-web-nbsp-apps&#34;&gt;Progressive Web&amp;nbsp;Apps&lt;/h3&gt;
-
-&lt;p&gt;My last post was about &lt;a href=&#34;https://medium.com/@kalin.chernev/think-about-apps-not-websites-13757f9736de#.5v5yhw1p3&#34;&gt;thinking about apps, not websites&lt;/a&gt;. My goal was to start a collection of good examples of making modern apps. I had plans to continue on this story-line by making a case study of an app with information about first aid that works offline, demonstrating both the technical and informational side.&lt;/p&gt;
-
-&lt;p&gt;To find a re-usable information about first aid was a tougher cookie that I thought. First, information on the web is not well structured. I was looking for a topical steps on how to help in a given urgent situation, but couldn&amp;rsquo;t find anything organized. Secondly — the information was copyright and it would have taken a massive amount of waiting time to get information for a demo case study. I managed to find some open information in &lt;a href=&#34;https://en.wikibooks.org/wiki/First_Aid&#34;&gt;wiki books&lt;/a&gt;, which got me started on the content. Finding free photos I could use was a bit easier as &lt;a href=&#34;https://medium.com/@disastacre&#34;&gt;Vladimir Vassilev&lt;/a&gt; suggested me a source collection of &lt;a href=&#34;http://re-wp.com/stock-photos/&#34;&gt;free stock photos&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;By the time I got my content prepared, the team of &lt;a href=&#34;https://medium.com/@auth0&#34;&gt;Auth0&lt;/a&gt; had already published 2 great articles on the same subject!&amp;nbsp;:D&lt;/p&gt;
-
-&lt;p&gt;The first one (actually the second one), which continued on the same story line as I aimed to, was about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-instant-loading-part-2/&#34;&gt;instant loading and storage&lt;/a&gt;. At the same time, I was testing &lt;a href=&#34;https://github.com/GoogleChrome/sw-precache&#34;&gt;sw-precache&lt;/a&gt; more thoroughly and I had issues with the offline storage that erased the cache in an unpredictable ways on my mobile phone. Seeing that article during my work on the first aid case study, just discarded much of the things I wanted to share, as the article of &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is much more thorough and deeper explained.&lt;/p&gt;
-
-&lt;p&gt;Then, just before NY, came the second nice article from the same team, this time about &lt;a href=&#34;https://auth0.com/blog/introduction-to-progressive-web-apps-push-notifications-part-3/&#34;&gt;push notifications&lt;/a&gt;. With this, I decided that it&amp;rsquo;s better to recommend these, rather than writing or trying to complete the first aid app. Mainly because I don&amp;rsquo;t believe it will be of any value added.&lt;/p&gt;
-
-&lt;p&gt;Anyway, if you read this and still consider it&amp;rsquo;s a good idea to make a progressive web app for first aid, then I&amp;rsquo;d recommend you check the &lt;a href=&#34;https://www.mediawiki.org/wiki/API:Main_page&#34;&gt;wikibooks REST API&lt;/a&gt; to get the information about the book I linked earlier, following the &lt;a href=&#34;https://wikimediafoundation.org/wiki/Developer_app_guidelines&#34;&gt;guidelines&lt;/a&gt;. From the little experience making the app, I&amp;rsquo;d recommend &lt;a href=&#34;https://visionmedia.github.io/page.js/&#34;&gt;page.js&lt;/a&gt; and reading &lt;a href=&#34;https://medium.com/@krasimirtsonev&#34;&gt;Krasimir Tsonev&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;http://krasimirtsonev.com/blog/article/deep-dive-into-client-side-routing-navigo-pushstate-hash&#34;&gt;Deep dive into client-side routing&lt;/a&gt;, that&amp;rsquo;s of course if you want to keep it simple, rather than using React (w/ react router) or Angular, etc.&lt;/p&gt;
-
-&lt;h3 id=&#34;pishi-kur-18&#34;&gt;&lt;a href=&#34;https://pishikur.com/&#34;&gt;Pishi Kur&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;That&amp;rsquo;s a tiny project that I released around Christmas. It&amp;rsquo;s just taking an example app from &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt; and has some changed strings here and there. The idea of the project is to entertain Bulgarians travelling or living abroad by collecting pictures of a word. The idea came along in &lt;a href=&#34;https://en.wikipedia.org/wiki/Plovdiv&#34;&gt;Plovdiv&lt;/a&gt; when few Bulgarians shared that they see that word in France, Germany, in the mountains, etc. The project will not be translated in Bulgarian and will not encourage vandalism, or anything like this. It&amp;rsquo;s rather a surrealistic platform of sharing funny moments while being in special places around the world.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s also my first time to use Firebase. My impressions so far are positive: it was easy to setup the social authentication and deploy the app. The developer experience is close to what Meteor was about an year ago — easy development, ready plugin-like functionalities, etc. Only that, Meteor killed a lot of its interest by making Galaxy nothing more than a place to host your app, not providing a lot of services around it. With Firebase, Google services are easy to integrate at the finger tips of the developer.&lt;/p&gt;
-
-&lt;p&gt;So far, there are more than 30 registered users, average of 30 visits per day. If this grows organically, it will be an interesting case study to work with Firebase tools to scale and tweak the platform. Otherwise, I don&amp;rsquo;t plan to push advertising or any type of campaigns to make it bigger than that&amp;nbsp;:)&lt;/p&gt;
-
-&lt;h3 id=&#34;apis&#34;&gt;APIs&lt;/h3&gt;
-
-&lt;p&gt;Feeling that I strayed a bit from this topic in the last few months, I renewed reading and researching ways to get my hands back on things about APIs.&lt;/p&gt;
-
-&lt;p&gt;The &amp;ldquo;&lt;a href=&#34;https://hackernoon.com/how-i-made-a-saas-webservice-earning-1000-monthly-profit-6d2b782b95c8#.jrv7pfxuz&#34;&gt;How I made a SaaS webservice earning $1000 monthly profit&lt;/a&gt;&amp;rdquo; is a motivating piece about taking small steps towards monetization of a service.&lt;/p&gt;
-
-&lt;p&gt;Another interesting piece of information is the &lt;a href=&#34;https://www.programmableweb.com/news/programmablewebs-most-interesting-apis-2016-application-development-and-developer-tools/brief/2016/12/23&#34;&gt;ProgrammableWeb&amp;rsquo;s Most Interesting APIs in 2016: Application Development and Developer Tools&lt;/a&gt;. I really love the idea of website to API tools like the &lt;a href=&#34;https://www.jamapi.xyz/&#34;&gt;Jam API&lt;/a&gt; mentioned. It reminds me of &lt;a href=&#34;https://medium.com/@kimonolabs&#34;&gt;Kimono Labs&lt;/a&gt; who got acquired almost an year ago.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://www.npmjs.com/package/swagger-jsdoc&#34;&gt;swagger-jsdoc&lt;/a&gt; module that I sometimes work on in my free time continue on its path of wider adoption:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*yJ4w5B4sAANmTqrJlHpcFw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Based on data from &lt;https: npm-stat.com=&#34;&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;It might be that the CLI tool played an important role in August. And because the module targets the developers&amp;rsquo; audience, I plan to work on a feature to &amp;ldquo;watch&amp;rdquo; for changes in the input files.&lt;/p&gt;
-
-&lt;p&gt;I believe it&amp;rsquo;s worth investing in learning and doing more of swagger apis this year, mainly for 2 reasons:&lt;/p&gt;
-
-&lt;p&gt;Trends look good:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*bVdbmTcQZsE4tYunE7Jh5Q.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Taken from &lt;a href=&#34;https://www.google.com/trends/explore?q=swagger%20api&#34;&gt;Google&amp;nbsp;Trends&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Adoption of &lt;a href=&#34;https://www.openapis.org/&#34;&gt;Open API specification&lt;/a&gt; also looks positive, and also the big players also support it. It&amp;rsquo;s hard to say what exactly will happen in 2017 after some of the &lt;a href=&#34;https://medium.com/the-era-of-apis/over-500m-invested-in-api-companies-in-2016-with-16-acquisitions-cc4f3d2beef8#.99codaicj&#34;&gt;acquisitions of 2016&lt;/a&gt;. Nevertheless, my gut feeling is that having a solid specification (with such adoption) is a key to having the true interoperability to other specifications and solutions such as GraphQL, in potential interest &lt;a href=&#34;https://medium.com/@raxwunter/moving-existing-api-from-rest-to-graphql-205bab22c184#.h6rctdrxm&#34;&gt;moving existing API from REST to GraphQL&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;my-chat-bot-story-32-became-my-best-story-of-2016-because-of-chatbots-life-33-publication&#34;&gt;&lt;a href=&#34;https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627#.rgfcezwnz&#34;&gt;My chat bot story&lt;/a&gt; became my best story of 2016 because of &lt;a href=&#34;https://medium.com/@ChatBotsLife&#34;&gt;Chatbots Life&lt;/a&gt; publication&lt;/h3&gt;
-
-&lt;p&gt;Being published on 1st December, and being one my last articles for 2016, the &amp;ldquo;Building a chat bot who understands emotions though your selfies&amp;rdquo; story grew to be my best story of the year, thanks to &lt;a href=&#34;https://medium.com/@kojouharov&#34;&gt;Stefan Kojouharov&lt;/a&gt; including it in a publication.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*HgTPQnk-aW0wxKdFitxtzg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The only story that could have been a competition in fame to this one was the &amp;ldquo;&lt;a href=&#34;https://medium.com/@kalin.chernev/drupal-8-on-cloud9-ide-1a294328e1aa#.g3a7u6t68&#34;&gt;Drupal 8 on Cloud9 IDE&lt;/a&gt;&amp;rdquo; which got more views because of being included in the &lt;a href=&#34;http://www.theweeklydrop.com/archive/issue-258&#34;&gt;Weekly Drop issue 258&lt;/a&gt;, but didn&amp;rsquo;t reach as many number of reads and recommends.&lt;/p&gt;
 </description>
     </item>
     

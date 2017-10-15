@@ -7,8 +7,296 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Tue, 03 Oct 2017 23:33:31 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://kalinchernev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest</title>
+      <link>https://kalinchernev.github.io/tdd-serverless-jest/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/tdd-serverless-jest/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless framework&lt;/a&gt; makes it easy to develop and deploy cloud functions. In this article I&amp;rsquo;ll cover the &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/&#34;&gt;AWS&lt;/a&gt; provider of the framework, although the principles should be very similar for the other providers, especially given the fact the serverless team works hard for a truly multi-provider framework.&lt;/p&gt;
+
+&lt;p&gt;There is a good document with guidelines for &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/guide/testing/&#34;&gt;writing tests in serverless&lt;/a&gt; already. Also, there is another &lt;a href=&#34;https://serverless.com/blog/tdd-serverless/&#34;&gt;blog post about the basics&lt;/a&gt;. However, currently there&amp;rsquo;s no much information on using &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;Jest&lt;/a&gt; which is trending in the community.&lt;/p&gt;
+
+&lt;p&gt;By the end of this article, you will:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;have a working development environment with modern JavaScript (ES2005 and up)&lt;/li&gt;
+&lt;li&gt;be able to use Jest effectively&lt;/li&gt;
+&lt;li&gt;know how to test your library code - the helpers used by lambda functions&lt;/li&gt;
+&lt;li&gt;be able to test lambda functions without killing yourself with abstractions&lt;/li&gt;
+&lt;li&gt;learn how to use test doubles for AWS services&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;project-setup&#34;&gt;Project setup&lt;/h2&gt;
+
+&lt;p&gt;Before going into the testing framework and the details about the testing itself, it&amp;rsquo;s worth spending some time configuring your environment so that you work effectively.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a high-level overview of the file structure for the tutorial:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;├── config.example.json --&amp;gt; Copy and configure as config.json
+├── package.json
+├── README.md
+├── serverless.yml --&amp;gt; Check if you want to tweak it
+├── src --&amp;gt; You store your functions here, 1 file per each
+│   └── upload.js --&amp;gt; the lambda function
+├── test
+│   └── upload.spec.js --&amp;gt; the test for the lambda function
+├── webpack.config.js
+└── yarn.lock
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The full code for the tutorial can be seen in &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;this repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a list of the package used in this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;serverless&lt;/code&gt; with &lt;code&gt;webpack&lt;/code&gt; and &lt;code&gt;serverless-webpack&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;babel&lt;/code&gt; with some add-ons, mainly &lt;code&gt;babel-preset-env&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eslint&lt;/code&gt; with more add-ons, and &lt;code&gt;prettier&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws-sdk&lt;/code&gt; and &lt;code&gt;aws-sdk-mock&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;jest&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;optimizations&#34;&gt;Optimizations&lt;/h3&gt;
+
+&lt;p&gt;Although this topic is not directly related to writing tests, it&amp;rsquo;s always good to consider any possible optimizations you can have in your stack.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;babel-preset-env&lt;/code&gt; with its &lt;code&gt;babel-*&lt;/code&gt; related packages. By using the &lt;code&gt;env&lt;/code&gt; &lt;a href=&#34;http://babeljs.io/env&#34;&gt;preset&lt;/a&gt; you both gain in less configurations and less amount of code necessary after transpilations for a given target runtime platform. For example, delivering a bundle targeting &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html&#34;&gt;node 6.x&lt;/a&gt; will be lighter than the one for earlier versions, because the runtime supports more features natively.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;serverless-webpack&lt;/code&gt; with its webpack settings can further optimize functions when they are &lt;a href=&#34;https://github.com/serverless-heaven/serverless-webpack#optimization--individual-packaging-per-function&#34;&gt;bundled individually&lt;/a&gt;. Also, a configuration for external resources make the bundled upload lighter, excluding dependencies to &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html&#34;&gt;&lt;code&gt;aws-sdk&lt;/code&gt; already available&lt;/a&gt; on AWS premises.&lt;/p&gt;
+
+&lt;h3 id=&#34;configurations&#34;&gt;Configurations&lt;/h3&gt;
+
+&lt;p&gt;In the example project linked to this article you can have a look at the configurations necessary to have modern JavaScript running with serverless and Jest.&lt;/p&gt;
+
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+
+&lt;p&gt;To learn about the test framework, read the official &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;documentation site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;My high-level impressions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Working with promises is natural.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s the watch mode.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s also an integrated code coverage reporting.&lt;/li&gt;
+&lt;li&gt;Snapshot testing for comparing and asserting differences in structures.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, Jest is a full-fledged framework with all necessary features for testing. It&amp;rsquo;s easy to learn and it has good documentation.&lt;/p&gt;
+
+&lt;h2 id=&#34;unit-testing&#34;&gt;Unit testing&lt;/h2&gt;
+
+&lt;p&gt;Organizing code in &lt;a href=&#34;https://claudiajs.com/tutorials/designing-testable-lambdas.html&#34;&gt;testable chunks&lt;/a&gt; is the the most challenging and important step before anything else.&lt;/p&gt;
+
+&lt;p&gt;In the context of lambda functions and the serverless framework, unit testing is useful for covering mainly 2 types of code: library (helper) functions and the lambda functions in a given service. If you&amp;rsquo;re using the serverless framework only with &lt;code&gt;serverless.yml&lt;/code&gt; file in order to make your Cloud Formation templates more manageable, you don&amp;rsquo;t need unit testing. It&amp;rsquo;s only uesful when there is logic in the service.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-library-used-by-a-lambda-function&#34;&gt;Testing a library used by a lambda function&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s imagine that our lambda function signature and beginning is the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;export const handler = (event, context, callback) =&amp;gt; {
+  const bucket = process.env.BUCKET;
+  const region = process.env.REGION;
+
+  ...
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because we will most probably need to make checks about the input arguments of environment variables several times, we can make a &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads/blob/master/src/lib/envVarsChecker.js&#34;&gt;simple helper&lt;/a&gt; which takes an object of the &lt;code&gt;process.env&lt;/code&gt; and returns a list of required keys for the function to work.&lt;/p&gt;
+
+&lt;p&gt;This scenario is easy, we can assert for various of useful edge cases like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import checker from &#39;../../src/lib/envVarsChecker&#39;;
+
+describe(`Utility library envVarsChecker`, () =&amp;gt; {
+  test(`The helper exists`, () =&amp;gt; {
+    expect(checker).toBeTruthy();
+  });
+
+  test(`Asks for both BUCKET and REGION environment variables`, () =&amp;gt; {
+    const input = {};
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;, &#39;REGION&#39;]);
+  });
+
+  test(`Asks for a missing BUCKET environment variables`, () =&amp;gt; {
+    const input = {
+      REGION: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;]);
+  });
+
+  test(`Asks for a missing REGION environment variables`, () =&amp;gt; {
+    const input = {
+      BUCKET: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;REGION&#39;]);
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When functions are simple, but yet reusable for several lambda functions, we can test these helpers in a conventional way.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-lambda-function&#34;&gt;Testing a lambda function&lt;/h2&gt;
+
+&lt;p&gt;The lambda functions can be considered as a more complex piece of code to test.&lt;/p&gt;
+
+&lt;p&gt;Initially, I started by spawning processes and running the serverless CLI and asserting for results. This didn&amp;rsquo;t work efficiently because every unresolved promise in the serverless framework abstraction is impossible to handle in a convenient way in the test suite.&lt;/p&gt;
+
+&lt;p&gt;Since the original process of the lambda function was not easy to get done with, I also tried the &lt;code&gt;serverless-jest-plugin&lt;/code&gt; which was mentioned in the beginners article about TDD in serverless. As I already knew it&amp;rsquo;s ineffective to test against cli processes, I used the plugin programmatically to wrap the original lambda functions invocation. This also didn&amp;rsquo;t work well enough.&lt;/p&gt;
+
+&lt;p&gt;In the end of a long day I finally decided to treat lambda functions as normal functions and just wrap them in promises in order to make them more convenient for the Jest runner.&lt;/p&gt;
+
+&lt;p&gt;Like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads`, () =&amp;gt; {
+  test(`Require environment variables`, () =&amp;gt; {
+    const event = {};
+    const context = {};
+
+    const result = handler(event, context);
+    result
+      .then(data =&amp;gt; {
+        expect(data).toBeFalsy();
+      })
+      .catch(e =&amp;gt; {
+        expect(e).toBe(
+          `Missing required environment variables: BUCKET, REGION`
+        );
+      });
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This approach does the job ok and keeps things relatively simple. It handles the lambda handler as a normal exported function which takes the arguments as described in the official signature of the function, and wraps it all in a promise, for Jest.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://facebook.github.io/jest/docs/en/asynchronous.html#resolves-rejects&#34;&gt;syntax of promise assertions&lt;/a&gt; can be prettier, by the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;mocking-aws-services&#34;&gt;Mocking AWS services&lt;/h2&gt;
+
+&lt;p&gt;Testing lambda functions with the assumption that they are just functions can take you long way if the logic inside these functions is relatively simple. However, the real reason for lambda functions to be, is that they are the glue between AWS services.&lt;/p&gt;
+
+&lt;p&gt;So, sooner or later you will have to find a way to mock AWS services in your tests :)&lt;/p&gt;
+
+&lt;p&gt;For us, the &lt;code&gt;aws-sdk-mock&lt;/code&gt; package works well so far. It supports mocking constructors and nested methods, it can restore originals. &lt;a href=&#34;https://www.npmjs.com/package/aws-sdk-mock&#34;&gt;Documentation&lt;/a&gt; and support seem mature.&lt;/p&gt;
+
+&lt;p&gt;Together with mocking AWS services, we also take &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/eventsources.html&#34;&gt;examples for events from the official AWS documentation&lt;/a&gt;. These can serve as a fast-track to creating stubs for the &lt;code&gt;event&lt;/code&gt; argument of a lambda function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import AWS from &amp;quot;aws-sdk-mock&amp;quot;;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+import eventStub from &amp;quot;./stubs/eventHttpApiGateway.json&amp;quot;;
+
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads: S3 mock for successful operations`, () =&amp;gt; {
+  beforeAll(() =&amp;gt; {
+    AWS.mock(&amp;quot;S3&amp;quot;, &amp;quot;getSignedUrl&amp;quot;, (method, _, callback) =&amp;gt; {
+      callback(null, {
+        data: &amp;quot;https://example.com&amp;quot;
+      });
+    });
+  });
+
+  afterEach(() =&amp;gt; {
+    delete process.env.BUCKET;
+    delete process.env.REGION;
+  });
+
+  afterAll(() =&amp;gt; {
+    AWS.restore(&amp;quot;S3&amp;quot;);
+  });
+
+  test(`Replies back with a JSON for a signed upload on success`, () =&amp;gt; {
+    process.env.BUCKET = &amp;quot;foo&amp;quot;;
+    process.env.REGION = &amp;quot;bar&amp;quot;;
+
+    const event = eventStub;
+    const context = {};
+
+    const result = handler(event, context);
+    expect(result).resolves.toMatchSnapshot();
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, the &lt;code&gt;beforeAll&lt;/code&gt; life cycle setups the AWS S3 mock for the &lt;code&gt;getSignedUrl&lt;/code&gt; method. &lt;code&gt;afterEach&lt;/code&gt; environment variables are reset and &lt;code&gt;afterAll&lt;/code&gt; the original S3 service is restored so that it operates to the AWS API after the test suite has finished.&lt;/p&gt;
+
+&lt;h2 id=&#34;snapshot-testing&#34;&gt;Snapshot testing&lt;/h2&gt;
+
+&lt;p&gt;Maybe you&amp;rsquo;ve noticed this line already &lt;code&gt;expect(result).resolves.toMatchSnapshot();&lt;/code&gt;.
+This is how you use the Jest snapshot feature:&lt;/p&gt;
+
+&lt;iframe width=&#34;853&#34; height=&#34;480&#34; src=&#34;https://www.youtube.com/embed/HAuXJVI_bUs?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This feature helps you test structures in a simple way.&lt;/p&gt;
+
+&lt;h3 id=&#34;further-resources&#34;&gt;Further resources&lt;/h3&gt;
+
+&lt;p&gt;This tutorial covers mostly techniques with Jest on making unit tests. As you can see, to an extend we can say that testing lambda functions can be seen as a &lt;a href=&#34;https://read.acloud.guru/testing-and-the-serverless-approach-495cef7495ea&#34;&gt;simple&lt;/a&gt; process.&lt;/p&gt;
+
+&lt;p&gt;However, mocking AWS services can get tricky and there are vocal opinions &lt;a href=&#34;http://theburningmonk.com/2017/02/yubls-road-to-serverless-architecture-part-2/&#34;&gt;against&lt;/a&gt; this practice for a reason.&lt;/p&gt;
+
+&lt;p&gt;More specifically, take the &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;aws-node-signed-uploads&lt;/a&gt; package as an example. The unit tests and the mocks are showing 100% test coverage for the code which gets executed by Jest and this is really encouraging.&lt;/p&gt;
+
+&lt;p&gt;Do the following for me as an exercise after this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clone the repository.&lt;/li&gt;
+&lt;li&gt;Install the dependencies.&lt;/li&gt;
+&lt;li&gt;Reconfigure the serverless settings.&lt;/li&gt;
+&lt;li&gt;Make a deployment to your AWS account.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;yarn start&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You will see a server running and waiting for your requests. You can make an example request with &lt;a href=&#34;https://www.getpostman.com/&#34;&gt;Postman&lt;/a&gt; which will show you the same issues as tested in the unit tests :)
+And if you manage to get your header key correctly, you&amp;rsquo;ll be even able to upload a large file to an S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;Now make the same test on the deployed service. You will get an error message for access denied because there is a specific configuration on the upload endpoint:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;functions:
+  upsert-objects:
+    handler: src/upload.handler
+    name: ${self:provider.stage}-${self:service}-upload
+    memorySize: 128
+    events:
+      - http:
+          path: upload
+          method: put
+          private: true
+          cors: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is &lt;code&gt;private: true&lt;/code&gt;. When deployed on real AWS premises, the endpoint will require an API key in the header, which neither &lt;code&gt;serverless&lt;/code&gt; nor &lt;code&gt;serverless-offline&lt;/code&gt;, nor tests will warn you about.&lt;/p&gt;
+
+&lt;p&gt;Mocking AWS services however, will give you the basic safely net that your lambda functions are handling positive and negative scenarios and invoke the correct callbacks in the correct scenarios.&lt;/p&gt;
+
+&lt;p&gt;Also, using Jest for testing the independent logic and making snapshot make an excellent addition to secure the very vital behaviors of your cloud functions even when working independently from the AWS service.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Learn Gatsby.js</title>
@@ -1528,56 +1816,6 @@ app.post(&#39;/login&#39;, (req, res) =&amp;gt; {
 &lt;p&gt;The tools shown in &lt;a href=&#34;https://github.com/kalinchernev/agile-open-api-docs&#34;&gt;the repository&lt;/a&gt; are free and vendor-neutral and the documentation build can be deployed to any place which serves you best. So, I encourage you to further experiment with the code and adapt it to work best for your specific needs.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;If you think this article was helpful, then consider making a comment, a share or a ❤&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Problem-first problem-solving</title>
-      <link>https://kalinchernev.github.io/problem-first-problem-solving/</link>
-      <pubDate>Wed, 11 Jan 2017 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/problem-first-problem-solving/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/digital-beer/problem-first-problem-solving-87369b84551f?source=user_profile---------13-----------&#34; title=&#34;Permalink to Problem-first problem-solving – Digital Beer – Medium&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This is not going to be the next-generation framework for solving technical problems because it contains the word &amp;ldquo;problem&amp;rdquo; twice. Apart from its negative charge, the core idea is as simple as focusing on the most important questions to answer before working on problems.&lt;/p&gt;
-
-&lt;h3 id=&#34;problems&#34;&gt;Problems&lt;/h3&gt;
-
-&lt;p&gt;Problems are addictive. As modern creatures, we need to have problems in order to have a reason to live. Solving problems brings positive feelings, like serotonin, which &lt;a href=&#34;https://www.psychologytoday.com/blog/the-athletes-way/201211/the-neurochemicals-happiness&#34;&gt;&amp;ldquo;ultimately the link between higher serotonin and a lack of rejection sensitivity allows people to put themselves in situations that will bolster self-esteem, increase feelings of worthiness and create a sense of belonging.&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;When I was in university, I quickly figured that semantically, and technically, the word &amp;ldquo;problem&amp;rdquo; holds a different shade of meaning when logic kicks in: &amp;ldquo;an inquiry starting from given conditions to investigate or demonstrate a fact, result, or law.&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Thus, it is perfectly valid to conclude that knowledge workers, like programmers, solve problems on a daily basis. Naturally, the process of solving problems becomes a brain habit, which mingles between the logical system of variables and the more humanistic problem solving psychology.&lt;/p&gt;
-
-&lt;p&gt;My personal observation comes to that many people working in the technical sector (the IT sector) sometimes solve problems which are not really problems, because of lack of focus or because of a habit or inability to set the emotions and the psychology aside while solving logical problems.&lt;/p&gt;
-
-&lt;h3 id=&#34;questions&#34;&gt;Questions&lt;/h3&gt;
-
-&lt;p&gt;Asking/answering questions is the most natural way to manage attention and feelings. Questions are the leaders in both scenarios from above.&lt;/p&gt;
-
-&lt;p&gt;I think that seniors in any knowledge worker profession are those who have accumulated experience of asking good questions for the problems they are supposed to solve. (And browsing well through the ocean of information after this&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;The ultimate question one can ask recursively: &amp;ldquo;What am I really trying to solve here?&amp;rdquo; I believe that answering this question first, during meetings for example, could bring many positive outcomes without too many discussions and roundabouts which take attention and energy to focus.&lt;/p&gt;
-
-&lt;h3 id=&#34;tools-are-not-solving-problems-people-nbsp-are&#34;&gt;Tools are not solving problems, people&amp;nbsp;are.&lt;/h3&gt;
-
-&lt;p&gt;This is a personal feeling and saying out loud: let&amp;rsquo;s please first find the problem we&amp;rsquo;re solving and then let&amp;rsquo;s look at the tools we&amp;rsquo;re using. Not to go into too many specifics of a profession, but I see so much energy being spent on things like: choosing programming languages, frameworks, etc. It&amp;rsquo;s so amazing sometimes to see projects like &lt;a href=&#34;https://lebab.io/&#34;&gt;lebab&lt;/a&gt;. I am sure that it&amp;rsquo;s solving real problems, however it&amp;rsquo;s not so obvious.&lt;/p&gt;
-
-&lt;p&gt;My appeal here is simple: please consider the energy you will spend on tools well, and please base your solutions on real problems, rather than the inner drive to prove oneself as a great problem solver for quick gratification for solving insignificant problems or such that might not exist. That is touching upon the topic of the &amp;ldquo;fatigue&amp;rdquo; that developers complain about frequently. It&amp;rsquo;s a real feeling based on real situations in real life — having to solve many problems at the same time. Managing focus on using problem-first approach in our tool-chains and workflows is a vital part of preserving one&amp;rsquo;s energy and attention to what really matters.&lt;/p&gt;
-
-&lt;h3 id=&#34;takeaways&#34;&gt;Takeaways&lt;/h3&gt;
-
-&lt;p&gt;Although being pretty abstract, the paragraphs above aim to basically communicate the following ideas:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Problems are addictive&lt;/li&gt;
-&lt;li&gt;Solving problems feels good&lt;/li&gt;
-&lt;li&gt;Questions lead focus and attention&lt;/li&gt;
-&lt;li&gt;Attention should be invested into real problems&lt;/li&gt;
-&lt;li&gt;Use tools when really necessary to keep sanity and solve real problems&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

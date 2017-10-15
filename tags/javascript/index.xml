@@ -10,6 +10,294 @@
     <atom:link href="https://kalinchernev.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest</title>
+      <link>https://kalinchernev.github.io/tdd-serverless-jest/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://kalinchernev.github.io/tdd-serverless-jest/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://serverless.com/&#34;&gt;serverless framework&lt;/a&gt; makes it easy to develop and deploy cloud functions. In this article I&amp;rsquo;ll cover the &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/&#34;&gt;AWS&lt;/a&gt; provider of the framework, although the principles should be very similar for the other providers, especially given the fact the serverless team works hard for a truly multi-provider framework.&lt;/p&gt;
+
+&lt;p&gt;There is a good document with guidelines for &lt;a href=&#34;https://serverless.com/framework/docs/providers/aws/guide/testing/&#34;&gt;writing tests in serverless&lt;/a&gt; already. Also, there is another &lt;a href=&#34;https://serverless.com/blog/tdd-serverless/&#34;&gt;blog post about the basics&lt;/a&gt;. However, currently there&amp;rsquo;s no much information on using &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;Jest&lt;/a&gt; which is trending in the community.&lt;/p&gt;
+
+&lt;p&gt;By the end of this article, you will:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;have a working development environment with modern JavaScript (ES2005 and up)&lt;/li&gt;
+&lt;li&gt;be able to use Jest effectively&lt;/li&gt;
+&lt;li&gt;know how to test your library code - the helpers used by lambda functions&lt;/li&gt;
+&lt;li&gt;be able to test lambda functions without killing yourself with abstractions&lt;/li&gt;
+&lt;li&gt;learn how to use test doubles for AWS services&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;project-setup&#34;&gt;Project setup&lt;/h2&gt;
+
+&lt;p&gt;Before going into the testing framework and the details about the testing itself, it&amp;rsquo;s worth spending some time configuring your environment so that you work effectively.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a high-level overview of the file structure for the tutorial:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;├── config.example.json --&amp;gt; Copy and configure as config.json
+├── package.json
+├── README.md
+├── serverless.yml --&amp;gt; Check if you want to tweak it
+├── src --&amp;gt; You store your functions here, 1 file per each
+│   └── upload.js --&amp;gt; the lambda function
+├── test
+│   └── upload.spec.js --&amp;gt; the test for the lambda function
+├── webpack.config.js
+└── yarn.lock
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The full code for the tutorial can be seen in &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;this repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a list of the package used in this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;serverless&lt;/code&gt; with &lt;code&gt;webpack&lt;/code&gt; and &lt;code&gt;serverless-webpack&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;babel&lt;/code&gt; with some add-ons, mainly &lt;code&gt;babel-preset-env&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eslint&lt;/code&gt; with more add-ons, and &lt;code&gt;prettier&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws-sdk&lt;/code&gt; and &lt;code&gt;aws-sdk-mock&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;jest&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;optimizations&#34;&gt;Optimizations&lt;/h3&gt;
+
+&lt;p&gt;Although this topic is not directly related to writing tests, it&amp;rsquo;s always good to consider any possible optimizations you can have in your stack.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;babel-preset-env&lt;/code&gt; with its &lt;code&gt;babel-*&lt;/code&gt; related packages. By using the &lt;code&gt;env&lt;/code&gt; &lt;a href=&#34;http://babeljs.io/env&#34;&gt;preset&lt;/a&gt; you both gain in less configurations and less amount of code necessary after transpilations for a given target runtime platform. For example, delivering a bundle targeting &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html&#34;&gt;node 6.x&lt;/a&gt; will be lighter than the one for earlier versions, because the runtime supports more features natively.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;serverless-webpack&lt;/code&gt; with its webpack settings can further optimize functions when they are &lt;a href=&#34;https://github.com/serverless-heaven/serverless-webpack#optimization--individual-packaging-per-function&#34;&gt;bundled individually&lt;/a&gt;. Also, a configuration for external resources make the bundled upload lighter, excluding dependencies to &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html&#34;&gt;&lt;code&gt;aws-sdk&lt;/code&gt; already available&lt;/a&gt; on AWS premises.&lt;/p&gt;
+
+&lt;h3 id=&#34;configurations&#34;&gt;Configurations&lt;/h3&gt;
+
+&lt;p&gt;In the example project linked to this article you can have a look at the configurations necessary to have modern JavaScript running with serverless and Jest.&lt;/p&gt;
+
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+
+&lt;p&gt;To learn about the test framework, read the official &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;documentation site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;My high-level impressions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Working with promises is natural.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s the watch mode.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s also an integrated code coverage reporting.&lt;/li&gt;
+&lt;li&gt;Snapshot testing for comparing and asserting differences in structures.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, Jest is a full-fledged framework with all necessary features for testing. It&amp;rsquo;s easy to learn and it has good documentation.&lt;/p&gt;
+
+&lt;h2 id=&#34;unit-testing&#34;&gt;Unit testing&lt;/h2&gt;
+
+&lt;p&gt;Organizing code in &lt;a href=&#34;https://claudiajs.com/tutorials/designing-testable-lambdas.html&#34;&gt;testable chunks&lt;/a&gt; is the the most challenging and important step before anything else.&lt;/p&gt;
+
+&lt;p&gt;In the context of lambda functions and the serverless framework, unit testing is useful for covering mainly 2 types of code: library (helper) functions and the lambda functions in a given service. If you&amp;rsquo;re using the serverless framework only with &lt;code&gt;serverless.yml&lt;/code&gt; file in order to make your Cloud Formation templates more manageable, you don&amp;rsquo;t need unit testing. It&amp;rsquo;s only uesful when there is logic in the service.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-library-used-by-a-lambda-function&#34;&gt;Testing a library used by a lambda function&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s imagine that our lambda function signature and beginning is the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;export const handler = (event, context, callback) =&amp;gt; {
+  const bucket = process.env.BUCKET;
+  const region = process.env.REGION;
+
+  ...
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because we will most probably need to make checks about the input arguments of environment variables several times, we can make a &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads/blob/master/src/lib/envVarsChecker.js&#34;&gt;simple helper&lt;/a&gt; which takes an object of the &lt;code&gt;process.env&lt;/code&gt; and returns a list of required keys for the function to work.&lt;/p&gt;
+
+&lt;p&gt;This scenario is easy, we can assert for various of useful edge cases like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import checker from &#39;../../src/lib/envVarsChecker&#39;;
+
+describe(`Utility library envVarsChecker`, () =&amp;gt; {
+  test(`The helper exists`, () =&amp;gt; {
+    expect(checker).toBeTruthy();
+  });
+
+  test(`Asks for both BUCKET and REGION environment variables`, () =&amp;gt; {
+    const input = {};
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;, &#39;REGION&#39;]);
+  });
+
+  test(`Asks for a missing BUCKET environment variables`, () =&amp;gt; {
+    const input = {
+      REGION: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;BUCKET&#39;]);
+  });
+
+  test(`Asks for a missing REGION environment variables`, () =&amp;gt; {
+    const input = {
+      BUCKET: &#39;foo&#39;,
+    };
+    const result = checker(input);
+    expect(result).toEqual([&#39;REGION&#39;]);
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When functions are simple, but yet reusable for several lambda functions, we can test these helpers in a conventional way.&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-a-lambda-function&#34;&gt;Testing a lambda function&lt;/h2&gt;
+
+&lt;p&gt;The lambda functions can be considered as a more complex piece of code to test.&lt;/p&gt;
+
+&lt;p&gt;Initially, I started by spawning processes and running the serverless CLI and asserting for results. This didn&amp;rsquo;t work efficiently because every unresolved promise in the serverless framework abstraction is impossible to handle in a convenient way in the test suite.&lt;/p&gt;
+
+&lt;p&gt;Since the original process of the lambda function was not easy to get done with, I also tried the &lt;code&gt;serverless-jest-plugin&lt;/code&gt; which was mentioned in the beginners article about TDD in serverless. As I already knew it&amp;rsquo;s ineffective to test against cli processes, I used the plugin programmatically to wrap the original lambda functions invocation. This also didn&amp;rsquo;t work well enough.&lt;/p&gt;
+
+&lt;p&gt;In the end of a long day I finally decided to treat lambda functions as normal functions and just wrap them in promises in order to make them more convenient for the Jest runner.&lt;/p&gt;
+
+&lt;p&gt;Like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads`, () =&amp;gt; {
+  test(`Require environment variables`, () =&amp;gt; {
+    const event = {};
+    const context = {};
+
+    const result = handler(event, context);
+    result
+      .then(data =&amp;gt; {
+        expect(data).toBeFalsy();
+      })
+      .catch(e =&amp;gt; {
+        expect(e).toBe(
+          `Missing required environment variables: BUCKET, REGION`
+        );
+      });
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This approach does the job ok and keeps things relatively simple. It handles the lambda handler as a normal exported function which takes the arguments as described in the official signature of the function, and wraps it all in a promise, for Jest.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://facebook.github.io/jest/docs/en/asynchronous.html#resolves-rejects&#34;&gt;syntax of promise assertions&lt;/a&gt; can be prettier, by the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;mocking-aws-services&#34;&gt;Mocking AWS services&lt;/h2&gt;
+
+&lt;p&gt;Testing lambda functions with the assumption that they are just functions can take you long way if the logic inside these functions is relatively simple. However, the real reason for lambda functions to be, is that they are the glue between AWS services.&lt;/p&gt;
+
+&lt;p&gt;So, sooner or later you will have to find a way to mock AWS services in your tests :)&lt;/p&gt;
+
+&lt;p&gt;For us, the &lt;code&gt;aws-sdk-mock&lt;/code&gt; package works well so far. It supports mocking constructors and nested methods, it can restore originals. &lt;a href=&#34;https://www.npmjs.com/package/aws-sdk-mock&#34;&gt;Documentation&lt;/a&gt; and support seem mature.&lt;/p&gt;
+
+&lt;p&gt;Together with mocking AWS services, we also take &lt;a href=&#34;http://docs.aws.amazon.com/lambda/latest/dg/eventsources.html&#34;&gt;examples for events from the official AWS documentation&lt;/a&gt;. These can serve as a fast-track to creating stubs for the &lt;code&gt;event&lt;/code&gt; argument of a lambda function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+import AWS from &amp;quot;aws-sdk-mock&amp;quot;;
+import { promisify } from &amp;quot;util&amp;quot;;
+import lambda from &amp;quot;../src/upload&amp;quot;;
+import eventStub from &amp;quot;./stubs/eventHttpApiGateway.json&amp;quot;;
+
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads: S3 mock for successful operations`, () =&amp;gt; {
+  beforeAll(() =&amp;gt; {
+    AWS.mock(&amp;quot;S3&amp;quot;, &amp;quot;getSignedUrl&amp;quot;, (method, _, callback) =&amp;gt; {
+      callback(null, {
+        data: &amp;quot;https://example.com&amp;quot;
+      });
+    });
+  });
+
+  afterEach(() =&amp;gt; {
+    delete process.env.BUCKET;
+    delete process.env.REGION;
+  });
+
+  afterAll(() =&amp;gt; {
+    AWS.restore(&amp;quot;S3&amp;quot;);
+  });
+
+  test(`Replies back with a JSON for a signed upload on success`, () =&amp;gt; {
+    process.env.BUCKET = &amp;quot;foo&amp;quot;;
+    process.env.REGION = &amp;quot;bar&amp;quot;;
+
+    const event = eventStub;
+    const context = {};
+
+    const result = handler(event, context);
+    expect(result).resolves.toMatchSnapshot();
+  });
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, the &lt;code&gt;beforeAll&lt;/code&gt; life cycle setups the AWS S3 mock for the &lt;code&gt;getSignedUrl&lt;/code&gt; method. &lt;code&gt;afterEach&lt;/code&gt; environment variables are reset and &lt;code&gt;afterAll&lt;/code&gt; the original S3 service is restored so that it operates to the AWS API after the test suite has finished.&lt;/p&gt;
+
+&lt;h2 id=&#34;snapshot-testing&#34;&gt;Snapshot testing&lt;/h2&gt;
+
+&lt;p&gt;Maybe you&amp;rsquo;ve noticed this line already &lt;code&gt;expect(result).resolves.toMatchSnapshot();&lt;/code&gt;.
+This is how you use the Jest snapshot feature:&lt;/p&gt;
+
+&lt;iframe width=&#34;853&#34; height=&#34;480&#34; src=&#34;https://www.youtube.com/embed/HAuXJVI_bUs?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This feature helps you test structures in a simple way.&lt;/p&gt;
+
+&lt;h3 id=&#34;further-resources&#34;&gt;Further resources&lt;/h3&gt;
+
+&lt;p&gt;This tutorial covers mostly techniques with Jest on making unit tests. As you can see, to an extend we can say that testing lambda functions can be seen as a &lt;a href=&#34;https://read.acloud.guru/testing-and-the-serverless-approach-495cef7495ea&#34;&gt;simple&lt;/a&gt; process.&lt;/p&gt;
+
+&lt;p&gt;However, mocking AWS services can get tricky and there are vocal opinions &lt;a href=&#34;http://theburningmonk.com/2017/02/yubls-road-to-serverless-architecture-part-2/&#34;&gt;against&lt;/a&gt; this practice for a reason.&lt;/p&gt;
+
+&lt;p&gt;More specifically, take the &lt;a href=&#34;https://github.com/kalinchernev/aws-node-signed-uploads&#34;&gt;aws-node-signed-uploads&lt;/a&gt; package as an example. The unit tests and the mocks are showing 100% test coverage for the code which gets executed by Jest and this is really encouraging.&lt;/p&gt;
+
+&lt;p&gt;Do the following for me as an exercise after this tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clone the repository.&lt;/li&gt;
+&lt;li&gt;Install the dependencies.&lt;/li&gt;
+&lt;li&gt;Reconfigure the serverless settings.&lt;/li&gt;
+&lt;li&gt;Make a deployment to your AWS account.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;yarn start&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You will see a server running and waiting for your requests. You can make an example request with &lt;a href=&#34;https://www.getpostman.com/&#34;&gt;Postman&lt;/a&gt; which will show you the same issues as tested in the unit tests :)
+And if you manage to get your header key correctly, you&amp;rsquo;ll be even able to upload a large file to an S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;Now make the same test on the deployed service. You will get an error message for access denied because there is a specific configuration on the upload endpoint:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;functions:
+  upsert-objects:
+    handler: src/upload.handler
+    name: ${self:provider.stage}-${self:service}-upload
+    memorySize: 128
+    events:
+      - http:
+          path: upload
+          method: put
+          private: true
+          cors: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is &lt;code&gt;private: true&lt;/code&gt;. When deployed on real AWS premises, the endpoint will require an API key in the header, which neither &lt;code&gt;serverless&lt;/code&gt; nor &lt;code&gt;serverless-offline&lt;/code&gt;, nor tests will warn you about.&lt;/p&gt;
+
+&lt;p&gt;Mocking AWS services however, will give you the basic safely net that your lambda functions are handling positive and negative scenarios and invoke the correct callbacks in the correct scenarios.&lt;/p&gt;
+
+&lt;p&gt;Also, using Jest for testing the independent logic and making snapshot make an excellent addition to secure the very vital behaviors of your cloud functions even when working independently from the AWS service.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Learn Gatsby.js</title>
       <link>https://kalinchernev.github.io/learn-gatsbyjs/</link>
       <pubDate>Tue, 03 Oct 2017 23:33:31 +0000</pubDate>
@@ -1545,100 +1833,6 @@ odp.getDatasets({query: {limit: 100, offset: 1}}).then((data) =&amp;gt; {
 &lt;h3 id=&#34;feedback-is-nbsp-welcome&#34;&gt;Feedback is&amp;nbsp;welcome&lt;/h3&gt;
 
 &lt;p&gt;Use the comments below to share your techniques and opinions.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Drupalaton 2016</title>
-      <link>https://kalinchernev.github.io/drupalaton-2016/</link>
-      <pubDate>Mon, 22 Aug 2016 00:00:00 +0200</pubDate>
-      
-      <guid>https://kalinchernev.github.io/drupalaton-2016/</guid>
-      <description>
-
-&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;Recently, I joined an event on &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt; in Hungary — the &lt;a href=&#34;http://drupalaton.hu&#34;&gt;Drupalaton&lt;/a&gt;. It is one of the most exciting yearly Drupal events in Europe, organized by the local community. It gathers hundreds of contributors who collaborate on Drupal issues, share knowledge and have fun together&amp;nbsp;:)&lt;/p&gt;
-
-&lt;p&gt;I really enjoyed this year&amp;rsquo;s event since it covered a lot of my favorite topics. (discussed shortly after) Good sessions, pleasant talks with the community, and also — a lot of new things to learn. The event took place at the shore of the biggest warm-water lake in Europe, at Lake Balaton.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*ME6rgg3pXT8oid14R5RNVg.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;sessions&#34;&gt;Sessions&lt;/h3&gt;
-
-&lt;p&gt;Sure enough, sessions were covering important &lt;a href=&#34;https://www.drupal.org/8&#34;&gt;Drupal 8&lt;/a&gt; features. There were several tracks, as well as sprints, where participants were able to collaborate.&lt;/p&gt;
-
-&lt;p&gt;I visited mainly the workshops related to the &lt;a href=&#34;http://buytaert.net/a-roadmap-for-making-drupal-more-api-first&#34;&gt;API-first initiative&lt;/a&gt;. This is a futuristic initiative, involving many JavaScript tools and modern concepts and practices for building service-oriented apps, not only websites.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s a vital initiative for Drupal as a platform for the future. Presently, Drupal is one of the best systems for content modelling, querying, and building websites in general. This means that normal people can make websites with complex information structures with very little or no programming.&lt;/p&gt;
-
-&lt;p&gt;The API-first initiative could potentially take Drupal into a place where &lt;strong&gt;the content modelling and querying becomes data modelling and querying, enabling non-developers to build complex APIs for the next generation apps.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Apart from these, there were also sessions about Drupal-specific modules being upgraded between Drupal 7 and 8. In overall, I think we&amp;rsquo;ll see more &amp;ldquo;good stuff&amp;rdquo; of &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony&lt;/a&gt;, PHP OOP, design patterns, etc topics during next Drupal events.&lt;/p&gt;
-
-&lt;h3 id=&#34;workshops&#34;&gt;Workshops&lt;/h3&gt;
-
-&lt;p&gt;This is my humble list of highlighted sessions I focused on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-166&#34;&gt;&lt;strong&gt;REST APIs&lt;/strong&gt;&lt;/a&gt; by Pieter Frenssen (&lt;a href=&#34;https://www.drupal.org/u/pfrenssen&#34;&gt;pfrenssen&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*4o8SJ8Q9EhrUt4fkz8DKpQ.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Well-formed, step-by-step guide, covering all important concepts of having Drupal as both server and/or a client in &lt;a href=&#34;http://www.restapitutorial.com/&#34;&gt;REST API architectures&lt;/a&gt;. If you want to skip the details in this section, check &lt;a href=&#34;https://www.drupal.org/developing/api/8/rest#practical&#34;&gt;Drupal REST API docs&lt;/a&gt; which covers great amount of information around the topic.&lt;/p&gt;
-
-&lt;p&gt;The beginning was a general information about what REST actually is. This included status codes, methods, design patterns, etc.&lt;/p&gt;
-
-&lt;p&gt;After presenting the basics, the next step was to use Drupal as a client, fetching data from &lt;a href=&#34;https://www.drupal.org/drupalorg/docs/api&#34;&gt;drupal.org REST API&lt;/a&gt; and displaying it in a block.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://hechoendrupal.gitbooks.io/drupal-console/content/en/commands/generate-plugin-block.html&#34;&gt;Creating a block with Drupal Console&lt;/a&gt; was super-easy. That was a really neat way to demonstrate injecting the &lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal.php/function/Drupal%3A%3AhttpClient/8.2.x&#34;&gt;http_client service&lt;/a&gt; via the cli from the &lt;a href=&#34;https://api.drupal.org/api/drupal/core!core.api.php/group/container/8.2.x&#34;&gt;container&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There was also a demo of using the &lt;a href=&#34;https://www.drupal.org/documentation/modules/rest&#34;&gt;core REST API module&lt;/a&gt;, which transforms Drupal into an API server. &lt;a href=&#34;https://www.drupal.org/project/restui&#34;&gt;REST UI module&lt;/a&gt; was demonstrated as a site builders&amp;rsquo; tool to manage the configurations which are otherwise &lt;a href=&#34;https://www.chapterthree.com/blog/custom-restful-api-drupal-8&#34;&gt;managed through&amp;nbsp;.yml files&lt;/a&gt;. Here, it&amp;rsquo;s important to note, that the endpoints of the REST API are controllers. Developers have the freedom to choose which format of data to return and via which components. For example, one can use the &lt;a href=&#34;https://github.com/symfony/http-foundation&#34;&gt;Symfony&amp;rsquo;s HttpFoundation&lt;/a&gt; and its JsonResponse instance.&lt;/p&gt;
-
-&lt;p&gt;In short, there was a lot of good advice, both about REST APIs in general, and Drupal-specific implementations, in combination with third-party tools and components.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-171&#34;&gt;&lt;strong&gt;Headless Drupal&lt;/strong&gt;&lt;/a&gt; by Ruben Teijeiro (&lt;a href=&#34;https://www.drupal.org/u/rteijeiro&#34;&gt;rteijeiro&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Even though I did not attend the workshop, it was still part of the Drupal API-first series of topics. &lt;a href=&#34;https://github.com/rteijeiro/headless-drupal8&#34;&gt;Code of the session&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-106&#34;&gt;&lt;strong&gt;Progressive web apps&lt;/strong&gt;&lt;/a&gt; by Théodore Biadala (&lt;a href=&#34;https://www.drupal.org/u/nod_&#34;&gt;nod_&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;That was an intermediate-level session. &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;Promises&lt;/a&gt; were in the core of all code snippets and demonstrations. Highlight APIs: &lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/API/Fetch_API&#34;&gt;Fetch API&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Cache&#34;&gt;Cache&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers&#34;&gt;Service Workers&lt;/a&gt;, and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API&#34;&gt;Web APIs&lt;/a&gt; in general. The main idea was to demonstrate how modern web APIs can be used to build web apps, having functionalities very similar to native apps.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/theodoreb/pwa-workshop&#34;&gt;The repository&lt;/a&gt; of the workshop is public, so go and check it for further details in case you&amp;rsquo;re interested into the interface implementations.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s interesting to note the example of &lt;a href=&#34;https://github.com/theodoreb/pwa-workshop/blob/master/js/1-promise.js#L12&#34;&gt;promise-based&lt;/a&gt; &lt;a href=&#34;https://www.drupal.org/node/756722#behaviors&#34;&gt;behaviors system&lt;/a&gt;. A modernized implementation of classic concept on managing JavaScript.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://2016.drupalaton.hu/schedule#speaker-111&#34;&gt;&lt;strong&gt;GraphQL&lt;/strong&gt;&lt;/a&gt; by Sebastian Siemssen (&lt;a href=&#34;https://www.drupal.org/u/fubhy&#34;&gt;fubhy&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;The &lt;a href=&#34;https://twitter.com/hashtag/GraphQL?src=hash&#34;&gt;#GraphQL&lt;/a&gt; workshop w/ &lt;a href=&#34;https://twitter.com/thefubhy&#34;&gt;@thefubhy&lt;/a&gt;  at &lt;a href=&#34;https://twitter.com/hashtag/Drupalaton?src=hash&#34;&gt;#Drupalaton&lt;/a&gt; &lt;a href=&#34;https://t.co/AgfQGzCq81&#34;&gt;pic.twitter.com/AgfQGzCq81&lt;/a&gt;&lt;/p&gt;&amp;mdash; Kalin Chernev (@kalinchernev) &lt;a href=&#34;https://twitter.com/kalinchernev/status/764072778773344256&#34;&gt;August 12, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Needless to say, that was the &amp;ldquo;cherry&amp;rdquo; session. It was about the &lt;a href=&#34;http://graphql.org/docs/getting-started/&#34;&gt;Facebook&amp;rsquo;s GraphQL&lt;/a&gt;, which developers were ready to understand, after touching upon REST APIs, JavaScript Frameworks, knowing what is a server and a client in general in the previous sessions.&lt;/p&gt;
-
-&lt;p&gt;I personally enjoyed the workshop. In fact, I was even able follow along with the live coding on the main screen. It was also nice that it made a clear association between specification and language implementation. This means that same concepts of data architecture were demonstrated and practices with &lt;a href=&#34;https://github.com/graphql/express-graphql&#34;&gt;JavaScript&lt;/a&gt; and &lt;a href=&#34;https://github.com/Youshido/GraphQL&#34;&gt;PHP&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the first part, the &lt;a href=&#34;https://github.com/graphql/swapi-graphql&#34;&gt;Star Wars API&lt;/a&gt; was used with the &lt;a href=&#34;http://graphql-swapi.parseapp.com/&#34;&gt;GraphiQL&lt;/a&gt; — a hands-on tutorial to &lt;a href=&#34;http://slides.com/sebastiansiemssen/graphql-meets-drupal-dd#/3/7&#34;&gt;understand the basic concepts&lt;/a&gt; like queries, fragments, variables, sub selections, etc.&lt;/p&gt;
-
-&lt;p&gt;Second was the usage of node.js app with express, express-graphql, graphiql, graphql and other popular modules to transpile ES6 code. In this playground, the building part started. Various types were used: GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, etc. That was my first time to actually write something working out of the &lt;a href=&#34;https://learngraphql.com/&#34;&gt;learngraphql.com&lt;/a&gt; online tutorials.&lt;/p&gt;
-
-&lt;p&gt;There was a demo of Relay in-between, as a bonus, to grab a general understanding of the additional features provided on top of the fundamental specification.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*tpPTqCyZnfPqhb1er6ECpw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;After the GraphQL implementation in JavaScript was getting convenient, then we continued using the same concepts, but to build a server in PHP and the &lt;a href=&#34;https://www.drupal.org/project/graphql&#34;&gt;Drupal GraphQL module&lt;/a&gt;. Sure enough, the approach was similar, but this time extending SchemaProviderBase and implementing framework-specific EntityTypeManager (&lt;a href=&#34;https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21EntityTypeManagerInterface.php/interface/EntityTypeManagerInterface/8.2.x&#34;&gt;Interface&lt;/a&gt;) to manage &lt;a href=&#34;https://www.drupal.org/node/2192175&#34;&gt;Content Entity&lt;/a&gt; items.&lt;/p&gt;
-
-&lt;h3 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h3&gt;
-
-&lt;p&gt;The event was awesome, the people were great, and the sessions were truly useful. I feel somehow privileged with the opportunity to attend such a good series of sessions related to API-s in the Drupal community!&lt;/p&gt;
-
-&lt;p&gt;There are a lot of new technologies and tools to learn and play with. I hope the summary above is a good starter for anyone enthusiastic about the future of the tools mentioned.&lt;/p&gt;
-
-&lt;h3 id=&#34;community&#34;&gt;Community&lt;/h3&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;End of the first day at &lt;a href=&#34;https://twitter.com/drupalaton&#34;&gt;@drupalaton&lt;/a&gt; we have a great dinner. &lt;a href=&#34;https://t.co/CN795wXixz&#34;&gt;pic.twitter.com/CN795wXixz&lt;/a&gt;&lt;/p&gt;&amp;mdash; 5NET Interactive (@5NEThu) &lt;a href=&#34;https://twitter.com/5NEThu/status/763818240954998789&#34;&gt;August 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Many thanks to the local Drupal community in Hungary!&amp;nbsp;:)&lt;/p&gt;
 </description>
     </item>
     

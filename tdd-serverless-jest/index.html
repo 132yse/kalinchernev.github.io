@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="https://kalinchernev.github.io/images/serverless_cover.png"/>
+    
+
+
+
+<meta name="twitter:title" content="Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@kalinchernev"/>
+
+
+
+  	<meta property="og:title" content="Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest &middot; Kalin Chernev" />
+  	<meta property="og:site_name" content="Kalin Chernev" />
+  	<meta property="og:url" content="https://kalinchernev.github.io/tdd-serverless-jest/" />
+
+    
+       <meta property="og:image" content="https://kalinchernev.github.io/images/serverless_cover.png"/>
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://kalinchernev.github.io/images/serverless_cover.png" />
+    <meta property="article:published_time" content="2017-10-15T00:00:00Z" />
+
+    
+    <meta property="article:tag" content="TDD" />
+    
+    <meta property="article:tag" content="Serverless" />
+    
+    <meta property="article:tag" content="JavaScript" />
+    
+    <meta property="article:tag" content="nodejs" />
+    
+    <meta property="article:tag" content="AWS" />
+    
+    
+
+    <title>Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest &middot; Kalin Chernev</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      <script src="https://kalinchernev.github.io/js/service-worker.js"></script>
+    
+
+    <link rel="shortcut icon" href="https://kalinchernev.github.io/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kalinchernev.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="https://kalinchernev.github.io/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://kalinchernev.github.io/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://kalinchernev.github.io//manifest.json">
+    <link rel="mask-icon" href="https://kalinchernev.github.io/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://kalinchernev.github.io/css/print.css" />
+
+    
+
+    
+      
+          <link href="https://kalinchernev.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Kalin Chernev" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19" />
+
+    <link rel="canonical" href="https://kalinchernev.github.io/tdd-serverless-jest/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://kalinchernev.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://kalinchernev.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://kalinchernev.github.io/,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": Web engineer trying to bring value in various projects.
+        
+    },
+    "headline": Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest,
+    "name": Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest,
+    "wordCount": 1649,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://kalinchernev.github.io/tdd-serverless-jest/,
+    "datePublished": 2017-10-15T00:00Z,
+    "dateModified": 2017-10-15T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://kalinchernev.github.io/images/serverless_cover.png,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": TDD, Serverless, JavaScript, nodejs, AWS,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://kalinchernev.github.io/tdd-serverless-jest/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97001925-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/kalinchernev">Github repos</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/kalinchernev/">Twitter timeline</a>
+            </li>
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://kalinchernev.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+  
+  <header class="main-header post-head" style="background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),url(https://kalinchernev.github.io/images/serverless_cover.png)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+      <a class="blog-logo" href="https://kalinchernev.github.io/"><img src="https://kalinchernev.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Test-Driven Development for AWS Lambda functions with the Serverless framework and Jest</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-10-15T00:00:00Z">
+            Oct 15, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/tdd/">#TDD</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/serverless/">#Serverless</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/javascript/">#JavaScript</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/nodejs/">#nodejs</a></span>
+         
+          <span class="post-tag small"><a href="https://kalinchernev.github.io/tags/aws/">#AWS</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The <a href="https://serverless.com/">serverless framework</a> makes it easy to develop and deploy cloud functions. In this article I&rsquo;ll cover the <a href="https://serverless.com/framework/docs/providers/aws/">AWS</a> provider of the framework, although the principles should be very similar for the other providers, especially given the fact the serverless team works hard for a truly multi-provider framework.</p>
+
+<p>There is a good document with guidelines for <a href="https://serverless.com/framework/docs/providers/aws/guide/testing/">writing tests in serverless</a> already. Also, there is another <a href="https://serverless.com/blog/tdd-serverless/">blog post about the basics</a>. However, currently there&rsquo;s no much information on using <a href="https://facebook.github.io/jest/">Jest</a> which is trending in the community.</p>
+
+<p>By the end of this article, you will:</p>
+
+<ul>
+<li>have a working development environment with modern JavaScript (ES2005 and up)</li>
+<li>be able to use Jest effectively</li>
+<li>know how to test your library code - the helpers used by lambda functions</li>
+<li>be able to test lambda functions without killing yourself with abstractions</li>
+<li>learn how to use test doubles for AWS services</li>
+</ul>
+
+<h2 id="project-setup">Project setup</h2>
+
+<p>Before going into the testing framework and the details about the testing itself, it&rsquo;s worth spending some time configuring your environment so that you work effectively.</p>
+
+<p>Here&rsquo;s a high-level overview of the file structure for the tutorial:</p>
+
+<pre><code>├── config.example.json --&gt; Copy and configure as config.json
+├── package.json
+├── README.md
+├── serverless.yml --&gt; Check if you want to tweak it
+├── src --&gt; You store your functions here, 1 file per each
+│   └── upload.js --&gt; the lambda function
+├── test
+│   └── upload.spec.js --&gt; the test for the lambda function
+├── webpack.config.js
+└── yarn.lock
+</code></pre>
+
+<p>The full code for the tutorial can be seen in <a href="https://github.com/kalinchernev/aws-node-signed-uploads">this repository</a>.</p>
+
+<h3 id="tools">Tools</h3>
+
+<p>Here&rsquo;s a list of the package used in this tutorial:</p>
+
+<ul>
+<li><code>serverless</code> with <code>webpack</code> and <code>serverless-webpack</code></li>
+<li><code>babel</code> with some add-ons, mainly <code>babel-preset-env</code></li>
+<li><code>eslint</code> with more add-ons, and <code>prettier</code></li>
+<li><code>aws-sdk</code> and <code>aws-sdk-mock</code></li>
+<li><code>jest</code></li>
+</ul>
+
+<h3 id="optimizations">Optimizations</h3>
+
+<p>Although this topic is not directly related to writing tests, it&rsquo;s always good to consider any possible optimizations you can have in your stack.</p>
+
+<p><code>babel-preset-env</code> with its <code>babel-*</code> related packages. By using the <code>env</code> <a href="http://babeljs.io/env">preset</a> you both gain in less configurations and less amount of code necessary after transpilations for a given target runtime platform. For example, delivering a bundle targeting <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">node 6.x</a> will be lighter than the one for earlier versions, because the runtime supports more features natively.</p>
+
+<p><code>serverless-webpack</code> with its webpack settings can further optimize functions when they are <a href="https://github.com/serverless-heaven/serverless-webpack#optimization--individual-packaging-per-function">bundled individually</a>. Also, a configuration for external resources make the bundled upload lighter, excluding dependencies to <a href="http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html"><code>aws-sdk</code> already available</a> on AWS premises.</p>
+
+<h3 id="configurations">Configurations</h3>
+
+<p>In the example project linked to this article you can have a look at the configurations necessary to have modern JavaScript running with serverless and Jest.</p>
+
+<h2 id="jest">Jest</h2>
+
+<p>To learn about the test framework, read the official <a href="https://facebook.github.io/jest/">documentation site</a>.</p>
+
+<p>My high-level impressions:</p>
+
+<ul>
+<li>Working with promises is natural.</li>
+<li>There&rsquo;s the watch mode.</li>
+<li>There&rsquo;s also an integrated code coverage reporting.</li>
+<li>Snapshot testing for comparing and asserting differences in structures.</li>
+</ul>
+
+<p>In general, Jest is a full-fledged framework with all necessary features for testing. It&rsquo;s easy to learn and it has good documentation.</p>
+
+<h2 id="unit-testing">Unit testing</h2>
+
+<p>Organizing code in <a href="https://claudiajs.com/tutorials/designing-testable-lambdas.html">testable chunks</a> is the the most challenging and important step before anything else.</p>
+
+<p>In the context of lambda functions and the serverless framework, unit testing is useful for covering mainly 2 types of code: library (helper) functions and the lambda functions in a given service. If you&rsquo;re using the serverless framework only with <code>serverless.yml</code> file in order to make your Cloud Formation templates more manageable, you don&rsquo;t need unit testing. It&rsquo;s only uesful when there is logic in the service.</p>
+
+<h2 id="testing-a-library-used-by-a-lambda-function">Testing a library used by a lambda function</h2>
+
+<p>Let&rsquo;s imagine that our lambda function signature and beginning is the following:</p>
+
+<pre><code class="language-javascript">export const handler = (event, context, callback) =&gt; {
+  const bucket = process.env.BUCKET;
+  const region = process.env.REGION;
+
+  ...
+
+}
+
+</code></pre>
+
+<p>Because we will most probably need to make checks about the input arguments of environment variables several times, we can make a <a href="https://github.com/kalinchernev/aws-node-signed-uploads/blob/master/src/lib/envVarsChecker.js">simple helper</a> which takes an object of the <code>process.env</code> and returns a list of required keys for the function to work.</p>
+
+<p>This scenario is easy, we can assert for various of useful edge cases like:</p>
+
+<pre><code class="language-javascript">
+import checker from '../../src/lib/envVarsChecker';
+
+describe(`Utility library envVarsChecker`, () =&gt; {
+  test(`The helper exists`, () =&gt; {
+    expect(checker).toBeTruthy();
+  });
+
+  test(`Asks for both BUCKET and REGION environment variables`, () =&gt; {
+    const input = {};
+    const result = checker(input);
+    expect(result).toEqual(['BUCKET', 'REGION']);
+  });
+
+  test(`Asks for a missing BUCKET environment variables`, () =&gt; {
+    const input = {
+      REGION: 'foo',
+    };
+    const result = checker(input);
+    expect(result).toEqual(['BUCKET']);
+  });
+
+  test(`Asks for a missing REGION environment variables`, () =&gt; {
+    const input = {
+      BUCKET: 'foo',
+    };
+    const result = checker(input);
+    expect(result).toEqual(['REGION']);
+  });
+});
+
+</code></pre>
+
+<p>When functions are simple, but yet reusable for several lambda functions, we can test these helpers in a conventional way.</p>
+
+<h2 id="testing-a-lambda-function">Testing a lambda function</h2>
+
+<p>The lambda functions can be considered as a more complex piece of code to test.</p>
+
+<p>Initially, I started by spawning processes and running the serverless CLI and asserting for results. This didn&rsquo;t work efficiently because every unresolved promise in the serverless framework abstraction is impossible to handle in a convenient way in the test suite.</p>
+
+<p>Since the original process of the lambda function was not easy to get done with, I also tried the <code>serverless-jest-plugin</code> which was mentioned in the beginners article about TDD in serverless. As I already knew it&rsquo;s ineffective to test against cli processes, I used the plugin programmatically to wrap the original lambda functions invocation. This also didn&rsquo;t work well enough.</p>
+
+<p>In the end of a long day I finally decided to treat lambda functions as normal functions and just wrap them in promises in order to make them more convenient for the Jest runner.</p>
+
+<p>Like this:</p>
+
+<pre><code class="language-javascript">
+import { promisify } from &quot;util&quot;;
+import lambda from &quot;../src/upload&quot;;
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads`, () =&gt; {
+  test(`Require environment variables`, () =&gt; {
+    const event = {};
+    const context = {};
+
+    const result = handler(event, context);
+    result
+      .then(data =&gt; {
+        expect(data).toBeFalsy();
+      })
+      .catch(e =&gt; {
+        expect(e).toBe(
+          `Missing required environment variables: BUCKET, REGION`
+        );
+      });
+  });
+});
+
+</code></pre>
+
+<p>This approach does the job ok and keeps things relatively simple. It handles the lambda handler as a normal exported function which takes the arguments as described in the official signature of the function, and wraps it all in a promise, for Jest.</p>
+
+<p>The <a href="https://facebook.github.io/jest/docs/en/asynchronous.html#resolves-rejects">syntax of promise assertions</a> can be prettier, by the way.</p>
+
+<h2 id="mocking-aws-services">Mocking AWS services</h2>
+
+<p>Testing lambda functions with the assumption that they are just functions can take you long way if the logic inside these functions is relatively simple. However, the real reason for lambda functions to be, is that they are the glue between AWS services.</p>
+
+<p>So, sooner or later you will have to find a way to mock AWS services in your tests :)</p>
+
+<p>For us, the <code>aws-sdk-mock</code> package works well so far. It supports mocking constructors and nested methods, it can restore originals. <a href="https://www.npmjs.com/package/aws-sdk-mock">Documentation</a> and support seem mature.</p>
+
+<p>Together with mocking AWS services, we also take <a href="http://docs.aws.amazon.com/lambda/latest/dg/eventsources.html">examples for events from the official AWS documentation</a>. These can serve as a fast-track to creating stubs for the <code>event</code> argument of a lambda function.</p>
+
+<pre><code class="language-javascript">
+import AWS from &quot;aws-sdk-mock&quot;;
+import { promisify } from &quot;util&quot;;
+import lambda from &quot;../src/upload&quot;;
+import eventStub from &quot;./stubs/eventHttpApiGateway.json&quot;;
+
+const handler = promisify(lambda);
+
+describe(`Service aws-node-singned-uploads: S3 mock for successful operations`, () =&gt; {
+  beforeAll(() =&gt; {
+    AWS.mock(&quot;S3&quot;, &quot;getSignedUrl&quot;, (method, _, callback) =&gt; {
+      callback(null, {
+        data: &quot;https://example.com&quot;
+      });
+    });
+  });
+
+  afterEach(() =&gt; {
+    delete process.env.BUCKET;
+    delete process.env.REGION;
+  });
+
+  afterAll(() =&gt; {
+    AWS.restore(&quot;S3&quot;);
+  });
+
+  test(`Replies back with a JSON for a signed upload on success`, () =&gt; {
+    process.env.BUCKET = &quot;foo&quot;;
+    process.env.REGION = &quot;bar&quot;;
+
+    const event = eventStub;
+    const context = {};
+
+    const result = handler(event, context);
+    expect(result).resolves.toMatchSnapshot();
+  });
+});
+
+</code></pre>
+
+<p>As you can see, the <code>beforeAll</code> life cycle setups the AWS S3 mock for the <code>getSignedUrl</code> method. <code>afterEach</code> environment variables are reset and <code>afterAll</code> the original S3 service is restored so that it operates to the AWS API after the test suite has finished.</p>
+
+<h2 id="snapshot-testing">Snapshot testing</h2>
+
+<p>Maybe you&rsquo;ve noticed this line already <code>expect(result).resolves.toMatchSnapshot();</code>.
+This is how you use the Jest snapshot feature:</p>
+
+<iframe width="853" height="480" src="https://www.youtube.com/embed/HAuXJVI_bUs?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>This feature helps you test structures in a simple way.</p>
+
+<h3 id="further-resources">Further resources</h3>
+
+<p>This tutorial covers mostly techniques with Jest on making unit tests. As you can see, to an extend we can say that testing lambda functions can be seen as a <a href="https://read.acloud.guru/testing-and-the-serverless-approach-495cef7495ea">simple</a> process.</p>
+
+<p>However, mocking AWS services can get tricky and there are vocal opinions <a href="http://theburningmonk.com/2017/02/yubls-road-to-serverless-architecture-part-2/">against</a> this practice for a reason.</p>
+
+<p>More specifically, take the <a href="https://github.com/kalinchernev/aws-node-signed-uploads">aws-node-signed-uploads</a> package as an example. The unit tests and the mocks are showing 100% test coverage for the code which gets executed by Jest and this is really encouraging.</p>
+
+<p>Do the following for me as an exercise after this tutorial:</p>
+
+<ul>
+<li>Clone the repository.</li>
+<li>Install the dependencies.</li>
+<li>Reconfigure the serverless settings.</li>
+<li>Make a deployment to your AWS account.</li>
+<li>Run <code>yarn start</code>.</li>
+</ul>
+
+<p>You will see a server running and waiting for your requests. You can make an example request with <a href="https://www.getpostman.com/">Postman</a> which will show you the same issues as tested in the unit tests :)
+And if you manage to get your header key correctly, you&rsquo;ll be even able to upload a large file to an S3 bucket.</p>
+
+<p>Now make the same test on the deployed service. You will get an error message for access denied because there is a specific configuration on the upload endpoint:</p>
+
+<pre><code class="language-yml">functions:
+  upsert-objects:
+    handler: src/upload.handler
+    name: ${self:provider.stage}-${self:service}-upload
+    memorySize: 128
+    events:
+      - http:
+          path: upload
+          method: put
+          private: true
+          cors: true
+</code></pre>
+
+<p>Which is <code>private: true</code>. When deployed on real AWS premises, the endpoint will require an API key in the header, which neither <code>serverless</code> nor <code>serverless-offline</code>, nor tests will warn you about.</p>
+
+<p>Mocking AWS services however, will give you the basic safely net that your lambda functions are handling positive and negative scenarios and invoke the correct callbacks in the correct scenarios.</p>
+
+<p>Also, using Jest for testing the independent logic and making snapshot make an excellent addition to secure the very vital behaviors of your cloud functions even when working independently from the AWS service.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://kalinchernev.github.io/" style="background-image: url(https://kalinchernev.github.io/images/logo.png)"><span class="hidden">Kalin Chernev's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://kalinchernev.github.io/">Kalin Chernev</a></h4>
+  
+  <p>Web engineer trying to bring value in various projects.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Brussels, Belgium</span>
+    <span class="author-link icon-link"><a href="https://kalinchernev.github.io/">https://kalinchernev.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Test-Driven%20Development%20for%20AWS%20Lambda%20functions%20with%20the%20Serverless%20framework%20and%20Jest&nbsp;-&nbsp;Kalin%20Chernev&amp;url=https%3a%2f%2fkalinchernev.github.io%2ftdd-serverless-jest%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkalinchernev.github.io%2ftdd-serverless-jest%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fkalinchernev.github.io%2ftdd-serverless-jest%2f&amp;description=Test-Driven%20Development%20for%20AWS%20Lambda%20functions%20with%20the%20Serverless%20framework%20and%20Jest"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fkalinchernev.github.io%2ftdd-serverless-jest%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'kalinchernev-github-io';
+  var disqus_url = 'https:\/\/kalinchernev.github.io\/tdd-serverless-jest\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="background-image: url(https://kalinchernev.github.io/images/gatsby_cover.png)" href="/learn-gatsbyjs/">
+          <section class="post">
+              <h2>Learn Gatsby.js</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Kalin Chernev</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://kalinchernev.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
